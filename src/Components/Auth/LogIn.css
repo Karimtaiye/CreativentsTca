@@ -1,0 +1,173 @@
+
+.logIn {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(8, 2, 47);
+    display: flex;
+}
+
+.input_LogIn {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+}
+
+.image_LogIn {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    background: url(/LogIn-image.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.image_LogIn img{
+    width: 90%;
+    height: 90%;
+}
+
+.LogIn_logo {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: end;
+    color: white;
+    font-family: sans-serif;
+    justify-content: center;
+}
+
+.LogIn_logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.Reg_Route{
+    display: none;
+}
+
+.back_ArrowLogin {
+    display: none;
+}
+
+.user_Auth {
+    width: 100%;
+    height: 80%;
+    font-family: sans-serif;
+    color: white;
+}
+
+.user_Auth_wrapper {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user_Auth_wrapper h1 {
+    font-size: 30px;
+}
+
+.user_Auth_wrapper h1 span{
+    color: rgb(255, 178, 29);
+}
+
+.user_Auth_wrapper .Input_auth {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    gap: 2%;
+}
+
+.Inputs_Login {
+    width: 60%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}  
+
+
+.user_Auth_wrapper .Input_auth input{
+    width: 100%;
+    height: 35%;
+    background-color: transparent;  
+    border: 1px solid rgba(255, 255, 255, 0.699);
+    outline: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 13px;
+    padding: 10px;
+}
+
+.Input_auth input::placeholder {
+    color: rgba(255, 255, 255, 0.562);
+ }
+
+ .labels{
+    font-size: 13px;
+    margin-bottom: 5px;
+    display: flex;
+    align-self: start;
+    margin-left: 20%;
+    margin-top: 3%;
+ }
+
+ .auth_Action {
+    width: 60%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7%;
+ }
+ 
+ .login_Btn {
+    width: 100%;
+    height: 36%;
+    background-color: rgb(255, 178, 29);
+    border-radius: 5px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+ }
+
+ .auth_Action a, .auth_Action p {
+    color:  rgb(255, 178, 29);
+    cursor: pointer;
+    font-size: 14px;
+ }
+
+ .auth_Action a {
+    text-decoration: underline;
+ }
+
+ .auth_Action span {
+    font-size: 15px;
+ }
+
+ .password_VisibilityLogIn {
+    position: absolute;
+    top: 32%;
+    right: 22.5%;
+    font-size: 19px;
+    cursor: pointer;
+ }
+
+ .error_msg {
+    font-size: 12px;
+    color: rgb(255, 178, 29);
+    margin-left: 20%;
+    display: flex;
+    margin-top: -2%;
+    align-self: flex-start;
+ }

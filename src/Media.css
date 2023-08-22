@@ -1,0 +1,592 @@
+@media only screen and (max-width:767px) {
+  .header{
+      width: 100%;
+      height: max-content;
+      background-color: whitesmoke;
+      position: relative;
+      top: 0;
+    }
+  
+  .topheader{
+      width: 100%;
+      height: 7vh;
+      display: flex;
+      justify-content: space-between;
+  }
+
+  .hero-section{
+      width: 100%;
+      height: 600px;
+      display: flex;
+      align-items: center;
+  }
+
+  .one{
+      width: 50%;
+      height: 100%;
+      padding-left: 10px;
+  }
+
+  .one .image{
+      height: 30%;
+      width: 10%;
+  }
+
+  .one h1{
+      font-size: 10px;
+  }
+  
+  .two{
+      display: none;
+ }
+
+ .menu-dash{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+ }
+
+ .menu{
+  display: block;
+  font-size: 30px;
+  padding-right: 10px;
+  cursor: pointer;
+ }
+
+  .three{
+      display: none;
+  }
+
+  .hero-section .event-result{
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+  }
+
+  .hero-section .event-result .discription{
+      height: 20%;
+  }
+
+
+  .hero-section .event-result .discription h1{
+      font-size: 18px;
+  }
+
+  
+  .hero-section .event-result .discription h2{
+      font-size: 17px;
+      font-weight: 500;
+  }
+
+  .hero-section .event-result .search-event .search-bar{
+      width: 50%;
+      height: 60%;
+      padding-left: 10px; 
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+      background-color: white;
+  }
+
+  .searchin{
+      font-size: 7px;
+  }
+  
+  .hero-section .event-result .search-event .see-result{
+      width: 70%;
+      height: 60%;
+      font-size: 10px;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+  }
+
+  .hero-section .event-result .search-event .see-result .arrow{
+      font-size: 10px;
+  } 
+     
+.pop-up{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.815);
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 999;
+  animation:slideInRight;
+  animation-duration:2s ;
+}
+
+
+
+.list{
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+  gap: 5%;
+  width: 50%;
+  height: 100%;
+  background-color: #08022F;
+}
+
+
+.list h6{
+  color: white;
+}
+
+.list  h6:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.delete{
+  position: fixed;
+  top: 1%;
+  right: 2%;
+  color: red;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.our-service{
+  width: 100%;
+  height: 280px;
+  margin-top: 40px;
+}
+
+.service-div h2{
+  font-size: 15px;
+}
+
+.service-div .arrow-down{
+  font-size: 15px;
+  margin: 0;
+  margin-left: 10px;
+}
+
+.service-containers1 {
+  width: auto;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  padding-left: 15px;
+}
+
+
+.category-containers{
+  width: 93%;
+  height: max-content;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.holder1{
+  width: 100%;
+  height: 250px;
+  overflow-x: auto;
+}
+
+.holderwrap1{
+  width: max-content;
+  height: 100%;
+  overflow-x: auto;
+}
+
+.our-category{
+  width: 100%;
+  height: max-content;
+  justify-content: space-around;
+}
+
+.service-containers1 .main-serice{
+  width: 180px;
+}
+
+.category-div h2{
+  font-size: 15px;
+}
+
+.category-div{
+  height: 20%;
+}
+
+.inner-holder2{
+  width: 100%;
+  height: max-content;
+  justify-content: center;
+  display: flex;
+
+}
+
+.main-category{
+  width: 45%;
+  height: 240px;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  margin-bottom: 15px;
+}
+
+.FAQ-container .frequently-ask h1{
+  font-size: 15px;
+}
+
+.FAQ-container{
+  margin-bottom: 15%;
+}
+
+.questions h5{
+  font-size: 10px;
+}
+
+.FAQ-holder{
+  width: 100%;
+  height: max-content;
+  align-items: center;
+  padding-right: 55px;
+  gap: 3%;
+}
+
+.FAQ-drop{
+  font-size: 15px;
+}
+
+.FAQ-holder .questions{
+  padding-block: 18px; 
+  padding-inline: 10px;
+  margin-block: 4px;
+  width: 350px;
+}
+
+.main-serice h1{
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.main-serice p{
+  font-size: 10px;
+  font-weight: 200;
+}
+
+.main-serice img{
+  width: 25%;
+  height: 25%;
+}
+
+.main-serice {
+  gap: 15px;
+}
+
+.love{
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  top: 38%;
+  right: 30%;
+}
+
+.love2{
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  top: 38%;
+  right: 8%;
+}
+
+.locationandeventname h4{
+  font-size: 10px;
+  padding-top: 15px;
+}
+
+.thedate{
+  display: none;
+}
+
+.theprice{
+  display: none;
+}
+
+.how{
+  width: 350px;
+  padding-inline: 10px;
+  padding-block: 14px;
+  margin-block: 5px;
+  border-radius: 3px;
+}
+
+.how h5{
+  font-size: 11px;
+  font-weight: 300; 
+}
+
+.social-media{
+  width: 90%;
+}
+
+.social-media .s-b-holder h1{
+  font-size: 8px;
+  margin-left: 5px;
+}
+
+.s-b-holder .logo{
+  width: 40%;
+  display: flex;
+  align-items:  center;
+}
+
+.s-b-holder .logo img{
+  height: 50%;
+  width: 90%;
+}
+
+.details{
+  width: 100%;
+}
+
+.details ul{
+  width: 100%;
+  gap: 15%;
+}
+
+.footer{
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.details ul li{
+  font-size: 8px;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width:1024px){
+  .header{
+      width: 100%;
+      height: max-content;
+      background-color: whitesmoke;
+    }
+     
+  .topheader{
+      width: 100%;
+      height: 8vh;
+  }
+
+  .hero-section{
+      width: 100%;
+      height: 500px;
+      display: flex;
+      align-items: center;
+  }
+
+  .one{
+      width: 17%;
+      height: 100%;
+  }
+
+  .one .image{
+      height: 40px;
+      width: 40px;
+  }
+
+  .one h1{
+      font-size: 12px;
+      font-weight: 400;
+  }
+
+  .two{
+      width: 45%;
+  }
+
+  .three{
+      width: 25%;
+      display: flex;
+      justify-content: end;
+      gap: 5px;
+
+   }
+    .three .btn-two{
+        width: 40%;
+        height: 45%;
+   }
+
+   .three .btn-one{
+    width: 40%;
+    height: 45%;
+   }
+
+   .hero-section .event-result .discription{
+      height: 27%;
+  }
+
+  .main-serice{
+      height: 100%;
+      width: 28%;
+      gap: 10%;
+  }
+
+  .service-containers1{
+      gap: 4%;
+      height: 100%;
+  }
+
+  .holderwrap1{
+      height: 100%;
+   
+  }
+ 
+  .hero-section .event-result .discription h1{
+      font-size: 20px;
+  }
+
+  .event-result{
+    top: 20%;
+    height: 30%;
+  }
+
+  .hero-section .event-result .discription h2{
+      font-size: 15px;
+  }
+
+
+  .hero-section .event-result .search-event .search-bar{
+       width: 65%;
+      
+  }
+
+  
+  .hero-section .event-result .search-event {
+      height: 12%;
+  }
+
+  .hero-section .event-result .search-event .see-result{
+    width: 70%;
+  }
+
+  
+
+
+  .category-div{
+      height: 20%;
+      align-items: center;
+  }
+
+  .main-category{
+    width: 27%;
+    height:320px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+
+
+  .holder2{
+    width: 100%;
+    height: max-content;
+  }
+  
+  
+  .inner-holder2{
+    width: 100%;
+    height: max-content;
+    justify-content: center;
+    display: flex;
+  }
+
+  .category-containers{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    gap: 6%;
+    flex-wrap: wrap;
+  }
+  .category-image{
+      height: 45%;
+  }
+
+  .image4{
+      height: 30%;
+      width: 20%;
+      
+  }
+  
+  .profile .circle{
+      width: 55px;
+      height: 53px;
+  }
+
+  .main-serice h1{
+    font-size: 18px;
+    font-weight: 550;
+  }
+
+  .main-serice p{
+    font-size: 13px;
+    font-weight: 200;
+  }
+
+  .main-serice img{
+    width: 25%;
+    height: 25%;
+  }
+
+  .main-serice {
+    gap: 13%;
+  }
+
+  .love{
+    width: 30px;
+    height: 30px;
+    top: 40%;
+    font-size: 13px;
+    right: 45px;
+  }
+
+  .love2{
+    width: 30px;
+    height: 30px;
+    top: 40%;
+    font-size: 15px;
+    right: 6px;
+  }
+
+  .locationandeventname{
+    height: 20%;
+  }
+
+  .locationandeventname h4{
+    padding-top: 10px;
+  }
+
+  .dateandprice{
+    height: 30%;
+    display: flex;
+  }
+
+  .category-discription{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 29%;
+  } 
+
+  .FAQ-container {
+    margin-bottom: 10vh;
+  }
+
+  
+  .our-service{
+    width: 100%;
+    height: 400px;
+    margin-top:60px;
+}
+}

@@ -1,0 +1,196 @@
+   @media screen and (max-width:430px){
+    .logIn {
+        justify-content: center;
+    }
+
+    .input_LogIn {
+        width: 90%;
+    }
+
+    .LogIn_logo {
+        height: 28%;
+        align-items: end;
+        justify-content: space-between;
+    }
+
+    .LogIn_logo img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .image_LogIn {
+        display: none;
+    }
+
+    .back_ArrowLogin, .Reg_Route {
+        display: flex;
+        align-self: flex-start;
+        font-size: 25px;
+        margin-top: 9%;
+    }
+    
+    .LogIn_logo span {
+        color: rgb(255, 178, 29);
+        font-size: 13px;
+    }
+
+    .user_Auth_wrapper h1 {
+        display: none;
+    }
+
+    .user_Auth_wrapper .Input_auth input{
+        width: 100%;
+        font-size: 13px;
+        height: 32%;
+        padding: 8px;
+        border: none;
+        border-bottom:  1px solid rgba(255, 255, 255, 0.699);
+     }
+
+     .labels{
+        font-size: 13px;
+        margin-left: 10%;
+        margin-top: 5%;
+     }
+
+     .auth_Action {
+        width: 60%;
+     }
+
+     .login_Btn {
+        font-size: 15px;
+        height: 33%;
+     }
+
+     .auth_Action a,  .auth_Action p {
+        font-size: 11px;
+     }
+
+     .auth_Action span {
+        font-size: 11px;
+     }
+
+     .error_msg {
+        font-size: 11px;
+     }
+}
+
+@media screen and (min-width:431px) and (max-width:1024px){
+    .logIn {
+        justify-content: center;
+    }
+
+    .input_LogIn {
+        width: 85%;
+    }
+
+    .LogIn_logo {
+        height: 28%;
+        justify-content: space-between;
+        
+    }
+    .LogIn_logo img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .image_LogIn {
+        display: none;
+    }
+
+    .back_ArrowLogin, .LogIn_logo span {
+        display: flex;
+        align-self: flex-start;
+        margin-top: 9%;
+    }
+
+    .user_Auth {
+        width: 100%;
+        height: 80%;
+        font-family: sans-serif;
+        color: white;
+    }
+    
+    .LogIn_logo span {
+        color: rgb(255, 178, 29);
+        font-size: 13px;
+    }
+
+    .user_Auth_wrapper h1 {
+        display: flex;
+        font-size: 23px;
+    }
+
+    .user_Auth_wrapper h1 span{
+        margin-inline: 10px;
+    }
+
+    .user_Auth_wrapper .Input_auth input{
+        width: 100%;
+        font-size: 13px;
+        height: 35%;
+        padding: 8px;
+     }
+
+     .labels{
+        font-size: 13px;
+        margin-left: 5%;
+        margin-top: 4%;
+        /* display: none; */
+     }
+
+     .auth_Action {
+        width: 60%;
+        height: 60%;
+     }
+
+     .error_msg {
+        margin-left: 20%;
+        /* margin-top: 2%; */
+     }
+
+     .login_Btn {
+        font-size: 18px;
+        height: 50px;
+     }
+
+     .auth_Action a,  .auth_Action p {
+        font-size: 14px;
+     }
+
+     .auth_Action span {
+        font-size: 15px;
+     }
+
+     .password_VisibilityLogIn {
+        top: 30.5%; 
+}
+}
+
+/* @media screen and (min-width:9050px) and (max-width:1024px){
+    .logo img{
+        width: 13%;
+        height: 60%;
+    }
+
+    .user_Auth_wrapper h1{
+        font-size: 38px;
+    }
+
+    .user_Auth_wrapper .Input_auth input{
+        width: 80%;
+        font-size: 13px;
+        height: 21%;
+     }
+}
+
+@media screen and (min-width:431px) and (max-width:519px){
+    .logo img{
+        width: 18%;
+    }
+    
+    .user_Auth_wrapper h1{
+        font-size: 26.5px;
+    }
+
+} */

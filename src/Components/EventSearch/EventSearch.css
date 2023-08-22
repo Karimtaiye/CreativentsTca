@@ -1,0 +1,309 @@
+.Search_Container {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    /* background: white;    */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.SearchResult_Container {
+    width: 80%;
+    height: 85%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    padding-block: 10px;
+    gap: 5%;
+}
+
+.SearchBar_Input {
+    width: 50%;
+    height:40px;
+    border-radius: 5px;
+    border: none;
+    background:lightgrey;
+    padding-inline: 10px;
+}
+
+.Search_Results{
+    width:70% ;
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+    gap: 4%;
+}
+
+.Results_Object {
+    width: 100%;
+    height:100px;
+    border-radius: 5px;
+    background: lightgrey;
+    display: flex;
+    align-items: center;
+    padding-inline: 10px;
+}
+
+.Searched_Details {
+    width: 30%;
+    height: 90%;
+    background: #000;
+    border-radius: 3px;
+
+}
+
+.Upcoming_EventsDetail {
+    width: 48%;
+    height: 37vh;
+    display: flex;
+    justify-content: space-around;
+    background: #0d034d;
+    color: white;
+    /* margin-bottom: 5vh; */
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    /* border: 1px solid rgba(2, 2, 65, 0.884); */
+    flex-direction: column;
+}
+
+.Upcoming_EventsDetail:hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.);
+    transform: scale(1.02); 
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
+    
+  }
+
+.Upcoming_EventImages {
+    width: 45%;
+    height: 95%;
+    object-fit: cover;
+    border-radius: 5px;
+}   
+
+.Upcoming_EventImages img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.Upcoming_EventsDetail {
+    width: 80%;
+    height: 45vh;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+    align-items: center;
+    display: none;
+}
+
+.Upcoming_EventDescs .span3{
+    font-size: 13px;
+}
+
+.Upcoming_EventDescs span{
+    font-size: 14px;
+}
+
+.Upcoming_EventDescs {
+    width: 55%;
+    padding-block: 1%;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    text-align: center;
+   /* justify-content: start; */
+   cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* .Upcoming_EventDesc:hover {
+    color: rgb(255, 178, 29);
+} */
+
+/* .Upcoming_EventDesc:hover + .Upcoming_Location{
+    color: white
+} */
+
+.Upcoming_Locations {
+    color: rgb(255, 178, 29);
+    font-size: 13px;
+}
+
+.Upcoming_LocationDivs {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.Upcoming_EventDescs span{
+    font-size: 13px;
+}
+
+.Home_Tickets {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Ticket_Header {
+    width: 90%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Ticket_Line {
+    width: 47%;
+    height: 8%;
+    background: white;
+    border-radius: 2px;
+}
+
+.Event_Tickets {
+    width: 90%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4%;
+    margin-bottom: 10vh;
+}
+
+.Event_Card {
+    width: 22%;
+    height: 55vh;
+    background-color: white;
+    border-radius: 4px;
+    color: black;
+    margin-top: 5vh;
+}
+
+.EventCard_Image {
+    width: 100%;
+    height: 50%;
+    background-color: black;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.EventCard_Image img{
+    width: 100%;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.EventCard_Description {
+    width: 100%;
+    height: 35%;
+    padding: 3%;  
+}
+
+.EventCard_Description span, .EventCard_Description p{
+    font-size: 14px;
+}
+
+.EventCard_DatePrice {
+    width: 100%;
+    height: 15%;
+    border-radius: 3px;
+    background-color: #FCA702; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EventCard_DatePrice span{
+    font-size: 13px;
+    padding-inline: 1%;
+}
+
+.EventCard_Options {
+    width: 100%;
+    height: 20%;
+    background-color: white;
+    display: flex;
+}
+
+.innupper-header{
+    width: 96%;
+    height: 75%;
+    display: flex;
+    align-items: start;
+}
+
+.upper-Header{
+    width: 96%;
+    height: 18%;
+    background-color: #1e035e54;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.buttoncontroler{
+    width: 100%;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 5px;
+    padding-left: 10px;
+
+}
+
+.buttoncontroler .btn2{
+    width: 50%;
+    height: 30%;
+    border-radius: 20px;
+    border: none;
+    background-color: #0d034d;
+    color: whitesmoke;
+}
+
+.buttoncontroler .btn1{
+    width: 50%;
+    height: 30%;
+    border-radius: 20px;
+    border: none;
+    background-color: #FCA702;
+    color: white;
+}
+
+.btn1:active{
+    transition: 300ms ease-in;
+    box-shadow: 0 5px #666;
+    transform: translatey(4px);
+  }
+  
+  .btn1:hover{
+    color: white;
+    transition: 0.6s;
+  }
+
+  .btn2:active{
+    transition: 300ms ease-in;
+    box-shadow: 0 5px #666;
+    transform: translatey(4px);
+  }
+  
+  .btn2:hover{
+    color: white;
+    transition:0.6s;
+  }

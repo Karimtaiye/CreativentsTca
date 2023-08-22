@@ -1,0 +1,178 @@
+
+.SignUp {
+    width: 100%;
+    height: 100vh;
+    background-color: #08022f;
+    display: flex;
+}
+
+.input_SignUp {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* gap: 4%; */
+    align-items: center;
+}
+
+.image_LogIn {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    background: url(/SignUp-Image.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.image_LogIn img{
+    width: 100%;
+    height: 100%;
+}
+
+.SignUp_logo {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: end;
+    color: white;
+    font-family: sans-serif;
+    padding-left:15%;
+}
+
+.SignUp_logo img{
+    width: 100px;
+    height: 100px;
+}
+
+.back_Arrow, .SignUp_logo span {
+    display: none;
+}
+
+.user_Auth_signUp {
+    width: 70%;
+    height: 90%;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.user_Auth_signUp span{
+    color: rgb(255, 178, 29);
+}
+
+.SignUp_Auth {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column; 
+}   
+
+.signUpInputs {
+    width: 90%;
+    height: 9%;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.699);
+    color: white;
+    padding: 10px;
+    margin-top: 2%;
+}
+
+.names {
+    width: 90%;
+    margin-top: 2%;
+    height: 11.5%;
+    border-radius: 5px;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.names article{
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    height: 100%; 
+}
+
+.names article .UserName{
+    width: 100%;
+    height: 90%; 
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.699);
+    color: white;
+    padding: 10px;
+}
+
+.auth_Action_signUp {
+    width: 100%;
+    height: 27%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.SignUp_Auth h5{
+    color: rgb(255, 178, 29);
+    font-size: 10.5px;
+}
+
+.SignUp_Btn {
+    width: 90%;
+    height: 35%;
+    background-color: rgb(255, 178, 29);
+    border-radius: 4px;
+    outline: none;
+    color: white;
+    cursor:pointer;
+    font-size: 15px;
+    border: none;
+}
+
+.auth_Action_signUp p{
+    display: flex;
+    margin-left: 20%;
+    font-size: 14px;
+}
+
+.auth_Action_signUp a{
+    color: rgb(255, 178, 29);
+    text-decoration: underline;
+}
+
+.SignUp_Labels {
+    font-size: 13px;
+    display: flex;
+    align-self: start;
+    /* margin-top: 2%; */
+}
+
+.reg_Host {
+    display: flex;
+    gap: 4px;
+    font-size: 13px;
+}
+
+.password_Visibility_SignUp {
+    position: absolute;
+    top: 51.8%;
+    left: 31.5%;
+    font-size: 19px;
+    cursor: pointer;
+ }
+
+ .Cpassword_Visibility_SignUp {
+    position: absolute;
+    top: 62.5%;
+    left: 31.5%;
+    font-size: 19px;
+    cursor: pointer;
+ }

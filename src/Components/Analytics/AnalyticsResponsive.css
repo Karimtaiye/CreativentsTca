@@ -1,0 +1,146 @@
+/*TABLET RESPONSIVE*/
+@media screen and (max-width:700px){
+    .ProfileAnaly{
+        height: 50%
+    }
+    .OverallText{
+     font-size: 7px;
+    }
+    .AnalyText{
+        font-size: 7px;
+    }
+    .OverallButton{
+        height: 43%;
+        width: 20%;
+        border-radius: 2px;
+        font-size: 7px;
+    }
+    .TextMonths{
+        font-size: 6px;
+    }
+    .Bar1{
+        width: 4%;
+    }
+    .Bar2{
+        width: 4%;
+    }
+    .Bar3{
+        width: 4%;
+    }
+    .Bar4{
+        width: 4%;
+    }
+    .Bar5{
+        width: 4%;
+    }
+    .Bar6{
+        width: 3%;
+    }
+    .Bar7{
+        width: 3%;
+    }
+    .Bar8{
+        width: 4%;
+    }
+    .Bar9{
+        width: 4%;
+    }
+    .Bar10{
+        width: 4%;
+    }
+    .Bar11{
+        width: 4%;
+    }
+    .Bar12{
+        width: 4%;
+    }
+}
+
+/*MOBILE SCREEEN*/
+@media screen and (max-width:500px){
+    .AnaLogo{
+        width: 60%;
+    }
+    .ProfileAnaly{
+        height: 60%;
+        width: 40%;
+    }
+    .AnalyText{
+        font-size: 10px;
+    }
+    .OverallText{
+        font-size: 6px;
+    }
+    .OverallButton{
+        height: 30%;
+        width: 23%;
+        font-size: 6px;
+    }
+    .Weeks{
+        font-size: 6px;
+    }
+    .OverallButtonb{
+        height: 70%;
+        width: 20%;
+        font-size: 6px;
+    }
+    .AnalyGreen{
+        font-size: 8px;
+    }
+    .AnalyBlue{
+        font-size: 6px;
+    }
+    .AnalyYellow{
+        font-size: 6px;
+    }
+    .AnalyBlack{
+        font-size: 6px;
+
+    }
+    .AnalyWhite{
+        font-size: 6px;
+    }
+     .TextMonths{
+        font-size: 4px;
+    }
+    .TextPercent{
+        font-size: 6px;
+    }
+    .Bar1{
+        width: 3%;
+    }
+    .Bar2{
+        width: 3%;
+    }
+    .Bar3{
+        width: 3%;
+    }
+    .Bar4{
+        width: 3%;
+    }
+    .Bar5{
+        width: 3%;
+    }
+    .Bar6{
+        width: 3%;
+    }
+    .Bar7{
+        width: 3%;
+    }
+    .Bar8{
+        width: 3%;
+    }
+    .Bar9{
+        width: 3%;
+    }
+    .Bar10{
+        width: 3%;
+    }
+    .Bar11{
+        width: 3%;
+    }
+    .Bar12{
+        width: 3%;
+    }
+    
+}

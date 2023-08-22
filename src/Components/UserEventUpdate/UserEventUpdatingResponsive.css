@@ -1,0 +1,206 @@
+@media only screen and (max-width:767px){
+    .createheader .image4{
+        height: 33px;
+        width: 65px;
+      }
+
+      .Update_PopUpMsg {
+        width: 80%;
+      }
+
+      .Update_PopUpMsg h2{
+        width: 80%;
+        text-align: center;
+      }
+  
+      .createheader .image4 h1{
+          font-size: 10px;
+      }
+  
+      .profile{
+          width: 30%;
+      }
+  
+      .profile h1{
+        font-size: 10px;
+      }
+  
+      .createheader .profile .circle{
+          height: 30px;
+          width: 30px;
+      }
+  
+      .eventname{
+          width: 80%;
+          height: 200px;
+      }
+  
+      .timedate{
+          width: 80%;
+          height: 600px;
+        }
+  
+        .datetimecategory .holdersone{
+          width: 100%;
+          height: 45%;
+          justify-content: center;
+  
+        }
+  
+        .datetimecategory .holderstwo{
+          width: 100%;
+          height: 45%;
+          justify-content: center;
+        }
+  
+        .datetimecategory .holdersthree{
+          width: 100%;
+          height: 45%;
+          justify-content: center;
+        }
+  
+        .Venuecategory .holdersfour                                                                                                         {
+          width: 100%;
+          height: 45%;
+          justify-content: center;
+        }
+  
+        .Venuecategory .holdersfive                                                                                                         {
+          width: 100%;
+          height: 45%;
+          justify-content: center;
+        }
+  
+        .Venuecategory .holderssix                                                                                                         {
+          width: 100%;
+          height: 45%;
+          justify-content: center;
+        }
+  
+        .Venuecategory {
+          flex-direction: column;
+          height: 50%;
+        }
+  
+        .datetimecategory{
+          flex-direction: column;
+          height: 50%;
+        }
+  
+      .datetimecategory .holdersone h4{
+          font-size: 12px;
+        }
+  
+        .datetimecategory .holderstwo h4{
+          font-size: 12px;
+        }
+  
+      .imageUpload{
+          width: 80%;
+        }
+  
+        .putimage{
+          width: 100%;
+          height: 93%;
+        }
+  
+      .createpart{
+          width: 80%;
+        }
+  
+        .directiontodifferentpage{
+          display: block;
+          width: 100%;
+          height: 10vh;
+          background-color: #08022F;
+          display: flex;
+          justify-content: space-between;
+          position: absolute;
+          top: 90%;
+          position: fixed;
+          border-radius:  20px 20px 0px 0px;
+         } 
+  
+         .Homedirection{
+          width: 20%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          color: #705F5F;
+         }
+  
+         .directionmain{
+          font-size: 30px;
+          color: #705F5F;
+         }
+  
+         .Homedirection:active{
+          transition: 300ms ease-in;
+          box-shadow: 0 5px #666;
+          transform: translatey(4px);
+        }
+      
+        
+        .directionmain:hover{
+          color: #FFA800;
+          transition: 0.6s;
+        }
+        
+        
+        .directionmain:active{
+          transition: 300ms ease-in;
+          box-shadow: 0 5px #666;
+          transform: translatey(4px);
+        }
+  
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width:1024px){
+      .createheader{
+          height: 10vh;
+      }
+  
+      .image4{
+        height: 80px;
+        width: 20px;
+      }
+  
+      .image4 h1{
+        font-size: 12px;
+      }
+      
+      .image4 img{
+          height: 50px;
+          width: 50px;
+        }
+  
+      .profile .circle{
+          height: 20px;
+          width: 80px;
+          background-color: red;
+          padding: 10px;
+        }
+  
+        .eventname{
+          width: 80%;
+        }
+  
+        .timedate{
+          width: 80%;
+        }
+  
+        .imageUpload{
+          width: 80%;
+        }
+  
+        .createpart{
+          width: 80%;
+        }
+  
+        .directiontodifferentpage{
+          display: none;
+         } 
+  }

@@ -1,0 +1,472 @@
+.HomePage {
+    width: 100%;
+    height: max-content;
+    background-color: rgb(8, 2, 47);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: sans-serif;
+}
+
+.HomePage_Header {
+    width: 100%;
+    height: 16vh;
+    display: flex;
+    justify-content: center;
+    /* gap: 6%; */
+}
+
+.HomePage_HeaderWrapper {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.HeaderLogo {
+    width: 13%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.HeaderLogo img {
+    width: 40px;
+    height: 40px;
+}
+
+.Search_Icons {
+    color: #ffffff79;
+    font-size: 22px;
+    position: absolute;
+    left: 18%;
+}
+
+.Search_Bar {
+    width: 35%;
+    height: 45%;
+    background: #2F384A;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    color: #ffffff79;
+    font-family: monospace;
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 45px;
+}
+
+.Pages_Profile {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Header_Pages {
+    width: 75%;
+    height: 100%;
+    color: white;
+    display: flex;
+    /* background: #000; */
+    justify-content: start;
+}
+
+.Header_Pages ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    justify-content: space-evenly;
+}
+
+.Header_Pages ul li{
+    list-style: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.Header_Pages ul li:hover{
+    color: rgb(255, 178, 29);
+    transition: all 300ms;
+    text-decoration: underline;
+}
+
+.Header_Profile {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    justify-content: end;
+    gap: 6%;
+}
+
+.Header_Profile h3{
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+
+}
+
+.Header_Profile h3:hover{
+    color: rgb(255, 178, 29);
+    transition: all 300ms;
+    text-decoration: underline;
+}
+
+.Profile_Image {
+    width: 48px;
+    height: 50px;
+    border-radius: 50%;
+    background: #000;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.Profile_Image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.SettingsPopUp_Desktop{
+    width: 20%;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgb(8, 2, 47);
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    animation:slideInRight;
+    animation-duration:1s ;
+}
+
+.SettingsPopUp_Desktop ul{
+    /* width: 80%; */
+    height: 30%;
+    margin-top: 17%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.SettingsPopUp_Desktop ul li{
+    list-style-type: none;
+    font-size: 13px;
+}
+
+.SettingsPopUp_Desktop ul li:hover{
+    color: rgb(255, 178, 29);
+    cursor: pointer;
+    transition: all 300ms;
+    text-decoration: underline;
+}
+
+.PopUp_Desktop {
+    width: 20%;
+    height: 100vh;
+    z-index: 9999;
+    background-color: rgb(8, 2, 47);
+    position: absolute;
+    right: 0;
+    padding: 15px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    animation:slideInDown;
+    animation-duration:1s ;
+}
+
+.PopUp_Desktop ul{
+    /* width: 80%; */
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10%;
+}
+
+.PopUp_Desktop ul li{
+    list-style-type: none;
+    font-size: 13px;
+}
+
+.PopUp_Desktop ul li:hover{
+    color: rgb(255, 178, 29);
+    cursor: pointer;
+    transition: all 300ms;
+    text-decoration: underline;
+}
+
+
+.HomePage_Main {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10vh;
+}
+
+.HomePage_Events {
+    width: 90%;
+    height: 87%;
+    background: #000;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.HomePage_Events img{
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.Home_EventDesc {
+    width: 90%;
+    height: 11%;
+}
+
+.Home_EventDesc h2{
+    font-size: 18px;
+}
+
+.Header_Category {
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10vh;
+}
+
+.Header_CategoryContent {
+    width: 90%;
+    height: 10%;
+    color: white;
+    font-family: sans-serif;
+}
+
+.CatArrow {
+    font-size: 25px;
+    /* margin-top: 900px; */
+}
+
+.Header_CategoryContent span{
+    font-size: 18px;
+}
+
+.Header_CategoryContent_Cards {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    overflow-x: auto; 
+    align-items: center;
+    gap: 3%;
+    flex-wrap: nowrap; 
+    font-family: sans-serif;
+}
+
+.Header_CategoryContent_Cards::-webkit-scrollbar {
+    display: none;
+}
+
+.Category_card::-webkit-scrollbar {
+    display: none;
+}
+
+.Category_card {
+    width: 21%;
+    height: 90%;
+    border-radius: 5px;
+    flex: 0 0 auto; 
+    object-fit: cover;
+}
+
+.Category_card img{
+    width: 100%;
+    height: 96%;
+    border-radius: 5px;
+}
+
+.Category_card h3{
+    color: white;
+}
+
+.Upcoming_Events {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+}
+
+.Upcoming_EventsWrapper {
+    width: 90%;
+    height: max-content;
+    display: flex;
+    gap: 10%;
+    flex-wrap: wrap;
+ }
+
+.Upcoming_EventsDetails {
+    width: 45%;
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+    align-items: center;
+}
+
+.Upcoming_EventImage {
+    width: 35%;
+    height: 100%;
+    background: red;
+    object-fit: cover;
+    border-radius: 5px;
+}   
+
+.Upcoming_EventImage img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.Upcoming_EventsDetailsM {
+    width: 80%;
+    height: 45vh;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5vh;
+    align-items: center;
+    display: none;
+}
+
+.Upcoming_EventDesc {
+    width: 55%;
+    padding-block: 1%;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    text-align: center;
+   justify-content: center;
+   cursor: pointer;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.Upcoming_EventDesc:hover {
+    color: rgb(255, 178, 29);
+}
+
+/* .Upcoming_EventDesc:hover + .Upcoming_Location{
+    color: white
+} */
+
+.Upcoming_Location {
+    color: rgb(255, 178, 29);
+    font-size: 20px;
+}
+
+.Upcoming_LocationDiv {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.Upcoming_EventDesc span{
+    font-size: 18px;
+}
+
+.Home_Tickets {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Ticket_Header {
+    width: 90%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Ticket_Line {
+    width: 47%;
+    height: 8%;
+    background: white;
+    border-radius: 2px;
+}
+
+.Event_Tickets {
+    width: 90%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4%;
+    margin-bottom: 10vh;
+}
+
+.Event_Card {
+    width: 22%;
+    height: 55vh;
+    background-color: white;
+    border-radius: 4px;
+    color: black;
+    margin-top: 5vh;
+}
+
+.EventCard_Image {
+    width: 100%;
+    height: 50%;
+    background-color: black;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.EventCard_Image img{
+    width: 100%;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.EventCard_Description {
+    width: 100%;
+    height: 35%;
+    padding: 3%;  
+}
+
+.EventCard_Description span, .EventCard_Description p{
+    font-size: 14px;
+}
+
+.EventCard_DatePrice {
+    width: 100%;
+    height: 15%;
+    border-radius: 3px;
+    background-color: #FCA702; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.EventCard_DatePrice span{
+    font-size: 13px;
+    padding-inline: 1%;
+}
+
+.EventCard_Options {
+    width: 100%;
+    height: 20%;
+    background-color: white;
+    display: flex;
+}

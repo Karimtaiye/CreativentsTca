@@ -1,0 +1,374 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.CreateMain{
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+}
+
+.createheader{
+  width: 95%;
+  height: 13vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  }
+
+.imageee{
+  width: 15%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+}
+
+.imageee img{
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.profile{
+  width: 20%;
+  height: 80%;
+  display: flex;
+  object-fit: cover;
+  justify-content: end;
+  font-size: 9px;
+  color: white;
+  align-items: center;
+
+}
+
+.circleimage{
+  width: 48px;
+  height:50px;
+  border-radius: 40px;
+  margin-right: 7px;
+}
+
+.circleimage img{
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+}
+
+.eventname{
+  width: 50%;
+  height: 300px;
+  color: white;
+  font-size: 22px;
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+}
+
+.eventnameinput{
+  width: 100%;
+  height: 35%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.eventdiscription{
+  width: 100%;
+  height: 60%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.eventdiscription input{
+  width: 100%;
+  height: 70%;
+  background-color: #79797983;
+  border: none;
+  border-radius: 8px;
+  padding-left: 10px;
+  color: white;
+  outline: none;
+}
+
+.eventnameinput input{
+  width: 100%;
+  height: 70%;
+  background-color: #79797983;
+  border: none;
+  border-radius: 8px;
+  padding-left: 10px;
+  color: white;
+  outline: none;
+}
+
+.eventnameinput h4{
+  font-size: 15px;
+}
+
+.eventdiscription h4{
+  font-size: 15px;
+}
+
+.timedate{
+  width: 50%;
+  height: 250px;
+  color: white;
+  font-size: 22px;
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.datetimecategory{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Venuecategory{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.datetimecategory .holdersone{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.datetimecategory .holderstwo{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.datetimecategory .holdersthree{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.Venuecategory .holdersfour{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Venuecategory .holdersfive{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Venuecategory .holderssix{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.datetimecategory .holdersone input{
+  width: 100%;
+  height: 70%;
+  background-color: #79797983;
+  border: none;
+  padding-left: 10px;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+
+.datetimecategory .holderstwo input{
+  width: 100%;
+  height: 70%;
+  background-color: #79797983;
+  border: none;
+  padding-left: 10px;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+
+.datetimecategory .holdersthree input{
+  width: 100%;
+  height: 70%;
+  background-color: #79797983;
+  border: none;
+  padding-left: 10px;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+
+.Venuecategory .holdersfour input{
+  width: 100%;
+  height: 70%;
+  background-color: #79797983;
+  border: none;
+  padding-left: 10px;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+
+.Venuecategory .holdersfive select{
+  width: 100%;
+  height: 70%;
+  background-color: #79797983;
+  border: none;
+  padding-left: 10px;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+
+.Venuecategory .holderssix input{
+  width: 100%;
+  height: 70%;
+  background-color: #79797983;
+  border: none;
+  padding-left: 10px;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+.datetimecategory .holdersone h4{
+  font-size: 15px;
+}
+
+.datetimecategory .holderstwo h4{
+  font-size: 15px;
+}
+
+.holderseight {
+  width: 50%;
+  height: 110px;
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  gap: 10%;
+}
+
+.holderseight input{
+  width: 100%;
+  height:90%;
+  background-color: #79797983;
+  border: none;
+  padding-left: 10px;
+  color: white;
+  border-radius: 8px;
+  outline: none;
+}
+
+
+.holderseight h4{
+  font-size: 15px;
+  color: white;
+}
+
+
+
+.datetimecategory .holdersthree h4{
+  font-size: 15px;
+}
+
+.Venuecategory .holdersfour h4{
+  font-size: 15px;
+}
+
+.Venuecategory .holdersfive h4{
+  font-size: 15px;
+}
+
+.Venuecategory .holderssix h4{
+  font-size: 15px;
+}
+
+.imageUpload{
+  width: 50%;
+  height: 300px;
+  display: flex;
+  align-items: end;
+  position: relative;
+}
+
+.imageUpload label{
+  width: 50%;
+  height: 240px;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+}
+
+.putimage{
+  width: 50%;
+  height: 80%;
+  background-color: #79797983;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.createpart{
+  width: 50%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.create{
+  width: 100%;
+  height: 40%;
+  background-color: #FCA702;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.Update_PopUpMsg {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.directiontodifferentpage{
+  display: none;
+ } 

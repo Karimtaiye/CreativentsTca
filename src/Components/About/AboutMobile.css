@@ -1,0 +1,27 @@
+@media only screen and (max-width : 768px) {
+    .aboutUs{
+        font-size: 20px;
+    }
+    
+    .aboutCreativent{
+        font-size: 10px;
+        width: 90%;
+    }
+
+    .aboutUsPictureHolder{
+        flex-direction: column;
+    }
+
+    .aboutTextThird{
+        font-size: 15px;
+    }
+
+    .aboutUsSecondpictureHolder{
+        flex-direction: column;
+    }
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px){
+
+
+}

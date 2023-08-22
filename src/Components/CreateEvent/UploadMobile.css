@@ -1,0 +1,36 @@
+@media only screen and (max-width:767px){
+  .holderseight {
+    width: 80%;
+    height: 90px;
+  }
+
+  .imageee img{
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+  }
+  .directiontodifferentpage{
+    display: flex;
+   } 
+}
+
+@media only screen and (min-width: 768px) and (max-width:1204px){
+.holderseight {
+width: 80%;
+}
+
+.circleimage{
+width: 40px;
+height:40px;
+border-radius: 40px;
+margin-right: 7px;
+}
+
+.circleimage img{
+width: 100%;
+height: 100%;
+border-radius: 40px;
+}
+}
+
+   

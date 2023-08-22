@@ -1,0 +1,324 @@
+
+@media screen and (max-width: 767px) {
+    .HomePage_Header {
+        height: 20vh;
+        position: relative;
+    }
+
+    .HeaderLogo {
+        width: 30px;
+        height: 30px;
+        margin-top:7%;
+    }
+
+    .HomePage_HeaderWrapper {
+        width: 90%;
+        height: 70%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .Search_Icons {
+        display: none;
+    }
+
+    .HeaderLogo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .muri {
+        font-size: 8px;
+    }
+
+    .Profile_Image {
+        width: 30px;
+        height: 30px;
+    }
+
+    .Search_Bar {
+        width: 90%;
+        height: 30%;
+        border-radius: 29px;
+        position: absolute;
+        top: 64%;
+        left:5%;
+        font-size: 19px;
+        padding-left: 5%;
+    }
+
+    .Header_Pages {
+        display: none;
+    }
+
+    .Header_Profile {
+        width: 28%;
+        height: 70%;
+    }
+    
+    .Header_Profile p{
+        font-size: 13px;
+    }
+
+    .PopUp_Desktop {
+        width: 50%;
+    }
+
+    .PopUp_Desktop ul li{
+        font-size: 14px;
+    }
+    
+    .HomePage_Main {
+        margin-top: 2%;
+        height: 40vh;
+        margin-bottom: 7vh;
+    }
+    
+    .HomePage_Events img{
+        border-radius: 5px;
+    }
+    
+    .Home_EventDesc {
+        width: 90%;
+        height:9%;
+    }
+    
+    .Home_EventDesc h2{
+        font-size: 13px;
+    }
+
+    .Home_EventDesc h1{
+        font-size: 17px;
+    }
+
+
+    .Header_Category {
+        height: 35vh;
+    }
+
+    .Category_card {
+        width: 32%;
+        
+    }
+
+    .Header_CategoryContent h4 {
+        font-size: 13px;
+    }
+    .Header_CategoryContent_Cards h4{
+        font-size: 13px;
+    }
+
+    .up {
+        font-size: 13px; 
+    }
+
+    .Ticket_Header h4 {
+        font-size: 13px; 
+    }
+
+    .Category_card img{
+        border-radius: 2px;
+        height: 70%;
+    }
+    
+    .Upcoming_EventsDetails {
+        width: 100%;
+        height: 26vh;
+    }
+    
+    .Upcoming_EventImage {
+        width: 30%;
+    }   
+
+    .Upcoming_EventImage img{
+        border-radius: 3px;
+    }  
+
+    .Upcoming_EventDesc {
+        width: 67%;
+    }
+
+    .Upcoming_EventDesc span{
+        font-size: 16px;
+    }
+
+    .Upcoming_EventDesc h2{
+        font-size: 20px;
+    }
+
+    .Upcoming_EventDesc h1{
+        font-size: 21px;
+    }
+
+    .Ticket_Line {
+        height: 2%;
+  }
+
+  .Event_Card {
+    width: 48%;
+    height: 30vh;
+    margin-top: 2vh;
+  }
+
+  .EventCard_Description span, .EventCard_Description p{
+    font-size: 11px;
+}
+
+.EventCard_DatePrice span{
+    font-size: 11px;
+    /* padding-inline: 1%; */
+}
+
+.PopUp_Desktop {
+    width: 50%;
+}
+
+.PopUp_Desktop ul li{
+    font-size: 14px;
+}
+
+.SettingsPopUp_Desktop{
+    width: 100%;
+}
+
+.SettingsPopUp_Desktop ul{
+    gap: 5%;
+    font-size: 11px;
+}
+
+.SettingsPopUp_Desktop ul li{
+    font-size: 13px;
+}
+
+.PopUp_Desktop ul{
+    gap: 5%;
+}
+
+.PopUp_Desktop ul li{
+    font-size: 11px;
+}
+
+}
+
+ 
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .HeaderLogo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .Search_Icons {
+        color: #ffffff79;
+        font-size: 20px;
+        position: absolute;
+        left: 19%;
+    }
+
+    .Ticket_Line {
+        height: 2%;
+  }
+
+    .Search_Bar {
+        width: 35%;
+        height: 25%;
+        font-size: 15px;
+        padding-left: 45px;
+    }
+
+    .Pages_Profile {
+        width: 35%;
+    }
+
+    .Header_Pages ul li{
+        font-size: 10px;
+    }
+
+    .Header_Pages ul {
+        gap:17px;
+        justify-content: center;
+    }
+
+    .Header_Pages {
+        width: 80%;
+    }
+
+    .PopUp_Desktop {
+        width: 50%;
+    }
+    
+    .SettingsPopUp_Desktop{
+        width: 100%;
+    }
+    
+    .SettingsPopUp_Desktop ul{
+        gap: 5%;
+    }
+    
+    .PopUp_Desktop ul{
+        gap: 5%;
+    }
+    
+
+    .Header_Profile {
+        width: 12.5%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-family: sans-serif;
+        justify-content: end;
+        gap: 6%;
+    }
+
+    .Profile_Image {
+        width: 50px;
+        height: 40px;
+    }
+
+    .HomePage_Main {
+        height: 50vh;
+        margin-bottom: 5vh;
+    }
+
+    .Header_Category {
+        margin-bottom: 1vh;
+        height: 30vh;
+    }
+
+    .Header_CategoryContent {
+        height: 2%;
+    }
+
+    .Category_card {
+        width: 30%;
+        height: 80%;
+        border-radius: 2px;
+    }
+
+    .Category_card img{
+        border-radius: 2px;
+    }
+
+    .Category_card h4{
+        font-size: 14px;
+    }
+
+    .Upcoming_EventsDetails {
+        width: 100%;
+        height: 38vh;
+    }
+
+    .Upcoming_EventImage {
+        width: 32%
+    }   
+
+    .Upcoming_EventImage img{
+        border-radius: 2px;
+    }    
+
+    .Upcoming_EventDesc {
+        width: 65%;
+        height: 100%;
+    }
+  }

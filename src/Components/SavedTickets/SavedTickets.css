@@ -1,0 +1,343 @@
+
+.MainDetailHolder{
+    width: 100%;
+    height: max-content;
+    background-color: #08022F;
+    display: flex;
+    flex-direction: column;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1066%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(8%2c 2%2c 47%2c 1)'%3e%3c/rect%3e%3cpath d='M570.127%2c388.054C591.314%2c387.668%2c606.827%2c370.421%2c617.164%2c351.922C627.19%2c333.979%2c632.65%2c312.401%2c622.335%2c294.623C612.05%2c276.896%2c590.617%2c271.295%2c570.127%2c270.849C548.612%2c270.38%2c524.96%2c273.845%2c513.824%2c292.259C502.409%2c311.135%2c508.85%2c334.672%2c520.027%2c353.69C531.025%2c372.402%2c548.426%2c388.449%2c570.127%2c388.054' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1184.742%2c630.616C1229.557%2c630.362%2c1272.677%2c608.942%2c1294.433%2c569.761C1315.628%2c531.592%2c1308.284%2c485.515%2c1286.239%2c447.831C1264.44%2c410.567%2c1227.91%2c382.835%2c1184.742%2c382.253C1140.626%2c381.659%2c1100.887%2c407.076%2c1078.394%2c445.031C1055.424%2c483.79%2c1050.474%2c531.926%2c1072.875%2c571.017C1095.39%2c610.307%2c1139.459%2c630.873%2c1184.742%2c630.616' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M927.13 126.56 a106.54 106.54 0 1 0 213.08 0 a106.54 106.54 0 1 0 -213.08 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M830.21 232.98 a123.38 123.38 0 1 0 246.76 0 a123.38 123.38 0 1 0 -246.76 0z' fill='rgba(28%2c 83%2c 142%2c 0.4)' class='triangle-float3'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1066'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
+}
+.NavDetailHolder{
+    height: 12vh;
+    width: 100%;
+    background-color: #08022F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+.DetailPopUp{
+    height: 100vh;
+    width: 30%;
+    background-color: aqua;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: none;
+}
+.DetailLogoHolder{
+    height: 100%;
+    width: 25%;
+    /* background-color: chocolate; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+.DetailLogo{
+    width: 15%;
+    animation:slideInDown;
+    animation-duration:2s ;
+}
+.DetailNavIcon{
+    height: 100%;
+    width: 40%;
+    /* background-color: rgb(30, 210, 30); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Saved{
+    height: 100%;
+    width: 30%;
+    /* background-color: beige; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.DetailSaved{
+    font-family:  'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgb(165, 170, 175);
+    font-weight: lighter;
+    cursor: pointer;
+}
+.ReactHeart{
+    color: #fca702;
+    font-size: 24px;
+    cursor: pointer;
+    
+}
+.Book{
+    height: 100%;
+    width: 30%;
+    /* background-color: rgb(216, 216, 66); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.DetailBook{
+    font-family:  'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgb(165, 170, 175);
+    font-weight: lighter;
+    cursor: pointer;
+}
+.ReactBook{
+    color: #fca702;
+    font-size: 24px;
+    cursor: pointer;
+}
+.Cart{
+    height: 100%;
+    width: 30%;
+    /* background-color: rgb(79, 66, 216); */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.DetailCart{
+    font-family:  'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgb(165, 170, 175);
+    font-weight: lighter;
+    cursor: pointer;
+}
+.ReactCart{
+    color: #fca702;
+    font-size: 24px;
+    cursor: pointer;
+}
+.DetailProfile{
+    height: 100%;
+    width: 28%;
+    /* background-color: rgb(19, 18, 17); */
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.DetailCircle{
+    height: 48px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #102255;
+    object-fit: cover;
+}
+
+.DetailCircle img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+
+}
+.DetailName{
+    font-family:  'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgb(165, 170, 175);
+    font-weight: lighter;
+    cursor: pointer;
+}
+.DetailMenu{
+    color: rgb(165, 170, 175);
+    display: none;
+}
+.DetailTextHolder{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+}
+.DetailText{
+    height: 80%;
+    width: 93%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.DetailWelcome{
+    font-family:  'Roboto', sans-serif;
+    font-size: 44px;
+    color: rgb(165, 170, 175);
+    font-weight: lighter;
+    text-shadow: 2px 2px white;
+    animation: backInRight;
+    animation-duration: 3s;
+}
+.DetailPurchased{
+    font-family:  'Roboto', sans-serif;
+    font-size: 28px;
+    color: rgb(165, 170, 175);
+    font-weight: lighter;
+    text-align: center;
+    animation: backInLeft;
+    animation-duration: 3s;
+}
+
+.MainTicketHolder{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.TicketHolder{
+    width: 93%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.TicketText{
+    height: 5vh;
+    width: 100%;
+}
+
+.SavedTickets{
+    font-family:  'Roboto', sans-serif;
+    font-size: 22px;
+    color: rgb(165, 170, 175);
+    font-weight: lighter;
+}
+
+.Bookmarked_Tickets {
+    width: 100%;
+    height: max-content;
+}
+
+.My_Tickets{
+    width: 300px;
+    height: 400px;
+    margin-bottom: 2vh;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
+    background-color: aliceblue;
+    border-radius: 10px;
+    animation: float 6s ease-in-out ;
+}
+
+@keyframes float {
+    0%, 7% {
+      transform: rotateZ(0);
+    }
+    15% {
+      transform: rotateZ(-15deg);
+    }
+    20% {
+      transform: rotateZ(10deg);
+    }
+    25% {
+      transform: rotateZ(-10deg);
+    }
+    30% {
+      transform: rotateZ(6deg);
+    }
+    35% {
+      transform: rotateZ(-4deg);
+    }
+    40%, 100% {
+      transform: rotateZ(0);
+    }
+  }
+
+.My_TicketDetails {
+    width: 100%;
+    height: 84%;
+    background:aliceblue;
+    border-radius: 3px;
+    position: relative;
+}
+
+.My_EventIcons {
+    width: 100%;
+    height: 30%;
+    background-color: red;
+}
+
+.My_TicketImage {
+    width: 100%;
+    height: 60%;
+    background: #000;
+    object-fit: cover;
+}
+
+.My_TicketImage img{
+    width: 100%;
+    height: 100%;
+}
+
+.My_EventDetails {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.My_TicketOptions {
+    width: 100%;
+    height: 14%;
+    background:aliceblue;
+    border-radius: 0px 0px 3px 3px;
+    display: flex;
+    justify-content: space-around;
+    border-top: 2px solid #102255;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.My_TicketOptions .Delete_Ticket, .My_TicketOptions .Update_Ticket{
+    width: 30%;
+    height: 60%;
+    border-radius: 2px solid #102255;
+    color: red;
+    /* color: white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.My_TicketOptions .Update_Ticket {
+    color:#102255;
+}
+
+.Events_Desc {
+    width:95%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    justify-content: space-between;
+
+}
+
+.Events_Desc p{
+    font-size: 15px;
+    font-weight: bold;
+    color: #102255;
+}
+
+.SavedEvent_DateTime
+ {
+    width: 90%;
+    /* height: 35%; */
+    display:flex;
+    justify-content:space-between;
+    align-items: flex-end;
+}
+
+.Date_Time {
+    width: 100%;
+    
+}
+
+
+.Date_Time p{
+    font-size:13px
+}

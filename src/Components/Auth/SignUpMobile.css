@@ -1,0 +1,187 @@
+@media screen and (max-width:430px){
+    .SignUp {
+        justify-content: center;
+    }
+
+    .input_SignUp {
+        width: 90%;
+    }
+
+    .SignUp_logo {
+        width: 100%;
+        height: 28%;
+        padding-inline:5%;
+        justify-content: space-between;
+    }
+
+    .SignUp_logo h1 {
+        font-size: 11px;
+    }
+
+    .user_Auth_signUp h1 {
+        display: none;
+    }
+
+    .SignUp_logo img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .back_Arrow, .SignUp_logo span {
+        display: flex;
+        align-self: flex-start;
+        margin-top: 20%;
+    }
+
+    .SignUp_logo span {
+        color: rgb(255, 178, 29);
+        font-size: 13px;
+    }
+    
+    .signUpInputs, .names{
+        width: 100%;
+        font-size: 13px;
+        height:9%;
+     }
+
+     .names article label, .SignUp_Labels{
+        font-size: 12px;
+     }
+
+     .names article input{
+        height: 95%;
+     }
+
+     .SignUp_Btn {
+        width: 100%;
+        font-size: 14px;
+        font-weight: bold;
+     }
+
+     .auth_Action_signUp p, .auth_Action_signUp a{
+        font-size: 12px;
+    }
+
+    .reg_Host {
+        font-size: 12px;
+    }
+
+    .password_Visibility_SignUp {
+        top: 52%;
+        left: 75%;
+        font-size: 18px;
+     }
+    
+     .Cpassword_Visibility_SignUp {
+        top: 62%;
+        left: 75%;
+        font-size: 18px;
+     }
+}
+
+@media screen and (max-width:381px){
+    .password_Visibility_SignUp {
+        top: 51.5%;
+        left: 74%;
+        font-size: 17.5px;
+     }
+    
+     .Cpassword_Visibility_SignUp {
+        top: 61.5%;
+        left: 74%;
+        font-size: 17.5px;
+     }
+}
+
+@media screen and (min-width:431px) and (max-width:1024px){
+    .SignUp {
+        justify-content: center;
+    }
+
+    .input_SignUp {
+        width: 60%;
+    }
+
+    .SignUp_logo {
+        width: 100%;
+        height: 28%;
+        padding-inline:15%;
+        justify-content: space-between;
+    }
+
+    .back_Arrow, .SignUp_logo span {
+        display: flex;
+        align-self: flex-start;
+        margin-top: 4%;
+    }
+
+    .SignUp_logo img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .SignUp_logo span {
+        color: rgb(255, 178, 29);
+        font-size: 13px;
+    }
+
+    .signUpInputs, .names{
+        width: 100%;
+        font-size: 13px;
+        height:9%;
+     }
+
+     .names article label, .SignUp_Labels{
+        font-size: 12px;
+     }
+
+     .SignUp_Labels {
+        margin-top: 2%;
+    }
+
+    .SignUp_Btn {
+        width: 100%;
+        font-size: 14px;
+        font-weight: bold;
+     }
+
+     .auth_Action_signUp p, .auth_Action_signUp a{
+        font-size: 13px;
+    }
+
+    .reg_Host {
+        font-size: 12px;
+        align-self: flex-start;
+    }
+
+     .password_Visibility {
+        top: 50%;
+        right: 13.5%;
+     }
+}
+
+@media screen and (min-width:9050px) and (max-width:1024px){
+    .SignUp_logo img{
+        width: 18%;
+        height: 60%;
+    }
+
+    .user_Auth_signUp h1{
+        font-size: 38px;
+    }
+}
+
+@media screen and (min-width:431px) and (max-width:600px){
+    .SignUp_logo img{
+        width: 26%;
+    }
+    
+    .user_Auth_signUp h1{
+        font-size: 21.5px;
+    }
+
+    .auth_Action_signUp p, .auth_Action_signUp a{
+        font-size: 11.5px;
+    }
+
+}
