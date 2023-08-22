@@ -1,9 +1,49 @@
 
 import { useState } from "react"
 import   "./Report.css"
+import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { useParams, useNavigate } from 'react-router-dom'
+
 const Report = () => {
     const [holder, setHolder] =useState(true)
     const [report, setReport] =useState(false)
+    const userOnLoggedIn = useSelector(state=>state.events.user)
+    const [reason, setReason] = useState('')
+    const { eventID } = useParams()
+
+    const token = userOnLoggedIn.token
+    const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+      };
+
+      const EventReportReason = (e) => {
+        setReason(e.target.value)
+        console.log(reason);
+      }
+
+      const reportData = {
+        targetType : "event",
+        targetId : eventID,
+        reason
+      }
+
+
+    const url = "https://creativents-on-boarding.onrender.com/api/report"
+
+    const Submit_Report = () => {
+        axios.post(url, reportData, config)
+        .then(res=>{
+            console.log(res);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+
+    }
+
 
     const Clickstart = () =>{
         setHolder(false)
@@ -76,58 +116,105 @@ const Report = () => {
                       </div>
                      <div className="ItsHoldingAllOfThem">
                      <div className="ResonForReport">
-                          <div className="ReasonText">
-                          <h2>Reason For Report</h2>
-                          </div>
-                         <div className="Fradulent">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Fraudulent or Unauthorized Event</label>
-                         </div>
-                         <div className="Harmful">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Harmful Content</label>
-                         </div>
-                         <div className="Illegal">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Illegal or Regulated Content </label>
-                         </div>
-                         <div className="Spam">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Spam</label>
-                         </div>
-                         <div className="Sex">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Sexually Explicit Content</label>
-                         </div>
-                         <div className="Hateful">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Hateful Content</label>
-                         </div>
-                         <div className="Violence">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Violence or Extremism</label>
-                         </div>
-                         <div className="Canceled">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Canceled Event</label>
-                         </div>
-                         <div className="Request">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Request a Refund</label>
-                         </div>
-                         <div className="Copyright">
-                         <input type="radio" id="name"/>
-                          <label htmlFor="name">Copyright or Trademark Infringement</label>
-                         </div>
+                    <div className="Report_Reasons">
+                    <label>
+                        <input type="radio"
+                         name="reportReason"
+                         value="Fraudulent or Unauthorized Event"
+                        onChange={EventReportReason}
+                        checked={reason === 'Fraudulent or Unauthorized Event'}
+                        />
+                        Fraudulent or Unauthorized Event
+                    </label>
+                    </div>
+
+                    <div className="Report_Reasons">
+                    <label>
+                        <input type="radio"
+                         name="reportReason"
+                         value="Harmful Content"
+                        onChange={EventReportReason}
+                        checked={reason === 'Harmful Content'}
+                        />
+                        Harmful Content
+                    </label>
+                    </div>
+
+                    <div className="Report_Reasons">
+                    <label>
+                        <input type="radio"
+                         name="reportReason"
+                         value="Illegal or Regulated Content"
+                        onChange={EventReportReason}
+                        checked={reason === 'Illegal or Regulated Content'}
+                        />
+                        Illegal or Regulated Content
+                    </label>
+                    </div>
+
+                    <div className="Report_Reasons">
+                    <label>
+                        <input type="radio"
+                         name="reportReason"
+                         value="Sexually Explicit Content"
+                        onChange={EventReportReason}
+                        checked={reason === 'Sexually Explicit Content'}
+                        />
+                        Sexually Explicit Content
+                    </label>
+                    </div>
+
+                    <div className="Report_Reasons">
+                    <label>
+                        <input
+                        type="radio"
+                        name="reportReason"
+                        value="Hateful Content"
+                        onChange={EventReportReason}
+                        checked={reason === 'Hateful Content'}
+                        />
+                        Hateful Content
+                    </label>
+                    </div>
+
+                    <div className="Report_Reasons">
+                    <label>
+                        <input
+                        type="radio"
+                        name="reportReason"
+                        value="Violence or Extremism"
+                        onChange={EventReportReason}
+                        checked={reason === 'Violence or Extremism'}
+                        />
+                        Violence or Extremism
+                    </label>
+                    </div>
+
+                    <div className="Report_Reasons">
+                    <label>
+                        <input
+                        type="radio"
+                        name="reportReason"
+                        value="Canceled Event"
+                        onChange={EventReportReason}
+                        checked={reason === 'Canceled Event'}
+                        />
+                        Canceled Event
+                    </label>
+                    </div>
+                    
+                    </div>
+                    <div className="ReasonOption">
+                    
                       </div>
-                      <div className="YourEmail">
+                      {/* <div className="YourEmail">
                           <input type="email"  placeholder="Your Email*" className="ReportEmail"/>
-                      </div>
-                      <div className="ReportDescription">
-                          <input type="text" placeholder="Description*" className="ReportDes"/>
-                      </div>
+                      </div> */}
+                      <textarea name="description" rows="4" cols="50" className="ReportDes" defaultValue="Enter your description here...">
+                         
+                        </textarea>
                       <div className="SubmitAndGoBack">
-                          <button className="ReportButton">Submit Report</button>
+                          <button className="ReportButton" onClick={Submit_Report}>Submit Report</button>
                           <h3 className="GoBackText" onClick={Goback}>Go back</h3>
                       </div>
                      </div>

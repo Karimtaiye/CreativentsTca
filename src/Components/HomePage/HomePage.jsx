@@ -168,7 +168,7 @@ function HomePage() {
         </div>
         <div style={{display:popUp?"none":null}} className='Header_Profile'  >
           <p className='muri'>{userOnLoggedIn.name}</p>
-          <div className='Profile_Image' onMouseOver={ShowPopUp} >
+          <div className='Profile_Image' onClick={ShowPopUp} >
             <img src={profile} alt="" />
 
           </div>

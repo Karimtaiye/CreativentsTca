@@ -9,6 +9,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    background: rgba(255, 255, 255, 0.753);
     align-items: center;
 }
 
@@ -115,7 +116,7 @@
     outline: none;
     font-weight: lighter;
     border-radius: 3px;
-    background: #fca702;
+    background: #023064;
     transform: scale(1);
     color: whitesmoke;
     cursor: pointer;
@@ -188,7 +189,8 @@
     width: 95%;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    justify-content: center;
+    gap: 2%;
 }
 
 .ReasonText{
@@ -198,11 +200,15 @@
     font-weight: lighter;
     font-family:  'Roboto', sans-serif;
 }
-.Fradulent{
+.Report_Reasons{
     height:7% ;
     width: 100%;
 }
-.Harmful{
+.Report_Reasons label input{
+   cursor: pointer;
+}
+
+/* .Harmful{
     height:7% ;
     width: 100%;
 }
@@ -237,7 +243,7 @@
 .Copyright{
     height:7% ;
     width: 100%;
-}
+} */
 .YourEmail{
     height: 18%;
     width: 95%;
@@ -262,13 +268,21 @@
 }
 
 .ReportDes{
-    all: unset;
-    height: 90%;
-    width: 65%;
+    height: 25%;
+    width: 45%;
     padding: 6px;
-    border: 1px solid rgb(222, 215, 215);
-    
+    border: 1px solid black;
+    display: flex;
+    align-self: flex-start;
+    background-color: transparent;
+    margin-left: 5%;
 }
+
+.ReportDes:focus{
+    background-color: #023064;
+    color: white;
+}
+
 .SubmitAndGoBack{
     height: 15%;
     width: 95%;
@@ -285,7 +299,7 @@
     border: none;
     outline: none;
     font-weight: lighter;
-    background: #fca702;
+    background: #023064;
     border-radius: 3px;
     transform: scale(1);
     color: whitesmoke;
