@@ -30,6 +30,7 @@ import BarCode from './Components/BarCode/BarCode'
 
 
 function App() {
+  
   return (
     <>
       <HashRouter>

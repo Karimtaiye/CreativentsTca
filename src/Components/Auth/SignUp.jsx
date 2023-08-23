@@ -29,7 +29,7 @@ function SignUp() {
 
   const url = "https://creativents-on-boarding.onrender.com/api/signup"
 
-  const userData = {firstname, lastname, password, email, confirmPassword}
+  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password:password.trim(), email:email.trim(), confirmPassword:confirmPassword.trim()}
 
   const signUpUser = (e) => {
     e.preventDefault()

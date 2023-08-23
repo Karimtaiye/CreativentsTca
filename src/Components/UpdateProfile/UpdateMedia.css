@@ -37,6 +37,10 @@
 
     }
 
+    .Profile_DetailsPart input{
+        color: white;
+    }
+
     .directiontodifferentpage{
         display: block;
         width: 100%;

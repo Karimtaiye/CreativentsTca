@@ -124,7 +124,7 @@
     
     .Upcoming_EventsDetails {
         width: 100%;
-        height: 26vh;
+        height: 24vh;
     }
     
     .Upcoming_EventImage {
@@ -259,7 +259,6 @@
     .PopUp_Desktop ul{
         gap: 5%;
     }
-    
 
     .Header_Profile {
         width: 12.5%;
@@ -304,13 +303,15 @@
         font-size: 14px;
     }
 
+    
+
     .Upcoming_EventsDetails {
-        width: 100%;
-        height: 38vh;
+        width: 49%;
+        height: 28vh;
     }
 
     .Upcoming_EventImage {
-        width: 32%
+        width: 34%
     }   
 
     .Upcoming_EventImage img{
@@ -320,5 +321,12 @@
     .Upcoming_EventDesc {
         width: 65%;
         height: 100%;
+        justify-content: space-between;
     }
+
+    .btn1{
+       padding-bottom: 20px; 
+    }
+
+    
   }

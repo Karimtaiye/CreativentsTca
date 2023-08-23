@@ -23,13 +23,13 @@ import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
 import HomeImage from '../../assets/HomeImage.png'
+import {BsBookmarkHeart} from 'react-icons/bs'
+
 
 
 
 function HomePage() {
         const [uploadedEvent, setUploadEvent] = useState([])
-        const [searchBar, setSearchBar] = useState(false)
-
         // const [imageRoll, setImageRoll] = useState(0)
 
         const url = "https://creativents-on-boarding.onrender.com/api/events"
@@ -145,11 +145,7 @@ function HomePage() {
         <img src={LogoC} alt="" />
         </div>
         <BiSearch className='Search_Icons'/>
-        <input type='text' style={{zIndex:searchBar?"999":null, background:searchBar?"whitesmoke":null, color:searchBar?"black":null}} placeholder='Search for events' onFocus={()=>{
-            // setSearchBar(true)
-            // nav('/api/event/search')
-            // `/api/event/search?searchTerm=${searchTerm}`
-        }} className='Search_Bar'/>
+        <input type='text' placeholder='Search for events' className='Search_Bar'/>
         <div style={{display:popUp?"none":null}} className='Pages_Profile'>
           
           <nav className='Header_Pages'>
@@ -157,9 +153,7 @@ function HomePage() {
               <NavLink to={'/upload'}>
               <li>Create Event</li>
               </NavLink>
-              <NavLink to={"/api/getUserWithLinks/:id"}>
-              <li>My Event</li>
-              </NavLink>
+              {/* <li>Find Event</li> */}
               <NavLink style={{color:"white"}} to={'/about'}>
               <li>About Us</li>
               </NavLink>
@@ -168,7 +162,7 @@ function HomePage() {
         </div>
         <div style={{display:popUp?"none":null}} className='Header_Profile'  >
           <p className='muri'>{userOnLoggedIn.name}</p>
-          <div className='Profile_Image' onClick={ShowPopUp} >
+          <div className='Profile_Image' onMouseOver={ShowPopUp} >
             <img src={profile} alt="" />
 
           </div>
@@ -243,22 +237,30 @@ function HomePage() {
       <div className='Upcoming_EventsWrapper'>
       {
       uploadedEvent.map((e)=>(
-        <div className='Upcoming_EventsDetails' key={e._id} onClick={()=>{
-          nav(`/api/events/${e._id}`)
-      }}>
+        <div className='Upcoming_EventsDetails'>
+        <div className='upper-Header'>{e.eventName}</div>
+
+        <div className='innupper-header'>
           <div className='Upcoming_EventImage'>
             <img src={e.eventImages} alt="" />
           </div>
           <div className='Upcoming_EventDesc'>
-            <h3>{e.eventName}</h3>
-            <h4>{e.eventDescription}</h4>
+           
             <div className='Upcoming_LocationDiv'>
             <MdLocationPin className='Upcoming_Location'/>
-            <span>{e.eventVenue}</span>
+            <span className='span'>{e.eventVenue}</span>
             </div>
-            <span>{e.eventDate}</span>
+            <span className='span3'>{e.eventDate}</span>
+            <div className='buttoncontroler'>
+              <button className='btn1' key={e._id} onClick={ () =>{
+                nav(`/api/events/${e._id}`)
+              }}>Book now</button>
+              <BsBookmarkHeart className='bookmark'/>
+            </div>
+          </div>
           </div>
         </div>
+       
       ))
     }
 
