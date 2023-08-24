@@ -52,8 +52,9 @@ function UpdateProfile() {
             console.log(res)
             setVisible(true)
             setLoading(false)
-            setUpdatesucc("Profile Update Successfully")
-            nav('/homepage')
+            setUpdatesucc("Profile Picture updated ")
+            // nav('/homepage')
+            
             Dispatch(userStoreData({
                 email:res.data.data.email, 
                 id:res.data.data._id,
@@ -89,10 +90,18 @@ function UpdateProfile() {
         } )
         .then(res=>{
             console.log(res)
-            setVisible(true)
+            setVisible(false);
             setLoading(false)
-            setUpdatesucc("Profile Update Successfully")
-            nav('/homepage')
+            setVisible(true)
+            setTimeout(() => {
+                nav('/homepage'); 
+            }, 5000)
+            if (res){
+              setUpdatesucc("Profile Update Successfully")
+              console.log("response sent")
+          }else{
+              console.log('problems sending ')
+          }
             Dispatch(userStoreData({
                 email:res.data.data.email, 
                 id:res.data.data._id,
