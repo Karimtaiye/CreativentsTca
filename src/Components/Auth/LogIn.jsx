@@ -52,6 +52,10 @@ function LogIn() {
         setError("Please check your Internet Connection")
         console.log("error");
       }
+      else if(err.response.data.message === "Incorrect Password"){
+        setError("Email and password does not match")
+        console.log("error");
+      }
       else{
         setError(err.response.data.message)
       }

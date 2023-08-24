@@ -35,7 +35,14 @@ function LogOut() {
         })
         .catch(err=>{
             console.log(err)
-            setLogOutMsg("Error Logging Out")
+            if(err.message === "Network Error"){
+              setLogOutMsg("Please check your Internet Connection")
+              console.log("error");
+            }
+            else{
+              setLogOutMsg("Error Logging Out")
+            }
+            
             setConfirmation(false)
         })
     }
