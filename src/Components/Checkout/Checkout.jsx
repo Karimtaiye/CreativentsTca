@@ -155,7 +155,7 @@ const Checkout = () =>{
 
                    
 
-                    <button className='booknow' onClick={()=>{
+                    <button disabled={data.isSoldOut?true:false} style={{cursor:"pointer", background:data.isSoldOut?"#a56f03":null}} className='booknow' onClick={()=>{
                             // setChecOutConfirmation(true)
                             nav(`/api/tickets/${data._id}`)
                             }}>
@@ -166,7 +166,7 @@ const Checkout = () =>{
         </div>
         <div className="directiontodifferentpage">
             <div className="Homedirection">
-                <AiFillHome onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
+                <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
                 <h5>Home</h5>
             </div>
 

@@ -22,7 +22,7 @@ function ConfirmDelete({cancel, setConfirmation}) {
 
     const url = `https://creativents-on-boarding.onrender.com/api/Delete/${eventID}`
 
-    const deletepersistedReducerById = () => {
+    const deleteEventsById = () => {
         console.log(token);
         axios.delete(url, config)
         .then(res=>{

@@ -120,7 +120,7 @@ function UserDashBoard() {
                     setMyBookMarked(false)
                     setMyPurchases(false)
                   }}>
-                  <h3 style={{color:myEvents?"#fca702":null, fontSize:myEvents?"15px":null, transition:"all 400ms"}} className="DetailCart">My Events</h3>
+                  <h3 style={{color:myEvents?"#fca702":null, fontSize:myEvents?"14px":null, transition:"all 400ms"}} className="DetailCart">My Events</h3>
                     
                   {
                      myEvents?<MdEventAvailable style={{color:myEvents?"white":null, transition:"all 400ms"}} className="ReactCart"/>:
@@ -133,7 +133,7 @@ function UserDashBoard() {
                     <div className="DetailCircle">
                         <img src={userProfilePicture} alt="" />
                     </div>
-                    <h3 className="DetailName">Profile</h3>
+                    <h3 className="DetailName">{userName}</h3>
                     <GiHamburgerMenu className="DetailMenu" 
                     // onClick={DetailPop}
                     />
@@ -175,7 +175,7 @@ function UserDashBoard() {
                         myPurchases?"My Purchases":
                         myBookMarked?"My BookMarked":null
                    }</h1>
-                    <div className='Event_Line'></div>
+                    <div className='Event_Lines'></div>
                 </div>
                 <div className='Host_EventOverView'>
                     
@@ -209,6 +209,7 @@ function UserDashBoard() {
                                     </div>
                                 </div>
                                     <p className='availableTicket'>Available tickets: {e.availableTickets}</p>
+                                    {/* <p style={{position:"absolute", right:"0", top:"5%"}} className='availableTicket'>Purchased tickets: {e.purchasedTickets}</p> */}
                             </div>
                                     </>
                                )):

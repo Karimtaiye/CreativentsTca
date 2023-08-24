@@ -59,7 +59,7 @@ const BookEvent = () => {
     .catch(err=>{
         console.log(err);
         setLoading(false)
-        setResAlert(true)
+        setResAlert(false)
         if(err.message === "Network Error"){
             setMsg("Please check your Internet Connection")
             setSubMsg("And try again")
@@ -90,8 +90,8 @@ const BookEvent = () => {
                         <h2>{msg}</h2>
                         <h4>{subMsg}</h4>
                        {
-                         resAlert?<GiConfirmed style={{fontSize:"100px", color:"green"}}/>  :         
-                         <BiSolidError style={{fontSize:"100px", color:"red"}}/>
+                         resAlert?<GiConfirmed className='succ' style={{fontSize:"100px", color:"green"}}/>  :         
+                         <BiSolidError className='fail' style={{fontSize:"100px", color:"red"}}/>
                          
                        }
                         <button className='Purchase_ContBtn' onClick={()=>nav(`/api/events/${id}`)}>Go back</button>
@@ -106,7 +106,7 @@ const BookEvent = () => {
                         {
                             resAlert? <button className='CheckOut_ConfirmBtn' onClick={()=>nav(`/api/tickets/${data._id}`)}>Go Back</button>:
                             <>
-                            <button className='CheckOut_CancelBtn' onClick={()=>nav("/api/events/:id")} disabled={loading}>Cancel</button>
+                            <button className='CheckOut_CancelBtn' onClick={()=>nav(`/api/events/${e._id}`)} disabled={loading}>Cancel</button>
                             <button className='CheckOut_ConfirmBtn' style={{background:loading?"#08022f93":null}} disabled={loading} onClick={BookEvent}>{
                                 loading?<SpinnerCircularSplit size={30} thickness={150} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
                                 "Confirm Book"}</button>

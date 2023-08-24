@@ -21,18 +21,25 @@ import {CiCalendarDate} from 'react-icons/ci'
 import {BiMoney} from 'react-icons/bi'
 import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
-import {BsFillCheckSquareFill} from 'react-icons/bs'
+import {BsFillCheckSquareFill, BsBookmark, BsFillBookmarkCheckFill} from 'react-icons/bs'
 import HomeImage from '../../assets/HomeImage.png'
-import {BsBookmarkHeart} from 'react-icons/bs'
-
-
-
 
 function HomePage() {
         const [uploadedEvent, setUploadEvent] = useState([])
-        // const [imageRoll, setImageRoll] = useState(0)
+         const userOnLoggedIn = useSelector(state=>state.events.user)
 
-        const url = "https://creativents-on-boarding.onrender.com/api/events"
+        // const [searchBar, setSearchBar] = useState(false)
+
+        const url = "https://creativents-on-boarding.onrender.com/api/events" 
+        // const bookMarkUrl = `https://creativents-on-boarding.onrender.com/api/users/bookmarks/${eventID}`
+        // const unBookMarkUrl = `https://creativents-on-boarding.onrender.com/api/users/unbookmarks/${eventID}`
+        const token = userOnLoggedIn.token
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        };
+        
        const eventUploaded = () => {
         axios.get(url)
         .then(res=>{
@@ -43,44 +50,31 @@ function HomePage() {
             console.log(err)
         })
        }
-       const carousel = uploadedEvent.filter((e)=>e.eventImages)
-       console.log(carousel);
-    
+
        useEffect(()=>{
         eventUploaded()
        },[])
 
-  const userOnLoggedIn = useSelector(state=>state.events.user)
+  // const userOnLoggedIn = useSelector(state=>state.events.user)
   const [popUp, setPopUp] = useState(false)
   const [settingPopUp, setSettingPopUp] = useState(false)
-  // const userSignUpData = useSelector(state=>state.events.userRes)
+  const [search, setSearch] = useState(false)
+  
+  const [bookmarked, setBookmarked] = useState(false)
+
   const nav = useNavigate()
   console.log(userOnLoggedIn);
   const id = userOnLoggedIn.id
   const profile = userOnLoggedIn.profilePicture
 
   const signOut = () => {
-    // axios.get("https://creativents-on-boarding.onrender.com/api/allusers")
-    // .then(res=>{
-    //   console.log(res.data.data[0]._id)
-    //   console.log(res.data.data[0].token)
-    //   Dispatch(userResData(res.data.data[0].token))
-    //   const id = res.data.data[1]._id
       console.log(id);
       nav(`/api/logout/${id}`)
-    // })
   }
 
   const changeUserPassword = () => {
-  //   // axios.get("https://creativents-on-boarding.onrender.com/api/allusers")
-  //   // .then(res=>{
-  //   //   console.log(res.data.data[1]._id)
-  //   //   console.log(res.data.data[0].token)
-  //   //   Dispatch(userResData(res.data.data[1].token))
-  //   //   const id2 = res.data.data[1]._id
       console.log(id);
       nav(`/api/changepasswordlogged/${id}`)
-  //   // })
   }
 
   const changeUserProfilePicture = () => {
@@ -135,6 +129,43 @@ function HomePage() {
   }
 ]
 
+const [searchTerm, setSearchTerm] = useState('');
+const [searchResults, setSearchResults] = useState([]);
+
+const searchUrl = `https://creativents-on-boarding.onrender.com/api/event/search?searchTerm=${searchTerm}`
+
+  const searchParameter = {
+    searchparams: {
+      eventName: searchTerm,   
+      eventCategory: searchTerm,
+      eventPrice: searchTerm,    
+      eventLocation: searchTerm, 
+      eventVenue: searchTerm,    
+      eventDate: searchTerm,     
+      eventTime: searchTerm,     
+    }
+  }
+
+
+const SearchBar = () => {
+  axios.get(searchUrl, searchParameter)
+  .then(res=>{
+    console.log(res);
+    setSearchResults(res.data.data); 
+  })
+  .catch(err=>{
+    console.log('Error searching events:', err);
+  }) 
+  
+};
+
+useEffect(()=>{
+  if (searchTerm !== '') {
+    SearchBar();
+  }
+
+},[searchTerm])
+console.log(searchResults);
 
 
   return (
@@ -145,15 +176,23 @@ function HomePage() {
         <img src={LogoC} alt="" />
         </div>
         <BiSearch className='Search_Icons'/>
-        <input type='text' placeholder='Search for events' className='Search_Bar'/>
+        <input type='text'  onChange={(e)=>setSearchTerm(e.target.value)} placeholder='Search for events' onFocus={()=>{
+            setSearch(true)
+        }}
+        onBlur={() => {
+          setSearch(false)
+        }} className='Search_Bar'/>
+        
         <div style={{display:popUp?"none":null}} className='Pages_Profile'>
           
           <nav className='Header_Pages'>
             <ul>
-              <NavLink to={'/upload'}>
+              <NavLink style={{color:"white"}} to={'/upload'}>
               <li>Create Event</li>
               </NavLink>
-              {/* <li>Find Event</li> */}
+              <NavLink style={{color:"white"}} to={"/api/getUserWithLinks/:id"}>
+              <li>My Event</li>
+              </NavLink>
               <NavLink style={{color:"white"}} to={'/about'}>
               <li>About Us</li>
               </NavLink>
@@ -161,8 +200,8 @@ function HomePage() {
           </nav>
         </div>
         <div style={{display:popUp?"none":null}} className='Header_Profile'  >
-          <p className='muri'>{userOnLoggedIn.name}</p>
-          <div className='Profile_Image' onMouseOver={ShowPopUp} >
+          <p style={{fontSize:"12px"}} className='muri'>{userOnLoggedIn.name}</p>
+          <div className='Profile_Image' onClick={ShowPopUp} >
             <img src={profile} alt="" />
 
           </div>
@@ -181,10 +220,7 @@ function HomePage() {
               <NavLink style={{color:"white"}} to={'/about'}>
               <li>About Us</li>
               </NavLink>
-              {/* <NavLink to={'/saved'}>
-              <li>My Tickets</li>
-              </NavLink> */}
-              {/* <li onClick={()=>nav('/saved')}>Saved</li> */}
+
               <li onClick={showSettings}>Settings</li>
               <li onClick={signOut}>Log out</li>
             </ul>
@@ -199,70 +235,140 @@ function HomePage() {
               <li onClick={changeUserProfilePicture}>Change Profile Picture</li>
               <li>Dark Mode</li>
               <li onClick={checkUserEventProfile}>My Events</li>
+              <li onClick={()=>nav(`/adminDashboard/${id}`)}>Admin DashBoard</li>
             </ul>
       </div>:null
     }
      
-    <section className='HomePage_Main'>
-      <div className='HomePage_Events'>
-        <img src={HomeImage} alt="" />
-      </div>
-      <div className='Home_EventDesc'>
-        <h2>Sunday, September 31st 2023</h2>
-        <h1>Pastor Frank 7th Spiritual Journey Session</h1>
-      </div>
-    </section>
+   {
+    !search?
+     <section className='HomePage_Main'>
+    <div className='HomePage_Events'>
+      <img src={HomeImage} alt="" />
+    </div>
+    <div className='Home_EventDesc'>
+      <h2>Sunday, September 31st 2023</h2>
+      <h1>Pastor Frank 7th Spiritual Journey Session</h1>
+    </div>
+  </section>: null
+   }
 
+   {
+    !search?
     <section className='Header_Category'>
-      <div className='Header_CategoryContent'>
-        <h4>Categories</h4> 
-        {/* <span className='CatArrow'><TbMathGreater  /></span>  */}
-      </div>
-      <div className='Header_CategoryContent_Cards'> 
-      {
-        category.map((e,ind)=>(
-          <div className='Category_card'  key={ind}>
-            <img src={e.image} alt="" />  
-          <h4 style={{color:'white'}}>{e.name}</h4>
+    <div className='Header_CategoryContent'>
+      <h4>Categories</h4> 
+    </div>
+    <div className='Header_CategoryContent_Cards'> 
+    {
+      category.map((e,ind)=>(
+        <div className='Category_card'  key={ind}>
+          <img src={e.image} alt="" />  
+        <h4 style={{color:'white'}}>{e.name}</h4>
 
-          </div>
- 
-        ))
-      } 
-      </div>
-    </section>
+        </div>
+
+      ))
+    } 
+    </div>
+  </section>:null
+   }
 
     <h4 className='up' style={{marginBottom:"3vh", display:"flex", alignSelf:"flex-start", marginLeft:"5%"}}>Upcoming Events</h4>
     <section className='Upcoming_Events'>
       <div className='Upcoming_EventsWrapper'>
       {
-      uploadedEvent.map((e)=>(
-        <div className='Upcoming_EventsDetails'>
-        <div className='upper-Header'>{e.eventName}</div>
-
-        <div className='innupper-header'>
+        searchResults.length === 0?
+        uploadedEvent.length===0?
+        <div style={{animation:"slideInUp",animationDuration:"0.8s"}}  className='Upcoming_EventsDetails' >
           <div className='Upcoming_EventImage'>
-            <img src={e.eventImages} alt="" />
+            <img src="" alt="Creativents" />
           </div>
           <div className='Upcoming_EventDesc'>
-           
+            <h3></h3>
+            <h4></h4>
             <div className='Upcoming_LocationDiv'>
             <MdLocationPin className='Upcoming_Location'/>
-            <span className='span'>{e.eventVenue}</span>
+            <span></span>
             </div>
-            <span className='span3'>{e.eventDate}</span>
-            <div className='buttoncontroler'>
-              <button className='btn1' key={e._id} onClick={ () =>{
-                nav(`/api/events/${e._id}`)
-              }}>Book now</button>
-              <BsBookmarkHeart className='bookmark'/>
-            </div>
-          </div>
+            <span></span>
           </div>
         </div>
-       
-      ))
-    }
+        :uploadedEvent.map((e)=>(
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
+          <div className='upper-Header'>{e.eventName}</div>
+        
+          <div className='innupper-header'>
+            <div className='Upcoming_EventImage'>
+              <img src={e.eventImages} alt="" />
+            </div>
+            <div className='Upcoming_EventDesc'>
+             
+              <div className='Upcoming_LocationDiv'>
+              <MdLocationPin className='Upcoming_Location'/>
+              <span className='span'>{e.eventVenue}</span>
+              </div>
+              <span className='span3'>{e.eventDate}</span>
+              <div className='buttoncontroler'>
+                <button className='btn1' key={e._id} onClick={ () =>{
+                  nav(`/api/events/${e._id}`)
+                }}>Book now</button>
+                {
+                  !bookmarked?
+                  <BsBookmark onClick={()=>{
+                    axios.put(`https://creativents-on-boarding.onrender.com/api/users/bookmarks/${e._id}`, null, config).then(res=>{
+                      console.log(res)
+                      setBookmarked(true)
+                    })
+                    .catch(err=>{
+                      console.log(err);
+                    })
+                  }} className='bookmark'/>:
+                  <BsFillBookmarkCheckFill onClick={()=>{
+                    axios.put(`https://creativents-on-boarding.onrender.com/api/users/unbookmarks/${e._id}`, null, config).then(res=>{
+                      console.log(res)
+                      setBookmarked(false)
+                    })
+                    .catch(err=>{
+                      console.log(err);
+                    })
+                  }} className='bookmark'/>
+                }
+                
+     
+              </div>
+            </div>
+            </div>
+          </div>
+        )):
+        searchResults.map((e)=>(
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
+          <div className='upper-Header'>{e.eventName}</div>
+        
+          <div className='innupper-header'>
+            <div className='Upcoming_EventImage'>
+              <img src={e.eventImages} alt="" />
+            </div>
+            <div className='Upcoming_EventDesc'>
+             
+              <div className='Upcoming_LocationDiv'>
+              <MdLocationPin className='Upcoming_Location'/>
+              <span className='span'>{e.eventVenue}</span>
+              </div>
+              <span className='span3'>{e.eventDate}</span>
+              <div className='buttoncontroler'>
+                <button className='btn1' key={e._id} onClick={ () =>{
+                  nav(`/api/events/${e._id}`)
+                }}>Book now</button>
+                <BsBookmark className='bookmark'/>
+                <BsFillBookmarkCheckFill className='bookmark'/>
+              </div>
+            </div>
+            </div>
+          </div>
+        ))
+
+      }
 
       </div>
     </section>
@@ -334,7 +440,7 @@ function HomePage() {
     </section>
     <div className="directiontodifferentpage">
             <div className="Homedirection">
-                <AiFillHome onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
+                <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
                 <h5>Home</h5>
             </div>
 

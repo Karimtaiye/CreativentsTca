@@ -8,7 +8,7 @@
     .HeaderLogo {
         width: 30px;
         height: 30px;
-        margin-top:7%;
+        margin-top:8%;
     }
 
     .HomePage_HeaderWrapper {
@@ -24,8 +24,8 @@
     }
 
     .HeaderLogo img {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
 
     .muri {
@@ -33,8 +33,8 @@
     }
 
     .Profile_Image {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
 
     .Search_Bar {
@@ -198,6 +198,11 @@
 .PopUp_Desktop ul li{
     font-size: 11px;
 }
+
+.Ticket_Line {
+    height: 1%;
+}
+
 
 }
 

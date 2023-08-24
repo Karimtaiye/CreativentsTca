@@ -13,12 +13,12 @@
         
     }
     .ExploreText{
-        font-size: 26px;
+        font-size: 24px;
     
     }
     .ExploreButton{
         min-width: 300px;
-        min-height: 50px;
+        min-height: 40px;
         font-size: 18px;
        
     }
@@ -42,12 +42,13 @@
         
     }
     .ExploreText{
-        font-size: 26px;
+        font-size: 20px;
+        text-align: center;
     
     }
     .ExploreButton{
         min-width: 200px;
-        min-height: 25px;
+        min-height: 40px;
         font-size: 12px;
        
     }

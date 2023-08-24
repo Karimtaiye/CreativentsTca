@@ -281,17 +281,17 @@ function Upload() {
 
 <div className="directiontodifferentpage">
             <div className="Homedirection">
-                <AiFillHome className="directionmain"/>
+                <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
                 <h5>Home</h5>
             </div>
 
             <div className="Homedirection">
-                <MdCreateNewFolder className="directionmain"/>
+                <MdCreateNewFolder onClick={()=>nav('/upload')} className="directionmain"/>
                 <h5>Create</h5>
             </div>
             <div className="Homedirection">
-                <BsFillCheckSquareFill className="directionmain"/>
-                <h5>Save</h5>
+                <BsFillCheckSquareFill onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
+                <h5>My events</h5>
             </div>
           </div>
         </div>

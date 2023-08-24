@@ -329,8 +329,8 @@
 .Upcoming_EventsDetails:hover {
     -ms-transform: scale(1.1);
     -webkit-transform: scale(1.1);
-    transform: scale(1.1); 
-    transition: ease-in 400ms;
+    transform: scale(1.05); 
+    transition: all 500ms  ease-in-out;
     
   }
 

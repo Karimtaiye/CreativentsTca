@@ -1,4 +1,5 @@
 @media only screen and (max-width:767px){
+  
   .holderseight {
     width: 80%;
     height: 90px;
@@ -11,6 +12,7 @@
   }
   .directiontodifferentpage{
     display: flex;
+    /* margin-top: 10px; */
    } 
 }
 

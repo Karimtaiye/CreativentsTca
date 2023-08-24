@@ -5,6 +5,10 @@
         margin: 10px;
     }
 
+    .succ, .fail {
+      font-size: 70px;
+    }
+
     .checkoutholder .checkoutlogo .checkoutimage h2{
         font-size: 13px;
     }
@@ -139,6 +143,7 @@
       
       .CheckOut_Btns {
         width: 80%;
+        height: 13%;
       }
 }
 

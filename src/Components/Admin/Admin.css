@@ -1,0 +1,330 @@
+.Admin_MainContaner {
+    width: 100%;
+    height: 100vh;
+    background: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Admin_MainContanerWrapper {
+    width: 95%;
+    height: 95%;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.Admin_NavSection {
+    width: 18%;
+    height: 100%;
+    background: rgb(224, 224, 224) ;
+    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    display: flex;
+    justify-content: center;
+    padding-block: 25px;
+}
+
+.Admin_NavActions {
+    width: 90%;
+    height: auto;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Admin_AppDesc {
+    width: 100%;
+    height: 25px;
+    background: #00000034;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Admin_Search {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Admin_Search input{
+    width: 100%;
+    height: 90%;
+    background: white;
+    border: none;
+    border-radius: 3px;
+    outline-style: none;
+    /* background-color: transparent; */
+    padding-left: 5px;
+
+}
+
+.Admin_NavList {
+    width: 100%;
+}
+
+.Admin_NavList  nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+}
+
+.Admin_NavList p{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 11.5px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.Admin_UserDrop {
+    width: 90%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    margin-left: 5%;
+    justify-content: center;
+    padding-inline: 9px;
+    padding-block: 5px;
+    animation:slideInLeft;
+    animation-duration:0.5s ;
+}
+
+
+
+.Admin_UserDrop li{
+    font-weight: bolder;
+    padding-block: 7px;
+    padding-inline: 5px;
+    font-size: 11px;
+    list-style-type: none;
+    color: rgba(0, 0, 0, 0.74);
+    
+    font-family: sans-serif;
+} 
+
+.Admin_UserDrop li:hover{
+    cursor: pointer;
+    /* rgba(100, 100, 111, 0.2) */
+    color: rgb(51, 20, 252);
+    background-color: white;
+    border-radius: 5px;
+    transition: all 750ms;
+} 
+
+.Admin_Profile {
+    width: 100%;
+    height: 55px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Admin_ProfilePic {
+    width: 25%;
+    height: 80%;
+}
+
+.Admin_ProfilePic {
+    width: 55px;
+    height: 52px;
+    border-radius: 50%;
+    background: red;
+}
+
+.Admin_ProfileDetails {
+    width: 70%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Admin_ProfileDetails p{
+    font-size: 12px;
+}
+
+.Admin_ContentSection{
+    width: 82%;
+    height:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Admin_ContentSectionContainer {
+    width: 95%;
+    height:94%;
+    display: flex;
+    overflow: auto;
+    background: rgba(100, 100, 111, 0.2);
+    flex-wrap: wrap;
+}
+
+.Content_Title {
+    width: 100%;
+    height: 6%;
+}
+
+.Admin_ContentManager {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    overflow: auto;
+    justify-content: center;
+}
+
+.Admin_AllUsers {
+    width: 95%;
+    height: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    gap: 10%;
+}
+
+.GetAll_User {
+    width: 45%;
+    height: 200px;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.UserImage_Profile {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background: rgb;
+    flex-direction: column;
+    align-items: center;
+    gap: 4%;
+}
+
+.AllUser_ProfileName {
+    width: 70%;
+    height: 50%;
+    background: aqua;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AllUser_ProfileName h1{
+    font-size: 30px;
+    font-family: cursive;
+}
+
+.UserImage_Profile img{
+    width: 70%;
+    height: 50%;
+    background: aqua;
+    border-radius: 10%;
+}
+
+.User_NameInfo {
+    width: 70%;
+    height: 30%;
+    text-align: center;
+}
+ 
+.unblock_User {
+    width: 70%;
+    height: 40px;
+    background: rgb(255, 178, 29);
+    border: none;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.UserData_Profile {
+    width: 65%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+}
+
+.UserData_Profile article{
+    width: 90%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    /* background: cyan; */
+}
+
+.Blocked_Users {
+    width: 45%;
+    height:150px;
+    display: flex;
+    border-radius: 4px;
+    margin: 20px;
+    justify-content: space-between;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.Blocked_UserImg {
+    width:32%;
+    height: 100%;
+    background: rgba(100, 100, 111, 0.2);
+}
+
+.Blocked_UsersData {
+    width: 68%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Blocked_UserInfo {
+    width: 90%;
+    height: 65%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Blocked_ActionBn {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.View_BlockedUser, .Null_BlockedUser {
+    width: 45%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    height: 80%;
+    color: white;
+    cursor: pointer;
+}
+
+.View_BlockedUser {
+    background-color: rgb(255, 178, 29);
+}
+
+.Null_BlockedUser {
+    background-color: rgba(2, 2, 65, 0.884);
+}
+
