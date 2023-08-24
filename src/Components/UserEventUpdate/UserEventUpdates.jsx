@@ -84,6 +84,47 @@ export default function UserEventUpdates() {
     const removedisplay = ()=>{
     setDisplay(false)
     }
+
+    const states = [
+      "Adamawa State",
+      "Bauchi State",
+      "Benue State",
+      "Borno State",
+      "Gombe State",
+      "Jigawa State",
+      "Kaduna State",
+      "Kano State",
+      "Katsina State",
+      "Kebbi State",
+      "Kogi State",
+      "Kwara State",
+      "Nasarawa State",
+      "Niger State",
+      "Plateau State",
+      "Sokoto State",
+      "Taraba State",
+      "Yobe State",
+      "Zamfara State",
+      "Ekiti State",
+      "Lagos State",
+      "Ogun State",
+      "Ondo State",
+      "Osun State",
+      "Oyo State",
+      "Edo State",
+      "Delta State",
+      "Abia State",,
+      "Anambra State",
+      "Akwa Ibom State",
+      "Bayelsa State",
+      "Cross River State",
+      "Ebonyi State",
+      "Enugu State",
+      "Imo State",
+      "Rivers State",
+  ]
+  
+  const sortedStates =states.sort()
     
     // const data = {eventName, eventDescription,eventPrice, eventLocation, eventVenue, eventCategory, availableTickets, eventDate, eventTime, eventImages}
     const UpdateEvent = (e) => {
@@ -225,7 +266,12 @@ export default function UserEventUpdates() {
                 <option value="Music Event">Music Event</option>
                 <option value="Festival Event">Festival Event</option>
                 <option value="Sport Event">Sport Event</option>
-                <option value="Wedding Event">Wedding Event</option>
+                <option value="Fashion Exhibition">Fashion Exhibition</option>
+                <option value="Tech Exhibition">Tech Exhibition</option>
+                <option value="Health Event">Health Event</option>
+                <option value="Education">Education</option>
+                <option value="Leisure">Leisure</option>
+                <option value="Others">Others</option>
                 </select>
             </div>
 
@@ -257,7 +303,14 @@ export default function UserEventUpdates() {
           </div>
           <div className="holderseight">
           <h4>Location</h4>
-          <input type="text" value={eventLocation} onChange={(e)=>{setEventLocation(e.target.value)}}/>
+          <select type="text" value={eventLocation} onChange={(e)=>{setEventLocation(e.target.value)}}>
+          {
+                sortedStates.map((e)=>(
+                    <option value={e}>{e}</option>
+                ))
+               
+            }
+          </select>
           </div>
           
           <div className="createpart">
