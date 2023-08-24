@@ -1,6 +1,29 @@
 
-import './Checkouts.css'
-import './CheckoutMobiles.css'
+
+// const handleOneStar = ()=>{
+//     setOneStar(preOneStar => preOneStar + 5)
+// }
+
+// const handleTwoStar = ()=>{
+//     setTwoStar(preOneStar => preOneStar + 5)
+// }
+
+// const handleThreeStar = ()=>{
+//     setThreeStar(preOneStar => preOneStar + 5)
+// }
+
+// const handleFourStar = ()=>{
+//     setFourStar(preOneStar => preOneStar + 5)
+// }
+
+// const handleFiveStar = ()=>{
+//     setFiveStar(preOneStar => preOneStar + 5)
+// }
+
+
+
+import './Checkout.css'
+import './CheckoutMobile.css'
 import{CiLocationOn} from 'react-icons/ci'
 import{BiTimeFive} from 'react-icons/bi'
 import {AiOutlinePlus, AiFillHome} from 'react-icons/ai'
@@ -14,9 +37,15 @@ import { eventData, checkoutTicketQty, checkoutTicketPrice } from '../Redux/Stat
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { SpinnerDotted } from 'spinners-react'
+import {AiFillStar, AiFillDislike, AiFillLike} from 'react-icons/ai'
+import Todo from '../CreateEvent/RateTodo'
+import { FaStar } from 'react-icons/fa';
+
+
 
 const Checkout = () =>{
     const Dispatch = useDispatch()
+    const userOnLoggedIn = useSelector(state=>state.events.user)
     const nav = useNavigate()
     const [data, setData] = useState()
     const [msg, setMsg] = useState("Loading, Please wait...")
@@ -24,6 +53,61 @@ const Checkout = () =>{
     const { id } = useParams()
     const [ticketQty, setTicketQty] = useState(1)
     const [ticketQtyy, setTicketQtyy] = useState(1)
+    // const [ratings, setRatings] = useState(0)
+
+    // const [oneStar, setOneStar] = useState (0)
+    // const [twoStar, setTwoStar] = useState (0)
+    // const [ThreeStar, setThreeStar] = useState (0)
+    // const [FourStar, setFourStar] = useState (0)
+    // const [fiveStar, setFiveStar] = useState (0)
+    const [like, setLike] = useState (0)
+    const [disLike, setDisLike] = useState (0)
+    const [todos, setTodos] = useState([])
+    const [ratings, setRatings] = useState(0)
+    const [input, setInput] = useState('')
+    const [review, setreview] = useState([]);
+    const token = userOnLoggedIn.token
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    };
+
+    const handleStarClick = (selectedRating) => {
+        setRatings(selectedRating);
+      };
+      
+      console.log(ratings);
+      console.log(input);
+      const reviewData = {
+          rating:ratings,
+          reviewText:input
+      }
+      
+const addReview = () => {
+    axios.post(`https://creativents-on-boarding.onrender.com/api/events/${id}/review`, reviewData ,config)
+      .then(res => {
+        console.log(res);
+        // setreview(res.data)
+      })
+      .catch(err => {
+        console.log('Error fetching data:', err);
+      });
+   
+  };
+
+const handleLike = () =>{
+    setLike(like === 0 ? 1 : 1)
+}
+
+const handledisLike = () =>{
+    setDisLike(disLike === 0 ? 1 : 1)
+}
+
+useEffect(() => {
+    
+  }, []);
+
 
 
     const url = `https://creativents-on-boarding.onrender.com/api/events/${id}`
@@ -47,8 +131,7 @@ const Checkout = () =>{
               }
         })
     },[])
-    // const price = data.eventPrice
-    // Dispatch(checkoutTicketPrice(price))
+   
    console.log(ticketPrice);
    console.log(ticketQtyy);
    const options = [];
@@ -74,7 +157,7 @@ const Checkout = () =>{
             <div className="checkoutlogo">
             <div className="checkoutimage">
             <img src={LogoC} onClick={()=>nav('/homepage')} alt=""/>
-            <h2>reactivent</h2>
+            {/* <h2>reactivent</h2> */}
             </div>
             </div>
 
@@ -82,19 +165,12 @@ const Checkout = () =>{
                 <div className='imagecheckout'>
                     <img src={data.eventImages} alt="" />
                 </div>
-            {/* <div className='commentsection'> */}
-                        {/* <div className='todolistcomment'>
-                            <div className='userprofile'></div>
-                            <input className='comment' type="text" />
-                            <button className='send'>Send</button>
-                        </div> */}
-                        {/* <div className='dropdown'></div> */}
-                    {/* </div> */}
+ 
             </div>
                 
-                {/* <p>{data.eventName}</p> */}
                 <p>{data.eventName}</p>
                 <div className="checkouteventdetails">
+                    <div className='everydetailsholder'>
                     <div className='checkoutvenue'>
                         <div className='checkoutdetails'>
                             <BsCalendarDate/>
@@ -140,49 +216,97 @@ const Checkout = () =>{
                             <div className='totalamount'>
                                 <h2>Total</h2>
                                 <h3>{data.eventPrice * ticketQty}</h3>
-                                {/* {
-                                    Dispatch(checkoutTicketPrice(data.eventPrice * ticketQty))
-                                } */}
+                             
                             </div>
-                    </div>
-                </div>
 
-                <div className="checkoutdescription-checkout">
+                            <button disabled={data.isSoldOut?true:false} style={{cursor:"pointer", background:data.isSoldOut?"#a56f03":null}} className='booknow' onClick={()=>{
+
+                            nav(`/api/tickets/${data._id}`)
+                            }}>
+                            {data.isSoldOut?"Sold Out":"Book now"}
+                            </button>
+                    </div>
+                    </div>
+
+                    <div className="checkoutdescription-checkout">
                     <div className="checkoutdescription">
                         <h1>Description</h1>
                         <p>{data.eventDescription}.</p>
                     </div>
+                    
+                    <section className='sectionthree'>
+                <div className='commentsectionrating'>
+                    <h3>Comment</h3>
+                    <input type="message" value={input} onChange={(e) => setInput(e.target.value)}/>
+                </div>
+                <div className='submitratings'>
+                <div className='starBoy'>
+                    {[1, 2, 3, 4, 5].map((star) => (
+                        <FaStar style={{cursor:"pointer"}}
+                        key={star}
+                        className={star <= ratings ? 'star_selected' : 'star'}
+                        onClick={() => handleStarClick(star)}
+                        />
+                    ))}
+                    </div>
+                    {/* <p>submit your comment</p> */}
+                    <button onClick={addReview} >Submit</button>
+                </div>
+             </section>
+            
+                      
+             
+        <div className='todo-list-holder'>
+       
+       {todos.map((todo, index) => (
+            <div className="todo-list">
+               
+         <Todo
+           key={index}
+           index={index}
+           todo={todo}
+         />
 
-                   
+                <div className='likeanddislike'>
+                   <div className='liketoggle'>
+                       <AiFillLike className='likecolor'onClick={handleLike}/>
+                       <h5>{like}</h5>
+                   </div>
+                   <div className='disliketoggle'>
+                       <AiFillDislike className='dislikecolor' onClick={handledisLike}/>
+                       <h5>{disLike}</h5>
+                   </div>
+               </div>
+         </div>
+       ))}
+    
+       </div>
+                </div>
 
-                    <button disabled={data.isSoldOut?true:false} style={{cursor:"pointer", background:data.isSoldOut?"#a56f03":null}} className='booknow' onClick={()=>{
-
-                            nav(`/api/tickets/${data._id}`)
-                            }}>
-                                 {data.isSoldOut?"Sold Out":"Book now"}
-                                </button>
-
+      
                 </div>
         </div>
         <div className="directiontodifferentpage">
             <div className="Homedirection">
-                <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
+                <AiFillHome className="directionmain"/>
                 <h5>Home</h5>
             </div>
 
             <div className="Homedirection">
-                <MdCreateNewFolder onClick={()=>nav('/upload')} className="directionmain"/>
+                <MdCreateNewFolder className="directionmain"/>
                 <h5>Create</h5>
             </div>
             <div className="Homedirection">
-                <BsFillCheckSquareFill onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
-                <h5>My events</h5>
+                <BsFillCheckSquareFill className="directionmain"/>
+                <h5>Save</h5>
             </div>
           </div>
+
+         
     </div>
        }
         </>
     )
 }
 
-export default Checkout     
+export default Checkout

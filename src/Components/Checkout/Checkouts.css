@@ -8,12 +8,14 @@
     width: 100%;
     height: max-content;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .checkoutholder{
     width: 90%;
-    height: 250vh;
+    height: 210vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,10 +71,11 @@
 
 .checkouteventdetails{
     width: 90%;
-    height: 15%;
+    height: 280px;
     display: flex;
     justify-content: space-between;
     margin-top: 4%;
+    flex-direction: column;
 }
 
 .checkoutvenue{
@@ -96,17 +99,18 @@
 
 .checkoutticket{
     width: 30%;
-    height: 100%;
+    height: 200px;
     background-color: white;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .allticket{
     width: 95%;
-    height: 20%;
+    height: 30%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -142,14 +146,15 @@
 
 .checkoutdescription-checkout{
     width: 90%;
-    height: 50%;
+    height: 30%;
     margin-top: 6%;
     color: white;
+    /* background-color: yellow; */
 }
 
 .checkoutdescription{
     width: 100%;
-    height: 30%;
+    height: 200%;
 }
 
 .checkoutdescription p{
@@ -158,15 +163,27 @@
 }
 
 .booknow{
-    width: 100%;
-    height: 10%;
+    width: 90%;
+    height: 20%;
     background-color: #FCA702;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+.booknow:active{
+    transition: 300ms ease-in;
+    box-shadow: 0 5px #666;
+    transform: translatey(4px);
+  }
+  
+  .booknow:hover{
+    color: white;
+    transition: 0.6s;
+  }
 
 .commentsection{
     width: 100%;
@@ -290,4 +307,346 @@
     cursor: pointer;
     border: none;
     outline: none;
+}
+
+.quantity{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    gap: 60%;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+.totalamount{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    gap: 60%;
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+
+.Rateandreviewcontainer{
+    width: 100%;
+    height: max-content;
+    background-color: #08022F;
+    display: flex;
+    justify-content: center;
+}
+
+.RateandreviewHolder{
+    width: 90%;
+    height: max-content;
+    background-color: #08022F;
+    border: 2px solid grey;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 1%;
+}
+
+.RateandreviewHeader{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.RateandreviewHeaderimage{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.RateandreviewHeaderimage img{
+    width: 60px;
+    height: 60px;
+
+}
+
+.RateandreviewHeaderprofile{
+    width: 60px;
+    height: 60px;
+    border: 1px solid goldenrod;
+    border-radius: 40px;
+}
+
+.sectionTwoRateandReview{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #4b4a4ad0;
+    margin-top: 7%;
+}
+
+.ratediscription{
+    width: 50%;
+    height: 100%;
+    color: white;
+}
+
+.rateresult{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 0;
+    justify-content: start;
+  }
+  
+  .rating input[type="radio"] {
+    display: none;
+  }
+  
+  .rating label {
+    font-size: 20px;
+    color: #faa906;
+    margin: 0 2px;
+    cursor: pointer;
+  }
+  
+  .rating label:before {
+    content: "\2605";
+  }
+  
+  .rating input[type="radio"]:checked ~ label:before {
+    /* content: "\2606"; */
+    color: #948e83;
+  }
+
+  .imagerateandreview{
+    width: 35%;
+    height: 50%;
+    border:  1px solid gold;
+    border-radius: 5px;
+  }
+
+  .rateicons{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+
+  }
+
+  .numbersofreview{
+    display: flex;
+    gap: 10px;
+  }
+
+  .ratediscriptionholder p{
+    margin-top: 10px;
+    font-size: 15px;
+    width: 50%;
+  }
+
+  .ratediscriptionholder h3{
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .resultone{
+    width: 100%;
+    height: 18%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 5%;
+    color: #cecacad0;
+  }
+
+  .resultline{
+    width: 80%;
+    height: 6px;
+    border-radius: 5px;
+    background-color: #3a3a3aa8;
+  }
+
+  .numbersofstar{
+    display: flex;
+    gap: 5px;
+  }
+
+  .sectionthree{
+    width: 100%;
+    height: 10vh;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+  }
+
+  .ratingdiv{
+    width: 100%;
+    height: 40%;
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .ratingdiv .handlestar{
+    width: 50%;
+    height: 80%;
+    background-color: #3a3a3aa8;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .starcontroler{
+    font-size: 50px;
+  }
+
+  .ratingdiv select option{
+    background-color: white;
+    color: black;
+  }
+
+  .commentsectionrating{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+
+  .commentsectionrating input{
+    width: 100%;
+    height: 10px;
+    background-color: #3a3a3aa8;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    color: white;
+    padding: 1%;
+    padding-inline: 10px 10px;
+    margin-top: 20px;
+}
+
+.submitratings{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submitratings button{
+    width: 15%;
+    height: 70%;
+    background-color: #303482;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.submitratings button:active{
+    transition: 300ms ease-in;
+    box-shadow: 0 5px #666;
+    transform: translatey(4px);
+  }
+  
+  .submitratings button:hover{
+    background-color:  #303482;
+    color: white;
+    cursor: pointer;
+  }
+
+  .yellow-background {
+    background-color: yellow;
+}
+
+.todo-list-holder{
+    width: 100%;
+    height: 300px;
+}
+
+.todo-list{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #3a3a3aa8;
+    color: white;
+    padding-top: 3%;
+    position: relative;
+}
+
+.delectbtn{
+    color: red;
+    font-size: 20px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.likeanddislike{
+    width: 10%;
+    height: 20%;
+    display: flex;
+    position: absolute;
+    bottom: 5px;
+    
+}
+
+.liketoggle{
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+
+
+.disliketoggle{
+    width: 50%;
+    height: 100%;
+    display: flex;
+
+}
+
+.dislikecolor{
+    color: rgb(230, 74, 74);
+}
+
+.likecolor{
+    color: rgb(17, 76, 240);
+}
+
+.everydetailsholder{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.star_selected {
+    color: #faa906;
+}
+
+.star {
+    color: white;
 }
