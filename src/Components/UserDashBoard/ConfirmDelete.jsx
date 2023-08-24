@@ -9,6 +9,7 @@ function ConfirmDelete({cancel, setConfirmation}) {
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const [msg, setMsg] = useState("Confirm Event Delete")
     const [subMsg, setSubMsg] = useState("This action cannot be undone")
+    const [loading, setLoading] = useState(false)
     const [successDel, setSuccessDel] = useState(false)
     const { eventID } = useParams()
 
@@ -23,9 +24,11 @@ function ConfirmDelete({cancel, setConfirmation}) {
     const url = `https://creativents-on-boarding.onrender.com/api/Delete/${eventID}`
 
     const deleteEventsById = () => {
+        setLoading(true)
         console.log(token);
         axios.delete(url, config)
         .then(res=>{
+            setLoading(false)
             console.log(res)
             setMsg("Event Deleted Successfully")
             setSubMsg("Click to Go back")
@@ -38,6 +41,7 @@ function ConfirmDelete({cancel, setConfirmation}) {
             }
         })
         .catch(err=>{
+            setLoading(false)
             console.log(err)
             setMsg("Error Deleting Event")
             setSubMsg("Please try again later")
@@ -54,7 +58,8 @@ function ConfirmDelete({cancel, setConfirmation}) {
     }
 
   return (
-    <div className="ConfirmDelete">
+   <div className='MainDelete'>
+     <div className="ConfirmDelete">
     <h1>{msg}</h1>
     <p>{subMsg}</p>
     <div className='BtnHolder'>
@@ -62,13 +67,14 @@ function ConfirmDelete({cancel, setConfirmation}) {
         
         successDel?<button className='Goback' onClick={()=>{nav(`/api/getUserWithLinks/${id}`)}}>Go back</button>:       
         <>
-        <button className='Canceled_Btn' onClick={cancelEventDelete}>Cancel</button>
-        <button className='Delete_Btn' onClick={deleteEventsById}>Delete</button>
+        <button className='Canceled_Btn' style={{background:loading?"#583f0d":null}} disabled={loading}  onClick={cancelEventDelete}>Cancel</button>
+        <button className='Delete_Btn' style={{background:loading?"#1e2c52":null}} disabled={loading} onClick={deleteEventsById}>{loading?"Deleting":"Delete"}</button>
         </>
         
     }
     </div>
      </div>
+   </div>
   )
 }
 

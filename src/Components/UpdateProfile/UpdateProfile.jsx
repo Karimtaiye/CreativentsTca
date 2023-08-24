@@ -34,16 +34,56 @@ function UpdateProfile() {
         const File = e.target.files[0]
         setProfilePicture(File)
     }
-
+    const data = {firstname, lastname, email, username:profileName}
     const formData = new FormData()
     formData.append("profilePicture", profilePicture)
     
     const url = `https://creativents-on-boarding.onrender.com/api/add-profile-image/${id}`
+    const url2 = 'https://creativents-on-boarding.onrender.com/api/updateuser'
     const addProfilePicture = () => {
         setLoading(true)
         axios.put(url, formData, {
             headers : {
                 'Content-Type': 'multipart/form-data',
+                 Authorization: `Bearer ${token}`
+            }
+        } )
+        .then(res=>{
+            console.log(res)
+            setVisible(true)
+            setLoading(false)
+            setUpdatesucc("Profile Update Successfully")
+            nav('/homepage')
+            Dispatch(userStoreData({
+                email:res.data.data.email, 
+                id:res.data.data._id,
+                token:res.data.data.token,
+                name:res.data.data.firstname,
+                login:res.data.data.islogin,
+                profilePicture: res.data.data.profilePicture
+            }))
+        })
+        .catch(err=>{
+            console.log(err)
+            setLoading(false)
+            setVisible(true);
+            setTimeout(() => {
+            setVisible(false);
+              }, 3000)
+            if(err.message === "Network Error"){
+                setUpdatesucc("Please check your Internet Connection")
+            }
+            else{        
+                setUpdatesucc("Cannot Update Profile")
+              }
+        })
+        
+    }
+    const UpdateProfile = () => {
+        setLoading(true)
+        axios.put(url2, data, {
+            headers : {
+                // 'Content-Type': 'multipart/form-data',
                  Authorization: `Bearer ${token}`
             }
         } )
@@ -93,7 +133,7 @@ function UpdateProfile() {
                         <img src={profile} alt="" />
                     </div>
                     <input style={{display:"none"}} type="file" id='Upload' onChange={uploadProfile}/>
-                    <label htmlFor="Upload" className='image_Upload'>Upload image</label>
+                    <label htmlFor="Upload" className='image_Upload' onClick={addProfilePicture}>Upload image</label>
                 </section>
                 <section className='Profile_DetailsPart'>
                     <label>First Name</label>
@@ -106,7 +146,7 @@ function UpdateProfile() {
                     <input type="text"   onChange={(e)=>setProfileName(e.target.value)}/>
                     <div className='Update_Buttons'>
                     <button className='Cancel_Btn'onClick={()=>nav('/homepage')}>Cancel</button>
-                    <button style={{background:loading?"rgb(126, 87, 10)":null}} className='Update_Btn' onClick={addProfilePicture}>{loading?"Uploading":"Save"}</button>
+                    <button style={{background:loading?"rgb(126, 87, 10)":null}} className='Update_Btn' onClick={UpdateProfile}>{loading?"Uploading":"Save"}</button>
                     </div>
                 </section>
             </div>
@@ -114,16 +154,16 @@ function UpdateProfile() {
 
             <div className="directiontodifferentpage">
             <div className="Homedirection">
-                <AiFillHome onClick={nav('/homepage')}  className="directionmain"/>
+                <AiFillHome onClick={()=>nav('/homepage')}  className="directionmain"/>
                 <h5>Home</h5>
             </div>
 
             <div className="Homedirection">
-                <MdCreateNewFolder onClick={nav('/upload')} className="directionmain"/>
+                <MdCreateNewFolder onClick={()=>nav('/upload')} className="directionmain"/>
                 <h5>Create</h5>
             </div>
             <div className="Homedirection">
-                <BsFillCheckSquareFill onClick={nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
+                <BsFillCheckSquareFill onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
                 <h5>My Events</h5>
             </div>
           </div>

@@ -190,9 +190,11 @@ console.log(searchResults);
               <NavLink style={{color:"white"}} to={'/upload'}>
               <li>Create Event</li>
               </NavLink>
-              <NavLink style={{color:"white"}} to={"/api/getUserWithLinks/:id"}>
-              <li>My Event</li>
-              </NavLink>
+              {/* <NavLink style={{color:"white"}}> */}
+              <li onClick={()=>{
+                nav(`/api/getUserWithLinks/${id}`)
+              }}>My Event</li>
+              {/* </NavLink> */}
               <NavLink style={{color:"white"}} to={'/about'}>
               <li>About Us</li>
               </NavLink>
@@ -280,20 +282,128 @@ console.log(searchResults);
       {
         searchResults.length === 0?
         uploadedEvent.length===0?
-        <div style={{animation:"slideInUp",animationDuration:"0.8s"}}  className='Upcoming_EventsDetails' >
+        <>
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
+        <div className='upper-Header'></div>
+      
+        <div className='innupper-header'>
           <div className='Upcoming_EventImage'>
-            <img src="" alt="Creativents" />
+            <img src="" alt="" />
           </div>
           <div className='Upcoming_EventDesc'>
-            <h3></h3>
-            <h4></h4>
+           
             <div className='Upcoming_LocationDiv'>
             <MdLocationPin className='Upcoming_Location'/>
-            <span></span>
+            <span className='span'></span>
             </div>
-            <span></span>
+            <span className='span3'></span>
+            <div className='buttoncontroler'>
+              <button className='btn1'>Book now</button>
+              </div>
+              </div>
+            </div>
+            </div>
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
+        <div className='upper-Header'></div>
+      
+        <div className='innupper-header'>
+          <div className='Upcoming_EventImage'>
+            <img src="" alt="" />
           </div>
-        </div>
+          <div className='Upcoming_EventDesc'>
+           
+            <div className='Upcoming_LocationDiv'>
+            <MdLocationPin className='Upcoming_Location'/>
+            <span className='span'></span>
+            </div>
+            <span className='span3'></span>
+            <div className='buttoncontroler'>
+              <button className='btn1'>Book now</button>
+              </div>
+              </div>
+            </div>
+            </div>
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
+        <div className='upper-Header'></div>
+      
+        <div className='innupper-header'>
+          <div className='Upcoming_EventImage'>
+            <img src="" alt="" />
+          </div>
+          <div className='Upcoming_EventDesc'>
+           
+            <div className='Upcoming_LocationDiv'>
+            <MdLocationPin className='Upcoming_Location'/>
+            <span className='span'></span>
+            </div>
+            <span className='span3'></span>
+            <div className='buttoncontroler'>
+              <button className='btn1'>Book now</button>
+              </div>
+              </div>
+            </div>
+            </div>
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
+        <div className='upper-Header'></div>
+      
+        <div className='innupper-header'>
+          <div className='Upcoming_EventImage'>
+            <img src="" alt="" />
+          </div>
+          <div className='Upcoming_EventDesc'>
+           
+            <div className='Upcoming_LocationDiv'>
+            <MdLocationPin className='Upcoming_Location'/>
+            <span className='span'></span>
+            </div>
+            <span className='span3'></span>
+            <div className='buttoncontroler'>
+              <button className='btn1'>Book now</button>
+              </div>
+              </div>
+            </div>
+            </div>
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
+        <div className='upper-Header'></div>
+      
+        <div className='innupper-header'>
+          <div className='Upcoming_EventImage'>
+            <img src="" alt="" />
+          </div>
+          <div className='Upcoming_EventDesc'>
+           
+            <div className='Upcoming_LocationDiv'>
+            <MdLocationPin className='Upcoming_Location'/>
+            <span className='span'></span>
+            </div>
+            <span className='span3'></span>
+            <div className='buttoncontroler'>
+              <button className='btn1'>Book now</button>
+              </div>
+              </div>
+            </div>
+            </div>
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
+        <div className='upper-Header'></div>
+      
+        <div className='innupper-header'>
+          <div className='Upcoming_EventImage'>
+            <img src="" alt="" />
+          </div>
+          <div className='Upcoming_EventDesc'>
+           
+            <div className='Upcoming_LocationDiv'>
+            <MdLocationPin className='Upcoming_Location'/>
+            <span className='span'></span>
+            </div>
+            <span className='span3'></span>
+            <div className='buttoncontroler'>
+              <button className='btn1'>Book now</button>
+              </div>
+              </div>
+            </div>
+            </div>
+        </>
         :uploadedEvent.map((e)=>(
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
           <div className='upper-Header'>{e.eventName}</div>

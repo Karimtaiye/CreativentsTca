@@ -1,6 +1,6 @@
 
-import './Checkout.css'
-import './CheckoutMobile.css'
+import './Checkouts.css'
+import './CheckoutMobiles.css'
 import{CiLocationOn} from 'react-icons/ci'
 import{BiTimeFive} from 'react-icons/bi'
 import {AiOutlinePlus, AiFillHome} from 'react-icons/ai'
@@ -156,7 +156,7 @@ const Checkout = () =>{
                    
 
                     <button disabled={data.isSoldOut?true:false} style={{cursor:"pointer", background:data.isSoldOut?"#a56f03":null}} className='booknow' onClick={()=>{
-                            // setChecOutConfirmation(true)
+
                             nav(`/api/tickets/${data._id}`)
                             }}>
                                  {data.isSoldOut?"Sold Out":"Book now"}

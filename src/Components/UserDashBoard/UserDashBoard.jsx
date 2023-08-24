@@ -222,7 +222,7 @@ function UserDashBoard() {
                                myBookMarked?
                                userBookMarked.length === 0?<h3>You don't have an Bookmarked ticket {userName}!!</h3>:
                                      userBookMarked.map((e)=>(
-                                  <Tickets />
+                                  <Tickets src={e.link.eventImages} eventVenue={e.link.eventVenue}  eventName={e.link.eventName} eventDate={e.link.eventDate} eventPrice={e.link.eventPrice}/>
                                ))
                                :null               
                         }

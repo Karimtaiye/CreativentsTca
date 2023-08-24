@@ -34,6 +34,7 @@ function Upload() {
     const [eventDate, setEventDate] =useState ("")
     const [eventTime, setEventTime] =useState ("")
     const [eventImages, setEventImages] =useState ("")
+    const [empty, setEmpty] = useState(false)
 
     
     const [image, setImage] =useState ("")
@@ -52,11 +53,38 @@ function Upload() {
          Authorization: `Bearer ${token}`
       },
     };
-
-    // const handleImage = (event) => {
-    //     const file = event.target.files[0];
-    //     setProfile({ ...profile, schoolImage: file });
-    // //   };
+    useEffect(()=>{
+        if(eventName === "") {
+            setEmpty(true)
+        }
+        else if(eventCategory === "") {
+            setEmpty(true)
+        }
+        else if(eventDate === "") {
+            setEmpty(true)
+        }
+        else if(eventDescription === "") {
+            setEmpty(true)
+        }
+        else if(eventTime === "") {
+            setEmpty(true)
+        }
+        else if(eventVenue === "") {
+            setEmpty(true)
+        }
+        else if(eventLocation === "") {
+            setEmpty(true)
+        }
+        else if(availableTickets === 0) {
+            setEmpty(true)
+        }
+        else if(eventPrice === null) {
+            setEmpty(true)
+        }
+        else {
+            setEmpty(false)
+        }
+    },[eventName, eventPrice, availableTickets, eventLocation, eventVenue, eventTime, eventDescription, eventDate, eventCategory])
 
     const File = (e)=>{
         const files = e.target.files[0];
@@ -85,8 +113,8 @@ function Upload() {
         axios.post(url, formData, config)
         .then(res=>{
             console.log(res.data.data)     
-            setLoading(false)
             Dispatch(eventData(res.data.data)) 
+            setLoading(false)
             setVisible(true);
 
               setTimeout(() => {
@@ -111,10 +139,14 @@ function Upload() {
             if(err.message === "Network Error"){
                 setMsg("Please check your Internet Connection")
             }
+            else if(err.response.data.error === "Cannot read property 'secure_url' of null"){
+                setMsg("Please Select Image for Upload")
+            }
             else{
                 
                 setMsg("Error Creating Event")
               }
+              
         })
 
     console.log(userInitEventData)
@@ -230,7 +262,7 @@ function Upload() {
 
             <div className="holderssix">
                 <h4>Price</h4>
-                <input type="price" value={eventPrice} onChange={(e)=>{setEventPrice(e.target.value)}}/>
+                <input type="number" value={eventPrice} onChange={(e)=>{setEventPrice(e.target.value)}}/>
             </div>
             </div>
           </div>
@@ -260,7 +292,7 @@ function Upload() {
           </div>
           
           <div className="createpart">
-          <button className="create" disabled={loading} onClick={CreateEvent}>{
+          <button style={{background:empty?"#865d0b":null}} className="create" disabled={loading?true:empty?true:null} onClick={CreateEvent}>{
             loading? <SpinnerInfinity size={80} thickness={100} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
             "Create"
           }</button>

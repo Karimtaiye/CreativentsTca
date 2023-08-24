@@ -3,8 +3,7 @@ import './ChangePassword.css'
 import './ChangePasswordMedia.css'
 import { useSelector } from 'react-redux'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import {useParams, useNavigate } from 'react-router-dom';
 import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
@@ -17,6 +16,7 @@ function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [succMsg, setSuccMsg] = useState('');
   
   const token = userOnLoggedIn.token
   const config = {
@@ -34,11 +34,11 @@ function ChangePassword() {
     else{
       axios.put(url, {password} , config)
       .then(res=>{
-        console.log(res);
+        console.log(res)
         nav('/login')
       })
       .catch(err=>{
-        console.log(err);
+        console.log(err)
       })
     }
   };
@@ -46,7 +46,7 @@ function ChangePassword() {
   return (
     <div className='User_ChangePassword'>
       <div className='mypasswordHolder'>
-        <img className='LogoCee' onClick={(nav('/homepage'))} src={LogoC} alt="Logo" />
+        <img className='LogoCee' onClick={()=>(nav('/homepage'))} src={LogoC} alt="Logo" />
             <div className='mypasswordraper'>
       <h2>Change Password</h2>
       <div>
@@ -76,7 +76,7 @@ function ChangePassword() {
                 <h5>Create</h5>
             </div>
             <div className="Homedirection">
-                <BsFillCheckSquareFill onClick={nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
+                <BsFillCheckSquareFill onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
                 <h5>My events</h5>
             </div>
           </div>
