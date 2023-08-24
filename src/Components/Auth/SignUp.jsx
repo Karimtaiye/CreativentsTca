@@ -26,19 +26,39 @@ function SignUp() {
   const [confirmPasswordShow, setConfimPasswordShow] = useState(false)
   const [host, setHost] = useState(false)
   const[loading, setLoading] = useState(false)
+  const [empty, setEmpty] = useState(false)
 
   const url = "https://creativents-on-boarding.onrender.com/api/signup"
 
-  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password:password.trim(), email:email.trim(), confirmPassword:confirmPassword.trim()}
+  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password:password.trim(), email:email.trim().toLowerCase(), confirmPassword:confirmPassword.trim()}
+
+  useEffect(()=>{
+    if(!email){
+      setEmpty(true)
+    }
+    else if(!firstname){
+      setEmpty(true)
+    }
+    else if(!lastname){
+      setEmpty(true)
+    }
+    else if(!password){
+      setEmpty(true)
+    }
+    else if(!confirmPassword){
+      setEmpty(true)
+    }
+    else {
+      setEmpty(false)
+    }
+  },[email, firstname, lastname, password, confirmPassword])
 
   const signUpUser = (e) => {
     e.preventDefault()
     setLoading(true)
     setErrorMsg("")
     setErrorMsg2("")
-    // if(!email){
-    //   setErrorMsg({error:true, type:"email", msg:"Please input your Email"})
-    // }
+    
     // else if(!firstname){
     //   setErrorMsg({error:true, type:"firstname", msg:"Please input your First Name"})
     // }
@@ -69,8 +89,15 @@ function SignUp() {
         .catch((err) => {
             console.log("Error", err);
             setLoading(false)
+            if(err.message === "Network Error"){
+           setErrorMsg("Please check your Internet Connection")
+            console.log("error");
+          }
+          else{
+            setErrorMsg(err.response.data.message)
             setErrorMsg(err.response.data.error )
             setErrorMsg2(err.response.data.message )
+          }
             // console.log(errorMsg);
         });
     
@@ -112,24 +139,24 @@ function SignUp() {
               <article>
               {/* <label>FirstName</label> */}
               <input type="text" className='UserName'  value={firstname} onChange={(e)=>setFirstName(e.target.value)} placeholder='First Name'/>
-              {/* {
+              {
                 errorMsg.type === "firstname" ?<h5>{errorMsg.msg}</h5>: null
-              } */}
+              }
               </article>
               {/* <input className='dateOfBirth' type="date" value={DOB} onChange={(e)=>setDOB(e.target.value)}/> */}
               <article>
               {/* <label>LastName</label> */}
               <input type="text" className='UserName' value={lastname} onChange={(e)=>setlastName(e.target.value)} placeholder='Last Name'/>
-              {/* {
+              {
               errorMsg.type === "lastname"?<h5>{errorMsg.msg}</h5>: null
-              } */}
+              }
               </article>
               </div>
               {/* <label className='SignUp_Labels'>Password</label> */}
               <input type={passwordShow?"password":"text"} className='signUpInputs' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
-              {/* {
+              {
                 errorMsg.type === "password" ?<h5>{errorMsg.msg}</h5>: null
-              } */}
+              }
                    {/* {
                    passwordShow? <BiShow  className='password_Visibility_SignUp' onClick={()=>setPasswordShow(!passwordShow)}/>
                    :<BiHide  className='password_Visibility_SignUp' onClick={()=>setPasswordShow(!passwordShow)}/>
@@ -142,9 +169,9 @@ function SignUp() {
                   <span style={{fontSize:"12px", color:"#FCA702", width:"90%"}}>{errorMsg}</span> <span style={{fontSize:"12px", color:"#FCA702", width:"90%"}}>{errorMsg2}</span>
                 </>
               }
-              {/* {
+              {
                 errorMsg.type === "confirmpassword"?<h5>{errorMsg.msg}</h5>: null
-              } */}
+              }
                    {/* {
                    confirmPasswordShow? <BiShow  className='Cpassword_Visibility_SignUp' onClick={()=>setConfimPasswordShow(!confirmPasswordShow)}/>
                    :<BiHide  className='Cpassword_Visibility_SignUp' onClick={()=>setConfimPasswordShow(!confirmPasswordShow)}/>
@@ -164,7 +191,7 @@ function SignUp() {
               <div className='reg_Host'>
               <input type="checkbox" style={{cursor:"pointer"}}  onClick={()=>setHost(!host)}/ > Register as a Host
               </div>
-              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":null}} disabled={loading  }>{loading?"Registering":"Sign up"}</button>
+              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":empty?"rgb(182, 132, 32)":null}} disabled={loading?true:empty?true:null}>{loading?"Registering":"Sign up"}</button>
               <p>Already have an account? <a style={{cursor:"pointer"}} onClick={()=>nav('/login')}>Log in</a></p>
               </div>
             </form>
