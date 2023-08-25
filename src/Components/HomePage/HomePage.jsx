@@ -23,8 +23,13 @@ import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
 import {BsFillCheckSquareFill, BsBookmark, BsFillBookmarkCheckFill} from 'react-icons/bs'
 import HomeImage from '../../assets/HomeImage.png'
+import { themeContext } from '../Context/Shop'
+import { useContext } from 'react'
+
 
 function HomePage() {
+
+        const {themes, ChangeTheme} = useContext(themeContext)
         const [uploadedEvent, setUploadEvent] = useState([])
          const userOnLoggedIn = useSelector(state=>state.events.user)
 
@@ -169,7 +174,7 @@ console.log(searchResults);
 
 
   return (
-    <div className='HomePage'>
+    <div className='HomePage' style={{background:themes?"white":"rgb(8, 2, 47)"}}>
     <section className='HomePage_Header'>
       <div className='HomePage_HeaderWrapper'>
         <div className='HeaderLogo'>
@@ -235,7 +240,7 @@ console.log(searchResults);
             <ul>
               <li onClick={changeUserPassword}>Change Password</li>
               <li onClick={changeUserProfilePicture}>Change Profile Picture</li>
-              <li>Dark Mode</li>
+              <li onClick={ChangeTheme}>{themes?"Dark Mode":"Light Node"}</li>
               <li onClick={checkUserEventProfile}>My Events</li>
               <li onClick={()=>nav(`/adminDashboard/${id}`)}>Admin DashBoard</li>
             </ul>
