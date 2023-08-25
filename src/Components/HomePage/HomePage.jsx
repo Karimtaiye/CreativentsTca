@@ -188,7 +188,7 @@ console.log(searchResults);
           setSearch(false)
         }} className='Search_Bar'/>
         
-        <div style={{display:popUp?"none":null}} className='Pages_Profile'>
+        <div style={{display:popUp?"none":settingPopUp?"none":null}} className='Pages_Profile'>
           
           <nav className='Header_Pages'>
             <ul>
@@ -206,7 +206,7 @@ console.log(searchResults);
             </ul>
           </nav>
         </div>
-        <div style={{display:popUp?"none":null}} className='Header_Profile'  >
+        <div style={{display:popUp?"none":settingPopUp?"none":null}} className='Header_Profile'  >
           <p style={{fontSize:"12px"}} className='muri'>{userOnLoggedIn.name}</p>
           <div className='Profile_Image' onClick={ShowPopUp} >
             <img src={profile} alt="" />
@@ -216,8 +216,8 @@ console.log(searchResults);
       </div>
     </section>
     {
-      popUp?<div className='PopUp_Desktop' onMouseLeave={hidePopUp}>
-        
+      popUp?<div className='PopUp_Desktop' >
+           <BiArrowBack style={{fontSize:"19px", left:"10%", position:"absolute", cursor:"pointer", marginTop:"19px", display:"flex", justifySelf:"flex-start"}} onClick={hidePopUp}/>
             <ul>
             <div style={{marginLeft:"15px", marginBottom:"10px"}} className='Profile_Image'>
             <img src={profile} alt="" />
