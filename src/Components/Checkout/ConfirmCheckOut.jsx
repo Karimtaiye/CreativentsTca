@@ -122,6 +122,21 @@ const BookEvent = () => {
                     </>
                 }
                 </div>
+                <div className="directiontodifferentpage">
+            <div className="Homedirection">
+                <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
+                <h5>Home</h5>
+            </div>
+
+            <div className="Homedirection">
+                <MdCreateNewFolder onClick={()=>nav('/upload')} className="directionmain"/>
+                <h5>Create</h5>
+            </div>
+            <div className="Homedirection">
+                <BsFillCheckSquareFill onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
+                <h5>My events</h5>
+            </div>
+          </div>
             </div>
   )
 }

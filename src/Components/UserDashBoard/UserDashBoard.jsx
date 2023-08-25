@@ -2,9 +2,10 @@ import React from 'react'
 import "./UserDashBoard.css"
 import "./UserDashBoardMobile.css"
 import {AiOutlineHeart} from "react-icons/ai"
-import {BsBookmark} from "react-icons/bs"
+import {BsBookmark, BsFillCheckSquareFill} from "react-icons/bs"
 import {NavLink} from "react-router-dom"
-
+import {AiFillHome} from 'react-icons/ai'
+import {MdCreateNewFolder} from 'react-icons/md'
 import {GiHamburgerMenu, } from "react-icons/gi"
 import {MdDateRange,MdOutlineEventRepeat, MdEventAvailable} from "react-icons/md"
 import { useDispatch, useSelector, useStore } from 'react-redux'
@@ -239,7 +240,22 @@ function UserDashBoard() {
   }
         </main>
            }
-                
+        <div className="directiontodifferentpage">
+            <div className="Homedirection">
+                <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
+                <h5>Home</h5>
+            </div>
+
+            <div className="Homedirection">
+                <MdCreateNewFolder onClick={()=>nav('/upload')} className="directionmain"/>
+                <h5>Create</h5>
+            </div>
+            <div className="Homedirection">
+                <BsFillCheckSquareFill onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
+                <h5>My events</h5>
+            </div>
+          </div>
+         
     </>
   )
 }
