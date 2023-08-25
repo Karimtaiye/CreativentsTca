@@ -54,7 +54,8 @@ function ConfirmDelete({cancel, setConfirmation}) {
     }
 
     const cancelEventDelete = () => {
-        setConfirmation(cancel)
+        // setConfirmation(cancel)
+        nav(`/api/getUserWithLinks/${id}`)
     }
 
   return (
