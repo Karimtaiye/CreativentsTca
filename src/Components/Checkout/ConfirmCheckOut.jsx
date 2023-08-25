@@ -32,11 +32,11 @@ const BookEvent = () => {
         console.log(res);
         setResAlert(true)
         setLoading(false)
-            const refVal = "colin"+ Math.random() * 1000;
+            const refVal = "Creativents"+ Math.random() * 1000;
             window.Korapay.initialize({
-              key: "pk_test_AeraXcqwfDvr9UaQ7CVLPHujcrqWyKWUY4MRK7Fi",
+              key: "pk_test_1QYXY85UpKezdtEXEGbhpnTxRx5ef2aQ4hsA46g7",
               reference: `${refVal}`,
-              amount: 1000, 
+              amount: ticketPrice * ticketQuantity, 
               currency: "NGN",
               customer: {
                 // name: user.name,
