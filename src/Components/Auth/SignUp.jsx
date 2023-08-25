@@ -30,6 +30,7 @@ function SignUp() {
   const [confirmPasswordShow, setConfimPasswordShow] = useState(false)
   const [host, setHost] = useState(false)
   const[loading, setLoading] = useState(false)
+  const[ischecked, setischecked] = useState(false)
   const [empty, setEmpty] = useState(false)
 
   const url = "https://creativents-on-boarding.onrender.com/api/signup"
@@ -182,10 +183,10 @@ function SignUp() {
                
               <div className='auth_Action_signUp'>
               <div className='reg_Host'>
-              <input type="checkbox" style={{cursor:"pointer"}} checked={loading ? true : false}
+              <input type="checkbox" style={{cursor:"pointer"}} checked={ischecked}  onChange={()=>setischecked(!ischecked)}
            /> Agree to Terms and conditions
               </div>
-              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":empty?"rgb(182, 132, 32)":null}} disabled={loading}>{loading?"Registering":"Sign up"}</button>
+              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":!ischecked?"rgb(182, 132, 32)":null}} disabled={!loading || ischecked}>{loading?"Registering":"Sign up"}</button>
               <p>Already have an account? <a style={{cursor:"pointer"}} onClick={()=>nav('/login')}>Log in</a></p>
               </div>
             </form>
