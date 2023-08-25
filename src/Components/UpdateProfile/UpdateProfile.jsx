@@ -8,9 +8,9 @@ import { AiFillHome } from 'react-icons/ai'
 import { MdCreateNewFolder } from 'react-icons/md'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
 import { userStoreData } from '../Redux/State'
-import {AiFillHome} from 'react-icons/ai'
-import {MdCreateNewFolder} from 'react-icons/md'
-import {BsFillCheckSquareFill} from 'react-icons/bs'
+// import {AiFillHome} from 'react-icons/ai'
+// import {MdCreateNewFolder} from 'react-icons/md'
+// import {BsFillCheckSquareFill} from 'react-icons/bs'
 // import { userProfile } from '../Redux/State'
 
 function UpdateProfile() {
