@@ -88,6 +88,7 @@ const addReview = () => {
     axios.post(`https://creativents-on-boarding.onrender.com/api/events/${id}/review`, reviewData ,config)
       .then(res => {
         console.log(res);
+        setInput("")
         // setreview(res.data)
       })
       .catch(err => {
