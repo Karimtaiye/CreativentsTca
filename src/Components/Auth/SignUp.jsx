@@ -98,7 +98,7 @@ function SignUp() {
           }
             // console.log(errorMsg);
         });
-    
+      }
       console.log(userDatas);
   return (
     <div className='SignUp'>
