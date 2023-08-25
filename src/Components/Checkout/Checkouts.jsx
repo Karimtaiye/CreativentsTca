@@ -22,8 +22,8 @@
 
 
 
-import './Checkouts.css'
-import './CheckoutMobiles.css'
+import './Checkout.css'
+import './CheckoutMobile.css'
 import{CiLocationOn} from 'react-icons/ci'
 import{BiTimeFive} from 'react-icons/bi'
 import {AiOutlinePlus, AiFillHome} from 'react-icons/ai'
@@ -143,7 +143,7 @@ useEffect(() => {
     return(
         <>
        {
-        !data? <div style={{width:"100%",
+        !data ? <div style={{width:"100%",
             height:"100vh", display:"flex",gap:"10px", flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
            <h1 style={{
             fontSize:"26px", color:"white", textAlign:"center"
@@ -252,11 +252,43 @@ useEffect(() => {
                     {/* <p>submit your comment</p> */}
                     <button onClick={addReview} >Submit</button>
                 </div>
+                
+                    {
+                    !data?null:
+                        data.reviews.map((e)=>(
+    
+    
+                            <div className='Reviews_Submitted' key={e._Id}>
+                        <div className='Review_Image'>
+                            <div className='imageRev'>
+                                <img src={e.userPicture} alt="" />
+                            </div>
+                            <div className='UserRev_Data'>
+                                <h3>{e.attendeeName}</h3>
+                                <h4>Total Spend</h4>
+                            </div>
+                        </div>
+                        <div className='Review_Comment'>
+                            <div className='Rv_Stars'>
+                            {[1, 2, 3, 4, 5].map((star) => (
+                            <FaStar 
+                            className={star <= ratings ? 'star_selected' : 'star'}
+                            />))}
+                            <h5>{e.timestamp}</h5>
+                            </div>
+                            <div className='Rv_Comments'>
+                                <h5>{e.reviewText}</h5>
+                            </div>
+                        </div>
+                    </div>
+                        ))
+                    }
+                
              </section>
             
                       
              
-        <div className='todo-list-holder'>
+        {/* <div className='todo-list-holder'>
        
        {todos.map((todo, index) => (
             <div className="todo-list">
@@ -280,8 +312,9 @@ useEffect(() => {
          </div>
        ))}
     
-       </div>
+       </div> */}
                 </div>
+
 
       
                 </div>
