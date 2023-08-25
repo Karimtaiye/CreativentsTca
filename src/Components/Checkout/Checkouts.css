@@ -247,6 +247,8 @@
     align-items: center;
     color: #08022F;
     gap: 5%;
+    animation:slideInDown;
+    animation-duration:1s ;
 }
 
 .CheckOut_Input {

@@ -367,6 +367,8 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  animation:slideInDown;
+  animation-duration:1s ;
 }
 
 .directiontodifferentpage{
