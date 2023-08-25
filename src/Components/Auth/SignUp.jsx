@@ -189,7 +189,8 @@ function SignUp() {
               }
               <div className='auth_Action_signUp'>
               <div className='reg_Host'>
-              <input type="checkbox" style={{cursor:"pointer"}}  / > Agreed to terms and conditions
+              <input type="checkbox" style={{cursor:"pointer"}}
+               /> Agree to Terms and conditions
               </div>
               <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":empty?"rgb(182, 132, 32)":null}} disabled={loading?true:empty?true:null}>{loading?"Registering":"Sign up"}</button>
               <p>Already have an account? <a style={{cursor:"pointer"}} onClick={()=>nav('/login')}>Log in</a></p>
