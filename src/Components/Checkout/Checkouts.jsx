@@ -22,8 +22,8 @@
 
 
 
-import './Checkout.css'
-import './CheckoutMobile.css'
+import './Checkouts.css'
+import './CheckoutMobiles.css'
 import{CiLocationOn} from 'react-icons/ci'
 import{BiTimeFive} from 'react-icons/bi'
 import {AiOutlinePlus, AiFillHome} from 'react-icons/ai'
