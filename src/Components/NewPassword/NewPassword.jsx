@@ -19,8 +19,7 @@ function NewPassword() {
     console.log(res)
     setMessage(res.data)
     setShowMessage(true)
-    nav('/login')
-
+    // nav('/login')
 
    })
     .catch(err=>{
@@ -37,12 +36,12 @@ function NewPassword() {
                 
                 <div className="rrr">
                 <h3 className="ResetnewPassword">New Password</h3>
-                <input type="text" className="ResetInputt" value={newPassword} onChange={(e)=>{setNewPassword(e.target.value)}}/>
+                <input type="password" className="ResetInputt" value={newPassword} onChange={(e)=>{setNewPassword(e.target.value)}}/>
                 </div>
 
                 <div className="rrr">
                 <h3 className="ResetnewPassword">Confirm New Password</h3>
-                <input type="text" className="ResetInputt"  value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}/>
+                <input type="password" className="ResetInputt"  value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}/>
                 </div>
                 <button className="ResetButton" onClick={ConfirmNewPassord}>Continue</button>
             </div>
