@@ -78,11 +78,16 @@
 }
 
 .Event_Reviews {
-    width: 60%;
+    width: 100%;
     height: 30%;
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+.Hosted_EventBtn {
+    width: 100%;
+    /* align-items: center; */
 }
 
 .Event_Reviews p{
@@ -107,5 +112,36 @@
 .availableTicket {
     font-size: 14px;
     position: absolute;
+}
+
+.ConfirmDelete {
+    width: 85%;
+    height: 400px;
+    top: 25%;
+    left: 7.5%;
+    animation:slideInDown;
+    animation-duration:1s ;
+}
+
+.ConfirmDelete h1{
+    font-size: 30px;
+}
+
+.BtnHolder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+}
+
+.Canceled_Btn, .Delete_Btn {
+    width: 30%;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
 }
 }  
