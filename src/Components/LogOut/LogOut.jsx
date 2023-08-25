@@ -5,6 +5,9 @@ import {useNavigate, useParams} from 'react-router-dom'
 import axios from 'axios'
 import { userStoreData } from '../Redux/State'
 import { useDispatch, useSelector } from 'react-redux'
+import {AiFillHome} from 'react-icons/ai'
+import {MdCreateNewFolder} from 'react-icons/md'
+import {BsFillCheckSquareFill} from 'react-icons/bs'
 
 function LogOut() {
   const Dispatch = useDispatch()

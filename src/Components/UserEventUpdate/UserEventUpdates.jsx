@@ -10,6 +10,9 @@ import { eventData } from "../Redux/State"
 import { useParams, useNavigate } from "react-router-dom"
 import { GiConfirmed } from 'react-icons/gi'
 import { BiSolidError } from 'react-icons/bi'
+import {AiFillHome} from 'react-icons/ai'
+import {MdCreateNewFolder} from 'react-icons/md'
+import {BsFillCheckSquareFill} from 'react-icons/bs'
 import { SpinnerInfinity } from 'spinners-react'
 
 

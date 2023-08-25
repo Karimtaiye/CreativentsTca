@@ -3,6 +3,9 @@ import "./About.css"
 import Header from "../LandingPage/Header"
 import Footer from "../LandingPage/Footer" 
 import './AboutMobile.css'
+import {AiFillHome} from 'react-icons/ai'
+import {MdCreateNewFolder} from 'react-icons/md'
+import {BsFillCheckSquareFill} from 'react-icons/bs'
 const About =()=>{
    
     return(
