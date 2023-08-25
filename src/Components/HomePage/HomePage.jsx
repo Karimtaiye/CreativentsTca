@@ -240,7 +240,7 @@ console.log(searchResults);
             <ul>
               <li onClick={changeUserPassword}>Change Password</li>
               <li onClick={changeUserProfilePicture}>Change Profile Picture</li>
-              <li onClick={ChangeTheme}>{themes?"Dark Mode":"Light Node"}</li>
+              <li onClick={ChangeTheme}>{themes?"Dark Mode":"Light Mode"}</li>
               <li onClick={checkUserEventProfile}>My Events</li>
               <li onClick={()=>nav(`/adminDashboard/${id}`)}>Admin DashBoard</li>
             </ul>
