@@ -9,6 +9,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import LogoC from "../../assets/LogoC.png"
     
 function SignUp() {
+  const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+  const nameRegex = /^[a-zA-Z]+$/;
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
   const nav = useNavigate()
   const Dispatch = useDispatch()
   const userDatas = useSelector(state=>state.events.user)
@@ -17,7 +21,7 @@ function SignUp() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [email, setEmail] = useState("")
-  // const [errorMsg, setErrorMsg] = useState("")
+  const [error, setError] = useState({error:false, type:"", msg:""})
   const [username, setusername] = useState("")
   // const [DOB, setDOB] = useState("")
   const [errorMsg, setErrorMsg] = useState("")
@@ -32,49 +36,51 @@ function SignUp() {
 
   const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password:password.trim(), email:email.trim().toLowerCase(), confirmPassword:confirmPassword.trim()}
 
-  useEffect(()=>{
-    if(!email){
-      setEmpty(true)
-    }
-    else if(!firstname){
-      setEmpty(true)
-    }
-    else if(!lastname){
-      setEmpty(true)
-    }
-    else if(!password){
-      setEmpty(true)
-    }
-    else if(!confirmPassword){
-      setEmpty(true)
-    }
-    else {
-      setEmpty(false)
-    }
-  },[email, firstname, lastname, password, confirmPassword])
+  // useEffect(()=>{
+  //   if(!email){
+  //     setEmpty(true)
+  //   }
+  //   else if(!firstname){
+  //     setEmpty(true)
+  //   }
+  //   else if(!lastname){
+  //     setEmpty(true)
+  //   }
+  //   else if(!password){
+  //     setEmpty(true)
+  //   }
+  //   else if(!confirmPassword){
+  //     setEmpty(true)
+  //   }
+  //   else {
+  //     setEmpty(false)
+  //   }
+  // },[email, firstname, lastname, password, confirmPassword]).
+  
 
   const signUpUser = (e) => {
     e.preventDefault()
-    setLoading(true)
+    // setLoading(true)
     setErrorMsg("")
     setErrorMsg2("")
     
-    // else if(!firstname){
-    //   setErrorMsg({error:true, type:"firstname", msg:"Please input your First Name"})
-    // }
-    // else if(!lastname){
-    //   setErrorMsg({error:true, type:"lastname", msg:"Please input your Last Name"})
-    // }
-    // else if(!password){
-    //   setErrorMsg({error:true, type:"password", msg:"Please input your Password"})
-    // }
-    // else if(password !== confirmPassword){
-    //   setErrorMsg({error:true, type:"confirmpassword", msg:"password does not match"})
-    // }
-    // else if(!username){
-    //   setErrorMsg({error:true, type:"host", msg:"Please input your Host Username"})
-    // }
-    // else {
+     if(!emailRegex.test(email)){
+      setError({error:true, type:"email", msg:"Please input Valid email"})
+    }
+    else if(!nameRegex.test(firstname)){
+     setError({error:true, type:"firstname", msg:"Please input your First Name"})
+   }
+    else if(!nameRegex.test(firstname)){
+      setError({error:true, type:"lastname", msg:"Please input your Last Name"})
+    }
+    else if(!passwordRegex.test(password)){
+      setError({error:true, type:"password", msg:"Password must contain at least 8 characters, including a lowercase letter, an uppercase letter, and a digit"})
+    }
+    else if(password !== confirmPassword){
+      setError({error:true, type:"confirmpassword", msg:"password does not match"})
+    }
+
+    else {
       axios.post(url,userData)
         .then(res=> {
             console.log("Successful",res)
@@ -82,6 +88,7 @@ function SignUp() {
             const verifyToken = res.data.expireLink
             console.log(verifyToken, res.data.data._id)
             console.log(res.data.expireLink);
+
             nav('/api/verify');
       })
         .catch((err) => {
@@ -92,14 +99,18 @@ function SignUp() {
             console.log("error");
           }
           else{
-            setErrorMsg(err.response.data.message)
-            setErrorMsg(err.response.data.error )
-            setErrorMsg2(err.response.data.message )
+            // setErrorMsg(err.response.data.message)
+            // setErrorMsg(err.response.data.error )
+            // setErrorMsg2(err.response.data.message )
           }
-            // console.log(errorMsg);
-        });
+
+        })
       }
+    
       console.log(userDatas);
+  }
+
+
   return (
     <div className='SignUp'>
         <section className='input_SignUp'>
@@ -111,36 +122,35 @@ function SignUp() {
           <div className='user_Auth_signUp'>
             <h1>Sign <span> Up</span> with us!</h1>
             <form className='SignUp_Auth'  onSubmit={signUpUser}>
-              {/* <label className='SignUp_Labels'>Email</label> */}
+
               <input type="text" className='signUpInputs' onChange={(e)=>setEmail(e.target.value)} placeholder='Email'/>
+              {
+                error.type === "email" ?<h5>{error.msg}</h5>: null
+              }
               <div className='names'>
               <article>
-              {/* <label>FirstName</label> */}
+
               <input type="text" className='UserName'  value={firstname} onChange={(e)=>setFirstName(e.target.value)} placeholder='First Name'/>
               {
-                errorMsg.type === "firstname" ?<h5>{errorMsg.msg}</h5>: null
+                error.type === "firstname" ?<h5>{error.msg}</h5>: null
               }
               </article>
-              {/* <input className='dateOfBirth' type="date" value={DOB} onChange={(e)=>setDOB(e.target.value)}/> */}
+
               <article>
-              {/* <label>LastName</label> */}
+
               <input type="text" className='UserName' value={lastname} onChange={(e)=>setlastName(e.target.value)} placeholder='Last Name'/>
               {
-              errorMsg.type === "lastname"?<h5>{errorMsg.msg}</h5>: null
+              error.type === "lastname"?<h5>{error.msg}</h5>: null
               }
               </article>
               </div>
-              {/* <label className='SignUp_Labels'>Password</label> */}
-              <input type="password" className='signUpInputs' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
+
+              <input type={passwordShow?"password":"text"} className='signUpInputs' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
               {
-                errorMsg.type === "password" ?<h5>{errorMsg.msg}</h5>: null
+                error.type === "password" ?<h5>{error.msg}</h5>: null
               }
-                   {/* {
-                   passwordShow? <BiShow  className='password_Visibility_SignUp' onClick={()=>setPasswordShow(!passwordShow)}/>
-                   :<BiHide  className='password_Visibility_SignUp' onClick={()=>setPasswordShow(!passwordShow)}/>
-                   } */}
-              {/* <label className='SignUp_Labels'>Confirm Password</label> */}
-              <input type="password" value={confirmPassword} className='signUpInputs' onChange={(e)=>setConfirmPassword(e.target.value)} placeholder='Confirm your password'/>
+  
+              <input type={confirmPasswordShow?"password":"text"} value={confirmPassword} className='signUpInputs' onChange={(e)=>setConfirmPassword(e.target.value)} placeholder='Confirm your password'/>
               {
                 host?null:
                 <>
@@ -148,27 +158,13 @@ function SignUp() {
                 </>
               }
               {
-                errorMsg.type === "confirmpassword"?<h5>{errorMsg.msg}</h5>: null
+                error.type === "confirmpassword"?<h5>{error.msg}</h5>: null
               }
-                   {/* {
-                   confirmPasswordShow? <BiShow  className='Cpassword_Visibility_SignUp' onClick={()=>setConfimPasswordShow(!confirmPasswordShow)}/>
-                   :<BiHide  className='Cpassword_Visibility_SignUp' onClick={()=>setConfimPasswordShow(!confirmPasswordShow)}/>
-                   } */}
-              {
-                host?
-                <>
-                  {/* <label className='SignUp_Labels'>Profile Name</label> */}
-                    <input type="text" className='signUpInputs' value={username} onChange={(e)=>setusername(e.target.value)} placeholder='Profile Name'/>
-                    <span style={{fontSize:"12px", color:"#FCA702", width:"90%"}}>{errorMsg}</span> <span style={{fontSize:"12px", color:"#FCA702", width:"90%"}}>{errorMsg2}</span>
-                    {/* {
-                errorMsg.type === "host"?<h5>{errorMsg.msg}</h5>: null
-                    } */}
-                </>: null
-              }
+               
               <div className='auth_Action_signUp'>
               <div className='reg_Host'>
-              <input type="checkbox" style={{cursor:"pointer"}}
-               /> Agree to Terms and conditions
+              <input type="checkbox" style={{cursor:"pointer"}} checked={loading ? true : false}
+           /> Agree to Terms and conditions
               </div>
               <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":empty?"rgb(182, 132, 32)":null}} disabled={loading?true:empty?true:null}>{loading?"Registering":"Sign up"}</button>
               <p>Already have an account? <a style={{cursor:"pointer"}} onClick={()=>nav('/login')}>Log in</a></p>
