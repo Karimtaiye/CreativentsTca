@@ -60,29 +60,44 @@ function SignUp() {
 
   const signUpUser = (e) => {
     e.preventDefault()
-    // setLoading(true)
-    setErrorMsg("")
+    setLoading(true)
+    setError("")
     setErrorMsg2("")
+    setErrorMsg("")
     
      if(!emailRegex.test(email)){
       setError({error:true, type:"email", msg:"Please input Valid email"})
+      setLoading(false)
     }
-    else if(!nameRegex.test(firstname)){
-     setError({error:true, type:"firstname", msg:"Please input your First Name"})
-   }
-    else if(!nameRegex.test(firstname)){
-      setError({error:true, type:"lastname", msg:"Please input your Last Name"})
+    else if (!nameRegex.test(firstname) || !nameRegex.test(lastname)) {
+      setError({error:true, type:"firstname", msg:"First and last names should only contain letters."})
+      setErrorMsg('');
     }
+  //   else if(!nameRegex.test(firstname)){
+  //    setError({error:true, type:"firstname", msg:"Please provide your First Name"})
+  //    setLoading(false)
+
+  //  }
+  //   else if(!nameRegex.test(lastname)){
+  //     setError({error:true, type:"lastname", msg:"Please provide your Last Name"})
+  //     setLoading(false)
+
+  //   }
     else if(!passwordRegex.test(password)){
       setError({error:true, type:"password", msg:"Password must contain at least 8 characters, including a lowercase letter, an uppercase letter, and a digit"})
+      setLoading(false)
+
     }
     else if(password !== confirmPassword){
       setError({error:true, type:"confirmpassword", msg:"password does not match"})
+      setLoading(false)
+
     }
 
     else {
       axios.post(url,userData)
         .then(res=> {
+          setLoading(false)
             console.log("Successful",res)
             Dispatch(userStoreData({email:res.data.data.email, id:res.data.data._id, token:res.data.data.token}))
             const verifyToken = res.data.expireLink
@@ -98,8 +113,8 @@ function SignUp() {
            setErrorMsg("Please check your Internet Connection")
             console.log("error");
           }
-          else{
-            // setErrorMsg(err.response.data.message)
+          else if(err.response.data.message === `User with this Email: ${email} already exist.`){
+            setErrorMsg("Email has been registered  ")
             // setErrorMsg(err.response.data.error )
             // setErrorMsg2(err.response.data.message )
           }
@@ -125,7 +140,7 @@ function SignUp() {
 
               <input type="text" className='signUpInputs' onChange={(e)=>setEmail(e.target.value)} placeholder='Email'/>
               {
-                error.type === "email" ?<h5>{error.msg}</h5>: null
+                error.type === "email" ?<h5 style={{marginTop:"4px"}}>{error.msg}</h5>: null
               }
               <div className='names'>
               <article>
@@ -145,20 +160,24 @@ function SignUp() {
               </article>
               </div>
 
-              <input type={passwordShow?"password":"text"} className='signUpInputs' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
+              <input type="password" className='signUpInputs' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
               {
                 error.type === "password" ?<h5>{error.msg}</h5>: null
               }
   
-              <input type={confirmPasswordShow?"password":"text"} value={confirmPassword} className='signUpInputs' onChange={(e)=>setConfirmPassword(e.target.value)} placeholder='Confirm your password'/>
-              {
+              <input type="password" value={confirmPassword} className='signUpInputs' onChange={(e)=>setConfirmPassword(e.target.value)} placeholder='Confirm your password'/>
+              {/* {
                 host?null:
                 <>
                   <span style={{fontSize:"12px", color:"#FCA702", width:"90%"}}>{errorMsg}</span> <span style={{fontSize:"12px", color:"#FCA702", width:"90%"}}>{errorMsg2}</span>
                 </>
-              }
+              } */}
               {
                 error.type === "confirmpassword"?<h5>{error.msg}</h5>: null
+              }
+
+              {
+                <h5>{errorMsg}</h5>
               }
                
               <div className='auth_Action_signUp'>
@@ -166,7 +185,7 @@ function SignUp() {
               <input type="checkbox" style={{cursor:"pointer"}} checked={loading ? true : false}
            /> Agree to Terms and conditions
               </div>
-              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":empty?"rgb(182, 132, 32)":null}} disabled={loading?true:empty?true:null}>{loading?"Registering":"Sign up"}</button>
+              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":empty?"rgb(182, 132, 32)":null}} disabled={loading}>{loading?"Registering":"Sign up"}</button>
               <p>Already have an account? <a style={{cursor:"pointer"}} onClick={()=>nav('/login')}>Log in</a></p>
               </div>
             </form>
