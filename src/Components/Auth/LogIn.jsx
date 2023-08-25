@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { BiShow, BiHide, BiArrowBack } from 'react-icons/bi'
 import './LogIn.css'
@@ -22,7 +23,7 @@ function LogIn() {
   const [passwordShow, setPasswordShow] = useState(false)
   const [loading, setLoading] = useState(false)
   const [profileName, setProfileName] = useState("")
-    const userLogInData ={email:email.trim().toLowerCase(), password}
+    const userLogInData ={email, password}
 
   const url = "https://creativents-on-boarding.onrender.com/api/login"
   // const url = "https://creativents-on-boarding.onrender.com//api/events/:eventID/review" 
