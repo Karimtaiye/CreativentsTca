@@ -104,7 +104,7 @@ function UserDashBoard() {
                         setMyBookMarked(false)
                         setMyPurchases(true)
                     }}>
-                    <h3 className="DetailSaved">Purchased</h3>
+                    <h3 style={{color:myPurchases?"#fca702":null, fontSize:myPurchases?"12px":null, transition:"all 400ms"}} className="DetailSaved">Purchased</h3>
                     <AiOutlineHeart className="ReactHeart"/>
                     </div>
                     <div className="Book" onClick={()=>{
@@ -112,7 +112,7 @@ function UserDashBoard() {
                         setMyBookMarked(true)
                         setMyPurchases(false)
                     }}>
-                    <h3 className="DetailBook">BookMark</h3>
+                    <h3 style={{color:myBookMarked?"#fca702":null, fontSize:myBookMarked?"12px":null, transition:"all 400ms"}} className="DetailBook">BookMark</h3>
                    <BsBookmark className="ReactBook"/>
                     </div>
                   <div className="Cart" onClick={()=>{
@@ -120,7 +120,7 @@ function UserDashBoard() {
                     setMyBookMarked(false)
                     setMyPurchases(false)
                   }}>
-                  <h3 style={{color:myEvents?"#fca702":null, fontSize:myEvents?"14px":null, transition:"all 400ms"}} className="DetailCart">My Events</h3>
+                  <h3 style={{color:myEvents?"#fca702":null, fontSize:myEvents?"12px":null, transition:"all 400ms"}} className="DetailCart">My Events</h3>
                     
                   {
                      myEvents?<MdEventAvailable style={{color:myEvents?"white":null, transition:"all 400ms"}} className="ReactCart"/>:
@@ -216,13 +216,13 @@ function UserDashBoard() {
                                myPurchases?
                                userPurchased.length === 0?<h3>You don't have an purchased ticket {userName}!!</h3>:
                                     userPurchased.map((e)=>(
-                                       <Tickets src={e.link.eventImages}  eventVenue={e.link.eventVenue}  eventName={e.link.eventName} eventDate={e.link.eventDate} eventPrice={e.link.eventPrice}/>
+                                       <Tickets key={e._id} src={e.link.eventImages}  eventVenue={e.link.eventVenue}  eventName={e.link.eventName} eventDate={e.link.eventDate} eventPrice={e.link.eventPrice}/>
                                     ))
                                :
                                myBookMarked?
                                userBookMarked.length === 0?<h3>You don't have an Bookmarked ticket {userName}!!</h3>:
                                      userBookMarked.map((e)=>(
-                                  <Tickets src={e.eventImages} eventVenue={e.eventVenue}  eventName={e.eventName} eventDate={e.eventDate} eventPrice={e.eventPrice}/>
+                                  <Tickets key={e._id} src={e.eventImages} eventVenue={e.eventVenue}  eventName={e.eventName} eventDate={e.eventDate} eventPrice={e.eventPrice}/>
                                ))
                                :null               
                         }

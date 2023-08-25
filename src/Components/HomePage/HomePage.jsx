@@ -281,7 +281,7 @@ console.log(searchResults);
   </section>:null
    }
 
-    <h4 className='up' style={{marginBottom:"3vh", display:"flex", alignSelf:"flex-start", marginLeft:"5%"}}>Upcoming Events</h4>
+    <h4 className='up' style={{marginBottom:"3vh", display:"flex", alignSelf:"flex-start", marginLeft:"5%"}}>{search?`Searched Results for "${searchTerm}"`:"Upcoming Events"}</h4>
     <section className='Upcoming_Events'>
       <div className='Upcoming_EventsWrapper'>
       {
