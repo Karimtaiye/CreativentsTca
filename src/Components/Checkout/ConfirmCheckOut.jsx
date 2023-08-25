@@ -16,7 +16,9 @@ const [DOB, setDOB] = useState("")
 const [msg, setMsg] = useState("")
 const [subMsg, setSubMsg] = useState("")
 const [resAlert, setResAlert] = useState(false)
+const [errors, seterrors] = useState(false)
 const [loading, setLoading] = useState(false)
+
 
 const UserDetails = {email, ticketQuantity, DOB}
 console.log(ticketQuantity);
@@ -58,8 +60,9 @@ const BookEvent = () => {
     })
     .catch(err=>{
         console.log(err);
+        seterrors(true)
         setLoading(false)
-        setResAlert(false)
+        setResAlert(true)
         if(err.message === "Network Error"){
             setMsg("Please check your Internet Connection")
             setSubMsg("And try again")
@@ -70,6 +73,10 @@ const BookEvent = () => {
             setMsg("Requested ticket quantity exceeds available tickets")
             setSubMsg("please select lower quantity")
         }
+        else if(err.response.data.error === "Cannot read property 'DOB' of null"){
+            setMsg("Cannot Purchase Ticket")
+            setSubMsg("Please Provide Your DOB")
+        }
         else
         
         {  
@@ -78,7 +85,6 @@ const BookEvent = () => {
           }
     })
 }
-    
 
   return (
     <div className='Checkout_PopUp'>
@@ -90,7 +96,7 @@ const BookEvent = () => {
                         <h2>{msg}</h2>
                         <h4>{subMsg}</h4>
                        {
-                         resAlert?<GiConfirmed className='succ' style={{fontSize:"100px", color:"green"}}/>  :         
+                         resAlert && !errors?<GiConfirmed className='succ' style={{fontSize:"100px", color:"green"}}/>  :         
                          <BiSolidError className='fail' style={{fontSize:"100px", color:"red"}}/>
                          
                        }
@@ -106,7 +112,7 @@ const BookEvent = () => {
                         {
                             resAlert? <button className='CheckOut_ConfirmBtn' onClick={()=>nav(`/api/tickets/${data._id}`)}>Go Back</button>:
                             <>
-                            <button className='CheckOut_CancelBtn' onClick={()=>nav(`/api/events/${e._id}`)} disabled={loading}>Cancel</button>
+                            <button className='CheckOut_CancelBtn' onClick={()=>nav(`/api/events/${id}`)} disabled={loading}>Cancel</button>
                             <button className='CheckOut_ConfirmBtn' style={{background:loading?"#08022f93":null}} disabled={loading} onClick={BookEvent}>{
                                 loading?<SpinnerCircularSplit size={30} thickness={150} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
                                 "Confirm Book"}</button>

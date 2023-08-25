@@ -136,7 +136,8 @@
     }
     
     .CheckOut_Input  {
-      width: 80%
+      width: 80%;
+      height: 13%;
     }
 
     .CheckOut_Content h4 {
@@ -157,6 +158,7 @@
     
     .CheckOut_Btns {
       width: 80%;
+      height: 13%;
     }
 
     .submitratings{

@@ -40,7 +40,7 @@ import { SpinnerDotted } from 'spinners-react'
 import {AiFillStar, AiFillDislike, AiFillLike} from 'react-icons/ai'
 import Todo from '../CreateEvent/RateTodo'
 import { FaStar } from 'react-icons/fa';
-
+import { MdNetworkCheck } from 'react-icons/md'
 
 
 const Checkout = () =>{
@@ -53,13 +53,7 @@ const Checkout = () =>{
     const { id } = useParams()
     const [ticketQty, setTicketQty] = useState(1)
     const [ticketQtyy, setTicketQtyy] = useState(1)
-    // const [ratings, setRatings] = useState(0)
-
-    // const [oneStar, setOneStar] = useState (0)
-    // const [twoStar, setTwoStar] = useState (0)
-    // const [ThreeStar, setThreeStar] = useState (0)
-    // const [FourStar, setFourStar] = useState (0)
-    // const [fiveStar, setFiveStar] = useState (0)
+    const [network, setNetwork] = useState(false)
     const [like, setLike] = useState (0)
     const [disLike, setDisLike] = useState (0)
     const [todos, setTodos] = useState([])
@@ -126,6 +120,7 @@ useEffect(() => {
             console.log(err)
             if(err.message === "Network Error"){
                 setMsg("Unable to connect to the Internet")
+                setNetwork(true)
             }
             else{
                 
@@ -150,7 +145,9 @@ useEffect(() => {
            <h1 style={{
             fontSize:"26px", color:"white", textAlign:"center"
         }}>{msg}</h1>
-        <SpinnerDotted size={200} thickness={50} speed={100} color="#ffffff" />
+        {
+            network?<MdNetworkCheck />:<SpinnerDotted size={200} thickness={50} speed={100} color="#ffffff" />
+        }
         </div> :
         <div className="checkoutcontainer">
 
@@ -159,7 +156,7 @@ useEffect(() => {
             <div className="checkoutlogo">
             <div className="checkoutimage">
             <img src={LogoC} onClick={()=>nav('/homepage')} alt=""/>
-            {/* <h2>reactivent</h2> */}
+
             </div>
             </div>
 
@@ -193,7 +190,7 @@ useEffect(() => {
                         <div className='allticket'>
                             <h2>Ticket Quantity</h2>
                             <div className='chooseticket'>
-                                {/* <button className='buttonticket'>+</button> */}
+
                                 <select onChange={(e)=>{
                                             setTicketQty(e.target.value)
                                             Dispatch(checkoutTicketQty(e.target.value))
@@ -202,11 +199,9 @@ useEffect(() => {
                                         {
                                             !data?<option value="1">1</option>:options  
                                         }
-                                        {/* <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option> */}
+    
                                         </select>
-                                {/* <button className='buttonticket' onClick={decrementQuantity}>-</button> */}
+
                             </div>
                         </div>
 
@@ -288,33 +283,6 @@ useEffect(() => {
                 
              </section>
             
-                      
-             
-        {/* <div className='todo-list-holder'>
-       
-       {todos.map((todo, index) => (
-            <div className="todo-list">
-               
-         <Todo
-           key={index}
-           index={index}
-           todo={todo}
-         />
-
-                <div className='likeanddislike'>
-                   <div className='liketoggle'>
-                       <AiFillLike className='likecolor'onClick={handleLike}/>
-                       <h5>{like}</h5>
-                   </div>
-                   <div className='disliketoggle'>
-                       <AiFillDislike className='dislikecolor' onClick={handledisLike}/>
-                       <h5>{disLike}</h5>
-                   </div>
-               </div>
-         </div>
-       ))}
-    
-       </div> */}
                 </div>
 
 
