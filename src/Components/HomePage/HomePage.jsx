@@ -89,6 +89,7 @@ function HomePage() {
   console.log(userOnLoggedIn);
   const id = userOnLoggedIn.id
   const profile = userOnLoggedIn.profilePicture
+  const admin = userOnLoggedIn.admin
 
   const signOut = () => {
       console.log(id);
@@ -264,7 +265,9 @@ console.log(searchResults)
               <li onClick={changeUserProfilePicture}>Change Profile Picture</li>
               <li onClick={ChangeTheme}>{themes?"Dark Mode":"Light Mode"}</li>
               <li onClick={checkUserEventProfile}>My Events</li>
-              <li onClick={()=>nav(`/adminDashboard/${id}`)}>Admin DashBoard</li>
+              {
+                admin?<li onClick={()=>nav(`/adminDashboard/${id}`)}>Admin DashBoard</li>:null
+              }
             </ul>
       </div>:null
     }
@@ -303,7 +306,7 @@ console.log(searchResults)
   </section>:null
    }
 
-    <h4 className='up' style={{marginBottom:"3vh", display:"flex", alignSelf:"flex-start", marginLeft:"5%"}}>{search?`Searched Results for "${searchTerm}"`:"Upcoming Events"}</h4>
+    <h4 className='up' style={{marginBottom:"3vh", display:"flex", alignSelf:"flex-start", marginLeft:"5%", animation:"slideInUp",animationDuration:"0.8s"}}>{search?`Searched Results for "${searchTerm}"`:"Upcoming Events"}</h4>
     <section className='Upcoming_Events'>
       <div className='Upcoming_EventsWrapper'>
       {
@@ -528,7 +531,7 @@ console.log(searchResults)
         <div className='Event_Tickets'>
         {
             uploadedEvent.map((e)=>(
-                <div className="main-category" key={e._id} onClick={()=>{
+                <div style={{animation:"slideInUp",animationDuration:"0.8s"}} className="main-category" key={e._id} onClick={()=>{
                     nav(`/api/events/${e._id}`)
                 }}>
                 <div className="category-image" >
@@ -605,4 +608,4 @@ console.log(searchResults)
   )
 }
 
-export default HomePage
+export default HomePage

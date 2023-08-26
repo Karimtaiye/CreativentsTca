@@ -8,7 +8,8 @@ const initialState = {
         id:"",
         token:"",
         login:false,
-        profilePicture:""
+        profilePicture:"",
+        admin:false
     },
 
     userInitUpdate: [],

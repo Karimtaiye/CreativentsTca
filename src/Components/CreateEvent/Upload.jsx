@@ -180,6 +180,9 @@ function Upload() {
             else if(err.response.data.error === "Cannot read property 'secure_url' of null"){
                 setMsg("Please Select Image for Upload")
             }
+            else if(err.response.data.error === `event validation failed: availableTickets: Path ${availableTickets} (${availableTickets}) is less than minimum allowed value (0).`){
+                setMsg("hehe")
+            }
             else{
                 
                 setMsg("Error Creating Event")
@@ -332,7 +335,7 @@ function Upload() {
           
           <div className="createpart">
           <button style={{background:empty?"#865d0b":null}} className="create" disabled={loading?true:empty?true:null} onClick={CreateEvent}>{
-            loading? <SpinnerInfinity size={80} thickness={100} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
+            loading? <SpinnerInfinity style={{animation:"slideInUp",animationDuration:"0.8s"}} size={80} thickness={100} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
             "Create"
           }</button>
          

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react'
 import { BiShow, BiHide, BiArrowBack } from 'react-icons/bi'
 import './LogIn.css'
@@ -32,20 +31,34 @@ function LogIn() {
   setLoading(true)
   setError(false)
   e.preventDefault()
+   if(!email){
+    // setError({error:true, type:"password", msg:"Password must contain at least 8 characters, including a lowercase letter, an uppercase letter, and a digit"})
+    setLoading(true)
+
+  }
+  else if(!password){
+    // setError({error:true, type:"confirmpassword", msg:"password does not match"})
+    setLoading(false)
+  }
+
   axios.post(url, userLogInData)
     .then(res=>{console.log(res)
-      Dispatch(userStoreData({
-        email:res.data.data.email, 
-        id:res.data.data._id,
-        token:res.data.data.token,
-        name:res.data.data.firstname,
-        login:res.data.data.islogin,
-        profilePicture: res.data.data.profilePicture
-      }))
-
-      Dispatch(userProfileUpdate(res.data.data))
-    nav('/homepage')
-
+      {
+        res.data.data.isLogin?setError("User is Already Logged In on another device or page"):
+        Dispatch(userStoreData({
+          email:res.data.data.email, 
+          id:res.data.data._id,
+          token:res.data.data.token,
+          name:res.data.data.firstname,
+          login:res.data.data.islogin,
+          profilePicture: res.data.data.profilePicture,
+          admin: res.data.data.isAdmin
+        }))
+  
+        Dispatch(userProfileUpdate(res.data.data))
+        nav('/homepage')
+  
+      }
     })
     .catch(err=>{
       console.log(err)
