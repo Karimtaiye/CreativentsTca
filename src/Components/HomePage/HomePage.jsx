@@ -30,13 +30,10 @@ import { useContext } from 'react'
 function HomePage() {
 
         const {themes, ChangeTheme} = useContext(themeContext)
+        const [promotedEvents, setPromotedEvents] = useState([])
+        const [countpro, setCountpro] = useState(0)
         const [uploadedEvent, setUploadEvent] = useState([])
          const userOnLoggedIn = useSelector(state=>state.events.user)
-         const [promotedEvents, setPromotedEvents] = useState([])
-        const [countpro, setCountpro] = useState(0)
-
-        
-
         const url = "https://creativents-on-boarding.onrender.com/api/events" 
         const promoteUrl = "https://creativents-on-boarding.onrender.com/api/promoted" 
 
@@ -50,12 +47,6 @@ function HomePage() {
           console.log(err)
         })
       }
-
-      const isPromoted = promotedEvents.map((e)=>e.eventImages)
-      const isPromotedName = promotedEvents.map((e)=>e.eventName)
-      const isPromotedDes = promotedEvents.map((e)=>e.eventDescription)
-      console.log(isPromoted);
-
 
         const token = userOnLoggedIn.token
         const config = {
@@ -80,7 +71,14 @@ function HomePage() {
         getPromotedEvents()
        },[])
 
-  // const userOnLoggedIn = useSelector(state=>state.events.user)
+       
+       const isPromoted = promotedEvents.map((e)=>e.eventImages)
+       const isPromotedName = promotedEvents.map((e)=>e.eventName)
+       const isPromotedDes = promotedEvents.map((e)=>e.eventDescription)
+       console.log(isPromoted);
+       
+       
+
   const [popUp, setPopUp] = useState(false)
   const [settingPopUp, setSettingPopUp] = useState(false)
   const [search, setSearch] = useState(false)
@@ -171,7 +169,6 @@ const searchUrl = `https://creativents-on-boarding.onrender.com/api/event/search
     }
   }
 
-
 const SearchBar = () => {
   axios.get(searchUrl, searchParameter)
   .then(res=>{
@@ -189,8 +186,13 @@ useEffect(()=>{
     SearchBar();
   }
 
+  setInterval(() => {
+    setCountpro((prev)=>prev += 1)
+  }, 4000);
+
 },[searchTerm])
-console.log(searchResults);
+console.log(searchResults)
+// console.log(countpro)
 
 
   return (
@@ -438,13 +440,18 @@ console.log(searchResults);
               <img src={e.eventImages} alt="" />
             </div>
             <div className='Upcoming_EventDesc'>
-             
+            
               <div className='Upcoming_LocationDiv'>
+                <div className='upcomingevent-holder'> 
               <MdLocationPin className='Upcoming_Location'/>
               <span className='span'>{e.eventVenue}</span>
               </div>
+
               <span className='span3'>{e.eventDate}</span>
+
+              </div>
               <div className='buttoncontroler'>
+                
                 <button className='btn1' key={e._id} onClick={ () =>{
                   nav(`/api/events/${e._id}`)
                 }}>Book now</button>
@@ -554,14 +561,14 @@ console.log(searchResults);
 </div>
                     </div>
                 <div className='dateandprice'>
-                        <div className='thedate'>
-                            <CiCalendarDate/>
-                            <h5>{e.eventDate}</h5>
+                        <div  className='thedate'>
+                            <CiCalendarDate style={{color:"#FCA702"}}/>
+                            <h5 style={{color:"#FCA702"}}>{e.eventDate}</h5>
                             {/* <h5>26 july 2023</h5> */}
                         </div>
                         <div className='theprice'>
-                            <BiMoney/>
-                            <h5>#{e.eventPrice}</h5>
+                            <BiMoney style={{color:"#FCA702"}}/>
+                            <h5 style={{color:"#FCA702"}} >#{e.eventPrice}</h5>
                             {/* <h5>#2000</h5> */}
                         </div>
                     </div>
@@ -595,4 +602,4 @@ console.log(searchResults);
   )
 }
 
-export default HomePage
+export default HomePage

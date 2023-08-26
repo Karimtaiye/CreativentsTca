@@ -147,7 +147,7 @@ function UserDashBoard() {
                     <h2 className="Events_Purchased">You have {
                         myEvents? `Hosted (${userHostedEvents.length}) Events`:
                         myBookMarked?`BookMarked (${userBookMarked.length}) Events`:
-                        myPurchases?`Purchased (${userPurchased.length}) Events`:null
+                        myPurchases?`Purchased (${userPurchased.length}) Tickets`:null
                     } in total</h2>
                 </div>
             </section>
