@@ -70,20 +70,20 @@ function SignUp() {
       setError({error:true, type:"email", msg:"Please input Valid email"})
       setLoading(false)
     }
-    else if (!nameRegex.test(firstname) || !nameRegex.test(lastname)) {
-      setError({error:true, type:"firstname", msg:"First and last names should only contain letters."})
-      setErrorMsg('');
+    // else if (!nameRegex.test(firstname) || !nameRegex.test(lastname)) {
+    //   setError({error:true, type:"firstname", msg:"First and last names should only contain letters."})
+    //   setErrorMsg('');
+    // }
+    else if(!nameRegex.test(firstname)){
+     setError({error:true, type:"firstname", msg:"Please provide your First Name"})
+     setLoading(false)
+
+   }
+    else if(!nameRegex.test(lastname)){
+      setError({error:true, type:"lastname", msg:"Please provide your Last Name"})
+      setLoading(false)
+
     }
-  //   else if(!nameRegex.test(firstname)){
-  //    setError({error:true, type:"firstname", msg:"Please provide your First Name"})
-  //    setLoading(false)
-
-  //  }
-  //   else if(!nameRegex.test(lastname)){
-  //     setError({error:true, type:"lastname", msg:"Please provide your Last Name"})
-  //     setLoading(false)
-
-  //   }
     else if(!passwordRegex.test(password)){
       setError({error:true, type:"password", msg:"Password must contain at least 8 characters, including a lowercase letter, an uppercase letter, and a digit"})
       setLoading(false)
