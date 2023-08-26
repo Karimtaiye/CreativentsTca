@@ -526,6 +526,10 @@
     color: whitesmoke;
     cursor: pointer;
 }
+.buttoncontroler h6{
+  display: flex;
+  align-self: flex-start;
+}
 
 .buttoncontroler .btn1{
     width: 50%;

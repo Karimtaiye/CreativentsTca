@@ -128,15 +128,17 @@
     }
     
     .Upcoming_EventImage {
-        width: 30%;
+        width: 45%;
+        border-radius: 5px;
+
     }   
 
     .Upcoming_EventImage img{
-        border-radius: 3px;
+        border-radius: 5px;
     }  
 
     .Upcoming_EventDesc {
-        width: 67%;
+        width: 55%;
     }
 
     .Upcoming_EventDesc span{

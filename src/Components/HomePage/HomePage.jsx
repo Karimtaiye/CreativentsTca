@@ -75,7 +75,7 @@ function HomePage() {
        const isPromoted = promotedEvents.map((e)=>e.eventImages)
        const isPromotedName = promotedEvents.map((e)=>e.eventName)
        const isPromotedDes = promotedEvents.map((e)=>e.eventDescription)
-       console.log(isPromoted);
+      //  console.log(isPromoted);
        
        
 
@@ -447,10 +447,13 @@ console.log(searchResults)
               <span className='span'>{e.eventVenue}</span>
               </div>
 
-              <span className='span3'>{e.eventDate}</span>
+              <h5 className='span3'>{e.eventDate}</h5>
 
               </div>
               <div className='buttoncontroler'>
+                <h6>{e.eventLocation}</h6>
+                <h6>{e.eventTime}</h6>
+                <h6>#{e.eventPrice}</h6>
                 
                 <button className='btn1' key={e._id} onClick={ () =>{
                   nav(`/api/events/${e._id}`)
@@ -522,7 +525,7 @@ console.log(searchResults)
           <div className='Ticket_Line'></div>
         </div>
 
-        <div className='Event_Tickets' style={{justifyContent:"center"}}>
+        <div className='Event_Tickets'>
         {
             uploadedEvent.map((e)=>(
                 <div className="main-category" key={e._id} onClick={()=>{
