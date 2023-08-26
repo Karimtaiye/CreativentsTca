@@ -5,6 +5,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { GiConfirmed } from 'react-icons/gi'
 import { BiSolidError } from 'react-icons/bi'
 import { SpinnerCircularSplit } from 'spinners-react'
+import {AiFillHome} from 'react-icons/ai'
+import {MdCreateNewFolder} from 'react-icons/md'
+import {BsFillCheckSquareFill} from 'react-icons/bs'
 
 function ConfirmCheckOut() {
 const { id } = useParams()
