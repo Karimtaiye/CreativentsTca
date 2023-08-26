@@ -6,6 +6,10 @@ import {BsBookmark, BsFillCheckSquareFill} from "react-icons/bs"
 import {NavLink} from "react-router-dom"
 import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
+import {BsFillSuitHeartFill} from 'react-icons/bs';
+import {CiMenuKebab} from 'react-icons/ci';
+import {CiCalendarDate} from 'react-icons/ci'
+import {BiMoney} from 'react-icons/bi'
 import {GiHamburgerMenu, } from "react-icons/gi"
 import {MdDateRange,MdOutlineEventRepeat, MdEventAvailable} from "react-icons/md"
 import { useDispatch, useSelector, useStore } from 'react-redux'
@@ -147,7 +151,7 @@ function UserDashBoard() {
                     <h2 className="Events_Purchased">You have {
                         myEvents? `Hosted (${userHostedEvents.length}) Events`:
                         myBookMarked?`BookMarked (${userBookMarked.length}) Events`:
-                        myPurchases?`Purchased (${userPurchased.length}) Tickets`:null
+                        myPurchases?`Purchased (${userPurchased.length}) Events`:null
                     } in total</h2>
                 </div>
             </section>
@@ -209,11 +213,11 @@ function UserDashBoard() {
                 <img src={e.link.eventImages} alt="" />
                     <div className='love'>
                     {/* onClick={handleLiked} :liked ? */}
-                    {/* <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/> */}
+                    <BsFillSuitHeartFill style={{color:
+                     "lightgrey"}}/>
                     </div>
                     <div className='love2'>
-                    {/* <CiMenuKebab/> */}
+                    <CiMenuKebab/>
                     </div>
                     
                 </div>
@@ -239,12 +243,12 @@ function UserDashBoard() {
                     </div>
                 <div className='dateandprice'>
                         <div className='thedate'>
-                            {/* <CiCalendarDate/> */}
+                            <CiCalendarDate/>
                             <h5>{e.link.eventDate}</h5>
                             {/* <h5>26 july 2023</h5> */}
                         </div>
                         <div className='theprice'>
-                            {/* <BiMoney/> */}
+                            <BiMoney/>
                             <h5>#{e.link.eventPrice}</h5>
                             {/* <h5>#2000</h5> */}
                         </div>
@@ -266,11 +270,12 @@ function UserDashBoard() {
                 <img src={e.eventImages} alt="" />
                     <div className='love'>
                     {/* onClick={handleLiked} :liked ? */}
-                    {/* <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/> */}
+                    <BsFillSuitHeartFill style={{color:
+                     "lightgrey"}}/>
                     </div>
                     <div className='love2'>
-                    {/* <CiMenuKebab/> */}
+                    <CiMenuKebab/>
+                    
                     </div>
                     
                 </div>
@@ -296,12 +301,12 @@ function UserDashBoard() {
                     </div>
                 <div className='dateandprice'>
                         <div className='thedate'>
-                            {/* <CiCalendarDate/> */}
+                            <CiCalendarDate/>
                             <h5>{e.eventDate}</h5>
                             {/* <h5>26 july 2023</h5> */}
                         </div>
                         <div className='theprice'>
-                            {/* <BiMoney/> */}
+                            <BiMoney/>
                             <h5>#{e.eventPrice}</h5>
                             {/* <h5>#2000</h5> */}
                         </div>
