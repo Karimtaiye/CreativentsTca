@@ -140,27 +140,7 @@ function UserDashBoard() {
                     />
                 </div>
                </nav>
-              {/* {
-                detail? <div className="DetailPopUp">
-                <span className="DetailSpan" onClick={DetailPop}>x</span>
-                <div className="DetailProfilee">
-                     <div className="DetailCirclee"></div>
-                     <h3 className="DetailNamee">Profile</h3>
-                     </div>
-                     <div className="Cartt">
-                   <h3 className="DetailCartt">MyCart</h3>
-                   <BsCart3 className="ReactCartt"/>
-                   </div>
-                   <div className="Bookk">
-                     <h3 className="DetailBookk">BookMark</h3>
-                    <BsBookmark className="ReactBookk"/>
-                     </div>
-                     <div className="Savedd">
-                     <h3 className="DetailSavedd">Saved</h3>
-                     <AiOutlineHeart className="ReactHeartt"/>
-                     </div>
-                </div>:null
-              } */}
+
             <section className="Event_UserInfo">
                 <div className="Events_Texts">
                     <h1 className="Events_Welcome">Hi there {userName}!!</h1>
@@ -178,7 +158,7 @@ function UserDashBoard() {
                    }</h1>
                     <div className='Event_Lines'></div>
                 </div>
-                <div className='Host_EventOverView'>
+                <div  className='Host_EventOverView'>
                     
                         {
                             myEvents?
@@ -191,8 +171,8 @@ function UserDashBoard() {
                                 </div>
                                 <div className='Hosted_EventDesc'>
                                     <div className='Hosted_EventWhere'>
-                                        <h2>{e.eventName}</h2>
-                                        <h3>{e.eventDescription}</h3>
+                                        <h3>{e.eventName}</h3>
+                                        <h4>{e.eventDescription}</h4>
                                         <h4>{e.eventDate}</h4>
                                     </div>
                                       <div className='Event_Reviews'>
@@ -217,13 +197,114 @@ function UserDashBoard() {
                                myPurchases?
                                userPurchased.length === 0?<h3>You don't have an purchased ticket {userName}!!</h3>:
                                     userPurchased.map((e)=>(
-                                       <Tickets key={e._id} src={e.link.eventImages}  eventVenue={e.link.eventVenue}  eventName={e.link.eventName} eventDate={e.link.eventDate} eventPrice={e.link.eventPrice}/>
+                                        <>
+                                        <div className="main-category" key={e._id} onClick={()=>{
+                    nav(`/api/events/${e._id}`)
+                }}>
+                <div className="category-image" >
+                <img src={e.link.eventImages} alt="" />
+                    <div className='love'>
+                    {/* onClick={handleLiked} :liked ? */}
+                    {/* <BsFillSuitHeartFill style={{color:
+                     "lightgrey"}}/> */}
+                    </div>
+                    <div className='love2'>
+                    {/* <CiMenuKebab/> */}
+                    </div>
+                    
+                </div>
+                <div className="category-discription">
+                    <div className='locationandeventname'>
+                        {/* <h4>The curve Cohort 2 Graduation Day 2023.</h4> */}
+                        <h4>{e.link.eventName}</h4>
+                        {/* <h4>180 Freedom Way, Lekki Phase 1 Lagos State.</h4> */}
+                        <h4>{e.link.eventVenue}</h4>
+
+<div class="rating">
+<input value="5" name="rating" id="star5" type="radio"/>
+<label for="star5"></label>
+<input value="4" name="rating" id="star4" type="radio"/>
+<label for="star4"></label>
+<input value="3" name="rating" id="star3" type="radio"/>
+<label for="star3"></label>
+<input value="2" name="rating" id="star2" type="radio"/>
+<label for="star2"></label>
+<input value="1" name="rating" id="star1" type="radio"/>
+<label for="star1"></label>
+</div>
+                    </div>
+                <div className='dateandprice'>
+                        <div className='thedate'>
+                            {/* <CiCalendarDate/> */}
+                            <h5>{e.link.eventDate}</h5>
+                            {/* <h5>26 july 2023</h5> */}
+                        </div>
+                        <div className='theprice'>
+                            {/* <BiMoney/> */}
+                            <h5>#{e.link.eventPrice}</h5>
+                            {/* <h5>#2000</h5> */}
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                        </>
+                                    //    <Tickets key={e._id} src={e.link.eventImages}  eventVenue={e.link.eventVenue}  eventName={e.link.eventName} eventDate={e.link.eventDate} eventPrice={e.link.eventPrice}/>
                                     ))
                                :
                                myBookMarked?
                                userBookMarked.length === 0?<h3>You don't have an Bookmarked ticket {userName}!!</h3>:
                                      userBookMarked.map((e)=>(
-                                  <Tickets key={e._id} src={e.eventImages} eventVenue={e.eventVenue}  eventName={e.eventName} eventDate={e.eventDate} eventPrice={e.eventPrice}/>
+                                       <>
+                                        <div className="main-category" key={e._id} onClick={()=>{
+                    nav(`/api/events/${e._id}`)
+                }}>
+                <div className="category-image" >
+                <img src={e.eventImages} alt="" />
+                    <div className='love'>
+                    {/* onClick={handleLiked} :liked ? */}
+                    {/* <BsFillSuitHeartFill style={{color:
+                     "lightgrey"}}/> */}
+                    </div>
+                    <div className='love2'>
+                    {/* <CiMenuKebab/> */}
+                    </div>
+                    
+                </div>
+                <div className="category-discription">
+                    <div className='locationandeventname'>
+                        {/* <h4>The curve Cohort 2 Graduation Day 2023.</h4> */}
+                        <h4>{e.eventName}</h4>
+                        {/* <h4>180 Freedom Way, Lekki Phase 1 Lagos State.</h4> */}
+                        <h4>{e.eventVenue}</h4>
+
+<div class="rating">
+<input value="5" name="rating" id="star5" type="radio"/>
+<label for="star5"></label>
+<input value="4" name="rating" id="star4" type="radio"/>
+<label for="star4"></label>
+<input value="3" name="rating" id="star3" type="radio"/>
+<label for="star3"></label>
+<input value="2" name="rating" id="star2" type="radio"/>
+<label for="star2"></label>
+<input value="1" name="rating" id="star1" type="radio"/>
+<label for="star1"></label>
+</div>
+                    </div>
+                <div className='dateandprice'>
+                        <div className='thedate'>
+                            {/* <CiCalendarDate/> */}
+                            <h5>{e.eventDate}</h5>
+                            {/* <h5>26 july 2023</h5> */}
+                        </div>
+                        <div className='theprice'>
+                            {/* <BiMoney/> */}
+                            <h5>#{e.eventPrice}</h5>
+                            {/* <h5>#2000</h5> */}
+                        </div>
+                    </div>
+                </div>
+            </div>
+                                        </>
                                ))
                                :null               
                         }

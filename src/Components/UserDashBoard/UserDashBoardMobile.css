@@ -104,6 +104,11 @@
     font-size: 13px;
 }
 
+.Host_EventOverView {
+    justify-content: center;
+    gap: 5%;
+}
+
 .Hosted_EventWhere h2{
     font-size: 18px;
 }
