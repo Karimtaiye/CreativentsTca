@@ -3,9 +3,12 @@ import{ AiOutlineMenu } from 'react-icons/ai'
 import {TiDelete} from 'react-icons/ti'
 import {NavLink} from "react-router-dom"
 import devC from "../../image/devC.png"
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 function Header (){
     const nav = useNavigate()
+  const userOnLoggedIn = useSelector(state=>state.events.user)
+  const token = userOnLoggedIn.token
     const [popUp, setPopUp] =useState(false)
 
     const ShowPop = ()=>{
@@ -22,16 +25,18 @@ function Header (){
         <div className="topheader">
             <div className="one">
              <div className="image">
-             <img src={devC} alt="Logo" style={{cursor:'pointer'}} onClick={()=>nav('/landingpage')}/>
+             <img src={devC} alt="Logo" style={{cursor:'pointer'}} onClick={()=>{
+                token?nav('/homepage'):nav('/landingpage')
+             }}/>
              </div>
              <h1 style={{marginTop:"1px"}}>reativent</h1>
             </div>
             <div className="two">
                 <ul>
                     {/* <NavLink to={'checkout'}> */}
-                    {/* <NavLink to={'/category'}> */}
+                    <NavLink to={'/category'}> 
                     <li>Find Event</li>     
-                    {/* </NavLink>   */}
+                     </NavLink>  
                     {/* </NavLink> */}
 
                     <NavLink to={'/about'}>
@@ -44,8 +49,14 @@ function Header (){
                 </ul>
             </div>
             <div className="three">
-                <button className="btn-one" onClick={()=>nav('/login')}>Log in</button>
-                <button className="btn-two" onClick={()=>nav('/signup')}>Sign up</button>
+                {
+                    !token?
+                    <>
+                    <button className="btn-one" onClick={()=>nav('/login')}>Log in</button>
+                    <button className="btn-two" onClick={()=>nav('/signup')}>Sign up</button>
+                    </>:
+                    <h1>User</h1>
+                }
             </div>
             <div>
                 <div className='menu-dash'>

@@ -17,7 +17,7 @@ import Upload from './Components/CreateEvent/Upload'
 import SavedTickets from './Components/SavedTickets/SavedTickets'
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile'
 import Explore from './Components/Explore/Explore'
-import Checkout from './Components/Checkout/Checkouts'
+import Checkout from './Components/Checkout/Checkout'
 import UserDashBoard from './Components/UserDashBoard/UserDashBoard'
 import UserEventUpdates from './Components/UserEventUpdate/UserEventUpdates'
 import ConfirmDelete from './Components/UserDashBoard/ConfirmDelete'
@@ -30,20 +30,24 @@ import BarCode from './Components/BarCode/BarCode'
 import Admin from './Components/Admin/Admin'
 import AllUser from './Components/Admin/AllUser'
 import BlockedUsers from './Components/Admin/BlockedUsers'
-
+import PrivateRoutes from './Components/PrivateRoutes/PrivateRoutes'
+import Header from './Components/LandingPage/Header'
+import Category from './Components/LandingPage/Category'
 
 function App() {
   
   return (
     <>
       <HashRouter>
+        {/* <Header /> */}
           <Routes>
-            
+              
               <Route path ='/login' element = {<LogIn />} />
               <Route path ='/signup' element = {<SignUp />} />
               <Route path ="/api/logout/:id" element = {<LogOut />} />
               <Route path ="/" element = {<Explore />} />
               <Route path ='/landingpage' element = {<MainPage />} />
+              <Route path ='/category' element = {<Category />} />
               <Route path ='/homepage' element = {<HomePage />} />
               <Route path ="/api/event/search" element = {<EventSearch  />} />
               <Route path ='/upload' element = {<Upload />} />
@@ -63,7 +67,7 @@ function App() {
               <Route path="/api/rate" element={<Rate />} />
               <Route path="/api/report" element={<Report />} />
               <Route path="/api/analytics" element={<Analytics />} />
-              <Route path="/api/barcode" element={<BarCode />} />
+              <Route path="/api/barcode/:id" element={<BarCode />} />
               <Route path="/adminDashboard/:id/*" element={<Admin />} />
               <Route path="/allUser/:id" element={<AllUser />} />
               <Route path="/blockedUsers" element={<BlockedUsers />} />

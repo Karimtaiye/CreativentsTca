@@ -4,6 +4,7 @@ import event2 from "../../assets/event2.jpg"
 import party from "../../assets/party.webp"
 import event3 from "../../assets/event3.jpg"
 import shutter3 from "../../assets/shutter3.jpg"
+import axios from 'axios';
 
 function Hero() {
     const imageChange = [party, event3, event2, shutter3];
@@ -16,6 +17,47 @@ function Hero() {
 
         return () => clearInterval(interval);
     }, []);
+
+const [searchTerm, setSearchTerm] = useState('');
+const [searchResults, setSearchResults] = useState([]);
+
+const searchUrl = `https://creativents-on-boarding.onrender.com/api/event/search?searchTerm=${searchTerm}`
+
+  const searchParameter = {
+    searchparams: {
+      eventName: searchTerm,   
+      eventCategory: searchTerm,
+      eventPrice: searchTerm,    
+      eventLocation: searchTerm, 
+      eventVenue: searchTerm,    
+      eventDate: searchTerm,     
+      eventTime: searchTerm,     
+    }
+  }
+
+const SearchBar = () => {
+  axios.get(searchUrl, searchParameter)
+  .then(res=>{
+    console.log(res);
+    setSearchResults(res.data.data); 
+  })
+  .catch(err=>{
+    console.log('Error searching events:', err);
+  }) 
+  
+};
+
+useEffect(()=>{
+//   if (searchTerm !== '') {
+//     SearchBar();
+//   }
+
+//   setInterval(() => {
+//     setCountpro((prev)=>prev += 1)
+//   }, 4000);
+
+},[searchTerm])
+console.log(searchResults)
 
     return (
         <div>
@@ -33,12 +75,12 @@ function Hero() {
 
                     <div className="search-event">
                         <div className="search-bar">
-                            <input type="text" placeholder="Search Event" name="search" />
+                            <input value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type="text" placeholder="Search Event" />
                             <AiOutlineSearch className="searchin" />
                         </div>
 
                         <div className="see-result2">
-                            <button className="see-result">
+                            <button className="see-result" onClick={SearchBar}>
                                 See result
                                 <AiOutlineArrowRight className="arrow" />
                             </button>

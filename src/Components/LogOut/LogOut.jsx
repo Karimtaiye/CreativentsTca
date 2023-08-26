@@ -33,19 +33,12 @@ function LogOut() {
             console.log(res)
             setLogOutMsg("Successfully loggedOut")
             nav('/login') 
-            Dispatch(userStoreData({email:"", id:"", token:"",name:"",login:false}))
+            Dispatch(userStoreData({email:"", id:"", token:"",name:"",login:false, admin:false}))
 
         })
         .catch(err=>{
             console.log(err)
-            if(err.message === "Network Error"){
-              setLogOutMsg("Please check your Internet Connection")
-              console.log("error");
-            }
-            else{
-              setLogOutMsg("Error Logging Out")
-            }
-            
+            setLogOutMsg("Error Logging Out")
             setConfirmation(false)
         })
     }
