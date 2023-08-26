@@ -455,7 +455,7 @@ console.log(searchResults)
                 <button className='btn1' key={e._id} onClick={ () =>{
                   nav(`/api/events/${e._id}`)
                 }}>Book now</button>
-                {
+                {/* {
                   !bookmarked?
                   <BsBookmark onClick={()=>{
                     axios.put(`https://creativents-on-boarding.onrender.com/api/users/bookmarks/${e._id}`, null, config).then(res=>{
@@ -475,7 +475,7 @@ console.log(searchResults)
                       console.log(err);
                     })
                   }} className='bookmark'/>
-                }
+                } */}
                 
      
               </div>
