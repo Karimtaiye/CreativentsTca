@@ -21,7 +21,7 @@ import { FaStar } from 'react-icons/fa';
 import { MdNetworkCheck } from 'react-icons/md'
 
 
-const Checkouts = () =>{
+const Checkout = () =>{
     const Dispatch = useDispatch()
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const nav = useNavigate()
@@ -92,7 +92,7 @@ useEffect(() => {
         .then(res=>{
             console.log(res.data.data);
             Dispatch(eventData(res.data.data))
-            Dispatch(sTicketPrice(res.data.data.eventPrice))
+            Dispatch(checkoutTicketPrice(res.data.data.eventPrice))
             setData(res.data.data)
             setTicketQtyy(res.data.data.availableTickets)
 
@@ -325,4 +325,4 @@ useEffect(() => {
     )
 }
 
-export default Checkouts
+export default Checkout
