@@ -30,6 +30,7 @@
       height: 40%;
   }
 
+
   .checkoutticket{
       width: 100%;
       height: 50%;
@@ -52,7 +53,8 @@
   }
 
   .checkoutdescription{
-    height: 35%;
+    height: 13%;
+    /* padding-block: 10px; */
   }
 
   .checkoutdescription-checkout .checkoutdescription p{
@@ -140,6 +142,10 @@
       height: 13%;
     }
 
+    .BookMarkEvents {
+      width: 25%;
+  }
+
     .CheckOut_Content h4 {
       width: 80%;
       text-align: center;
@@ -168,8 +174,86 @@
 
     .sectionthree .submitratings button{
       width: 30%;
-      height: 100%;
+      height: 60%;
     }
+    .sectionthree .commentsectionrating input{
+      width: 100%;
+      height: 40%;
+      margin-top: 1px;
+    }
+
+    .Reviews_Submitted {
+      width: 100%;
+      height: 10vh;
+      display: flex;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 5vh;
+  }
+  
+  .Review_Image {
+      width: 40%;
+      height: 100%;
+      display: flex;
+      border-right: 1px solid rgba(255, 255, 255, 0.349);
+      flex-direction: column;
+  }
+  
+  .Review_Comment {
+      width: 65%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+  }
+  
+  .imageRev {
+      width: 100%;
+      height: 45%;
+      display: flex;
+      /* justify-content: center;
+      align-items: center; */
+  }
+  .imageRev img{
+      width: 50px;
+      height: 50px;
+      background: #000;
+      border-radius: 10px;
+  }
+  
+  .UserRev_Data {
+      width: 100%;
+      height: 55%;
+      text-align: center;
+      /* color: red; */
+      display: flex;
+      /* flex-direction: column;
+      justify-content: center; */
+  }
+  .UserRev_Data h3{
+      font-size: 13px;
+  }
+  .UserRev_Data h4{
+      font-size: 12px;
+  }
+  
+  .Rv_Stars {
+      width: 100%;
+      height: 30%;
+      display: flex;
+      gap: 5%;
+      flex-direction: column;
+  }
+
+  .star_selected, .star {
+    font-size: 10px;
+  }
+  
+  .Rv_Comments {
+      width: 100%;
+      height: 70%;
+  
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width:1024px){

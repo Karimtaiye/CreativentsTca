@@ -1,27 +1,5 @@
 
 
-// const handleOneStar = ()=>{
-//     setOneStar(preOneStar => preOneStar + 5)
-// }
-
-// const handleTwoStar = ()=>{
-//     setTwoStar(preOneStar => preOneStar + 5)
-// }
-
-// const handleThreeStar = ()=>{
-//     setThreeStar(preOneStar => preOneStar + 5)
-// }
-
-// const handleFourStar = ()=>{
-//     setFourStar(preOneStar => preOneStar + 5)
-// }
-
-// const handleFiveStar = ()=>{
-//     setFiveStar(preOneStar => preOneStar + 5)
-// }
-
-
-
 import './Checkouts.css'
 import './CheckoutMobiles.css'
 import{CiLocationOn} from 'react-icons/ci'
@@ -48,6 +26,7 @@ const Checkout = () =>{
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const nav = useNavigate()
     const [data, setData] = useState()
+    const [error, setError] = useState("")
     const [msg, setMsg] = useState("Loading, Please wait...")
     const ticketPrice = useSelector((state)=>state.events.ticketPrice)
     const { id } = useParams()
@@ -59,7 +38,8 @@ const Checkout = () =>{
     const [todos, setTodos] = useState([])
     const [ratings, setRatings] = useState(0)
     const [input, setInput] = useState('')
-    const [review, setreview] = useState([]);
+    const [review, setreview] = useState([])
+    const [bookmarked, setBookmarked] = useState(false)
     const token = userOnLoggedIn.token
     const config = {
       headers: {
@@ -84,9 +64,10 @@ const addReview = () => {
         console.log(res);
         setInput("")
         // setreview(res.data)
-      })
-      .catch(err => {
+    })
+    .catch(err => {
         console.log('Error fetching data:', err);
+        setError(err.response.data.message)
       });
    
   };
@@ -146,7 +127,7 @@ useEffect(() => {
             fontSize:"26px", color:"white", textAlign:"center"
         }}>{msg}</h1>
         {
-            network?<MdNetworkCheck />:<SpinnerDotted size={200} thickness={50} speed={100} color="#ffffff" />
+            network?<MdNetworkCheck className='Network_Icon' />:<SpinnerDotted size={200} thickness={50} speed={100} color="#ffffff" />
         }
         </div> :
         <div className="checkoutcontainer">
@@ -224,6 +205,31 @@ useEffect(() => {
                             </button>
                     </div>
                     </div>
+                    
+                    {
+                        !bookmarked?
+                        <button className='BookMarkEvents' onClick={()=>{ 
+                            axios.put(`https://creativents-on-boarding.onrender.com/api/users/bookmarks/${id}`, null, config).then(res=>{
+                              console.log(res)
+                              setBookmarked(true)
+                            })
+                            .catch(err=>{
+                              console.log(err);
+                            })
+                          }}
+                           >BookMark</button>:
+                            bookmarked?
+                            <button onClick={()=>{ 
+                                axios.put(`https://creativents-on-boarding.onrender.com/api/users/unbookmarks/${id}`, null, config).then(res=>{
+                                  console.log(res)
+                                  setBookmarked(false)
+                                })
+                                .catch(err=>{
+                                  console.log(err);
+                                })
+                              }}
+                               >UnBookMark</button>:null
+                    }
 
                     <div className="checkoutdescription-checkout">
                     <div className="checkoutdescription">
@@ -235,6 +241,7 @@ useEffect(() => {
                 <div className='commentsectionrating'>
                     <h3>Comment</h3>
                     <input type="message" value={input} onChange={(e) => setInput(e.target.value)}/>
+                    <span>{error}</span>
                 </div>
                 <div className='submitratings'>
                 <div className='starBoy'>
@@ -246,7 +253,7 @@ useEffect(() => {
                         />
                     ))}
                     </div>
-                    {/* <p>submit your comment</p> */}
+                    
                     <button onClick={addReview} >Submit</button>
                 </div>
                 
@@ -267,10 +274,12 @@ useEffect(() => {
                         </div>
                         <div className='Review_Comment'>
                             <div className='Rv_Stars'>
+                            <div>
                             {[1, 2, 3, 4, 5].map((star) => (
-                            <FaStar 
+                            <FaStar key={star}
                             className={star <= ratings ? 'star_selected' : 'star'}
                             />))}
+                            </div>
                             <h5>{e.timestamp}</h5>
                             </div>
                             <div className='Rv_Comments'>

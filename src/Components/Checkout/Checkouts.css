@@ -24,6 +24,8 @@
 .checkoutcontainer .checkoutholder .checkoutlogo{
     width: 100%;
     height: 5%;
+    display: flex;
+    align-items: center;
 }
 
 .checkoutlogo .checkoutimage{
@@ -297,6 +299,16 @@
 .CheckOut_ConfirmBtn {
     background-color: #08022F;
     color: white;
+}
+
+.BookMarkEvents {
+    width: 15%;
+    cursor: pointer;
+    padding-inline: 10px;
+    padding-block: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
 }
 
 .Purchase_ContBtn {
@@ -706,9 +718,10 @@
     height: 20%;
     display: flex;
     align-items: center;
-    /* background: #FCA702; */
     justify-content: center;
 }
+.Rv_Stars h5{
+    font-size: 10px}
 
 .Rv_Comments {
     width: 100%;

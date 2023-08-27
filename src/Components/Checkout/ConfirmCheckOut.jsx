@@ -117,7 +117,7 @@ const BookEvent = () => {
                             <>
                             <button className='CheckOut_CancelBtn' onClick={()=>nav(`/api/events/${id}`)} disabled={loading}>Cancel</button>
                             <button className='CheckOut_ConfirmBtn' style={{background:loading?"#08022f93":null}} disabled={loading} onClick={BookEvent}>{
-                                loading?<SpinnerCircularSplit size={30} thickness={150} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
+                                loading?<SpinnerCircularSplit style={{animation:"slideInUp",animationDuration:"0.8s"}} size={30} thickness={150} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
                                 "Confirm Book"}</button>
                             </>
                         }

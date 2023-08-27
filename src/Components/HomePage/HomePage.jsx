@@ -498,18 +498,25 @@ console.log(searchResults)
               <img src={e.eventImages} alt="" />
             </div>
             <div className='Upcoming_EventDesc'>
-             
+            
               <div className='Upcoming_LocationDiv'>
+                <div className='upcomingevent-holder'> 
               <MdLocationPin className='Upcoming_Location'/>
               <span className='span'>{e.eventVenue}</span>
               </div>
-              <span className='span3'>{e.eventDate}</span>
+
+              <h5 className='span3'>{e.eventDate}</h5>
+
+              </div>
               <div className='buttoncontroler'>
+                <h6>{e.eventLocation}</h6>
+                <h6>{e.eventTime}</h6>
+                <h6>#{e.eventPrice}</h6>
+                
                 <button className='btn1' key={e._id} onClick={ () =>{
                   nav(`/api/events/${e._id}`)
                 }}>Book now</button>
-                <BsBookmark className='bookmark'/>
-                <BsFillBookmarkCheckFill className='bookmark'/>
+     
               </div>
             </div>
             </div>
