@@ -35,7 +35,7 @@ function SignUp() {
 
   const url = "https://creativents-on-boarding.onrender.com/api/signup"
 
-  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password:password.trim(), email:email.trim().toLowerCase(), confirmPassword:confirmPassword.trim()}
+  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password, email:email.trim().toLowerCase(), confirmPassword:confirmPassword.trim()}
 
   // useEffect(()=>{
   //   if(!email){

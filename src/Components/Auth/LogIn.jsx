@@ -22,7 +22,7 @@ function LogIn() {
   const [passwordShow, setPasswordShow] = useState(false)
   const [loading, setLoading] = useState(false)
   const [profileName, setProfileName] = useState("")
-    const userLogInData ={email, password}
+    const userLogInData ={email:email.trim().toLowerCase(), password}
 
   const url = "https://creativents-on-boarding.onrender.com/api/login"
   // const url = "https://creativents-on-boarding.onrender.com//api/events/:eventID/review" 
