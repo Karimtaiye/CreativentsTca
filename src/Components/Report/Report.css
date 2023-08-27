@@ -66,8 +66,8 @@
 .OurDomain{
     height: 20%;
     width: 95%;
-    /* background-color: darkcyan; */
-    display: flex; justify-content: center; align-items: center;
+    display: flex; 
+    justify-content: center; align-items: center;
     
 }
 
@@ -77,7 +77,6 @@
     font-family:  'Roboto', sans-serif;
     font-size: 14px;
     word-spacing: 6px ;
-    /* background-color: red; */
     
 }
 
@@ -136,7 +135,6 @@
 .ReportEventt{
     height: 12%;
     width: 100%;
-    /* background-color: chocolate; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,7 +144,6 @@
 .ReportTextHolderr{
     height: 100%;
     width: 92%;
-    /* background-color: cyan; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -158,7 +155,6 @@
       font-weight: bold;
       font-family:  'Roboto', sans-serif;
       font-size: 20px;
-      /* text-align: center; */
 }
 
 .ReportCancelHolderr{
@@ -181,16 +177,17 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    /* justify-content: space-evenly; */
     align-items: end;
 }
 
 .ResonForReport{
-    height: 45vh;
+    height: 50%;
     width: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 2%;
+    gap: 4%;
 }
 
 .ReasonText{
@@ -208,59 +205,15 @@
    cursor: pointer;
 }
 
-/* .Harmful{
-    height:7% ;
-    width: 100%;
-}
-.Illegal{
-    height:7% ;
-    width: 100%;
-}
-.Spam{
-    height:7% ;
-    width: 100%;
-}
-.Sex{
-    height:7% ;
-    width: 100%;
-}
-.Hateful{
-    height:7% ;
-    width: 100%;
-}
-.Violence{
-    height:7% ;
-    width: 100%;
-}
-.Canceled{
-    height:7% ;
-    width: 100%;
-}
-.Request{
-    height:7% ;
-    width: 100%;
-}
-.Copyright{
-    height:7% ;
-    width: 100%;
-} */
 .YourEmail{
     height: 18%;
     width: 95%;
-    /* background-color: rgb(139, 0, 102); */
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
 }
 
-.ReportEmail{
-    all: unset;
-    height: 45%;
-    width: 40%;
-    border: 1px solid rgb(222, 215, 215);
-    padding: 6px;
-}
 .ReportDescription{
     height: 22%;
     width: 95%;
@@ -286,7 +239,6 @@
 .SubmitAndGoBack{
     height: 15%;
     width: 95%;
-    /* background-color: rgb(74, 139, 0); */
     display: flex;
     justify-content: flex-start;
     align-items: center;

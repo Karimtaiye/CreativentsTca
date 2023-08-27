@@ -1,0 +1,40 @@
+@media only screen and (max-width : 768px){
+    .Report{
+        height: 50vh;
+        width: 95%;
+        justify-content: space-evenly;
+    }
+
+    .StartButt{
+        height: 75%;
+        width: 40%;
+        margin-top: 9px;
+    }
+
+    .Reportt{
+        height: 60vh;
+        width: 95%;
+    }
+
+    .ReportDes{
+        height: 18%;
+        width: 75%;
+        border-radius: 3px;
+    }
+
+    .SubmitAndGoBack{
+        height: 15%;
+        width: 95%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .ReportButton{
+        height: 70%;
+        width: 35%;
+    }
+    
+
+}

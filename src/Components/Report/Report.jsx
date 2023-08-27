@@ -1,6 +1,7 @@
 
 import { useState } from "react"
 import   "./Report.css"
+import   "./ReportMobile.css"
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -77,23 +78,27 @@ const Report = () => {
                 </div>
                 <div className="OurDomain">
                  <div className="OurDomainText">
-                 Our Community Guidelines will describe the sort of content we prohibit on<br></br>
+                 <span>Our Community Guidelines will describe the sort of content we prohibit on<br></br>
                     Creativent. If you suspect an event may be in violation, you can report it to us so<br></br>
-                    We can investigate.
+                    We can investigate.</span>
                  </div>
                 </div>
                 <div className="TheOrganizer">
                     <div className="TheOrganizerOne">
                        <div className="OurDomainText">
-                       If you have a question about an event, need to reolve dispute, or would<br></br>
+                      <span>
+                      If you have a question about an event, need to reolve dispute, or would<br></br>
                         like to request a refund, we encourage   you to first contact the organize<br></br>
                         directly.
+                      </span>
                        </div>
                     </div>
                     <div className="TheOrganizerTwo">
                         <div className="OurDomainText">
+                            <span>
                             If you or someone else is in imminent danger as a result of an event <br></br>listing,
                             please contact your law enforcement agency for assistance.
+                            </span>
                         </div>
                      
                     </div>
@@ -206,12 +211,7 @@ const Report = () => {
                     </div>
                     
                     </div>
-                    <div className="ReasonOption">
-                    
-                      </div>
-                      {/* <div className="YourEmail">
-                          <input type="email"  placeholder="Your Email*" className="ReportEmail"/>
-                      </div> */}
+    
                       <textarea name="description" rows="4" cols="50" className="ReportDes" defaultValue="Enter your description here...">
                          
                         </textarea>
