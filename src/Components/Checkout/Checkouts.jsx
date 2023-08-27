@@ -206,7 +206,8 @@ useEffect(() => {
                     </div>
                     </div>
                     
-                    {
+                   <div className='BookMarkReport'>
+                   {
                         !bookmarked?
                         <button className='BookMarkEvents' onClick={()=>{ 
                             axios.put(`https://creativents-on-boarding.onrender.com/api/users/bookmarks/${id}`, null, config).then(res=>{
@@ -228,8 +229,11 @@ useEffect(() => {
                                   console.log(err);
                                 })
                               }}
-                               >UnBookMark</button>:null
+                              className='BookMarkEvents'>UnBookMark</button>:null
                     }
+
+                    <button onClick={()=>nav(`/api/report/${data._id}`)} className='Report_Btn'>Report this event</button>
+                   </div>
 
                     <div className="checkoutdescription-checkout">
                     <div className="checkoutdescription">

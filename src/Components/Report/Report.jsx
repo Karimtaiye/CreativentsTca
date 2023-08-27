@@ -7,6 +7,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 const Report = () => {
     const [holder, setHolder] =useState(true)
+    const nav = useNavigate()
     const [report, setReport] =useState(false)
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const [reason, setReason] = useState('')
@@ -57,6 +58,7 @@ const Report = () => {
     const cancel = () =>{
         setHolder(false)
         setReport(false)
+        nav(`/api/events/${eventID}`)
     }
     return(
         <>
@@ -111,7 +113,7 @@ const Report = () => {
                               <h2 className="ReportH22">Report This Event</h2>
                           </div>
                           <div className="ReportCancelHolderr">
-                              <span className="CancelSpann" onClick={cancel}>x</span>
+                              <span className="CancelSpann" style={{cursor:"pointer"}} onClick={cancel}>x</span>
                           </div>
                       </div>
                      <div className="ItsHoldingAllOfThem">

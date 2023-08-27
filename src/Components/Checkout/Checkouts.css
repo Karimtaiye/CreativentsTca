@@ -301,16 +301,6 @@
     color: white;
 }
 
-.BookMarkEvents {
-    width: 15%;
-    cursor: pointer;
-    padding-inline: 10px;
-    padding-block: 10px;
-    display: flex;
-    justify-content: center;
-    margin-top: 14px;
-}
-
 .Purchase_ContBtn {
     width: 23%;
     border-radius: 5px;
@@ -689,6 +679,37 @@
     flex-direction: column;
     /* justify-content: center; */
 }
+
+.BookMarkReport {
+    display: flex;
+    width: 100%;
+    padding-block: 10px;
+    align-items: center;
+    gap:5% ;
+    margin-top: 5px;
+    /* justify-content: ce; */
+}
+.BookMarkEvents {
+    width: 15%;
+    cursor: pointer;
+    height: 100%;
+    padding-inline: 10px;
+    border-radius: 5px;
+    padding-block: 15px;
+    display: flex;
+    justify-content: center;
+    /* margin-top: 14px; */
+} 
+
+.Report_Btn{
+    width: 15%;
+    cursor: pointer;
+    height: 100%;
+    padding-inline: 10px;
+    padding-block: 15px;
+    display: flex;
+    justify-content: center;
+} 
 
 .imageRev {
     width: 45%;

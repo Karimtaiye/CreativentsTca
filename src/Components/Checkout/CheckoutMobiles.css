@@ -8,6 +8,34 @@
       height: 30px;
       margin: 10px;
   }
+  
+.BookMarkReport {
+  display: flex;
+  width: 100%;
+  padding-block: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -20px;
+}
+
+  .BookMarkEvents {
+    width: 45%;
+    height: 90%;
+    padding-inline: 75px;
+    border-radius: 5px;
+    padding-block: 15px;
+    align-items: center;
+    justify-content: center;
+} 
+
+.Report_Btn{
+    width: 45%;
+    height: 90%;
+    padding-inline: 10px;
+    padding-block: 15px;
+    align-items: center;
+    justify-content: center;
+} 
 
   .checkoutholder .checkoutlogo .checkoutimage h2{
       font-size: 13px;
