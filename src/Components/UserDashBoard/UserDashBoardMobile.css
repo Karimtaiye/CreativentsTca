@@ -105,7 +105,11 @@
     /* align-items: center; */
 }
 
-
+.Event_Reviews {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
 
 .Event_Reviews p{
     font-size: 13px;
