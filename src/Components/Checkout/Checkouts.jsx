@@ -92,7 +92,7 @@ useEffect(() => {
         .then(res=>{
             console.log(res.data.data);
             Dispatch(eventData(res.data.data))
-            Dispatch(checkoutTicketPrice(res.data.data.eventPrice))
+            Dispatch(sTicketPrice(res.data.data.eventPrice))
             setData(res.data.data)
             setTicketQtyy(res.data.data.availableTickets)
 
