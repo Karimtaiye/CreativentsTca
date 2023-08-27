@@ -30,8 +30,6 @@ import BarCode from './Components/BarCode/BarCode'
 import Admin from './Components/Admin/Admin'
 import AllUser from './Components/Admin/AllUser'
 import BlockedUsers from './Components/Admin/BlockedUsers'
-import PrivateRoutes from './Components/PrivateRoutes/PrivateRoutes'
-import Header from './Components/LandingPage/Header'
 import Category from './Components/LandingPage/Category'
 
 function App() {

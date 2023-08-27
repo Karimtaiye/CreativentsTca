@@ -94,7 +94,8 @@
 
 
     .Header_Category {
-        height: 35vh;
+        height: 25vh;
+        margin-bottom: 1vh;
     }
 
     .Category_card {
@@ -110,7 +111,7 @@
     }
 
     .up {
-        font-size: 13px; 
+        font-size: 13px;
     }
 
     .Ticket_Header h4 {
@@ -125,6 +126,15 @@
     .Upcoming_EventsDetails {
         width: 100%;
         height: 24vh;
+    }
+
+    .Upcoming_Events {
+        width: 100%;
+        height: max-content;
+        animation:slideInRight;
+        animation-duration:1s ;
+        display: flex;
+        justify-content: center;
     }
     
     .Upcoming_EventImage {

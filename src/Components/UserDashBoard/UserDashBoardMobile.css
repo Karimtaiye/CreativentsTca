@@ -101,6 +101,7 @@
 
 .Hosted_EventBtn {
     width: 100%;
+
     /* align-items: center; */
 }
 
@@ -140,6 +141,7 @@
     height: 400px;
     top: 25%;
     left: 7.5%;
+    text-align: center;
     animation:slideInDown;
     animation-duration:1s ;
 }

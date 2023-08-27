@@ -3,7 +3,6 @@
     height: 100vh;
     background: #08022F;
     padding-top: 1%;
-    color: white;
 }
 
 .Update_UserProfileWrapper {
@@ -36,6 +35,8 @@
     width: 96%;
     height: 7%;
     display: flex;
+    justify-content: space-between;
+    padding-inline: 10px;
     align-items: end;
 }
 

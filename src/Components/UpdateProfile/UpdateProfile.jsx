@@ -8,9 +8,7 @@ import { AiFillHome } from 'react-icons/ai'
 import { MdCreateNewFolder } from 'react-icons/md'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
 import { userStoreData } from '../Redux/State'
-// import {AiFillHome} from 'react-icons/ai'
-// import {MdCreateNewFolder} from 'react-icons/md'
-// import {BsFillCheckSquareFill} from 'react-icons/bs'
+import { BiArrowBack } from 'react-icons/bi'
 // import { userProfile } from '../Redux/State'
 
 function UpdateProfile() {
@@ -44,7 +42,7 @@ function UpdateProfile() {
     const url = `https://creativents-on-boarding.onrender.com/api/add-profile-image/${id}`
     const url2 = 'https://creativents-on-boarding.onrender.com/api/updateuser'
     const addProfilePicture = () => {
-        setLoading(true)
+        // setLoading(true)
         axios.put(url, formData, {
             headers : {
                 'Content-Type': 'multipart/form-data',
@@ -53,8 +51,11 @@ function UpdateProfile() {
         } )
         .then(res=>{
             console.log(res)
-            setVisible(true)
             setLoading(false)
+            setTimeout(() => {
+                setVisible(true)    
+            }, 5000)
+            nav('/homepage')
             setUpdatesucc("Profile Picture updated ")
             // nav('/homepage')
             
@@ -70,12 +71,15 @@ function UpdateProfile() {
         .catch(err=>{
             console.log(err)
             setLoading(false)
-            setVisible(true);
             setTimeout(() => {
-            setVisible(false);
-              }, 3000)
+            setVisible(true);
+            }, 3000)
+            // setVisible(false);
             if(err.message === "Network Error"){
                 setUpdatesucc("Please check your Internet Connection")
+            }
+            else if(err.response.data.error === "no profile picture added"){
+                setUpdatesucc("No profile picture added")
             }
             else{        
                 setUpdatesucc("Cannot Update Profile")
@@ -95,9 +99,9 @@ function UpdateProfile() {
             console.log(res)
             setVisible(false);
             setLoading(false)
-            setVisible(true)
             setTimeout(() => {
-                nav('/homepage'); 
+                setVisible(true)    
+                nav('/homepage')
             }, 5000)
             if (res){
               setUpdatesucc("Profile Update Successfully")
@@ -124,6 +128,7 @@ function UpdateProfile() {
             if(err.message === "Network Error"){
                 setUpdatesucc("Please check your Internet Connection")
             }
+          
             else{        
                 setUpdatesucc("Cannot Update Profile")
               }
@@ -132,10 +137,13 @@ function UpdateProfile() {
     }
     console.log(profilePicture);
     return (
-    <div className='Update_UserProfile'>
+    <>
+        
+            <div className='Update_UserProfile'>
         <section className='Update_UserProfileWrapper'>
             <div className='Update_UserProfileWrapper_Container'>
             <div className='Update_Header'>
+                <BiArrowBack className='back_ArrowLogin'  onClick={()=>nav('/homepage')}/>
                 <h3>Update Account</h3>
             </div>
             <div className='Line_Break'></div>
@@ -145,17 +153,18 @@ function UpdateProfile() {
                         <img src={profile} alt="" />
                     </div>
                     <input style={{display:"none"}} type="file" id='Upload' onChange={uploadProfile}/>
-                    <label htmlFor="Upload" className='image_Upload' onClick={addProfilePicture}>Upload image</label>
+                    <label htmlFor="Upload" className='image_Upload'>Upload image</label>
+                    <label style={{paddingInline:"45px", paddingBlock:"10px", background:"#FFA800"}} className='image_Upload' onClick={addProfilePicture}>Save Image</label>
                 </section>
                 <section className='Profile_DetailsPart'>
                     <label>First Name</label>
-                    <input type="text" value={firstname}  onChange={(e)=>setFirstName(e.target.value)}/>
+                    <input style={{color:"white", paddingInline:"10px"}} type="text" value={firstname}  onChange={(e)=>setFirstName(e.target.value)}/>
                     <label>Last Name</label>
-                    <input type="text" value={lastname}  onChange={(e)=>setLastname(e.target.value)}/>
+                    <input style={{color:"white", paddingInline:"10px"}} type="text" value={lastname}  onChange={(e)=>setLastname(e.target.value)}/>
                     <label>Email</label>
-                    <input type="text" value={email}  onChange={(e)=>setEmail(e.target.value)}/>
+                    <input style={{color:"white", paddingInline:"10px"}} type="text" value={email}  onChange={(e)=>setEmail(e.target.value)}/>
                      <label>Profile Name</label>
-                    <input type="text"   onChange={(e)=>setProfileName(e.target.value)}/>
+                    <input style={{color:"white", paddingInline:"10px"}} type="text"   onChange={(e)=>setProfileName(e.target.value)}/>
                     <div className='Update_Buttons'>
                     <button className='Cancel_Btn'onClick={()=>nav('/homepage')}>Cancel</button>
                     <button style={{background:loading?"rgb(126, 87, 10)":null}} className='Update_Btn' onClick={UpdateProfile}>{loading?"Uploading":"Save"}</button>
@@ -187,6 +196,8 @@ function UpdateProfile() {
         </div>:null
        }
     </div>
+        
+    </>
   )
 }
 
