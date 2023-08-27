@@ -210,7 +210,7 @@ function UserDashBoard() {
                     nav(`/api/events/${e._id}`)
                 }}>
                 <div className="category-image" >
-                <img src={e.link.eventImages} alt="" />
+                <img src={e.link === null? "":e.link.eventImages} alt="" />
                     <div className='love'>
                     {/* onClick={handleLiked} :liked ? */}
                     <BsFillSuitHeartFill style={{color:
@@ -224,9 +224,9 @@ function UserDashBoard() {
                 <div className="category-discription">
                     <div className='locationandeventname'>
                         {/* <h4>The curve Cohort 2 Graduation Day 2023.</h4> */}
-                        <h4>{e.link.eventName}</h4>
+                        <h4>{e.link === null? "EventName":e.link.eventName}</h4>
                         {/* <h4>180 Freedom Way, Lekki Phase 1 Lagos State.</h4> */}
-                        <h4>{e.link.eventVenue}</h4>
+                        <h4>{e.link === null? "EventVenue":e.link.eventVenue}</h4>
 
 <div class="rating">
 <input value="5" name="rating" id="star5" type="radio"/>
@@ -244,12 +244,12 @@ function UserDashBoard() {
                 <div className='dateandprice'>
                         <div className='thedate'>
                             <CiCalendarDate/>
-                            <h5>{e.link.eventDate}</h5>
+                            <h5>{e.link === null? "EventDate":e.link.eventDate}</h5>
                             {/* <h5>26 july 2023</h5> */}
                         </div>
                         <div className='theprice'>
                             <BiMoney/>
-                            <h5>#{e.link.eventPrice}</h5>
+                            <h5>#{e.link === null? "EventPrice":e.link.eventPrice}</h5>
                             {/* <h5>#2000</h5> */}
                         </div>
                     </div>

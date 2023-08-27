@@ -9,6 +9,7 @@ function Header (){
     const nav = useNavigate()
   const userOnLoggedIn = useSelector(state=>state.events.user)
   const token = userOnLoggedIn.token
+  const name = userOnLoggedIn.name
     const [popUp, setPopUp] =useState(false)
 
     const ShowPop = ()=>{
@@ -55,7 +56,7 @@ function Header (){
                     <button className="btn-one" onClick={()=>nav('/login')}>Log in</button>
                     <button className="btn-two" onClick={()=>nav('/signup')}>Sign up</button>
                     </>:
-                    <h1>User</h1>
+                    <h3>{name}</h3>
                 }
             </div>
             <div>
