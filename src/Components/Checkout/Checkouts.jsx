@@ -149,6 +149,16 @@ useEffect(() => {
             </div>
                 
                 <p>{data.eventName}</p>
+
+                <div className="checkoutdescription-checkout">
+                    <div className="checkoutdescription">
+                        <h1>Description</h1>
+                        <p>{data.eventDescription}.</p>
+                    </div>
+                    
+                    
+            
+                </div>
                 <div className="checkouteventdetails">
                     <div className='everydetailsholder'>
                     <div className='checkoutvenue'>
@@ -235,13 +245,8 @@ useEffect(() => {
                     <button onClick={()=>nav(`/api/report/${data._id}`)} className='Report_Btn'>Report this event</button>
                    </div>
 
-                    <div className="checkoutdescription-checkout">
-                    <div className="checkoutdescription">
-                        <h1>Description</h1>
-                        <p>{data.eventDescription}.</p>
-                    </div>
                     
-                    <section className='sectionthree'>
+                <section className='sectionthree'>
                 <div className='commentsectionrating'>
                     <h3>Comment</h3>
                     <input type="message" value={input} onChange={(e) => setInput(e.target.value)}/>
@@ -295,8 +300,6 @@ useEffect(() => {
                     }
                 
              </section>
-            
-                </div>
 
 
       

@@ -44,7 +44,7 @@
 }
 
 .ReportH2{
-      color: rgb(57, 52, 52);
+      /* color: rgb(57, 52, 52); */
       font-weight: bold;
       font-family:  'Roboto', sans-serif;
       font-size: 20px;
@@ -58,7 +58,7 @@
 }
 
 .CancelSpan{
-    color: rgb(57, 52, 52);
+    /* color: rgb(57, 52, 52); */
     font-weight: bold;
     font-family:  'Roboto', sans-serif;
     font-size: 25px;
@@ -72,7 +72,7 @@
 }
 
 .OurDomainText{
-    color: rgb(25, 22, 22);
+    /* color: rgb(25, 22, 22); */
     font-weight: lighter;
     font-family:  'Roboto', sans-serif;
     font-size: 14px;
@@ -151,7 +151,7 @@
 }
 
 .ReportH22{
-      color: rgb(57, 52, 52);
+      /* color: rgb(57, 52, 52); */
       font-weight: bold;
       font-family:  'Roboto', sans-serif;
       font-size: 20px;
@@ -165,7 +165,7 @@
 }
 
 .CancelSpann{
-    color: rgb(57, 52, 52);
+    /* color: rgb(57, 52, 52); */
     font-weight: bold;
     font-family:  'Roboto', sans-serif;
     font-size: 25px;

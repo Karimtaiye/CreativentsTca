@@ -80,7 +80,9 @@
       display: flex;
       flex-direction: column;
       height: 25%;
-      height: 50%;
+      height: 5%;
+      padding-block: 5px;
+      margin-left: 10%;
       width: 100%;
   }
 
@@ -201,12 +203,14 @@
 
     .submitratings{
       height: 60%;
-      margin-top: 20px;
+      margin-top: -40px;
     }
+    
+  
 
     .sectionthree .submitratings button{
       width: 30%;
-      height: 60%;
+      height: 50%;
     }
     .sectionthree .commentsectionrating input{
       width: 100%;
@@ -221,6 +225,7 @@
       border: none;
       border-radius: 5px;
       margin-bottom: 5vh;
+      margin-top: 4vh;
   }
   
   .Review_Image {
@@ -243,8 +248,6 @@
       width: 100%;
       height: 45%;
       display: flex;
-      /* justify-content: center;
-      align-items: center; */
   }
   .imageRev img{
       width: 50px;
@@ -253,14 +256,12 @@
       border-radius: 10px;
   }
   
+  
   .UserRev_Data {
       width: 100%;
       height: 55%;
       text-align: center;
-      /* color: red; */
       display: flex;
-      /* flex-direction: column;
-      justify-content: center; */
   }
   .UserRev_Data h3{
       font-size: 13px;
@@ -286,6 +287,14 @@
       height: 70%;
   
   }
+  .sectionthree{
+    width: 100%;
+    height: max-content;
+    color: white;
+    padding-top: 1px;
+    font-size: 15px;
+  }
+
 }
 
 @media only screen and (min-width: 768px) and (max-width:1024px){
@@ -360,6 +369,7 @@ justify-content: space-between;
 gap: 20px;
 height: 40%;
 }
+
 
 .checkoutdescription-checkout .booknow{
   width: 100%;
