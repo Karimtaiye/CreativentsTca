@@ -41,8 +41,9 @@ import {AiOutlineInstagram, AiOutlineTwitter, AiFillLinkedin, AiFillFacebook } f
 import { useNavigate } from "react-router-dom"
 const Footer =()=>{
     const nav = useNavigate()
+    const land = true
     return(
-        <div className="footer">
+        <div className="footer" style={{position:land?"absolute":null,bottom:land?"-500.1%":null}}>
             <div className="social-media">
                 <div className='s-b-holder'>
                 <div className="logo">

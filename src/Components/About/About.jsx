@@ -67,6 +67,7 @@ const About =()=>{
                 <h5>My events</h5>
             </div>
           </div>
+          
  </>
  
     )
