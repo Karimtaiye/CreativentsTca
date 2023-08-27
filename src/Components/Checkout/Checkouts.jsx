@@ -21,7 +21,7 @@ import { FaStar } from 'react-icons/fa';
 import { MdNetworkCheck } from 'react-icons/md'
 
 
-const Checkout = () =>{
+const Checkouts = () =>{
     const Dispatch = useDispatch()
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const nav = useNavigate()
@@ -321,4 +321,4 @@ useEffect(() => {
     )
 }
 
-export default Checkout
+export default Checkouts

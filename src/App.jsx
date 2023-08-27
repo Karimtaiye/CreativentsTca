@@ -17,7 +17,7 @@ import Upload from './Components/CreateEvent/Upload'
 import SavedTickets from './Components/SavedTickets/SavedTickets'
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile'
 import Explore from './Components/Explore/Explore'
-import Checkout from './Components/Checkout/Checkout'
+import Checkouts from './Components/Checkout/Checkouts'
 import UserDashBoard from './Components/UserDashBoard/UserDashBoard'
 import UserEventUpdates from './Components/UserEventUpdate/UserEventUpdates'
 import ConfirmDelete from './Components/UserDashBoard/ConfirmDelete'
@@ -61,7 +61,7 @@ function App() {
               <Route path="/api/getUserWithLinks/:id" element={<UserDashBoard />} />
               <Route path="/api/update/:eventID" element={<UserEventUpdates />} />
               <Route path="/api/Delete/:eventID" element={<ConfirmDelete />} />
-              <Route path="/api/events/:id" element={<Checkout />} />
+              <Route path="/api/events/:id" element={<Checkouts />} />
               <Route path="/api/tickets/:id" element={<ConfirmCheckOut />} />
               <Route path="/api/changepasswordlogged/:id" element={<ChangePassword />} />
               <Route path="/api/rate" element={<Rate />} />
