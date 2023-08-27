@@ -1,5 +1,4 @@
 
-
     .aboutPageHolder{
         height: 300vh;
         background-color:#08022F; 
@@ -7,10 +6,7 @@
         display: flex;
         flex-direction: column;
         row-gap: 5%;
-    
     }
-    
-    
     
     .aboutPage{
         height: 90vh;
