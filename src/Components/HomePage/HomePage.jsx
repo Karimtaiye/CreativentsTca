@@ -461,29 +461,7 @@ console.log(searchResults)
                 <button className='btn1' key={e._id} onClick={ () =>{
                   nav(`/api/events/${e._id}`)
                 }}>Book now</button>
-                {/* {
-                  !bookmarked?
-                  <BsBookmark onClick={()=>{
-                    axios.put(`https://creativents-on-boarding.onrender.com/api/users/bookmarks/${e._id}`, null, config).then(res=>{
-                      console.log(res)
-                      setBookmarked(true)
-                    })
-                    .catch(err=>{
-                      console.log(err);
-                    })
-                  }} className='bookmark'/>:
-                  <BsFillBookmarkCheckFill onClick={()=>{
-                    axios.put(`https://creativents-on-boarding.onrender.com/api/users/unbookmarks/${e._id}`, null, config).then(res=>{
-                      console.log(res)
-                      setBookmarked(false)
-                    })
-                    .catch(err=>{
-                      console.log(err);
-                    })
-                  }} className='bookmark'/>
-                } */}
-                
-     
+
               </div>
             </div>
             </div>
