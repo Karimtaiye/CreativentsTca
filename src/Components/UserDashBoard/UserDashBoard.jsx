@@ -69,6 +69,9 @@ function UserDashBoard() {
         if(err.message === "Network Error"){
             setMsg("Please check your Internet Connection")
         }
+        else if(err.response.data.message === "jwt expired"){
+            nav('/login')
+        }
         else{
             
             setMsg("Error Creating Event")

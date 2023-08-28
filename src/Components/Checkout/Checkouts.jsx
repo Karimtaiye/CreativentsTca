@@ -21,10 +21,11 @@ import { FaStar } from 'react-icons/fa';
 import { MdNetworkCheck } from 'react-icons/md'
 
 
-const Checkout = () =>{
+const Checkouts = () =>{
     const Dispatch = useDispatch()
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const nav = useNavigate()
+    const [notification, setNotification] = useState("")
     const [data, setData] = useState()
     const [error, setError] = useState("")
     const [msg, setMsg] = useState("Loading, Please wait...")
@@ -206,12 +207,14 @@ useEffect(() => {
                                 <h3>{data.eventPrice * ticketQty}</h3>
                              
                             </div>
-
-                            <button disabled={data.isSoldOut?true:false} style={{cursor:"pointer", background:data.isSoldOut?"#a56f03":null}} className='booknow' onClick={()=>{
+                                        {
+                                            console.log(data._id)
+                                        }
+                            <button disabled={data.isSoldOut?true:data.isToBeDeleted?true:false} style={{cursor:"pointer", background:data.isSoldOut?"#a56f03":data.isToBeDeleted?"#a56f03":null}} className='booknow' onClick={()=>{
 
                             nav(`/api/tickets/${data._id}`)
                             }}>
-                            {data.isSoldOut?"Sold Out":"Book now"}
+                            {data.isSoldOut?"Sold Out":data.isToBeDeleted?"Under Review":"Book now"}
                             </button>
                     </div>
                     </div>
@@ -219,27 +222,35 @@ useEffect(() => {
                    <div className='BookMarkReport'>
                    {
                         !bookmarked?
-                        <button className='BookMarkEvents' onClick={()=>{ 
+                        <>
+                            <button style={{border:notification?"1px solid gold":null, background:notification?"transparent":null}} className='BookMarkEvents' onClick={()=>{ 
                             axios.put(`https://creativents-on-boarding.onrender.com/api/users/bookmarks/${id}`, null, config).then(res=>{
                               console.log(res)
                               setBookmarked(true)
+                              setNotification("Event BookMarked")
                             })
                             .catch(err=>{
                               console.log(err);
+                              if(err.response.data.messsage === "Event is already bookmarked"){
+                                setNotification("Event is already bookmarked")
+                              }
                             })
                           }}
-                           >BookMark</button>:
-                            bookmarked?
+                          >BookMark</button>
+                          <span style={{position:"absolute"}}>{notification}</span>
+                        </>
+                           :
+                           bookmarked?
                             <button onClick={()=>{ 
                                 axios.put(`https://creativents-on-boarding.onrender.com/api/users/unbookmarks/${id}`, null, config).then(res=>{
                                   console.log(res)
                                   setBookmarked(false)
                                 })
                                 .catch(err=>{
-                                  console.log(err);
+                                    console.log(err);
                                 })
-                              }}
-                              className='BookMarkEvents'>UnBookMark</button>:null
+                            }}
+                            className='BookMarkEvents'>UnBookMark</button>:null
                     }
 
                     <button onClick={()=>nav(`/api/report/${data._id}`)} className='Report_Btn'>Report this event</button>
@@ -328,4 +339,4 @@ useEffect(() => {
     )
 }
 
-export default Checkout
+export default Checkouts

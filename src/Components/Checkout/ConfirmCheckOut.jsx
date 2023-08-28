@@ -9,6 +9,8 @@ import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
 
+const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+
 function ConfirmCheckOut() {
 const { id } = useParams()
 const nav = useNavigate()
@@ -17,6 +19,7 @@ const ticketPrice = useSelector((state)=>state.events.ticketPrice)
 const [email, setEmail] = useState("")
 const [DOB, setDOB] = useState("")
 const [msg, setMsg] = useState("")
+const [emailMsg, setEmailMsg] = useState("")
 const [subMsg, setSubMsg] = useState("")
 const [resAlert, setResAlert] = useState(false)
 const [errors, seterrors] = useState(false)
@@ -32,6 +35,13 @@ console.log(id);
 const url = `https://creativents-on-boarding.onrender.com/api/tickets/${id}`
 const BookEvent = () => {
     setLoading(true)
+    if(!emailRegex.test(email)){
+        // setResAlert(true)
+        setEmailMsg("Invalid Email Format")
+        // setSubMsg("Please check your email")
+        setLoading(false)
+      }
+      else {
     axios.post(url, UserDetails)
     .then(res=>{
         console.log(res);
@@ -88,6 +98,7 @@ const BookEvent = () => {
           }
     })
 }
+}
 
   return (
     <div className='Checkout_PopUp'>
@@ -109,15 +120,16 @@ const BookEvent = () => {
                     :
                     <>
                         <h4>Please input your email and Date of Birth for purchase</h4>
-                    <input className='CheckOut_Input' placeholder='Email' type="email" onChange={(e)=>setEmail(e.target.value)}/>
+                    <h6 style={{color:"red"}}>{emailMsg}</h6>
+                    <input style={{border:emailMsg?"1px solid red":null}} className='CheckOut_Input' placeholder='Email' type="email" onChange={(e)=>setEmail(e.target.value)}/>
                     <input className='CheckOut_Input' placeholder='Date of Birth' type="date" onChange={(e)=>setDOB(e.target.value)}/>
                     <div className='CheckOut_Btns'>
                         {
-                            resAlert? <button className='CheckOut_ConfirmBtn' onClick={()=>nav(`/api/tickets/${data._id}`)}>Go Back</button>:
+                            resAlert? <button  className='CheckOut_ConfirmBtn' onClick={()=>nav(`/api/events/${data._id}`)}>Go Back</button>:
                             <>
                             <button className='CheckOut_CancelBtn' onClick={()=>nav(`/api/events/${id}`)} disabled={loading}>Cancel</button>
                             <button className='CheckOut_ConfirmBtn' style={{background:loading?"#08022f93":null}} disabled={loading} onClick={BookEvent}>{
-                                loading?<SpinnerCircularSplit style={{animation:"slideInUp",animationDuration:"0.8s"}} size={30} thickness={150} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
+                                loading?<SpinnerCircularSplit style={{animation:"slideInUp",animationDuration:"0.5s"}} size={30} thickness={150} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
                                 "Confirm Book"}</button>
                             </>
                         }

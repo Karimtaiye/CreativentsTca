@@ -52,8 +52,8 @@ function HomePage() {
         const config = {
           headers: {
             Authorization: `Bearer ${token}`
-          },
-        };
+          }
+        }
         
        const eventUploaded = () => {
         axios.get(url)
@@ -280,7 +280,7 @@ console.log(searchResults)
     </div>
     <div style={{width:"90%",display:"flex", flexDirection:"column", justifyContent:"flex-start"}} className='Home_EventDesc'>
       <h2>Sunday, September 31st 2023</h2>
-      <h1>Pastor Frank 7th Spiritual Journey Session</h1>
+      <h1>{isPromotedDes[countpro % isPromotedDes.length]}</h1>
     </div>
   </section>: null
    }
@@ -456,32 +456,12 @@ console.log(searchResults)
               <div className='buttoncontroler'>
                 <h6>{e.eventLocation}</h6>
                 <h6>{e.eventTime}</h6>
-                <h6>#{e.eventPrice}</h6>
+                <h6>&#8358;{e.eventPrice}</h6>
                 
                 <button className='btn1' key={e._id} onClick={ () =>{
                   nav(`/api/events/${e._id}`)
                 }}>Book now</button>
-                {/* {
-                  !bookmarked?
-                  <BsBookmark onClick={()=>{
-                    axios.put(`https://creativents-on-boarding.onrender.com/api/users/bookmarks/${e._id}`, null, config).then(res=>{
-                      console.log(res)
-                      setBookmarked(true)
-                    })
-                    .catch(err=>{
-                      console.log(err);
-                    })
-                  }} className='bookmark'/>:
-                  <BsFillBookmarkCheckFill onClick={()=>{
-                    axios.put(`https://creativents-on-boarding.onrender.com/api/users/unbookmarks/${e._id}`, null, config).then(res=>{
-                      console.log(res)
-                      setBookmarked(false)
-                    })
-                    .catch(err=>{
-                      console.log(err);
-                    })
-                  }} className='bookmark'/>
-                } */}
+   
                 
      
               </div>
@@ -511,7 +491,7 @@ console.log(searchResults)
               <div className='buttoncontroler'>
                 <h6>{e.eventLocation}</h6>
                 <h6>{e.eventTime}</h6>
-                <h6>#{e.eventPrice}</h6>
+                <h6>&#8358;{e.eventPrice}</h6>
                 
                 <button className='btn1' key={e._id} onClick={ () =>{
                   nav(`/api/events/${e._id}`)
@@ -581,7 +561,7 @@ console.log(searchResults)
                         </div>
                         <div className='theprice'>
                             <BiMoney style={{color:"#FCA702"}}/>
-                            <h5 style={{color:"#FCA702"}} >#{e.eventPrice}</h5>
+                            <h5 style={{color:"#FCA702"}} >&#8358;{e.eventPrice}</h5>
                             {/* <h5>#2000</h5> */}
                         </div>
                     </div>
