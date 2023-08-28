@@ -2,8 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-function GetAllReports() {
-  const [GetAllReports, setGetAllReports] = useState([])
+function AllEvents() {
+    const [GetAllEvents, setGetAllEvents] = useState([])
   const userOnLoggedIn = useSelector(state=>state.events.user)
   const token = userOnLoggedIn.token
 //   const id = userOnLoggedIn.id
@@ -13,40 +13,40 @@ function GetAllReports() {
     },
   };
   console.log(token);
-  const url = 'https://creativents-on-boarding.onrender.com/api/admin/reports'
+  const url = 'https://creativents-on-boarding.onrender.com/api/events'
   // const url = 'https://creativents-on-boarding.onrender.com/api/blockuser'
 
-    const getAllUserReports = () => {
+    const getAllUserEvents = () => {
         axios.get(url, config)
         .then(res=>{
             console.log(res)
-            setGetAllReports(res.data.data)
+            setGetAllEvents(res.data.data)
         })
         .catch(err=>{
             console.log(err);
         })
     }
-    console.log(GetAllReports);
+    console.log(GetAllEvents);
     useEffect(()=>{
-        getAllUserReports()
+        getAllUserEvents()
     },[])
-
-
   return (
     <>
       <div className='Content_Title'>
-             <h4>All Reported Events</h4>
+             <h4>All Events</h4>
         </div>
       {
-        GetAllReports.map((e)=>(
-          <section className='Blocked_Users'>
-        <div className='Blocked_UserImg'>
+        GetAllEvents.map((e)=>(
+          <section className='All_Events'>
+        <div className='AllEvents_Img'>
+            <img src={e.eventImages} alt="" />
         </div>
-        <div className='Blocked_UsersData'>
+        <div className='AllEvents_Data'>
             <div className='Blocked_UserInfo'>
-            <h5>Email</h5>
-            <h5>UserName</h5>
-            <h5>{e.reason}</h5>
+            <h5>{e.eventName}</h5>
+            <h5>{e.eventCategory}</h5>
+            <h5>{e.eventLocation}</h5>
+            <h5>&#8358; {e.eventPrice}</h5>
             </div>
             <div className='Blocked_ActionBn'>
                 <button className='View_BlockedUser' onClick={()=>{
@@ -78,4 +78,4 @@ function GetAllReports() {
   )
 }
 
-export default GetAllReports
+export default AllEvents

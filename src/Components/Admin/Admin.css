@@ -45,7 +45,7 @@
     align-items: center;
 }
 
-.Admin_Search {
+.Admin_Search.acti {
     width: 100%;
     height: 35px;
     display: flex;
@@ -122,6 +122,14 @@
     border-radius: 5px;
     transition: all 750ms;
 } 
+.Admin_UserDrop li:active{
+    cursor: pointer;
+    /* rgba(100, 100, 111, 0.2) */
+    color: rgb(51, 20, 252);
+    background-color: white;
+    border-radius: 5px;
+    transition: all 750ms;
+} 
 
 .Admin_Profile {
     width: 100%;
@@ -134,15 +142,15 @@
 }
 
 .Admin_ProfilePic {
-    width: 25%;
-    height: 80%;
-}
-
-.Admin_ProfilePic {
     width: 55px;
-    height: 52px;
+    height: 55px;
     border-radius: 50%;
     background: red;
+}
+.Admin_ProfilePic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 .Admin_ProfileDetails {
@@ -177,6 +185,10 @@
 .Content_Title {
     width: 100%;
     height: 6%;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    padding-block: 20px;
 }
 
 .Admin_ContentManager {
@@ -204,7 +216,28 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    transform: scale(1);
 }
+
+.GetAll_User:hover {
+    transform: scale(1.03);
+    transition: all 350ms ease-in-out;
+}
+.User_ById {
+    width: 80%;
+    height: 400px;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    transform: scale(1)
+}
+
+/* .GetAll_User:hover {
+    transform: scale(1.03);
+    transition: all 350ms ease-in-out;
+} */
 
 .UserImage_Profile {
     width: 35%;
@@ -212,6 +245,18 @@
     display: flex;
     justify-content: center;
     background: rgb;
+    flex-direction: column;
+    align-items: center;
+    gap: 4%;
+}
+
+.User_ByIdImage_Profile {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background: rgb;
+    background: aqua;
     flex-direction: column;
     align-items: center;
     gap: 4%;
@@ -254,6 +299,56 @@
     color: white;
     border-radius: 5px;
 }
+.active_User {
+    width: 70%;
+    height: 40px;
+    background:rgb(10, 178, 10);
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+}
+.active_UserById {
+    width: 70%;
+    height: 40px;
+    background:rgb(10, 178, 10);
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+}
+ 
+.block_UserById {
+    width: 55%;
+    height: 45px;
+    background:rgb(255, 178, 29);
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 5px;
+    cursor: Pointer;
+}
+.delete_UserById {
+    width: 55%;
+    height: 45px;
+    background:rgba(2, 2, 65, 0.884);
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete_EventById {
+    width: 55%;
+    height: 55px;
+    background:rgba(2, 2, 65, 0.884);
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
 .UserData_Profile {
     width: 65%;
@@ -261,6 +356,14 @@
     flex-direction: column;
     display: flex;
     justify-content: space-around;
+}
+.User_ByIdData_Profile {
+    width: 60%;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .UserData_Profile article{
@@ -276,7 +379,18 @@
     height:150px;
     display: flex;
     border-radius: 4px;
-    margin: 20px;
+    margin-left: 35px;
+    justify-content: space-between;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transform: scale(1);
+}
+.All_Events {
+    width: 45%;
+    height:170px;
+    display: flex;
+    border-radius: 4px;
+    margin-left: 35px;
+    margin-top: 20px;
     justify-content: space-between;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -285,10 +399,34 @@
     width:32%;
     height: 100%;
     background: rgba(100, 100, 111, 0.2);
+    object-fit: cover;
+}
+
+.AllEvents_Img {
+    width:40%;
+    height: 100%;
+    background: rgba(100, 100, 111, 0.2);
+    object-fit: cover;
+}
+
+.Blocked_UserImg img{
+    width:100%;
+    height: 100%;
+}
+.AllEvents_Img img{
+    width:100%;
+    height: 100%;
 }
 
 .Blocked_UsersData {
     width: 68%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.AllEvents_Data {
+    width: 60%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -299,6 +437,7 @@
     width: 90%;
     height: 65%;
     display: flex;
+    gap: 4%;
     justify-content: center;
     flex-direction: column;
 }

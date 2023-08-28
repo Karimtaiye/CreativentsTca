@@ -2,19 +2,21 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function AdminNav() {
     const nav = useNavigate()
+    const { adminID } = useParams()
     const [user, setUser]  = useState(false)
     const [events, setEvents]  = useState(false)
     const [tickets, setTickets]  = useState(false)
+    const [analysis, setAnalysis]  = useState(false)
     const [ratings, setRatings]  = useState(false)
-    const [reports, setReports]  = useState(false)
     const [allUser, setAllUser] = useState([])
     const userOnLoggedIn = useSelector(state=>state.events.user)
-    const token = userOnLoggedIn.token
-    const id = userOnLoggedIn.id
+    const email = userOnLoggedIn.email
+    const name = userOnLoggedIn.name
+    const profilePicture = userOnLoggedIn.profilePicture
 
   return (
     <section className='Admin_NavSection'>
@@ -32,14 +34,16 @@ function AdminNav() {
                       setEvents(false)
                       setTickets(false)
                       setRatings(false)
-                      setReports(false)
+                      setAnalysis(false)
                     }}>User Manager</p>
                  {
                   user?
                   <ul className='Admin_UserDrop'>
-                  <li >All Users</li>
-                  <li>Users By Id</li>
-                  <li>Blocked Users</li>  
+                  <li onClick={()=>nav(`/adminDashboard/${adminID}id/allUser`)} >All Users</li>
+                  <li onClick={()=>nav(`/adminDashboard/${adminID}id/userbyID`)}>Users By Id</li>
+                  <li onClick={()=>nav(`/adminDashboard/${adminID}id/allBlocked`)}>Blocked Users</li>  
+                  <li onClick={()=>nav(`/adminDashboard/${adminID}id/allActive`)}>Active Users</li>  
+                  <li>Search Users</li>  
                   <li>Deleted Users</li>  
                 </ul>:null
                  }
@@ -50,34 +54,19 @@ function AdminNav() {
                       setUser(false)
                       setTickets(false)
                       setRatings(false)
-                      setReports(false)
+                      setAnalysis(false)
                     }}>Events Manager</p>
                   {
                     events?
                     <ul className='Admin_UserDrop'>
-                    <li>All Events</li>
-                    <li>Event by Id</li>
-                    <li>All Pending Event Delete</li>
-                    <li>All Deleted Events</li>
+                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/allEvents`)}>All Events</li>
+                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/eventbyID`)}>Event by Id</li>
+                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/allPending`)}>All Pending Deletion</li>
+                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/allReports`)}>All Reported Events</li>
+                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/reportbyID`)}>Report By Id</li>  
                     <li>All Updated Events</li>  
+                    <li>All Deleted Events</li>  
                     {/* <li>Reported Events</li>   */}
-                  </ul>:null
-                  }
-                  </nav>
-                  <nav>
-                  <p onClick={()=>{              
-                      setTickets(!tickets)
-                      setEvents(false)
-                      setUser(false)
-                      setRatings(false)
-                      setReports(false)
-                    }}>Ticket Manager</p>
-                  {
-                    tickets?
-                    <ul className='Admin_UserDrop'>
-                    <li>All Puchased Tickets</li>
-                    <li>All Updated Tickets</li>
-                    <li>All Bookmarked Tickets</li>  
                   </ul>:null
                   }
                   </nav>
@@ -87,29 +76,29 @@ function AdminNav() {
                       setTickets(false)
                       setEvents(false)
                       setUser(false)
-                      setReports(false)
+                      setAnalysis(false)
                     }}>Promotion Manager</p>
                     {
                       ratings?
                       <ul className='Admin_UserDrop'>
-                      <li>All Promoted Events</li>
+                      <li onClick={()=>nav(`/adminDashboard/${adminID}id/allPromoted`)}>All Promoted Events</li>
                       <li>Promoted Event by Id</li>
                   </ul>:null
                      }
                   </nav>
                   <nav>
                   <p onClick={()=>{
-                      setReports(!reports)
+                      setAnalysis(!analysis)
                       setRatings(false)      
                       setTickets(false)
                       setEvents(false)
                       setUser(false)
-                      // setReports(false)
-                    }}>Reports Manager</p>
+                      // setanalysis(false)
+                    }}>Analysis Manager</p>
                     {
-                      reports?
+                      analysis?
                       <ul className='Admin_UserDrop'>
-                      <li>Reported Events</li>
+                      <li   >Ananysis</li>
                       <li>Reported Users</li>
                   </ul>:null
                      }
@@ -136,11 +125,11 @@ function AdminNav() {
 
                 <div className='Admin_Profile'>
                   <div className='Admin_ProfilePic'>
-                    <img src="" alt="" />
+                    <img src={profilePicture} alt="" />
                   </div>
                   <div className='Admin_ProfileDetails'>
-                    <h5>Email</h5>
-                    <p>Admin_UserName</p>
+                    <h5>{email}</h5>
+                    <p>Admin_{name}</p>
                   </div>
                 </div>
               </div>

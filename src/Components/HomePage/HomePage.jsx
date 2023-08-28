@@ -278,7 +278,7 @@ console.log(searchResults)
     <div className='HomePage_Events'>
       <img src={isPromoted[countpro % isPromoted.length]} alt="" />
     </div>
-    <div className='Home_EventDesc'>
+    <div style={{width:"90%",display:"flex", flexDirection:"column", justifyContent:"flex-start"}} className='Home_EventDesc'>
       <h2>Sunday, September 31st 2023</h2>
       <h1>Pastor Frank 7th Spiritual Journey Session</h1>
     </div>

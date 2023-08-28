@@ -41,13 +41,19 @@ function UserDashBoard() {
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const userName = userOnLoggedIn.name
     const userId = userOnLoggedIn.id
-    const userToken = userOnLoggedIn.token
+    const token = userOnLoggedIn.token
     const userEmail = userOnLoggedIn.email
     const userProfilePicture = userOnLoggedIn.profilePicture
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    };
     
     const url = `https://creativents-on-boarding.onrender.com/api/getUserWithLinks/${id}`
     const getuserEventDetails = () => {
-        axios.get(url)
+        axios.get(url, config)
         .then(res=>{
         console.log(res)
         console.log(res.data.data)
@@ -81,10 +87,6 @@ function UserDashBoard() {
     console.log(userPurchased);
     console.log(userBookMarked);
 
-    // const deleteEventById = () => {
-    //     nav(`/api/Events/:eventID`)
-    //     setConfirmation(true)
-    // }
 
   return (
         
@@ -190,15 +192,17 @@ function UserDashBoard() {
                                        
                                       </div>
                                     <div className='Hosted_EventBtn'>
-                                        <button className='EventUpdate_Btn' onClick={()=>nav(`/api/update/${e._id}`)}>Update</button>
-                                        <button className='EventDelete_Btn' onClick={()=>{
+                                        <button disabled={e.isToBeDeleted} style={{background:e.isToBeDeleted?"#b47c0c":null, cursor:e.isToBeDeleted?
+                                        "not-allowed":null}} className='EventUpdate_Btn' onClick={()=>nav(`/api/update/${e._id}`)}>Update</button>
+                                        <button disabled={e.isToBeDeleted} style={{color:e.isToBeDeleted?"grey":null, border:e.isToBeDeleted?
+                                        "1px solid rgb(150, 6, 6)":null, cursor:e.isToBeDeleted?"not-allowed":null}} className='EventDelete_Btn' onClick={()=>{
                                             nav(`/api/Delete/${e._id}`)
                                             // setConfirmation(true)
-                                        }}>Delete</button>
+                                        }}>{e.isToBeDeleted?"Pending":"Delete"}</button>
                                     </div>
                                 </div>
                                     <p className='availableTicket'>Available tickets: {e.availableTickets}</p>
-                                    {/* <p style={{position:"absolute", right:"0", top:"5%"}} className='availableTicket'>Purchased tickets: {e.purchasedTickets}</p> */}
+
                             </div>
                                     </>
                                )):
@@ -256,7 +260,7 @@ function UserDashBoard() {
                 </div>
             </div>
                                         </>
-                                    //    <Tickets key={e._id} src={e.link.eventImages}  eventVenue={e.link.eventVenue}  eventName={e.link.eventName} eventDate={e.link.eventDate} eventPrice={e.link.eventPrice}/>
+
                                     ))
                                :
                                myBookMarked?
@@ -324,7 +328,7 @@ function UserDashBoard() {
 
   {
     confirmation? 
-    <ConfirmDelete setConfirmation = {setConfirmation} cancel = {false}/>
+    <ConfirmDelete setConfirmation = {setConfirmation} cancel = {false} request={true}/>
     :
      null
   }

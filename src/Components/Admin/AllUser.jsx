@@ -43,7 +43,7 @@ function AllUser() {
                   <section className='Admin_AllUsers'>
                     {
                       allUser.map((e)=>(
-                        <div className='GetAll_User' key={e._id}>
+                        <div className='GetAll_User' style={{cursor:"pointer"}} key={e._id}>
 
                       <div className='UserImage_Profile'>
                         {
@@ -52,29 +52,29 @@ function AllUser() {
                         }
                         <div className='User_NameInfo'>
                           <h5>{e.firstname} {e.lastname}</h5>
-                          <h6>{e.email}</h6>
+                          <h6></h6>
                         </div>
                       </div>
 
                       <div className='UserData_Profile'>
                         <article>
-                          <h5>Created at: {e.createdAt} </h5>
+                          <h5><span >Created at</span>: {e.createdAt} </h5>
                         </article>
                         <article>
-                          <h5>Active status: </h5>
+                          <h5>Email: {e.email}</h5>
                         </article>
                         <article>
-                          <h5>Verified Satus: </h5>
+                          <h5>Verified Status: {e.isVerified?"true":"false"}</h5>
                         </article>
                         <article>
-                          <h5>Ticket Purchased: </h5>
+                          <h5>Ticket Purchased:{e.myticketsLink.length} </h5>
                         </article>
                         <article>
-                          <h5>Events Hosted: </h5>
+                          <h5>Events Hosted: {e.myEventsLink.length}</h5>
                         </article>
-                        <article>
+                        {/* <article>
                           <h5>Ticket Sold: </h5>
-                        </article>
+                        </article> */}
                         <article>
                           <h5>Events Deleted: </h5>
                         </article>

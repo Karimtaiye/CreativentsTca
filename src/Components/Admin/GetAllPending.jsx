@@ -2,51 +2,50 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-function GetAllReports() {
-  const [GetAllReports, setGetAllReports] = useState([])
-  const userOnLoggedIn = useSelector(state=>state.events.user)
-  const token = userOnLoggedIn.token
-//   const id = userOnLoggedIn.id
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`
-    },
-  };
-  console.log(token);
-  const url = 'https://creativents-on-boarding.onrender.com/api/admin/reports'
-  // const url = 'https://creativents-on-boarding.onrender.com/api/blockuser'
-
-    const getAllUserReports = () => {
-        axios.get(url, config)
-        .then(res=>{
-            console.log(res)
-            setGetAllReports(res.data.data)
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-    }
-    console.log(GetAllReports);
-    useEffect(()=>{
-        getAllUserReports()
-    },[])
-
-
-  return (
-    <>
+function GetAllPending() {
+    const [GetAllReports, setGetAllReports] = useState([])
+    const userOnLoggedIn = useSelector(state=>state.events.user)
+    const token = userOnLoggedIn.token
+  //   const id = userOnLoggedIn.id
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    };
+    console.log(token);
+    const url = 'https://creativents-on-boarding.onrender.com/api/eventsPendingDelete'
+    // const url = 'https://creativents-on-boarding.onrender.com/api/blockuser'
+  
+      const getAllUserReports = () => {
+          axios.get(url, config)
+          .then(res=>{
+              console.log(res)
+              setGetAllReports(res.data.data)
+          })
+          .catch(err=>{
+              console.log(err);
+          })
+      }
+      console.log(GetAllReports);
+      useEffect(()=>{
+          getAllUserReports()
+      },[])
+    return (
+        <>
       <div className='Content_Title'>
-             <h4>All Reported Events</h4>
+             <h4>All Pending Deletion</h4>
         </div>
       {
         GetAllReports.map((e)=>(
           <section className='Blocked_Users'>
         <div className='Blocked_UserImg'>
+            <img src={e.eventImages} alt="" />
         </div>
         <div className='Blocked_UsersData'>
             <div className='Blocked_UserInfo'>
-            <h5>Email</h5>
-            <h5>UserName</h5>
-            <h5>{e.reason}</h5>
+            <h5>{e.eventName}</h5>
+            <h5>{e.eventCategory}</h5>
+            <h5>Date: {e.customUpdatedAt}</h5>
             </div>
             <div className='Blocked_ActionBn'>
                 <button className='View_BlockedUser' onClick={()=>{
@@ -59,7 +58,7 @@ function GetAllReports() {
                         })
                       }}>View</button>
                 <button  className='Null_BlockedUser' onClick={()=>{
-                        axios.delete(`https://creativents-on-boarding.onrender.com/api/Delete/${e.targetId}`, config)
+                        axios.delete(`https://creativents-on-boarding.onrender.com/api/Delete/${e._id}`, config)
                         .then(res=>{
                           console.log(res);
                         })
@@ -78,4 +77,4 @@ function GetAllReports() {
   )
 }
 
-export default GetAllReports
+export default GetAllPending

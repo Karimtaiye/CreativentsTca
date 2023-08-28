@@ -51,8 +51,6 @@ const getAllBlockedUsers = () => {
                           !e.profilePicture?<div className='AllUser_ProfileName'><h1>{e.firstname.charAt(0).toUpperCase()}{e.lastname.charAt(0).toUpperCase()}</h1> </div>
                           :<img src={e.profilePicture} alt="" />
                         }
-                        {/* <div className='User_NameInfo'>
-                        </div> */}
                       </div>
 
                       <div style={{justifyContent:"center", gap:"15px"}} className='UserData_Profile'>
@@ -76,31 +74,6 @@ const getAllBlockedUsers = () => {
                   </section>
                 </div>
     </>
-    // <section className='Blocked_Users'>
-    //     <div className='Blocked_UserImg'>
-    //     </div>
-    //     <div className='Blocked_UsersData'>
-    //         <div className='Blocked_UserInfo'>
-    //         <h5>Email</h5>
-    //         <h5>UserName</h5>
-    //         <h5>Reasons</h5>
-    //         </div>
-    //         <div className='Blocked_ActionBn'>
-    //             <button className='View_BlockedUser'>View</button>
-    //             <button  className='Null_BlockedUser' onClick={()=>{
-    //                 axios.get(url, e._id, config)
-    //                 .then(res => {
-    //                     console.log(res.data);
-    //                     // setBlockedUsers(res.data.blockedUsers); // Access blockedUsers property
-    //                 })
-    //                 .catch(err => {
-    //                     console.log(err);
-    //                 })
-    //             }}>Unblock</button>
-    //         </div>
-    //     </div>
-
-    // </section>
   )
 }
 
