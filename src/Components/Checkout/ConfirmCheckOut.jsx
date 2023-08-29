@@ -8,13 +8,17 @@ import { SpinnerCircularSplit } from 'spinners-react'
 import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
+import { getBarCode } from '../Redux/State'
+import { useDispatch } from 'react-redux'
 
 const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
 function ConfirmCheckOut() {
 const { id } = useParams()
 const nav = useNavigate()
+const Dispatch = useDispatch()
 const ticketQuantity = useSelector((state)=>state.events.ticketQty)
+const userOnLoggedIn = useSelector(state=>state.events.user)
 const ticketPrice = useSelector((state)=>state.events.ticketPrice)
 const [email, setEmail] = useState("")
 const [DOB, setDOB] = useState("")
@@ -25,26 +29,30 @@ const [resAlert, setResAlert] = useState(false)
 const [errors, seterrors] = useState(false)
 const [loading, setLoading] = useState(false)
 
-
-const UserDetails = {email, ticketQuantity, DOB}
+const token = userOnLoggedIn.token
+const userEmail = userOnLoggedIn.email
+const UserDetails = {email:token?userEmail:email, ticketQuantity, DOB}
 console.log(ticketQuantity);
 console.log(ticketPrice);
-// console.log(UserDetails);
+
 console.log(id);
 
 const url = `https://creativents-on-boarding.onrender.com/api/tickets/${id}`
 const BookEvent = () => {
     setLoading(true)
-    if(!emailRegex.test(email)){
+    setEmailMsg("")
+    if(!token && !emailRegex.test(email)){
         // setResAlert(true)
         setEmailMsg("Invalid Email Format")
         // setSubMsg("Please check your email")
         setLoading(false)
       }
-      else {
+      else{
     axios.post(url, UserDetails)
     .then(res=>{
         console.log(res);
+        Dispatch(getBarCode(res.data.data.barcode))
+        nav(`/api/barcode/${res.data.data._id}`)
         setResAlert(true)
         setLoading(false)
             const refVal = "Creativents"+ Math.random() * 1000;
@@ -121,7 +129,9 @@ const BookEvent = () => {
                     <>
                         <h4>Please input your email and Date of Birth for purchase</h4>
                     <h6 style={{color:"red"}}>{emailMsg}</h6>
-                    <input style={{border:emailMsg?"1px solid red":null}} className='CheckOut_Input' placeholder='Email' type="email" onChange={(e)=>setEmail(e.target.value)}/>
+                    {
+                    !token?<input style={{border:emailMsg?"1px solid red":null}} className='CheckOut_Input' placeholder='Email' type="email" onChange={(e)=>setEmail(e.target.value)}/>:null
+                    }
                     <input className='CheckOut_Input' placeholder='Date of Birth' type="date" onChange={(e)=>setDOB(e.target.value)}/>
                     <div className='CheckOut_Btns'>
                         {

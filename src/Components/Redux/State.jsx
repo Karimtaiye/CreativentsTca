@@ -22,7 +22,8 @@ const initialState = {
 
     ticketQty : 1,
 
-    ticketPrice:0
+    ticketPrice:0,
+    barCode:""
 }
 
 export const eventReducers = createSlice({
@@ -49,8 +50,11 @@ export const eventReducers = createSlice({
         },
         checkoutTicketPrice:(state, {payload})=>{
             state.ticketPrice = payload
+        },
+        getBarCode:(state, {payload})=>{
+            state.barCode = payload
         }
     }
 })
-export const {userStoreData, userResData, userLogin, userProfileUpdate, eventData, checkoutTicketQty, checkoutTicketPrice} = eventReducers.actions
+export const {userStoreData, userResData, userLogin, userProfileUpdate, eventData, checkoutTicketQty, checkoutTicketPrice, getBarCode} = eventReducers.actions
 export default eventReducers.reducer

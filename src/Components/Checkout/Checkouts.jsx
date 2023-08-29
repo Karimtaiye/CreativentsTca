@@ -21,7 +21,7 @@ import { FaStar } from 'react-icons/fa';
 import { MdNetworkCheck } from 'react-icons/md'
 
 
-const Checkouts = () =>{
+const Checkout = () =>{
     const Dispatch = useDispatch()
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const nav = useNavigate()
@@ -59,19 +59,37 @@ const Checkouts = () =>{
           reviewText:input
       }
       
-const addReview = () => {
-    axios.post(`https://creativents-on-boarding.onrender.com/api/events/${id}/review`, reviewData ,config)
-      .then(res => {
-        console.log(res);
-        setInput("")
-        // setreview(res.data)
-    })
-    .catch(err => {
-        console.log('Error fetching data:', err);
-        setError(err.response.data.message)
-      });
-   
-  };
+      const addReview = () => {
+        axios.post(`https://creativents-on-boarding.onrender.com/api/events/${id}/review`, reviewData ,config)
+          .then(res => {
+            console.log(res);
+            setInput("");
+    
+            // Append the new review to the existing reviews array
+            const newReview = {
+                _id: res.data._id,
+                attendeeName: userOnLoggedIn.name,
+                userPicture: userOnLoggedIn.profilePicture,
+                timestamp: new Date().toLocaleString(),
+                reviewText: input,
+                rating: ratings
+            };
+            setData(prevData => ({
+                ...prevData,
+                reviews: [...prevData.reviews, newReview]
+            }));
+        })
+        .catch(err => {
+            console.log('Error fetching data:', err);
+            if(err.response.data.message === "Unauthorized. You must purchase a ticket for this event to submit a review"){
+            setError("You must purchase a ticket for this event to submit a review");
+            }
+            else {
+                setError(err.response.data.message)
+            }
+        });
+    };
+    
 
 const handleLike = () =>{
     setLike(like === 0 ? 1 : 1)
@@ -128,7 +146,7 @@ useEffect(() => {
             fontSize:"26px", color:"white", textAlign:"center"
         }}>{msg}</h1>
         {
-            network?<MdNetworkCheck className='Network_Icon' />:<SpinnerDotted size={200} thickness={50} speed={100} color="#ffffff" />
+            network?<MdNetworkCheck className='Network_Icon' />:<SpinnerDotted size={150} thickness={50} speed={100} color="#ffffff" />
         }
         </div> :
         <div className="checkoutcontainer">
@@ -234,10 +252,17 @@ useEffect(() => {
                               if(err.response.data.messsage === "Event is already bookmarked"){
                                 setNotification("Event is already bookmarked")
                               }
+
+                              else if(err.response.data.messsage === "jwt expired"){
+                                    nav('/login')
+                              }
+                              else{
+                                setNotification("")
+                              }
                             })
                           }}
                           >BookMark</button>
-                          <span style={{position:"absolute"}}>{notification}</span>
+                          <span style={{color:"white"}}>{notification}</span>
                         </>
                            :
                            bookmarked?
@@ -248,6 +273,16 @@ useEffect(() => {
                                 })
                                 .catch(err=>{
                                     console.log(err);
+                                    if(err.response.data.messsage === "Event is already bookmarked"){
+                                        setNotification("Event is already bookmarked")
+                                      }
+
+                                      else if(err.response.data.messsage === "jwt expired"){
+                                            nav('/login')
+                                      }
+                                      else{
+                                        setNotification("")
+                                      }
                                 })
                             }}
                             className='BookMarkEvents'>UnBookMark</button>:null
@@ -258,12 +293,12 @@ useEffect(() => {
 
                     
                 <section className='sectionthree'>
-                <div className='commentsectionrating'>
+                <div style={{height:"20vh"}} className='commentsectionrating'>
                     <h3>Comment</h3>
                     <input type="message" value={input} onChange={(e) => setInput(e.target.value)}/>
                     <span>{error}</span>
                 </div>
-                <div className='submitratings'>
+                <div style={{height:"12vh"}} className='submitratings'>
                 <div className='starBoy'>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <FaStar style={{cursor:"pointer"}}
@@ -297,7 +332,7 @@ useEffect(() => {
                             <div>
                             {[1, 2, 3, 4, 5].map((star) => (
                             <FaStar key={star}
-                            className={star <= ratings ? 'star_selected' : 'star'}
+                            className={star <= e.rating ? 'star_selected' : 'star'}
                             />))}
                             </div>
                             <h5>{e.timestamp}</h5>
@@ -339,4 +374,4 @@ useEffect(() => {
     )
 }
 
-export default Checkouts
+export default Checkout

@@ -5,13 +5,21 @@ import   "./ReportMobile.css"
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
+import {BiSolidError } from 'react-icons/bi'
+import {GiConfirmed } from 'react-icons/gi'
 
 const Report = () => {
+
     const [holder, setHolder] =useState(true)
     const nav = useNavigate()
     const [report, setReport] =useState(false)
+    const [description, setDescription] =useState("")
+    const [error, setError] =useState(false)
+    const [msg, setMsg] =useState("")
+    const [subMsg, setsubMsg] =useState("")
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const [reason, setReason] = useState('')
+    const [reportAlert, setReportAlert] = useState(false)
     const { eventID } = useParams()
 
     const token = userOnLoggedIn.token
@@ -19,7 +27,7 @@ const Report = () => {
         headers: {
           Authorization: `Bearer ${token}`
         },
-      };
+      }
 
       const EventReportReason = (e) => {
         setReason(e.target.value)
@@ -29,7 +37,8 @@ const Report = () => {
       const reportData = {
         targetType : "event",
         targetId : eventID,
-        reason
+        reason,
+        description:description
       }
 
 
@@ -38,14 +47,43 @@ const Report = () => {
     const Submit_Report = () => {
         axios.post(url, reportData, config)
         .then(res=>{
-            console.log(res);
+            console.log(res)
+            setMsg("Report Sent Successfully")
+            setsubMsg("Please exercise patiece while we work on it")
+            setReportAlert(true);
+            
+            setTimeout(() => {
+            setReportAlert(false);
+                // nav('/homepage'); 
+              }, 5000)
         })
         .catch(err=>{
             console.log(err);
+            // setReportAlert(true);
+            setError(true)
+            setReportAlert(true)
+            setTimeout(() => {
+                setReportAlert(false);
+                // nav('/homepage'); 
+              }, 5000)
+            if(err.message === "Network Error"){
+                setMsg("No internet Connection")
+                setsubMsg("")
+            }
+            else if(err.response && err.response.data.message === "jwt expired"){
+                setMsg("No internet Connection")
+                setsubMsg("")
+            }
+            else if(err.response.data.error === "Report validation failed: reason: Path `reason` is required., description: Path `description` is required."){
+                setMsg("Reasons and Input field are empty")
+                setsubMsg("Pls fill out these parts")
+            }
+            else {
+                setMsg("Failed to send Report")
+                setsubMsg("Please try again later")
+            }
         })
-
     }
-
 
     const Clickstart = () =>{
         setHolder(false)
@@ -212,7 +250,7 @@ const Report = () => {
                     
                     </div>
     
-                      <textarea name="description" rows="4" cols="50" className="ReportDes" defaultValue="Enter your description here...">
+                      <textarea name="description" rows="4" cols="50" onChange={(e)=>setDescription(e.target.value)} className="ReportDes" placeholder="Enter your description here...">
                          
                         </textarea>
                       <div className="SubmitAndGoBack">
@@ -222,7 +260,22 @@ const Report = () => {
                      </div>
                   </div>:null
             }
+
         </div>
+       {
+        reportAlert?
+        <div className="popUpReport">
+        <div>
+            <h3>{msg}</h3>
+            <h4>{subMsg}</h4>
+            <h4></h4>
+            {
+         error?<BiSolidError style={{fontSize:"100px", color:"red"}}/> :         
+         <GiConfirmed style={{fontSize:"100px", color:"green"}}/> 
+        }
+        </div>
+    </div>:null
+       }
         </>
     )
 }

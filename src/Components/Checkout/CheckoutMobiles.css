@@ -319,7 +319,7 @@
 
 .checkouteventdetails{
   flex-direction: column;
-  height: 70%;
+  height: 40%;
   gap: 20px;
   justify-content: start;
 }

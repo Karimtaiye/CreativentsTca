@@ -35,6 +35,10 @@
         height: 70%;
         width: 35%;
     }
+
+    .popUpReport div{
+        width: 85%;
+    }
     
 
 }

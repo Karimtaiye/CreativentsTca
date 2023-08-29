@@ -40,6 +40,7 @@ function Upload() {
     const [imagecreate, setImageUpload] = useState ("")
 
     const states = [
+        " States",
         "Adamawa State",
         "Bauchi State",
         "Benue State",
@@ -134,7 +135,7 @@ function Upload() {
     const CreateEvent = (e) => {
         setLoading(true)
         e.preventDefault()
-        setImageUpload(image)
+        // setImageUpload(files)
 
         const formData = new FormData()
         formData.append("eventName", eventName)
@@ -195,18 +196,18 @@ function Upload() {
     }
     
     const removedisplay = ()=>{
-        setDisplay(false)
+        setDisplay(true)
     }
 
-         const handleimageClick =()=>{
-          inputRef.current.click();
-         }
+        //  const handleimageClick =()=>{
+        //   inputRef.current.click();
+        //  }
         
-        const handleimageChange =(event)=>{
-          const file =event.target.files[0];
-          console.log(file);
-         setImage(event.target.files[0]);
-        }
+        // const handleimageChange =(event)=>{
+        //   const file =event.target.files[0];
+        //   console.log(file);
+        //  setImage(event.target.files[0]);
+        // }
 
         const handleimageCreate =()=>{
             upload.current.click();
@@ -304,7 +305,7 @@ function Upload() {
             {
                 imagecreate ?(      
                <div className="putimage">
-                <img src={URL.createObjectURL(imagecreate)} alt="" style={{width: "100%", height: "100%" ,borderRadius: "10px"}}/>
+                <img src={URL.createObjectURL(imagecreate)} alt="" style={{maxWidth: "100%", height: "auto  " ,borderRadius: "10px"}}/>
                 {display && (
                     <AiOutlinePlus onClick={removedisplay}/>
                 )}
@@ -317,7 +318,7 @@ function Upload() {
                 )
             }
          <label onClick={handleimageCreate} htmlFor="upload"></label>
-         <input id="upload" type="file" ref={upload} multiple onChange={File} style={{display:"none"}} />
+         <input id="upload" type="file" ref={upload} accept="image/*" onChange={File} style={{display:"none"}} />
           </div>
           <div className="holderseight">
           <h4>Location</h4>
