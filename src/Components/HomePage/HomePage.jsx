@@ -321,7 +321,7 @@ console.log(searchResults)
             <img src="" alt="" />
           </div>
           <div className='Upcoming_EventDesc'>
-           
+           <AiFillHome />
             <div className='Upcoming_LocationDiv'>
             <MdLocationPin className='Upcoming_Location'/>
             <span className='span'></span>
