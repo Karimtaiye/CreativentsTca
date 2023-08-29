@@ -28,12 +28,14 @@ function UpdateProfile() {
     const [lastname, setLastname] = useState(initLastName)
     const [email, setEmail] = useState(initEmail)
     const [profileName, setProfileName] = useState("")
+    const [selectedImage, setSelectedImage] = useState(null)
 
     const token = userOnLoggedIn.token
     const profile = userOnLoggedIn.profilePicture
     const uploadProfile = (e) => {
         const File = e.target.files[0]
         setProfilePicture(File)
+        setSelectedImage(URL.createObjectURL(File));
     }
     const data = {firstname, lastname, email, username:profileName}
     const formData = new FormData()
@@ -148,14 +150,18 @@ function UpdateProfile() {
             </div>
             <div className='Line_Break'></div>
             <div className='Update_Body'>
-                <section className='Profile_PicturePart'>
-                    <div className='Profile_PictureUpdate'>
-                        <img src={profile} alt="" />
-                    </div>
-                    <input style={{display:"none"}} type="file" id='Upload' onChange={uploadProfile}/>
-                    <label htmlFor="Upload" className='image_Upload'>Upload image</label>
-                    <label style={{paddingInline:"45px", paddingBlock:"10px", background:"#FFA800"}} className='image_Upload' onClick={addProfilePicture}>Save Image</label>
-                </section>
+            <section className='Profile_PicturePart'>
+            <div className='Profile_PictureUpdate'>
+                {selectedImage ? (
+                <img src={selectedImage} alt="Selected" style={{ maxWidth: '100%', maxHeight: '200px' }} />
+                ) : (
+                <img src={profile} alt="" />
+                )}
+            </div>
+            <input style={{ display: 'none' }} type="file" id='Upload' onChange={uploadProfile} />
+            <label htmlFor="Upload" className='image_Upload'>Upload image</label>
+            <label style={{ paddingInline: "45px", paddingBlock: "10px", background: "rgb(255, 178, 29)" }} className='image_Upload' onClick={addProfilePicture}>Save Image</label>
+            </section>
                 <section className='Profile_DetailsPart'>
                     <label>First Name</label>
                     <input style={{color:"white", paddingInline:"10px"}} type="text" value={firstname}  onChange={(e)=>setFirstName(e.target.value)}/>

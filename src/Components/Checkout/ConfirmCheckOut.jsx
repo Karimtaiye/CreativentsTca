@@ -31,6 +31,7 @@ const [loading, setLoading] = useState(false)
 
 const token = userOnLoggedIn.token
 const userEmail = userOnLoggedIn.email
+const userName = userOnLoggedIn.name
 const UserDetails = {email:token?userEmail:email, ticketQuantity, DOB}
 console.log(ticketQuantity);
 console.log(ticketPrice);
@@ -63,8 +64,8 @@ const BookEvent = () => {
               currency: "NGN",
               customer: {
                 // name: user.name,
-                name: "user",
-                email: email
+                name: token?userName:"user",
+                email: token?userEmail:email
                 // name: user.email,
               },
               notification_url: "https://example.com/webhook"

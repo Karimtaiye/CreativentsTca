@@ -297,7 +297,7 @@
 }
 
 .CheckOut_ConfirmBtn {
-    background-color: #08022F;
+    background-color: #303482;
     color: white;
 }
 
@@ -747,6 +747,7 @@
     height: 20%;
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
 }
 .Rv_Stars h5{

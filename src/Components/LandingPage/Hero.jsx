@@ -5,10 +5,16 @@ import party from "../../assets/party.webp"
 import event3 from "../../assets/event3.jpg"
 import shutter3 from "../../assets/shutter3.jpg"
 import axios from 'axios';
+import { getSearchResult } from '../Redux/State';
+import { searchWord } from '../Redux/State';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function Hero() {
+    const nav = useNavigate()
     const imageChange = [party, event3, event2, shutter3];
     const [imageIndex, setImageIndex] = useState(0);
+    const Dispatch = useDispatch()
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -19,6 +25,7 @@ function Hero() {
     }, []);
 
 const [searchTerm, setSearchTerm] = useState('');
+const [searching, setSearching] = useState(false);
 const [searchResults, setSearchResults] = useState([]);
 
 const searchUrl = `https://creativents-on-boarding.onrender.com/api/event/search?searchTerm=${searchTerm}`
@@ -36,10 +43,15 @@ const searchUrl = `https://creativents-on-boarding.onrender.com/api/event/search
   }
 
 const SearchBar = () => {
+    setSearching(true)
   axios.get(searchUrl, searchParameter)
   .then(res=>{
     console.log(res);
-    setSearchResults(res.data.data); 
+    setSearchResults(res.data.data)
+    Dispatch(getSearchResult(res.data.data))
+    Dispatch(searchWord(searchTerm))
+    
+    nav('/category')
   })
   .catch(err=>{
     console.log('Error searching events:', err);
@@ -48,13 +60,6 @@ const SearchBar = () => {
 };
 
 useEffect(()=>{
-//   if (searchTerm !== '') {
-//     SearchBar();
-//   }
-
-//   setInterval(() => {
-//     setCountpro((prev)=>prev += 1)
-//   }, 4000);
 
 },[searchTerm])
 console.log(searchResults)
@@ -80,14 +85,17 @@ console.log(searchResults)
                         </div>
 
                         <div className="see-result2">
-                            <button className="see-result" onClick={SearchBar}>
-                                See result
+                            <button style={{background:searching?"#193e7f8f":null}} className="see-result" onClick={SearchBar}>
+                                {searching?"Fetching":"See result"}
                                 <AiOutlineArrowRight className="arrow" />
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* <div className='search'>
+
+            </div> */}
         </div>
     );
 }

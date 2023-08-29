@@ -1,58 +1,46 @@
 /*TABLET SCREEN*/
 
-@media screen and (max-width:900px) {
-    .CodeImage{
-        height: 70%;
-        
-    }
-    .CodeIcon{
-        font-size: 30px;
-    }
-    .BackSectionAndSeatHolder{
-        height: 15%;
-    }
-    .CodeText{
-        font-size: 12px;
-        font-weight: lighter;
+@media screen and (max-width:767px) {
+
+    .CodeHolder{
+        gap: 1%;
+        padding-top: 8%;
+    
     }
     .BackCodeHolderAndPartyHolder{
         height: 50%;
     }
     .BackCode{
-        height: 80%;
-        width: 55%;
+        height: 75%;
+        width: 75%;
     }
-    .Graduation{
-        font-size: 12px;
-        font-weight: lighter;
+
+    .CodeText{
+        font-size: 18px;
+        font-weight: normal;
     }
 }
-/*MOBILE SCREEN*/
 
-@media screen and (max-width:600px) {
-    .CodeImage{
-        height: 50%;
-        
-    }
-    .CodeIcon{
-        font-size: 20px;
-    }
-    .BackSectionAndSeatHolder{
-        height: 13%;
-    }
-    .CodeText{
-        font-size: 10px;
-        font-weight: lighter;
+
+/*TABLET SCREEN*/
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+
+    .CodeHolder{
+        gap: 1%;
+        padding-top: 8%;
+    
     }
     .BackCodeHolderAndPartyHolder{
-        height: 40%;
+        height: 60%;
     }
     .BackCode{
-        height: 70%;
-        width: 50%;
+        height: 75%;
+        width: 60%;
     }
-    .Graduation{
-        font-size: 10px;
-        font-weight: lighter;
+
+    .CodeText{
+        font-size: 18px;
+        font-weight: normal;
     }
 }

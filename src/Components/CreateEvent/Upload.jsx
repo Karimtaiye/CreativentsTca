@@ -78,7 +78,7 @@ function Upload() {
         "Imo State",
         "Rivers State",
     ]
-    
+    const pattern = /^[0-9]+$/
     const sortedStates =states.sort()
 
     const url = "https://creativents-on-boarding.onrender.com/api/events"
@@ -119,6 +119,9 @@ function Upload() {
         }
         else if(eventPrice === null) {
             setEmpty(true)
+        }
+        else if(!pattern.test(eventPrice)) {
+            setMsg("Event price must be a number")
         }
         else {
             setEmpty(false)

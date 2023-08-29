@@ -262,7 +262,6 @@ useEffect(() => {
                             })
                           }}
                           >BookMark</button>
-                          <span style={{color:"white"}}>{notification}</span>
                         </>
                            :
                            bookmarked?

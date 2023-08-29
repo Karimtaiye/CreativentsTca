@@ -188,7 +188,7 @@ useEffect(()=>{
   }
 
   setInterval(() => {
-    setCountpro((prev)=>prev += 1)
+    setCountpro((prev)=>prev + 1)
   }, 4000);
 
 },[searchTerm])
@@ -273,7 +273,7 @@ console.log(searchResults)
     }
      
    {
-    !search?
+    !searchTerm?
      <section className='HomePage_Main'>
     <div className='HomePage_Events'>
       <img src={isPromoted[countpro % isPromoted.length]} alt="" />
@@ -311,7 +311,7 @@ console.log(searchResults)
       <div className='Upcoming_EventsWrapper'>
       {
         searchResults.length === 0?
-        uploadedEvent.length===0?
+        promotedEvents.length===0?
         <>
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
         <div className='upper-Header'></div>
@@ -434,7 +434,42 @@ console.log(searchResults)
             </div>
             </div>
         </>
-        :uploadedEvent.map((e)=>(
+        :search?uploadedEvent.map((e)=>(
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
+          <div className='upper-Header'>{e.eventName}</div>
+        
+          <div className='innupper-header'>
+            <div className='Upcoming_EventImage'>
+              <img src={e.eventImages} alt="" />
+            </div>
+            <div className='Upcoming_EventDesc'>
+            
+              <div className='Upcoming_LocationDiv'>
+                <div className='upcomingevent-holder'> 
+              <MdLocationPin className='Upcoming_Location'/>
+              <span className='span'>{e.eventVenue}</span>
+              </div>
+
+              <h5 className='span3'>{e.eventDate}</h5>
+
+              </div>
+              <div className='buttoncontroler'>
+                <h6>{e.eventLocation}</h6>
+                <h6>{e.eventTime}</h6>
+                <h6>&#8358;{e.eventPrice}</h6>
+                
+                <button className='btn1' key={e._id} onClick={ () =>{
+                  nav(`/api/events/${e._id}`)
+                }}>Book now</button>
+   
+                
+     
+              </div>
+            </div>
+            </div>
+          </div>
+        ))
+        :promotedEvents.map((e)=>(
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
           <div className='upper-Header'>{e.eventName}</div>
         
