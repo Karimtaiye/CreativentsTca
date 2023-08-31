@@ -320,6 +320,7 @@ console.log(searchResults)
           <div className='Upcoming_EventImage'>
             <img src="" alt="" />
           </div>
+          <CiMenuKebab/>
           <div className='Upcoming_EventDesc'>
            <AiFillHome />
             <div className='Upcoming_LocationDiv'>

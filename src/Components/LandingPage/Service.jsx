@@ -49,6 +49,7 @@ import vector1 from '../../assets/vector1.png'
 import Vector2 from '../../assets/Vector2.png'
 import vector3 from '../../assets/vector3.png'
 function Service (){
+    <CiMenuKebab/>
     return(
         <div>
         <div className="our-service">
