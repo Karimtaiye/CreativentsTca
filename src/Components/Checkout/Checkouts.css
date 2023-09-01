@@ -301,6 +301,12 @@
     color: white;
 }
 
+.exist {
+    width: 200px;
+    height: 250px;
+    color: gold;
+}
+
 .Purchase_ContBtn {
     width: 23%;
     border-radius: 5px;

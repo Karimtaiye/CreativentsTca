@@ -77,7 +77,7 @@ console.log(searchResults)
                         <h1>DON'T MISS THE UPCOMING EVENT</h1>
                         <h2>Explore what's happening, where and when</h2>
                     </div>
-                    <CiMenuKebab/>
+
                     <div className="search-event">
                         <div className="search-bar">
                             <input value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type="text" placeholder="Search Event" />

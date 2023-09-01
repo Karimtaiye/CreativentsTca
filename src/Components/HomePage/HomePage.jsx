@@ -32,6 +32,7 @@ function HomePage() {
         const {themes, ChangeTheme} = useContext(themeContext)
         const [promotedEvents, setPromotedEvents] = useState([])
         const [countpro, setCountpro] = useState(0)
+        const [shouldExecute, setShouldExecute] = useState(true);
         const [uploadedEvent, setUploadEvent] = useState([])
          const userOnLoggedIn = useSelector(state=>state.events.user)
         const url = "https://creativents-on-boarding.onrender.com/api/events" 
@@ -144,13 +145,17 @@ function HomePage() {
       image:Cat3
     },
     {
-        name:"Wedding",
+        name:"Fashion Exhibition",
         image:Cat4
     },
     {
-      name:"Wedding",
+      name:"Tech Exhibition",
       image:Cat4
-  }
+    },
+    {
+      name:"Health Event",
+      image:Cat4
+    }
 ]
 
 const [searchTerm, setSearchTerm] = useState('');
@@ -180,20 +185,37 @@ const SearchBar = () => {
     console.log('Error searching events:', err);
   }) 
   
-};
+}
+
+const executeCodeEvery4Seconds = () => {
+  setCountpro(prev=> prev +=1)
+
+  if (shouldExecute) {
+    setTimeout(executeCodeEvery4Seconds, 4000);
+  }
+}
+
+
+
 
 useEffect(()=>{
   if (searchTerm !== '') {
     SearchBar();
   }
 
-  setInterval(() => {
-    setCountpro((prev)=>prev + 1)
-  }, 4000);
-
 },[searchTerm])
 console.log(searchResults)
-// console.log(countpro)
+
+useEffect(()=>{
+  executeCodeEvery4Seconds();
+
+  return () => {
+    setShouldExecute(false);
+  };
+
+},[])
+
+
 
 
   return (
@@ -209,7 +231,7 @@ console.log(searchResults)
         }}
         onBlur={() => {
           setSearch(false)
-        }} className='Search_Bar'/>
+        }} value={searchTerm === "eventPrice"? +(searchTerm):searchTerm} className='Search_Bar'/>
         
         <div style={{display:popUp?"none":settingPopUp?"none":null}} className='Pages_Profile'>
           
@@ -262,11 +284,11 @@ console.log(searchResults)
         <BiArrowBack style={{fontSize:"19px", left:"10%", position:"absolute", cursor:"pointer", marginTop:"19px", display:"flex", justifySelf:"flex-start"}} onClick={hideSettings}/>
             <ul>
               <li onClick={changeUserPassword}>Change Password</li>
-              <li onClick={changeUserProfilePicture}>Change Profile Picture</li>
+              <li onClick={changeUserProfilePicture}>Update Profile</li>
               <li onClick={ChangeTheme}>{themes?"Dark Mode":"Light Mode"}</li>
               <li onClick={checkUserEventProfile}>My Events</li>
               {
-                admin?<li onClick={()=>nav(`/adminDashboard/${id}`)}>Admin DashBoard</li>:null
+                admin?<li onClick={()=>nav('/adminDashboard')}>Admin DashBoard</li>:null
               }
             </ul>
       </div>:null
@@ -286,7 +308,7 @@ console.log(searchResults)
    }
 
    {
-    !search?
+    !searchTerm?
     <section className='Header_Category'>
     <div className='Header_CategoryContent'>
       <h4>Categories</h4> 
@@ -294,7 +316,10 @@ console.log(searchResults)
     <div className='Header_CategoryContent_Cards'> 
     {
       category.map((e,ind)=>(
-        <div className='Category_card'  key={ind}>
+        <div className='Category_card'style={{cursor:"pointer"}} onClick={()=>
+        {
+          setSearchTerm(e.name)
+        }}  key={ind}>
           <img src={e.image} alt="" />  
         <h4 style={{color:'white'}}>{e.name}</h4>
 
@@ -306,7 +331,7 @@ console.log(searchResults)
   </section>:null
    }
 
-    <h4 className='up' style={{marginBottom:"3vh", display:"flex", alignSelf:"flex-start", marginLeft:"5%", animation:"slideInUp",animationDuration:"0.8s"}}>{search?`Searched Results for "${searchTerm}"`:"Upcoming Events"}</h4>
+    <h4 className='up' style={{marginBottom:"3vh", display:"flex", alignSelf:"flex-start", marginLeft:"5%", animation:"slideInUp",animationDuration:"0.8s"}}>{searchTerm?`Searched Results for "${searchTerm}"`:"Upcoming Events"}</h4>
     <section className='Upcoming_Events'>
       <div className='Upcoming_EventsWrapper'>
       {
@@ -320,9 +345,8 @@ console.log(searchResults)
           <div className='Upcoming_EventImage'>
             <img src="" alt="" />
           </div>
-          <CiMenuKebab/>
           <div className='Upcoming_EventDesc'>
-           <AiFillHome />
+           
             <div className='Upcoming_LocationDiv'>
             <MdLocationPin className='Upcoming_Location'/>
             <span className='span'></span>
@@ -435,7 +459,7 @@ console.log(searchResults)
             </div>
             </div>
         </>
-        :search?uploadedEvent.map((e)=>(
+        :searchTerm?uploadedEvent.map((e)=>(
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
           <div className='upper-Header'>{e.eventName}</div>
         

@@ -21,6 +21,7 @@ function UpdateProfile() {
     const initFirstName = initUpdates.firstname
     const initLastName = initUpdates.lastname
     const initEmail = initUpdates.email
+    const [update, setUpdate] = useState(false)
     const { id } = useParams()
     const [updatesucc, setUpdatesucc] = useState("")
     const [profilePicture, setProfilePicture] = useState([])
@@ -44,7 +45,7 @@ function UpdateProfile() {
     const url = `https://creativents-on-boarding.onrender.com/api/add-profile-image/${id}`
     const url2 = 'https://creativents-on-boarding.onrender.com/api/updateuser'
     const addProfilePicture = () => {
-        // setLoading(true)
+        setUpdate(true)
         axios.put(url, formData, {
             headers : {
                 'Content-Type': 'multipart/form-data',
@@ -54,12 +55,12 @@ function UpdateProfile() {
         .then(res=>{
             console.log(res)
             setLoading(false)
+            setUpdate(false)
             setTimeout(() => {
                 setVisible(true)    
             }, 5000)
             nav('/homepage')
             setUpdatesucc("Profile Picture updated ")
-            // nav('/homepage')
             
             Dispatch(userStoreData({
                 email:res.data.data.email, 
@@ -73,15 +74,23 @@ function UpdateProfile() {
         .catch(err=>{
             console.log(err)
             setLoading(false)
+            setUpdate(false)
             setTimeout(() => {
             setVisible(true);
             }, 3000)
             // setVisible(false);
             if(err.message === "Network Error"){
-                setUpdatesucc("Please check your Internet Connection")
+                setVisible(true)
+                setTimeout(() => {
+                    setVisible(false);
+                    setUpdatesucc("Please check your Internet Connection")
+                    }, 3000)
             }
             else if(err.response.data.error === "no profile picture added"){
-                setUpdatesucc("No profile picture added")
+                setTimeout(() => {
+                    setVisible(true);
+                    setUpdatesucc("No profile picture added")
+                    }, 3000)
             }
             else{        
                 setUpdatesucc("Cannot Update Profile")
@@ -90,7 +99,7 @@ function UpdateProfile() {
         
     }
     const UpdateProfile = () => {
-        setLoading(true)
+        // setLoading(true)s
         axios.put(url2, data, {
             headers : {
                 // 'Content-Type': 'multipart/form-data',
@@ -160,7 +169,7 @@ function UpdateProfile() {
             </div>
             <input style={{ display: 'none' }} type="file" id='Upload' onChange={uploadProfile} />
             <label htmlFor="Upload" className='image_Upload'>Upload image</label>
-            <label style={{ paddingInline: "45px", paddingBlock: "10px", background: "rgb(255, 178, 29)" }} className='image_Upload' onClick={addProfilePicture}>Save Image</label>
+            <label  style={{ paddingInline: "45px", paddingBlock: "10px", background:update?"rgb(124, 86, 10)" :"rgb(255, 178, 29)" }} className='image_Upload' onClick={addProfilePicture}>{update?"Saving":"Save Image"}</label>
             </section>
                 <section className='Profile_DetailsPart'>
                     <label>First Name</label>

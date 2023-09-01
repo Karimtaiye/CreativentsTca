@@ -19,6 +19,7 @@ import {AiFillStar, AiFillDislike, AiFillLike} from 'react-icons/ai'
 import Todo from '../CreateEvent/RateTodo'
 import { FaStar } from 'react-icons/fa';
 import { MdNetworkCheck } from 'react-icons/md'
+import { PiSmileySad } from 'react-icons/pi'
 
 
 const Checkout = () =>{
@@ -28,6 +29,7 @@ const Checkout = () =>{
     const [notification, setNotification] = useState("")
     const [data, setData] = useState()
     const [error, setError] = useState("")
+    const [exist, setExist] = useState(false)
     const [msg, setMsg] = useState("Loading, Please wait...")
     const ticketPrice = useSelector((state)=>state.events.ticketPrice)
     const { id } = useParams()
@@ -60,6 +62,7 @@ const Checkout = () =>{
       }
       
       const addReview = () => {
+        setError("")
         axios.post(`https://creativents-on-boarding.onrender.com/api/events/${id}/review`, reviewData ,config)
           .then(res => {
             console.log(res);
@@ -83,6 +86,15 @@ const Checkout = () =>{
             console.log('Error fetching data:', err);
             if(err.response.data.message === "Unauthorized. You must purchase a ticket for this event to submit a review"){
             setError("You must purchase a ticket for this event to submit a review");
+            }
+            else if(err.response.data.message === "jwt expired"){
+            nav('/login')
+            }
+            else if(err.response.data.message === "Network Error"){
+                setError("Please check your Internet Connection")
+            }
+            else if(err.response.data.message === "jwt must be provided"){
+                setError("You have to log in to pass review on this event");
             }
             else {
                 setError(err.response.data.message)
@@ -122,9 +134,16 @@ useEffect(() => {
                 setMsg("Unable to connect to the Internet")
                 setNetwork(true)
             }
+            else if(err.response.data.message === "jwt expired"){
+                nav('/login')
+                }
+            else if(err.response.data.message === "Event not found"){
+                setMsg("Event doesn't exist")
+                setExist(true)
+            }
             else{
                 
-                setMsg("Error Creating Event")
+                setMsg(err.response.data.message)
               }
         })
     },[])
@@ -146,7 +165,7 @@ useEffect(() => {
             fontSize:"26px", color:"white", textAlign:"center"
         }}>{msg}</h1>
         {
-            network?<MdNetworkCheck className='Network_Icon' />:<SpinnerDotted size={150} thickness={50} speed={100} color="#ffffff" />
+            network?<MdNetworkCheck className='Network_Icon' />:exist?<PiSmileySad className='exist' /> :<SpinnerDotted size={150} thickness={50} speed={100} color="#ffffff" />
         }
         </div> :
         <div className="checkoutcontainer">
@@ -155,7 +174,7 @@ useEffect(() => {
 
             <div className="checkoutlogo">
             <div className="checkoutimage">
-            <img src={LogoC} onClick={()=>nav('/homepage')} alt=""/>
+            <img src={LogoC} onClick={()=>nav(token?'/homepage':'/landingpage')} alt=""/>
 
             </div>
             </div>
@@ -253,7 +272,7 @@ useEffect(() => {
                                 setNotification("Event is already bookmarked")
                               }
 
-                              else if(err.response.data.messsage === "jwt expired"){
+                              else if(err.messsage === "jwt expired"){
                                     nav('/login')
                               }
                               else{
@@ -295,7 +314,7 @@ useEffect(() => {
                 <div style={{height:"20vh"}} className='commentsectionrating'>
                     <h3>Comment</h3>
                     <input type="message" value={input} onChange={(e) => setInput(e.target.value)}/>
-                    <span>{error}</span>
+                    <span style={{color:"red", marginBottom:"5px"}}>{error}</span>
                 </div>
                 <div style={{height:"12vh"}} className='submitratings'>
                 <div className='starBoy'>
@@ -323,7 +342,7 @@ useEffect(() => {
                             </div>
                             <div className='UserRev_Data'>
                                 <h3>{e.attendeeName}</h3>
-                                <h4>Total Spend</h4>
+                                {/* <h4>Total Spend</h4> */}
                             </div>
                         </div>
                         <div className='Review_Comment'>

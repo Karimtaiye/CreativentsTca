@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 function AdminNav() {
     const nav = useNavigate()
-    const { adminID } = useParams()
     const [user, setUser]  = useState(false)
     const [events, setEvents]  = useState(false)
     const [tickets, setTickets]  = useState(false)
     const [analysis, setAnalysis]  = useState(false)
     const [ratings, setRatings]  = useState(false)
-    const [allUser, setAllUser] = useState([])
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const email = userOnLoggedIn.email
     const name = userOnLoggedIn.name
+    // const token = userOnLoggedIn.token
     const profilePicture = userOnLoggedIn.profilePicture
+    
 
   return (
     <section className='Admin_NavSection'>
@@ -39,12 +39,9 @@ function AdminNav() {
                  {
                   user?
                   <ul className='Admin_UserDrop'>
-                  <li onClick={()=>nav(`/adminDashboard/${adminID}id/allUser`)} >All Users</li>
-                  <li onClick={()=>nav(`/adminDashboard/${adminID}id/userbyID`)}>Users By Id</li>
-                  <li onClick={()=>nav(`/adminDashboard/${adminID}id/allBlocked`)}>Blocked Users</li>  
-                  <li onClick={()=>nav(`/adminDashboard/${adminID}id/allActive`)}>Active Users</li>  
-                  <li>Search Users</li>  
-                  <li>Deleted Users</li>  
+                  <li onClick={()=>nav('/adminDashboard/allUser')} >All Users</li>
+                  <li onClick={()=>nav('/adminDashboard/allBlocked')}>Blocked Users</li>  
+                  <li onClick={()=>nav('/adminDashboard/allActive')}>Active Users</li>  
                 </ul>:null
                  }
                   </nav>
@@ -59,12 +56,11 @@ function AdminNav() {
                   {
                     events?
                     <ul className='Admin_UserDrop'>
-                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/allEvents`)}>All Events</li>
-                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/eventbyID`)}>Event by Id</li>
-                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/allPending`)}>All Pending Deletion</li>
-                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/allReports`)}>All Reported Events</li>
-                    <li onClick={()=>nav(`/adminDashboard/${adminID}id/reportbyID`)}>Report By Id</li>  
-                    <li>All Updated Events</li>  
+                    <li onClick={()=>nav('/adminDashboard/allEvents')}>All Events</li>
+                    <li onClick={()=>nav('/adminDashboard/eventbyID/:id')}>Event by Id</li>
+                    <li onClick={()=>nav('/adminDashboard/allPending')}>All Pending Deletion</li>
+                    <li onClick={()=>nav('/adminDashboard/allReports')}>All Reported Events</li>
+                    <li onClick={()=>nav('/adminDashboard/reportbyID/:id')}>Report By Id</li>  
                     <li>All Deleted Events</li>  
                     {/* <li>Reported Events</li>   */}
                   </ul>:null
@@ -81,7 +77,7 @@ function AdminNav() {
                     {
                       ratings?
                       <ul className='Admin_UserDrop'>
-                      <li onClick={()=>nav(`/adminDashboard/${adminID}id/allPromoted`)}>All Promoted Events</li>
+                      <li onClick={()=>nav('/adminDashboard/allPromoted')}>All Promoted Events</li>
                       <li>Promoted Event by Id</li>
                   </ul>:null
                      }

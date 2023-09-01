@@ -1,11 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { SpinnerDotted } from 'spinners-react'
 
 function BlockedUsers() {
   const [blockedUsers, setBlockedUsers] = useState([])
   const userOnLoggedIn = useSelector(state=>state.events.user)
   const token = userOnLoggedIn.token
+  const [blockUser, setBlockUser] = useState(false)
+
 //   const id = userOnLoggedIn.id
   const config = {
     headers: {
@@ -20,10 +23,12 @@ const getAllBlockedUsers = () => {
     axios.get(url, config)
     .then(res => {
         console.log(res);
-        setBlockedUsers(res.data.blockedUsers); // Access blockedUsers property
+        setBlockedUsers(res.data.blockedUsers)
+
     })
     .catch(err => {
         console.log(err);
+
     });
 };
 
@@ -58,15 +63,20 @@ const getAllBlockedUsers = () => {
                           <h5>{e.firstname} {e.lastname}</h5>
                           <h6>{e.email}</h6>
                           </div>
-                      <button className='unblock_User' onClick={()=>{
+                      <button style={{background:blockUser?"rgb(175, 122, 16)":null}} className='unblock_User' onClick={()=>{
+                        setBlockUser(true)
                         axios.put(`https://creativents-on-boarding.onrender.com/api/unblockuser/${e._id}`, null ,config)
                         .then(res=>{
                           console.log(res);
+                          setBlockUser(false)
+
                         })
                         .catch(err=>{
                           console.log(err);
+                          setBlockUser(false)
+
                         })
-                      }}>Unblock</button>
+                      }}>{blockUser?<SpinnerDotted size={40} thickness={50} speed={100} color="#ffffff" />:"Unblock"}</button>
                       </div>
                     </div>
                       ))

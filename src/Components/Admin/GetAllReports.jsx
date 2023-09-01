@@ -40,12 +40,13 @@ function GetAllReports() {
       {
         GetAllReports.map((e)=>(
           <section className='Blocked_Users'>
-        <div className='Blocked_UserImg'>
+        <div className='Blocked_UserImg'>'
+        <img  src={e.targetId === null? "No Event Name":e.targetId.eventImages} alt="" />
         </div>
         <div className='Blocked_UsersData'>
             <div className='Blocked_UserInfo'>
-            <h5>Email</h5>
-            <h5>UserName</h5>
+            <h5>{e.targetId === null? "No Event Name":e.targetId.eventName}</h5>
+            <h5>{e.targetId === null? "No Event Location":e.targetId.eventLocation}</h5>
             <h5>{e.reason}</h5>
             </div>
             <div className='Blocked_ActionBn'>

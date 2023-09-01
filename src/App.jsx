@@ -17,7 +17,7 @@ import Upload from './Components/CreateEvent/Upload'
 import SavedTickets from './Components/SavedTickets/SavedTickets'
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile'
 import Explore from './Components/Explore/Explore'
-import Checkouts from './Components/Checkout/Checkouts'
+import Checkout from './Components/Checkout/Checkout'
 import UserDashBoard from './Components/UserDashBoard/UserDashBoard'
 import UserEventUpdates from './Components/UserEventUpdate/UserEventUpdates'
 import ConfirmDelete from './Components/UserDashBoard/ConfirmDelete'
@@ -28,9 +28,8 @@ import Report from './Components/Report/Report'
 import Analytics from './Components/Analytics/Analytics'
 import BarCode from './Components/BarCode/BarCode'
 import Admin from './Components/Admin/Admin'
-import AllUser from './Components/Admin/AllUser'
-import BlockedUsers from './Components/Admin/BlockedUsers'
 import Category from './Components/LandingPage/Category'
+import Reciept from './Components/Reciept/Reciept'
 
 function App() {
   
@@ -59,17 +58,15 @@ function App() {
               <Route path="/api/getUserWithLinks/:id" element={<UserDashBoard />} />
               <Route path="/api/update/:eventID" element={<UserEventUpdates />} />
               <Route path="/api/Delete/:eventID" element={<ConfirmDelete />} />
-              <Route path="/api/events/:id" element={<Checkouts />} />
+              <Route path="/api/events/:id" element={<Checkout />} />
               <Route path="/api/tickets/:id" element={<ConfirmCheckOut />} />
               <Route path="/api/changepasswordlogged/:id" element={<ChangePassword />} />
               <Route path="/api/rate" element={<Rate />} />
               <Route path="/api/report/:eventID" element={<Report />} />
               <Route path="/api/analytics" element={<Analytics />} />
               <Route path="/api/barcode/:id" element={<BarCode />} />
-              <Route path="/adminDashboard/:id/*" element={<Admin />} />
-              <Route path="/allUser/:id" element={<AllUser />} />
-              <Route path="/blockedUsers" element={<BlockedUsers />} />
-
+              <Route path="/adminDashboard/*" element={<Admin />} />
+              <Route path="/reciept" element={<Reciept />} />
             
           </Routes>
       </HashRouter>

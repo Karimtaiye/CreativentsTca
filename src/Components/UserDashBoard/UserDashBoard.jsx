@@ -20,6 +20,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import ConfirmDelete from './ConfirmDelete'
 import Tickets from './Tickets'
 import { SpinnerDotted } from 'spinners-react'
+import { MdNetworkCheck } from 'react-icons/md'
 import LogoC from "../../assets/LogoC.png"
 
 
@@ -27,6 +28,7 @@ function UserDashBoard() {
     const nav = useNavigate()
     const { id } = useParams()
     const [myEvents, setMyEvents] = useState(true)
+    const [network, setNetwork] = useState(false)
     const [msg, setMsg] = useState("Fetching User Data........")
     const Dispatch = useDispatch()
     const userInitEventData = useSelector(state=>state.events.eventInfo)
@@ -68,6 +70,7 @@ function UserDashBoard() {
         console.log(err)
         if(err.message === "Network Error"){
             setMsg("Please check your Internet Connection")
+            setNetwork(true)
         }
         else if(err.response.data.message === "jwt expired"){
             nav('/login')
@@ -101,7 +104,7 @@ function UserDashBoard() {
            <h1 style={{
             fontSize:"26px", color:"white", textAlign:"center"
         }}>{msg}</h1>
-        <SpinnerDotted size={200} thickness={50} speed={100} color="#ffffff" />
+        {network?<MdNetworkCheck className='Network_Iconic' />:<SpinnerDotted size={200} thickness={50} speed={100} color="#ffffff" />}
         </div>:
             <main className="My_EventHolder">
             <nav className="NavDetailHolder">
@@ -214,17 +217,17 @@ function UserDashBoard() {
                                     userPurchased.map((e)=>(
                                         <>
                                         <div className="main-category" key={e._id} onClick={()=>{
-                    nav(`/api/events/${e._id}`)
-                }}>
+                                             nav(`/api/barcode/${e._id}`)
+                                        }}>
                 <div className="category-image" >
                 <img src={e.link === null? "":e.link.eventImages} alt="" />
                     <div className='love'>
                     {/* onClick={handleLiked} :liked ? */}
-                    <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/>
+                    {/* <BsFillSuitHeartFill style={{color:
+                     "lightgrey"}}/> */}
                     </div>
                     <div className='love2'>
-                    <CiMenuKebab/>
+                    {/* <CiMenuKebab/> */}
                     </div>
                     
                 </div>

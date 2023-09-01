@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.code-container{
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+}
+
+.code-holder{
+    width: 95%;
+    height: 100%;
+    /* background-color: rgb(216, 209, 209); */
+}
+
+.top-code{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+}
+
+.Codeheaderdiscription{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 7px;
+    font-size: 27px;
+    border-bottom: 0.1px solid rgb(90, 89, 89);
+    padding-bottom: 20px;
+}
+
+h1 span{
+    color: #303482;
+}
+
+.dateandtimecode{
+    display: flex;
+    font-size: 12px;
+    color: rgb(56, 56, 56);
+}
+
+.dateandtimecode2{
+    display: flex;
+    font-size: 12px;
+}
+
+.second-section{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    gap: 10%;
+}
+
+.rightdescription{
+    width: 20%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.rightdescription button{
+    width: 100%;
+    height: 12%;
+    border: 1px solid #303482;
+    color: black;
+    background-color: white;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+.rightdescription .idrantwo{
+    background-color: #303482;
+    color: white;
+    border: none;
+    font-size: 15px;
+}
+
+.rightdescription h5{
+    color: #303482;
+}
+
+.leftdecription{
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.leftdecription h4{
+    margin-top: 10px;
+}
+
+.headercommondiscription{
+    width: 100%;
+    height: 20%;
+    border-bottom: 1px solid rgb(71, 70, 70);
+    display: flex;
+    align-items: end;
+    padding-bottom: 20px;
+}
+
+.information{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    padding-top: 20px;
+}
+
+.dis{
+    width: 40%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.dis label{
+    font-weight: 600;
+}
+
+.dis h5{
+    font-weight:300;
+}
