@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router-dom'
 import { userStoreData } from '../Redux/State'
 import { useDispatch, useSelector } from 'react-redux'
 import LogoC from "../../assets/LogoC.png"
-    
+import { SpinnerDotted } from 'spinners-react'
+ 
+
 function SignUp() {
   const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
   const nameRegex = /^[a-zA-Z]+$/;
@@ -23,11 +25,8 @@ function SignUp() {
   const [email, setEmail] = useState("")
   const [error, setError] = useState({error:false, type:"", msg:""})
   const [username, setusername] = useState("")
-  // const [DOB, setDOB] = useState("")
   const [errorMsg, setErrorMsg] = useState("")
   const [errorMsg2, setErrorMsg2] = useState("")
-  const [passwordShow, setPasswordShow] = useState(false)
-  const [confirmPasswordShow, setConfimPasswordShow] = useState(false)
   const [host, setHost] = useState(false)
   const[loading, setLoading] = useState(false)
   const[ischecked, setischecked] = useState(false)
@@ -35,7 +34,7 @@ function SignUp() {
 
   const url = "https://creativents-on-boarding.onrender.com/api/signup"
 
-  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password, email:email.trim().toLowerCase(), confirmPassword:confirmPassword.trim()}
+  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password:password.trim(), email:email.trim().toLowerCase(), confirmPassword:confirmPassword.trim()}
 
   // useEffect(()=>{
   //   if(!email){
@@ -67,7 +66,7 @@ function SignUp() {
     setErrorMsg("")
     
      if(!emailRegex.test(email)){
-      setError({error:true, type:"email", msg:"Please input Valid email"})
+      setError({error:true, type:"email", msg:"Please input valid email"})
       setLoading(false)
     }
     // else if (!nameRegex.test(firstname) || !nameRegex.test(lastname)) {
@@ -75,12 +74,12 @@ function SignUp() {
     //   setErrorMsg('');
     // }
     else if(!nameRegex.test(firstname)){
-     setError({error:true, type:"firstname", msg:"Please provide your First Name"})
+     setError({error:true, type:"firstname", msg:"Input your first name with letters only"})
      setLoading(false)
 
    }
     else if(!nameRegex.test(lastname)){
-      setError({error:true, type:"lastname", msg:"Please provide your Last Name"})
+      setError({error:true, type:"lastname", msg:"Input your last name with letters only"})
       setLoading(false)
 
     }
@@ -163,7 +162,7 @@ function SignUp() {
 
               <input type="password" className='signUpInputs' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
               {
-                error.type === "password" ?<h5>{error.msg}</h5>: null
+                error.type === "password" ?<h5 style={{width:"90%"}}>{error.msg}</h5>: null
               }
   
               <input type="password" value={confirmPassword} className='signUpInputs' onChange={(e)=>setConfirmPassword(e.target.value)} placeholder='Confirm your password'/>
@@ -186,7 +185,7 @@ function SignUp() {
               <input type="checkbox" style={{cursor:"pointer"}} checked={ischecked}  onChange={()=>setischecked(!ischecked)}
            /> Agree to Terms and conditions
               </div>
-              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":!ischecked?"rgb(182, 132, 32)":null}} disabled={!loading && !ischecked}>{loading?"Registering":"Sign up"}</button>
+              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":ischecked?"rgb(182, 132, 32)":null}} disabled={loading && !ischecked}>{loading?<SpinnerDotted size={40} thickness={50} speed={100} color="#ffffff" />:"Sign up"}</button>
               <p>Already have an account? <a style={{cursor:"pointer"}} onClick={()=>nav('/login')}>Log in</a></p>
               </div>
             </form>

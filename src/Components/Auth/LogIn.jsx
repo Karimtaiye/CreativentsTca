@@ -9,6 +9,7 @@ import { userStoreData } from '../Redux/State'
 import { useDispatch, useSelector } from 'react-redux'
 import { userProfileUpdate } from '../Redux/State'
 import LogoC from "../../assets/LogoC.png"
+import { SpinnerDotted } from 'spinners-react'
 
 function LogIn() {
   const Dispatch = useDispatch()
@@ -114,7 +115,7 @@ function LogIn() {
                }
              <div className='auth_Action'>
               <p onClick={()=>nav('/forgotpassword')}>Forgot password?</p>
-              <button className='login_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":null}} onClick={userLogIn} disabled={loading} >Log in</button>
+              <button className='login_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":null}} onClick={userLogIn} disabled={loading} >{loading?<SpinnerDotted size={40} thickness={50} speed={100} color="#ffffff" />:"Log in"}</button>
               <span>Don't have an account? <a onClick={()=>nav('/signup')}>sign up</a></span>
              </div>
            </form>
