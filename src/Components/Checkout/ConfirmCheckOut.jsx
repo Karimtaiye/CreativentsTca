@@ -53,7 +53,7 @@ const BookEvent = () => {
     .then(res=>{
         console.log(res);
         Dispatch(getBarCode(res.data.data.barcode))
-        nav(`/api/barcode/${res.data.data._id}`)
+        // nav(`/api/barcode/${res.data.data._id}`)
         setResAlert(true)
         setLoading(false)
             const refVal = "Creativents"+ Math.random() * 1000;
