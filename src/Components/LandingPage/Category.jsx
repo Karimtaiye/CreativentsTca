@@ -40,7 +40,7 @@ function Category (){
         <div className="our-category">
 
            <div className="category-div">
-            <h2>{searchResults.length === 0?"Find your interest":searchWord === ""? "No Search Result":`Search results for "${searchWord}"`}</h2>
+            <h2>{searchResults.length === 0?"Find your interest":searchWord === ""? "Find your interest":`Search results for "${searchWord}"`}</h2>
             <AiOutlineArrowDown className='arrow-down'/>
             </div>
            <div className='holder2'>
@@ -56,10 +56,10 @@ function Category (){
                 <div className="main-category">
                     <div className="category-image">
                     <div className='love'>
-                        <BsFillSuitHeartFill/>
+                        {/* <BsFillSuitHeartFill/> */}
                         </div>
                         <div className='love2'>
-                        <CiMenuKebab/>
+                        {/* <CiMenuKebab/> */}
                         </div>
                     </div>
                     <div className="category-discription"></div>
@@ -68,10 +68,10 @@ function Category (){
                 <div className="main-category">
                     <div className="category-image">
                     <div className='love'>
-                        <BsFillSuitHeartFill/>
+                        {/* <BsFillSuitHeartFill/> */}
                         </div>
                         <div className='love2'>
-                        <CiMenuKebab/>
+                        {/* <CiMenuKebab/> */}
                         </div>
                     </div>
                     <div className="category-discription">
@@ -82,10 +82,10 @@ function Category (){
                 <div className="main-category">
                     <div className="category-image">
                     <div className='love'>
-                        <BsFillSuitHeartFill/>
+                        {/* <BsFillSuitHeartFill/> */}
                         </div>
                         <div className='love2'>
-                        <CiMenuKebab/>
+                        {/* <CiMenuKebab/> */}
                         </div>
                     </div>
                     <div className="category-discription"></div>
@@ -94,10 +94,10 @@ function Category (){
                 <div className="main-category">
                     <div className="category-image">
                     <div className='love'>
-                        <BsFillSuitHeartFill/>
+                        {/* <BsFillSuitHeartFill/> */}
                         </div>
                         <div className='love2'>
-                        <CiMenuKebab/>
+                        {/* <CiMenuKebab/> */}
                         </div>
                     </div>
                     <div className="category-discription"></div>
@@ -106,10 +106,10 @@ function Category (){
                 <div className="main-category">
                     <div className="category-image">
                     <div className='love'>
-                        <BsFillSuitHeartFill/>
+                        {/* <BsFillSuitHeartFill/> */}
                         </div>
                         <div className='love2'>
-                        <CiMenuKebab/>
+                        {/* <CiMenuKebab/> */}
                         </div>
                     </div>
                     <div className="category-discription"></div>
@@ -123,11 +123,11 @@ function Category (){
                 <img src={e.eventImages} alt="" />
                     <div className='love'>
                     {/* onClick={handleLiked} :liked ? */}
-                    <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/>
+                    {/* <BsFillSuitHeartFill style={{color:
+                     "lightgrey"}}/> */}
                     </div>
                     <div className='love2'>
-                    <CiMenuKebab/>
+                    {/* <CiMenuKebab/> */}
                     </div>
                     
                 </div>
@@ -175,11 +175,11 @@ function Category (){
                 <img src={e.eventImages} alt="" />
                     <div className='love'>
                     {/* onClick={handleLiked} :liked ? */}
-                    <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/>
+                    {/* <BsFillSuitHeartFill style={{color:
+                     "lightgrey"}}/> */}
                     </div>
                     <div className='love2'>
-                    <CiMenuKebab/>
+                    {/* <CiMenuKebab/> */}
                     </div>
                     
                 </div>

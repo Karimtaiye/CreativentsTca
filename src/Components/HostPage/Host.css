@@ -1,0 +1,161 @@
+.Host_Page {
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+}
+
+.Host_Wrapper {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1vh;
+}
+
+.Host_Header {
+    width: 90%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Host_Header img{
+    width: 50px;
+    height: 50px;
+}
+
+.HostEvent_Info {
+    width: 30%;
+    height: 100%;
+}
+
+.HostEvent_Info ul{
+    width: 100%;
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.HostEvent_Info ul li{
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 3px;
+    list-style-type: none;
+}
+
+.HostEvent_Info ul li:hover{
+    /* background-color: #303482; */
+    background-color: lightgray;
+    /* color: white; */
+    cursor: pointer;
+    transition: all 350ms;
+}
+
+.Host_Body {
+    width: 100%;
+    height: max-content;
+    background: rgb(245, 240, 240);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Host_ProfilePart {
+    width: 90%;
+    height: 60vh;
+    display: flex;
+    background: rgba(245, 242, 242, 0.877);
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    flex-direction: column;
+    margin-bottom: 6vh;
+    align-items: center;
+    position: relative;
+    margin-top: 1%;
+}
+
+.Host_image {
+    width: 100%;
+    height: 40%;
+    background: #FCA702;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.ImageHost {
+    width: 110px;
+    height: 110px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 2%;
+}
+
+.ProfileBack_Btn {
+    color: #303482;
+    cursor: pointer;
+}
+
+.ProfileBack_Btn:hover {
+    text-decoration: underline;
+}
+
+.ImageHost img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.Host_Info {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 7%;
+    padding-left: 1%;
+    gap: 10px;
+}
+
+.Follow_Details {
+    height: 70%;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.Follow_Btn {
+    width: 75px;
+    height:30px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    font-size: 13px;
+    font-weight: bolder;
+    border: 2px solid lightgrey;
+    font-family: cursive;
+    cursor: pointer;
+}
+
+.Follow_Btn:hover {
+    border: 2px solid #FCA702;
+    transition: all 100ms;
+}
+
+.HostAll_Events {
+    width: 90%;
+    height: max-content;
+    /* flex-direction: column; */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 15vh;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+}

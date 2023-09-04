@@ -266,7 +266,7 @@
 }
 
 .CheckOut_Input:focus {
-    background-color: #08022F;
+    background-color: #303482;
     color: white;
     border: none;
 }
@@ -765,5 +765,124 @@
     display: flex;
     align-items: center;
     padding-inline: 10px;
+}
 
+.Host_ProfileReviewOverAll {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+.Host_ProfileReviewOverAllMobile {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    display: none;
+  }
+
+.Rating_Part {
+    width: 55%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+.HostPart_Part {
+    width: 30%;
+    height: 100%;
+    display: flex;
+
+  }
+
+.HostImage {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+.Hostprofile {
+    width: 60%;
+    height: 100%;
+    /* background: ; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5%;
+
+  }
+
+.HostProfilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #000;
+    object-fit: cover;
+}
+
+.HostProfilePic img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.ViewProf_Btn {
+    width: 90%;
+    height: 35px;
+    background: transparent;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background:#FCA702;
+    color: whitesmoke;
+    font-weight: bold;
+    cursor: pointer;
+    transform: scale(1);
+}
+
+.ViewProf_Btn:hover {
+    transform: scale(1.04);
+    transition: all 350ms;
+    background:#fca902da;
+}
+
+.Total_Review {
+    width: 49%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Seperate_Line {
+    width: 0.1%;
+    height: 90%;
+    background: rgba(255, 255, 255, 0.432);
+}
+
+.Average_Review {
+    width: 49%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.GoBackBtn {
+    width: 15%;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    /* font-weight: bold;x   */
+}
+.GoBackBtn:hover {
+    font-weight: bold;
 }

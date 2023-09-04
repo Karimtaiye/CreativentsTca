@@ -4,8 +4,6 @@ import './HomePage.css'
 import './HomepageMobileResponsive.css'
 import { BiSearch } from 'react-icons/bi'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { AiOutlineHeart } from 'react-icons/ai'
-import { SlOptionsVertical } from 'react-icons/sl'
 import { BiArrowBack } from 'react-icons/bi'
 import { MdLocationPin } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
@@ -22,21 +20,27 @@ import {BiMoney} from 'react-icons/bi'
 import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
 import {BsFillCheckSquareFill, BsBookmark, BsFillBookmarkCheckFill} from 'react-icons/bs'
-import HomeImage from '../../assets/HomeImage.png'
 import { themeContext } from '../Context/Shop'
 import { useContext } from 'react'
+import { promoteEvent, promoteEventID } from '../Redux/State'
 
 
 function HomePage() {
-
+        const Dispatch = useDispatch()
         const {themes, ChangeTheme} = useContext(themeContext)
         const [promotedEvents, setPromotedEvents] = useState([])
         const [countpro, setCountpro] = useState(0)
         const [shouldExecute, setShouldExecute] = useState(true);
+        const eventIsPromoted = useSelector(state=>state.events.promotion)
+        const PromotedID = useSelector(state=>state.events.promotedID)
         const [uploadedEvent, setUploadEvent] = useState([])
+        const [deactivate, setDeactivate] = useState(false)
          const userOnLoggedIn = useSelector(state=>state.events.user)
         const url = "https://creativents-on-boarding.onrender.com/api/events" 
         const promoteUrl = "https://creativents-on-boarding.onrender.com/api/promoted" 
+
+        console.log(eventIsPromoted);
+        console.log(PromotedID);
 
         const getPromotedEvents = () => {
           axios.get(promoteUrl)
@@ -72,19 +76,14 @@ function HomePage() {
         getPromotedEvents()
        },[])
 
-       
        const isPromoted = promotedEvents.map((e)=>e.eventImages)
        const isPromotedName = promotedEvents.map((e)=>e.eventName)
        const isPromotedDes = promotedEvents.map((e)=>e.eventDescription)
-      //  console.log(isPromoted);
        
-       
-
   const [popUp, setPopUp] = useState(false)
   const [settingPopUp, setSettingPopUp] = useState(false)
   const [search, setSearch] = useState(false)
   
-  const [bookmarked, setBookmarked] = useState(false)
 
   const nav = useNavigate()
   console.log(userOnLoggedIn);
@@ -207,6 +206,9 @@ useEffect(()=>{
 console.log(searchResults)
 
 useEffect(()=>{
+  // setTimeout(() => {
+  //   Dispatch(promoteEvent(deactivate))
+  // }, 45000);
   executeCodeEvery4Seconds();
 
   return () => {
@@ -460,7 +462,7 @@ useEffect(()=>{
             </div>
         </>
         :searchTerm?uploadedEvent.map((e)=>(
-          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
+          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s", cursor:"pointer"}}  key={e._id}>
           <div className='upper-Header'>{e.eventName}</div>
         
           <div className='innupper-header'>
@@ -571,25 +573,25 @@ useEffect(()=>{
     <section className='Home_Tickets'>
         <div className='Ticket_Header'>
           <div className='Ticket_Line'></div>
-          <h4>Tickets</h4>
+          <h4>Events</h4>
           <div className='Ticket_Line'></div>
         </div>
 
         <div className='Event_Tickets'>
         {
             uploadedEvent.map((e)=>(
-                <div style={{animation:"slideInUp",animationDuration:"0.8s"}} className="main-category" key={e._id} onClick={()=>{
+                <div style={{animation:"slideInUp",animationDuration:"0.8s",  cursor:"pointer"}} className="main-category" key={e._id} onClick={()=>{
                     nav(`/api/events/${e._id}`)
                 }}>
                 <div className="category-image" >
                 <img src={e.eventImages} alt="" />
                     <div className='love'>
                     {/* onClick={handleLiked} :liked ? */}
-                    <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/>
+                    {/* <BsFillSuitHeartFill style={{color:
+                     "lightgrey"}}/> */}
                     </div>
                     <div className='love2'>
-                    <CiMenuKebab/>
+                    {/* <CiMenuKebab/> */}
                     </div>
                     
                 </div>
@@ -650,6 +652,32 @@ useEffect(()=>{
           </div>
 
     <Footer />
+
+   {
+    eventIsPromoted?
+    <div className=' Promoted_PopUp'>
+      <div className='Promoted_PopUpDiv'>
+        <h2>Promote Your Event</h2>
+        <div className='Promote_PopUpBtns'>
+        <button className='Promote_Btn' onClick={()=>{
+          axios.post(`https://creativents-on-boarding.onrender.com/api/events/promote/${PromotedID}`,null, config)
+          .then(res=>{
+            console.log(res)
+            Dispatch(promoteEvent(deactivate))
+            Dispatch(promoteEventID({promotedID:""}))
+          })
+          .catch(err=>{
+            console.log(err)
+          })
+        }}>Promote</button>
+        <button className='Interest_Btn' onClick={()=>{
+          Dispatch(promoteEvent(deactivate))
+          Dispatch(promoteEventID({promotedID:""}))
+        }}>Not Interested</button>
+        </div>
+      </div>
+    </div>:null
+   }
 
   </div>
   )

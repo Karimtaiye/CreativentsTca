@@ -13,6 +13,10 @@ import { SpinnerInfinity } from 'spinners-react'
 import { AiFillHome } from 'react-icons/ai'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
 import { MdCreateNewFolder } from 'react-icons/md'
+import { promoteEvent } from "../Redux/State"
+import { promoteEventID } from "../Redux/State"
+
+
 function Upload() {
     const nav = useNavigate()
     const Dispatch = useDispatch()
@@ -21,6 +25,7 @@ function Upload() {
     const [msg, setMsg] = useState("")
     const [visible, setVisible] = useState(false)
     const inputRef =useRef(null);
+    const [promote, setPromote] = useState(false)
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const userInitEventData = useSelector(state=>state.events.eventInfo)
     const upload = useRef(null);
@@ -38,6 +43,7 @@ function Upload() {
     const [image, setImage] =useState ("")
     const [display, setDisplay] =useState(true)
     const [imagecreate, setImageUpload] = useState ("")
+    const [activate, setActivate] = useState(true)
 
     const states = [
         " States",
@@ -158,7 +164,11 @@ function Upload() {
             Dispatch(eventData(res.data.data)) 
             setLoading(false)
             setVisible(true);
-
+            setError(false)
+            Dispatch(promoteEventID(res.data.data._id))
+            console.log(res.data.data._id)
+            Dispatch(promoteEvent(activate))
+            console.log(activate);
               setTimeout(() => {
                   setVisible(false);
                   nav('/homepage'); 
@@ -263,7 +273,7 @@ function Upload() {
 
                 <div className="holderstwo">
                 <h4>Available Tickets</h4>
-                <input type="number" id="quantity" name="quantity" 
+                <input type="number"  id="quantity" name="quantity" 
                 value={availableTickets} onChange={(e)=>{setAvailableTickets(e.target.value)}}
                 ></input>
                 </div>
@@ -299,7 +309,7 @@ function Upload() {
 
             <div className="holderssix">
                 <h4>Price</h4>
-                <input type="number" value={eventPrice} onChange={(e)=>{setEventPrice(e.target.value)}}/>
+                <input type="number" min="0" value={eventPrice} onChange={(e)=>{setEventPrice(e.target.value)}}/>
             </div>
             </div>
           </div>
@@ -350,14 +360,14 @@ function Upload() {
             <div className="Update_PopUpMsg">
             <h2>{msg}</h2>
            {
-             error?<BiSolidError style={{fontSize:"100px", color:"red"}}/> :         
+             error?<BiSolidError style={{fontSize:"100px", color:"red"}}/> :     
              <GiConfirmed style={{fontSize:"100px", color:"green"}}/> 
            }
             {/* <button className="Canceled_Btn" onClick={()=>nav('/homepage')}>Go Back</button> */}
         </div>:null  
           }
 
-<div className="directiontodifferentpage">
+         <div className="directiontodifferentpage">
             <div className="Homedirection">
                 <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
                 <h5>Home</h5>

@@ -115,8 +115,9 @@ function SignUp() {
           }
           else if(err.response.data.message === `User with this Email: ${email} already exist.`){
             setErrorMsg("Email has been registered  ")
-            // setErrorMsg(err.response.data.error )
-            // setErrorMsg2(err.response.data.message )
+          }
+          else{
+            setErrorMsg(err.response.data.message)
           }
 
         })

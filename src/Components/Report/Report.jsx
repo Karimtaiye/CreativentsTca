@@ -21,6 +21,7 @@ const Report = () => {
     const [reason, setReason] = useState('')
     const [reportAlert, setReportAlert] = useState(false)
     const { eventID } = useParams()
+    const [loading, setLoading] = useState(false)
 
     const token = userOnLoggedIn.token
     const config = {
@@ -45,13 +46,15 @@ const Report = () => {
     const url = "https://creativents-on-boarding.onrender.com/api/report"
 
     const Submit_Report = () => {
+        setLoading(true)
         axios.post(url, reportData, config)
         .then(res=>{
             console.log(res)
             setMsg("Report Sent Successfully")
-            setsubMsg("Please exercise patiece while we work on it")
+            setsubMsg("You 'll get Feedback soon!")
             setReportAlert(true);
-            
+            setError(false)
+            setLoading(false)
             setTimeout(() => {
             setReportAlert(false);
                 // nav('/homepage'); 
@@ -59,7 +62,7 @@ const Report = () => {
         })
         .catch(err=>{
             console.log(err);
-            // setReportAlert(true);
+            setLoading(false)
             setError(true)
             setReportAlert(true)
             setTimeout(() => {
@@ -77,6 +80,12 @@ const Report = () => {
             else if(err.response.data.error === "Report validation failed: reason: Path `reason` is required., description: Path `description` is required."){
                 setMsg("Reasons and Input field are empty")
                 setsubMsg("Pls fill out these parts")
+            }
+            else if(err.response.data.message === "jwt expired"){
+                nav('/login')
+            }
+            else if(err.response.data.message === "jwt must be provided"){
+                setMsg("You have to log in to report this event");
             }
             else {
                 setMsg("Failed to send Report")
@@ -254,7 +263,7 @@ const Report = () => {
                          
                         </textarea>
                       <div className="SubmitAndGoBack">
-                          <button className="ReportButton" onClick={Submit_Report}>Submit Report</button>
+                          <button className="ReportButton" style={{background:loading?"#031831":null, cursor:loading?"not-allowed":null}} disabled={loading} onClick={Submit_Report}>Submit Report</button>
                           <h3 className="GoBackText" onClick={Goback}>Go back</h3>
                       </div>
                      </div>

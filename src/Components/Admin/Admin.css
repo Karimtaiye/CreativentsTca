@@ -38,12 +38,16 @@
 
 .Admin_AppDesc {
     width: 100%;
-    height: 25px;
+    height: 45px;
     background: #00000034;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+/* 
+.Admin_AppDesc h3:hover {
+    color: rgb(51, 20, 252);
+} */
 
 .Admin_Search.acti {
     width: 100%;
@@ -113,6 +117,12 @@
     
     font-family: sans-serif;
 } 
+
+.Active_Bar {
+    color: white;
+    background-color: rgb(51, 20, 252);
+    border-radius: 5px;
+}
 
 .Admin_UserDrop li:hover{
     cursor: pointer;

@@ -8,8 +8,9 @@ import { SpinnerCircularSplit } from 'spinners-react'
 import {AiFillHome} from 'react-icons/ai'
 import {MdCreateNewFolder} from 'react-icons/md'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
-import { getBarCode } from '../Redux/State'
+import { getBarCode, promoteEventID } from '../Redux/State'
 import { useDispatch } from 'react-redux'
+import { purchasedEventID } from '../Redux/State'
 
 const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 
@@ -20,8 +21,7 @@ const Dispatch = useDispatch()
 const ticketQuantity = useSelector((state)=>state.events.ticketQty)
 const userOnLoggedIn = useSelector(state=>state.events.user)
 const ticketPrice = useSelector((state)=>state.events.ticketPrice)
-const [email, setEmail] = useState("")
-const [DOB, setDOB] = useState("")
+
 const [msg, setMsg] = useState("")
 const [emailMsg, setEmailMsg] = useState("")
 const [subMsg, setSubMsg] = useState("")
@@ -31,8 +31,15 @@ const [loading, setLoading] = useState(false)
 
 const token = userOnLoggedIn.token
 const userEmail = userOnLoggedIn.email
+const [email, setEmail] = useState(token?userEmail:"")
+const [DOB, setDOB] = useState("")
+console.log(userEmail);
+console.log(token);
+
 const userName = userOnLoggedIn.name
-const UserDetails = {email:token?userEmail:email, ticketQuantity, DOB}
+const UserDetails = {email, ticketQuantity, DOB}
+// const UserDetails = {email:token?userEmail:email, ticketQuantity, DOB}
+
 console.log(ticketQuantity);
 console.log(ticketPrice);
 
@@ -41,36 +48,18 @@ console.log(id);
 const url = `https://creativents-on-boarding.onrender.com/api/tickets/${id}`
 const BookEvent = () => {
     setLoading(true)
-    setEmailMsg("")
-    if(!token && !emailRegex.test(email)){
-        // setResAlert(true)
-        setEmailMsg("Invalid Email Format")
-        // setSubMsg("Please check your email")
-        setLoading(false)
-      }
-      else{
     axios.post(url, UserDetails)
     .then(res=>{
-        console.log(res);
+        console.log(res)
+        seterrors(false)
         Dispatch(getBarCode(res.data.data.barcode))
-        // nav(`/api/barcode/${res.data.data._id}`)
+        Dispatch(purchasedEventID(id))
+        setTimeout(() => {
+            nav(`/api/barcode/${res.data.data._id}`) 
+        }, 5000);
         setResAlert(true)
         setLoading(false)
-            const refVal = "Creativents"+ Math.random() * 1000;
-            window.Korapay.initialize({
-              key: "pk_test_1QYXY85UpKezdtEXEGbhpnTxRx5ef2aQ4hsA46g7",
-              reference: `${refVal}`,
-              amount: ticketPrice * ticketQuantity, 
-              currency: "NGN",
-              customer: {
-                // name: user.name,
-                name: token?userName:"user",
-                email: token?userEmail:email
-                // name: user.email,
-              },
-              notification_url: "https://example.com/webhook"
-            });
-
+          
         if(res){
             console.log("response sent");
             setMsg("Ticket Purchased Successfully")
@@ -106,8 +95,53 @@ const BookEvent = () => {
             setSubMsg("Please try again")
           }
     })
+
+}
+
+
+const paymentForTicket = () => {
+    // setEmailMsg("")
+    if(!emailRegex.test(email)){
+        // if(!token && !emailRegex.test(email)){
+        // setResAlert(true)
+        setEmailMsg("Invalid Email Format")
+        // setSubMsg("Please check your email")
+        setLoading(false)
+      }
+    else if(email === ""){
+        // if(!token && !emailRegex.test(email)){
+        // setResAlert(true)
+        setEmailMsg("Input your email")
+        // setSubMsg("Please check your email")
+        setLoading(false)
+      }
+      else{
+    const refVal = "Creativents"+ Math.random() * 1000;
+    window.Korapay.initialize({
+      key: "pk_test_1QYXY85UpKezdtEXEGbhpnTxRx5ef2aQ4hsA46g7",
+      reference: `${refVal}`,
+      amount: ticketPrice * ticketQuantity, 
+      currency: "NGN",
+      customer: {
+        // name: user.name,
+        name: token?userName:"user",
+        email: token?userEmail:email
+        // name: user.email,
+      },
+      notification_url: "https://example.com/webhook",
+      onClose: function () { 
+      },
+       onSuccess: function () { 
+        BookEvent(); 
+        // navigate("/")
+      }, 
+      onFailed: function () { 
+      },
+    });
+
 }
 }
+
 
   return (
     <div className='Checkout_PopUp'>
@@ -119,8 +153,8 @@ const BookEvent = () => {
                         <h2>{msg}</h2>
                         <h4>{subMsg}</h4>
                        {
-                         resAlert && !errors?<GiConfirmed className='succ' style={{fontSize:"100px", color:"green"}}/>  :         
-                         <BiSolidError className='fail' style={{fontSize:"100px", color:"red"}}/>
+                         resAlert && !errors?<GiConfirmed className='succ' style={{fontSize:"100px", color:"green"}}/>  :             
+                         resAlert && errors?  <BiSolidError className='fail' style={{fontSize:"100px", color:"red"}}/>:null
                          
                        }
                         <button className='Purchase_ContBtn' onClick={()=>nav(`/api/events/${id}`)}>Go back</button>
@@ -128,18 +162,17 @@ const BookEvent = () => {
                     </>
                     :
                     <>
-                        <h4>Please input your email and Date of Birth for purchase</h4>
+                        <h4>Please input youremail and Date of Birth for purchase</h4>
                     <h6 style={{color:"red"}}>{emailMsg}</h6>
-                    {
-                    !token?<input style={{border:emailMsg?"1px solid red":null}} className='CheckOut_Input' placeholder='Email' type="email" onChange={(e)=>setEmail(e.target.value)}/>:null
-                    }
-                    <input className='CheckOut_Input' placeholder='Date of Birth' type="date" onChange={(e)=>setDOB(e.target.value)}/>
+                    <input value={email} style={{border:emailMsg?"1px solid red":null, fontWeight:token?"bold":null}} className='CheckOut_Input' placeholder='Email' type="email" onChange={(e)=>setEmail(e.target.value)}/>
+                    
+                    <input style={{fontWeight:token?"bold":null}} className='CheckOut_Input' value={DOB} placeholder='Date of Birth' type="date" onChange={(e)=>setDOB(e.target.value)}/>
                     <div className='CheckOut_Btns'>
                         {
                             resAlert? <button  className='CheckOut_ConfirmBtn' onClick={()=>nav(`/api/events/${data._id}`)}>Go Back</button>:
                             <>
                             <button className='CheckOut_CancelBtn' onClick={()=>nav(`/api/events/${id}`)} disabled={loading}>Cancel</button>
-                            <button className='CheckOut_ConfirmBtn' style={{background:loading?"#08022f93":null}} disabled={loading} onClick={BookEvent}>{
+                            <button className='CheckOut_ConfirmBtn' style={{background:loading?"#08022f93":null}} disabled={loading} onClick={paymentForTicket}>{
                                 loading?<SpinnerCircularSplit style={{animation:"slideInUp",animationDuration:"0.5s"}} size={30} thickness={150} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
                                 "Confirm Book"}</button>
                             </>
@@ -147,23 +180,23 @@ const BookEvent = () => {
                     </div>
                     </>
                 }
+                    </div>
+                    <div className="directiontodifferentpage">
+                <div className="Homedirection">
+                    <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
+                    <h5>Home</h5>
                 </div>
-                <div className="directiontodifferentpage">
-            <div className="Homedirection">
-                <AiFillHome onClick={()=>nav('/homepage')} className="directionmain"/>
-                <h5>Home</h5>
-            </div>
 
-            <div className="Homedirection">
-                <MdCreateNewFolder onClick={()=>nav('/upload')} className="directionmain"/>
-                <h5>Create</h5>
-            </div>
-            <div className="Homedirection">
-                <BsFillCheckSquareFill onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
-                <h5>My events</h5>
-            </div>
-          </div>
-            </div>
+                <div className="Homedirection" onClick={()=>nav('/upload')}>
+                    <MdCreateNewFolder  className="directionmain"/>
+                    <h5>Create</h5>
+                </div>
+                <div className="Homedirection">
+                    <BsFillCheckSquareFill onClick={()=>nav(`/api/getUserWithLinks/${id}`)} className="directionmain"/>
+                    <h5>My events</h5>
+                </div>
+               </div>
+                </div>
   )
 }
 

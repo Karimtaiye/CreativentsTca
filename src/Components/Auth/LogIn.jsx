@@ -11,6 +11,7 @@ import { userProfileUpdate } from '../Redux/State'
 import LogoC from "../../assets/LogoC.png"
 import { SpinnerDotted } from 'spinners-react'
 
+
 function LogIn() {
   const Dispatch = useDispatch()
   const userOnLoggedIn = useSelector(state=>state.events.user)
@@ -23,7 +24,9 @@ function LogIn() {
   const [passwordShow, setPasswordShow] = useState(false)
   const [loading, setLoading] = useState(false)
   const [profileName, setProfileName] = useState("")
-    const userLogInData ={email:email.trim().toLowerCase(), password}
+    const token = userOnLoggedIn.token
+
+    const userLogInData ={email, password}
 
   const url = "https://creativents-on-boarding.onrender.com/api/login"
   // const url = "https://creativents-on-boarding.onrender.com//api/events/:eventID/review" 
@@ -44,8 +47,7 @@ function LogIn() {
 
   axios.post(url, userLogInData)
     .then(res=>{console.log(res)
-      {
-        res.data.data.isLogin?setError("User is Already Logged In on another device or page"):
+
         Dispatch(userStoreData({
           email:res.data.data.email, 
           id:res.data.data._id,
@@ -55,21 +57,17 @@ function LogIn() {
           profilePicture: res.data.data.profilePicture,
           admin: res.data.data.isAdmin
         }))
-  
+        nav(res.data.data.isAdmin?"/adminDashboard":'/homepage')
         Dispatch(userProfileUpdate(res.data.data))
-        nav('/homepage')
-  
-      }
+        // console.log(initUpdates);
     })
     .catch(err=>{
       console.log(err)
       if(err.message === "Network Error"){
         setError("Please check your Internet Connection")
-        console.log("error");
       }
       else if(err.response.data.message === "Incorrect Password"){
         setError("Email and password does not match")
-        console.log("error");
       }
       else{
         setError(err.response.data.message)
@@ -90,7 +88,7 @@ function LogIn() {
     <div className='logIn'>
     <section className='input_LogIn'>
       <div className='LogIn_logo'>
-        <BiArrowBack className='back_ArrowLogin'  onClick={()=>nav('/')}/>
+        <BiArrowBack className='back_ArrowLogin'  onClick={()=>nav('/landingpage')}/>
         <img src={LogoC} alt="" onClick={()=>nav('/landingpage')} style={{cursor:"pointer"}}/>
           {/* <NavLink to={'/signup'}> */}
           <span className='Reg_Route' onClick={()=>nav('/signup')}>Register</span>

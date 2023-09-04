@@ -332,9 +332,7 @@ Header_CategoryContent
 }
 
 .Upcoming_EventsDetails:hover {
-    -ms-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1); 
+    transform: scale(1.05); 
     transition: ease-in 400ms;
     
   }
@@ -569,4 +567,73 @@ Header_CategoryContent
   .bookmark{
     margin-bottom: 5px;
     font-size:20px;
+}
+
+.Promoted_PopUp {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.63);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Promoted_PopUpDiv {
+    width: 500px;
+    height: 300px;
+    background: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.Promote_PopUpBtns {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+}
+
+.Promote_Btn, .Interest_Btn {
+    width: 30%;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transform: scale(1);
+}
+
+.Promote_Btn {
+    background: #0d034d;
+    color: white;
+}
+
+.Promote_Btn:hover {
+    background: #0d034d;
+    color: white;
+    transform: scale(1.02);
+    transition: all 450ms;
+    font-weight: bold;
+
+}
+
+.Interest_Btn {
+    border:2px solid #FCA702;
+    /* color: white; */
+}
+
+.Interest_Btn:hover {
+    border:none;
+    background-color:#FCA702;
+    transform: scale(1.02);
+    transition: all 450ms;
+    font-weight: bold;
+    /* color: white; */
 }

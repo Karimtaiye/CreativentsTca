@@ -14,7 +14,6 @@ import CheckPassword from './Components/NewPassword/CheckPassword'
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
 import ChangePassword from './Components/ChangePassword/ChangePassword'
 import Upload from './Components/CreateEvent/Upload'
-import SavedTickets from './Components/SavedTickets/SavedTickets'
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile'
 import Explore from './Components/Explore/Explore'
 import Checkouts from './Components/Checkout/Checkouts'
@@ -30,6 +29,7 @@ import BarCode from './Components/BarCode/BarCode'
 import Admin from './Components/Admin/Admin'
 import Category from './Components/LandingPage/Category'
 import Reciept from './Components/Reciept/Reciept'
+import Host from './Components/HostPage/Host'
 
 function App() {
   
@@ -54,7 +54,6 @@ function App() {
               <Route path ='/api/changepassword/:id/:token' element = {<NewPassword />} /> 
               <Route path="/api/verify" element={<EmailVerification />} />
               <Route path="/checkpassword" element={<CheckPassword />} />
-              <Route path="/saved" element={<SavedTickets />} />
               <Route path="/api/getUserWithLinks/:id" element={<UserDashBoard />} />
               <Route path="/api/update/:eventID" element={<UserEventUpdates />} />
               <Route path="/api/Delete/:eventID" element={<ConfirmDelete />} />
@@ -67,6 +66,8 @@ function App() {
               <Route path="/api/barcode/:id" element={<BarCode />} />
               <Route path="/adminDashboard/*" element={<Admin />} />
               <Route path="/reciept" element={<Reciept />} />
+              <Route path="/host/:id" element={<Host
+               />} />
             
           </Routes>
       </HashRouter>

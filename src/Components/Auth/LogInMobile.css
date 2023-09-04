@@ -1,4 +1,4 @@
-@media screen and (max-width:767px){
+@media screen and (max-width:430px){
     .logIn {
         justify-content: center;
     }
@@ -14,28 +14,19 @@
     }
 
     .LogIn_logo img{
-        width: 60px;
-        height: 60px;
-        margin-left: 40%;
+        width: 80px;
+        height: 80px;
     }
 
     .image_LogIn {
         display: none;
     }
 
-    .back_ArrowLogin {
+    .back_ArrowLogin, .Reg_Route {
         display: flex;
         align-self: flex-start;
         font-size: 25px;
-        /* margin-top: 9%; */
-    }
-
-    
-   .Reg_Route {
-        display: flex;
-        align-self: flex-start;
-        font-size: 25px;
-        margin-top: 8.5%;
+        margin-top: 9%;
     }
     
     .LogIn_logo span {
@@ -84,7 +75,7 @@
      }
 }
 
-@media screen and (min-width: 768px) and (max-width:1024px){
+@media screen and (min-width:431px) and (max-width:1024px){
     .logIn {
         justify-content: center;
     }
@@ -95,31 +86,22 @@
 
     .LogIn_logo {
         height: 28%;
-        width: 100%;
         justify-content: space-between;
         
     }
     .LogIn_logo img{
         width: 80px;
         height: 80px;
-        align-self: center;
-        margin-left: 45%;
     }
 
     .image_LogIn {
         display: none;
     }
 
-    .back_ArrowLogin {
-        display: flex;
-        align-self : flex-start;
-        /* margin-top: 9%; */
-    }
-
-    .LogIn_logo span {
+    .back_ArrowLogin, .LogIn_logo span {
         display: flex;
         align-self: flex-start;
-        margin-top: 4%;
+        margin-top: 9%;
     }
 
     .user_Auth {
@@ -209,6 +191,6 @@
     
     .user_Auth_wrapper h1{
         font-size: 26.5px;
-    }
+    }
 
-} */
+} */

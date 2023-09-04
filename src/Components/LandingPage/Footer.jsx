@@ -26,7 +26,7 @@ const Footer =()=>{
                 <ul>
                     <li>Payment Method</li>
                     <li>About Us</li>
-                    <li>Featurs</li>
+                    <li>Features</li>
                     <li>Contact Us</li>
                 </ul>
             </div>

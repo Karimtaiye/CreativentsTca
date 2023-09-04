@@ -8,9 +8,8 @@ function AdminNav() {
     const nav = useNavigate()
     const [user, setUser]  = useState(false)
     const [events, setEvents]  = useState(false)
-    const [tickets, setTickets]  = useState(false)
     const [analysis, setAnalysis]  = useState(false)
-    const [ratings, setRatings]  = useState(false)
+    const [promotion, setPromotion]  = useState(false)
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const email = userOnLoggedIn.email
     const name = userOnLoggedIn.name
@@ -22,18 +21,15 @@ function AdminNav() {
     <section className='Admin_NavSection'>
               <div className='Admin_NavActions'>
                 <div className='Admin_AppDesc'>
-                  <h3>Creativents</h3>
+                  <h3 style={{cursor:"pointer"}} onClick={()=>nav('/homepage')}>Creativents</h3>
                 </div>
-                {/* <div className='Admin_Search'>
-                <input type="text" placeholder='Search'/>
-                </div> */}
+
                 <div className='Admin_NavList'>
                   <nav>
-                  <p onClick={()=>{
+                  <p className={user?"Active_Bar":null} onClick={()=>{
                       setUser(!user)
                       setEvents(false)
-                      setTickets(false)
-                      setRatings(false)
+                      setPromotion(false)
                       setAnalysis(false)
                     }}>User Manager</p>
                  {
@@ -46,11 +42,10 @@ function AdminNav() {
                  }
                   </nav>
                   <nav>
-                  <p onClick={()=>{
+                  <p className={events?"Active_Bar":null} onClick={()=>{
                       setEvents(!events)
                       setUser(false)
-                      setTickets(false)
-                      setRatings(false)
+                      setPromotion(false)
                       setAnalysis(false)
                     }}>Events Manager</p>
                   {
@@ -67,15 +62,14 @@ function AdminNav() {
                   }
                   </nav>
                   <nav>
-                  <p onClick={()=>{
-                      setRatings(!ratings)      
-                      setTickets(false)
+                  <p className={promotion?"Active_Bar":null} onClick={()=>{
+                      setPromotion(!promotion)      
                       setEvents(false)
                       setUser(false)
                       setAnalysis(false)
                     }}>Promotion Manager</p>
                     {
-                      ratings?
+                      promotion?
                       <ul className='Admin_UserDrop'>
                       <li onClick={()=>nav('/adminDashboard/allPromoted')}>All Promoted Events</li>
                       <li>Promoted Event by Id</li>
@@ -83,10 +77,9 @@ function AdminNav() {
                      }
                   </nav>
                   <nav>
-                  <p onClick={()=>{
+                  <p className={analysis?"Active_Bar":null} onClick={()=>{
                       setAnalysis(!analysis)
-                      setRatings(false)      
-                      setTickets(false)
+                      setPromotion(false)      
                       setEvents(false)
                       setUser(false)
                       // setanalysis(false)

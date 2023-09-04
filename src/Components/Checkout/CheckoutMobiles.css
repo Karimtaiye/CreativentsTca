@@ -8,6 +8,11 @@
       height: 30px;
       margin: 10px;
   }
+
+  .GoBackBtn {
+    width: 30%;
+    height: 40px;
+}
   
 .BookMarkReport {
   display: flex;
@@ -295,9 +300,78 @@
     font-size: 15px;
   }
 
-  /* .Network_Icon {
-    font-size: 90px;
-  } */
+  .Network_Icon {
+    font-size: 60px;
+    size: 40px;
+  }
+
+  .Host_ProfileReviewOverAll {
+    display: none;
+  }
+
+  .Host_ProfileReviewOverAllMobile {
+    height: max-content;
+    flex-direction: column;
+    display: flex;
+    /* gap: 5%; */
+  }
+
+.Rating_Part {
+    width: 100%;
+    height: 120px;
+    justify-content: space-between;
+
+  }
+
+.HostPart_Part {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 20px;
+  }
+
+.HostImage {
+    width: 40%;
+    height: 100%;
+
+  }
+
+.Hostprofile {
+    width: 60%;
+    height: 100%;
+    gap: 2%;
+
+  }
+
+.HostProfilePic {
+    width: 95px;
+    height: 95px;
+}
+
+.ViewProf_Btn {
+    width: 100%;
+    height: 35px;
+}
+
+.Total_Review {
+    height: 100%;
+  font-size: 15px;
+
+.Average_Review {
+  height: 100%;
+  font-size: 15px;
+}
+
+.GoBackBtn {
+    width: 15%;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    /* font-weight: bold;x   */
+}
+.GoBackBtn:hover {
+    font-weight: bold;
+}
 
 }
 
@@ -471,5 +545,6 @@ height: 40%;
 .sectionthree .submitratings button{
   width: 30%;
   height:100%;
+}
 }
 }

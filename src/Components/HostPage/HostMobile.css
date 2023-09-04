@@ -1,0 +1,125 @@
+@media screen and (max-width:767px) {
+    
+    .Host_Header img{
+        width: 40px;
+        height: 40px;
+    }
+    
+    .HostEvent_Info {
+        width: 53%;
+    }
+
+    .ProfileBack_Btn {
+        font-size:10px;
+        font-weight: bold;
+    }
+    
+    .HostEvent_Info ul{
+        width: 100%;
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .HostEvent_Info ul li{
+        font-size: 9px;
+        padding-inline: 4px;
+        padding-block: 5px;
+    }
+
+    .Host_Header {
+        height: 5vh;
+    }
+    
+    .Host_ProfilePart {
+        height: 35vh;
+    }
+    
+    .Host_image {
+        height: 40%;
+        margin-top: 1%;
+    }
+    
+    .ImageHost {
+        width: 90px;
+        height: 90px;
+        top: 25%;
+    }
+
+    
+    .Host_Info {
+        margin-top: 15%;
+        padding-left: 4%;
+        gap: 7px;
+    }
+    
+    .Follow_Details {
+        height: 70%;
+        font-size: 13px;
+        gap: 4px;
+    }
+
+}
+
+
+@media screen and (min-width:768px) and (max-width:1023px) {
+    .Host_Header img{
+        width: 40px;
+        height: 40px;
+    }
+    
+    .HostEvent_Info {
+        width: 43%;
+    }
+
+    .ProfileBack_Btn {
+        /* font-size:10px; */
+        font-weight: bold;
+    }
+    
+    .HostEvent_Info ul{
+        width: 100%;
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .HostEvent_Info ul li{
+        /* font-size: 9px; */
+        padding-inline: 4px;
+        padding-block: 5px;
+    }
+
+    .Host_Header {
+        height: 5vh;
+    }
+    
+    .Host_ProfilePart {
+        height: 35vh;
+    }
+    
+    .Host_image {
+        height: 40%;
+        margin-top: 1%;
+    }
+    
+    .ImageHost {
+        width: 90px;
+        height: 90px;
+        top: 29%;
+    }
+
+    
+    .Host_Info {
+        margin-top: 10%;
+        padding-left: 4%;
+        gap: 7px;
+    }
+    
+    .Follow_Details {
+        height: 70%;
+        gap: 4px;
+    }
+}

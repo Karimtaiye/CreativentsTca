@@ -28,7 +28,15 @@ const initialState = {
 
     homeSearchResult:[],
 
-    searchTerm:""
+    searchTerm:"",
+
+    promotion:false,
+
+    promotedID:"",
+
+    eventID:"",
+
+    followStatus:false
 }
 
 export const eventReducers = createSlice({
@@ -64,8 +72,22 @@ export const eventReducers = createSlice({
         },
         searchWord:(state, {payload})=>{
             state.searchTerm = payload
+        },
+        promoteEvent:(state, {payload})=>{
+            state.promotion = payload
+        },
+        promoteEventID:(state, {payload})=>{
+            state.promotedID = payload
+        },
+        purchasedEventID:(state, {payload})=>{
+            state.eventID = payload
+        },
+        checkFollow:(state, {payload})=>{
+            state.followStatus = payload
         }
     }
 })
-export const {userStoreData, userResData, userLogin, userProfileUpdate, eventData, checkoutTicketQty, checkoutTicketPrice, getBarCode, getSearchResult, searchWord} = eventReducers.actions
+export const {userStoreData, userResData, userLogin, userProfileUpdate, eventData, checkoutTicketQty,
+             checkoutTicketPrice, getBarCode, getSearchResult, searchWord, promoteEvent, promoteEventID,
+             purchasedEventID, checkFollow} = eventReducers.actions
 export default eventReducers.reducer

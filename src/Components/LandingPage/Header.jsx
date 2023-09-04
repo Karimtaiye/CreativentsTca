@@ -30,7 +30,7 @@ function Header (){
                 token?nav('/homepage'):nav('/landingpage')
              }}/>
              </div>
-             <h1 style={{marginTop:"1px"}}>reativent</h1>
+             <h1 style={{marginTop:"1px", fontSize:"14px"}}>reativent</h1>
             </div>
             <div className="two">
                 <ul>
@@ -56,7 +56,8 @@ function Header (){
                     <button className="btn-one" onClick={()=>nav('/login')}>Log in</button>
                     <button className="btn-two" onClick={()=>nav('/signup')}>Sign up</button>
                     </>:
-                    <h3>{name}</h3>
+                    <h3 style={{width:"40px", height:"40px", background:"black", borderRadius:"50%",
+                     color:"white", display:"flex", justifyContent:"center", alignItems:"center"}}>{name.charAt(0)}</h3>
                 }
             </div>
             <div>

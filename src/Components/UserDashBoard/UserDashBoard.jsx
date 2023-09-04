@@ -37,8 +37,8 @@ function UserDashBoard() {
     const [confirmation, setConfirmation] = useState(false)
     const [userProfle, setUserProfile] = useState()
     const [userHostedEvents, setUserHostedEvents] = useState()
-    const [userBookMarked, setUserBookMarked] = useState()
-    const [userPurchased, setUserPurchased] = useState()
+    const [userBookMarked, setUserBookMarked] = useState([])
+    const [userPurchased, setUserPurchased] = useState([])
     const [detail, setDetail] = useState(true);
     const userOnLoggedIn = useSelector(state=>state.events.user)
     const userName = userOnLoggedIn.name
@@ -88,6 +88,8 @@ function UserDashBoard() {
         getuserEventDetails()
     },[])
     
+    const totalPurchase = userPurchased.reduce((a,e)=>a + e.totalPrice, 0)
+    console.log(totalPurchase)
     console.log(userInitEventData);
     console.log(userHostedEvents);
     console.log(userPurchased);
@@ -105,6 +107,10 @@ function UserDashBoard() {
             fontSize:"26px", color:"white", textAlign:"center"
         }}>{msg}</h1>
         {network?<MdNetworkCheck className='Network_Iconic' />:<SpinnerDotted size={200} thickness={50} speed={100} color="#ffffff" />}
+        {network?
+        <button className='GoBackBtn' onClick={()=>{
+            nav('/homepage')
+        }}>Go Back</button>:null}
         </div>:
             <main className="My_EventHolder">
             <nav className="NavDetailHolder">
@@ -161,6 +167,13 @@ function UserDashBoard() {
                         myBookMarked?`BookMarked (${userBookMarked.length}) Events`:
                         myPurchases?`Purchased (${userPurchased.length}) Events`:null
                     } in total</h2>
+                    {
+                        myEvents?
+                        <>
+                            <h3>Total Earnings: &#8358;{userProfle === undefined?"00":userProfle.Earnings}</h3>
+                             <h3>Total Tickets Sold: {userProfle === undefined?"00":userProfle.totalTicketsSold}</h3>
+                        </>:null
+                    }
                 </div>
             </section>
             <div className="Hosted_Events">

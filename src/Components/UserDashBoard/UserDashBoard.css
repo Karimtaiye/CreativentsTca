@@ -163,6 +163,10 @@
     align-items: flex-start;
     flex-direction: column;
 }
+.Events_Texts h3{
+    color:rgb(165, 170, 175);
+    font-size:19px;
+}
 .Events_Welcome{
     font-family:  'Roboto', sans-serif;
     font-size: 44px;
