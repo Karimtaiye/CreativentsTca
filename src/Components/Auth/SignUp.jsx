@@ -11,8 +11,10 @@ import { SpinnerDotted } from 'spinners-react'
  
 
 function SignUp() {
-  const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-  const nameRegex = /^[a-zA-Z]+$/;
+  // const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+  const emailRegex = /^\s*[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}\s*$/;
+  // const nameRegex = /^[a-zA-Z]+$/;
+  const nameRegex = /^[a-zA-Z\s]+$/;
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
   const nav = useNavigate()
@@ -36,28 +38,6 @@ function SignUp() {
 
   const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password:password.trim(), email:email.trim().toLowerCase(), confirmPassword:confirmPassword.trim()}
 
-  // useEffect(()=>{
-  //   if(!email){
-  //     setEmpty(true)
-  //   }
-  //   else if(!firstname){
-  //     setEmpty(true)
-  //   }
-  //   else if(!lastname){
-  //     setEmpty(true)
-  //   }
-  //   else if(!password){
-  //     setEmpty(true)
-  //   }
-  //   else if(!confirmPassword){
-  //     setEmpty(true)
-  //   }
-  //   else {
-  //     setEmpty(false)
-  //   }
-  // },[email, firstname, lastname, password, confirmPassword]).
-  
-
   const signUpUser = (e) => {
     e.preventDefault()
     setLoading(true)
@@ -69,10 +49,7 @@ function SignUp() {
       setError({error:true, type:"email", msg:"Please input valid email"})
       setLoading(false)
     }
-    // else if (!nameRegex.test(firstname) || !nameRegex.test(lastname)) {
-    //   setError({error:true, type:"firstname", msg:"First and last names should only contain letters."})
-    //   setErrorMsg('');
-    // }
+
     else if(!nameRegex.test(firstname)){
      setError({error:true, type:"firstname", msg:"Input your first name with letters only"})
      setLoading(false)
@@ -93,7 +70,10 @@ function SignUp() {
       setLoading(false)
 
     }
+    else if(ischecked){
+      setLoading(false)
 
+    }
     else {
       axios.post(url,userData)
         .then(res=> {
@@ -113,8 +93,8 @@ function SignUp() {
            setErrorMsg("Please check your Internet Connection")
             console.log("error");
           }
-          else if(err.response.data.message === `User with this Email: ${email} already exist.`){
-            setErrorMsg("Email has been registered  ")
+          else if(err.response.data.message === `User with this Email: ${email.trim().toLowerCase()} already exist.`){
+            setErrorMsg("Email has been registered ")
           }
           else{
             setErrorMsg(err.response.data.message)
@@ -186,7 +166,7 @@ function SignUp() {
               <input type="checkbox" style={{cursor:"pointer"}} checked={ischecked}  onChange={()=>setischecked(!ischecked)}
            /> Agree to Terms and conditions
               </div>
-              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":ischecked?"rgb(182, 132, 32)":null}} disabled={loading && !ischecked}>{loading?<SpinnerDotted size={40} thickness={50} speed={100} color="#ffffff" />:"Sign up"}</button>
+              <button className='SignUp_Btn' style={{backgroundColor:loading?"rgb(182, 132, 32)":!ischecked?"rgb(182, 132, 32)":null}} disabled={loading || !ischecked}>{loading?<SpinnerDotted size={40} thickness={50} speed={100} color="#ffffff" />:"Sign up"}</button>
               <p>Already have an account? <a style={{cursor:"pointer"}} onClick={()=>nav('/login')}>Log in</a></p>
               </div>
             </form>

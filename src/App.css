@@ -676,6 +676,10 @@ a{
   cursor: pointer;
 }
 
+.Network_Icon {
+  font-size: 30px;
+}
+
 .rating label:before {
   content: "\2605";
 }
