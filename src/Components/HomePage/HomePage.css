@@ -290,6 +290,7 @@ Header_CategoryContent
     border-radius: 5px;
     flex: 0 0 auto; 
     object-fit: cover;
+    animation: scroll 5s linear infinite; 
 }
 
 .Category_card img{
@@ -335,6 +336,10 @@ Header_CategoryContent
     transform: scale(1.05); 
     transition: ease-in 400ms;
     
+  }
+
+  .starh {
+    color: grey;
   }
 
 .Upcoming_EventImage {
@@ -580,15 +585,35 @@ Header_CategoryContent
 }
 
 .Promoted_PopUpDiv {
-    width: 500px;
-    height: 300px;
+    width: 650px;
+    height: 420px;
     background: white;
-    color: black;
+    border-radius: 10px;
+    color: white;
     display: flex;
     flex-direction: column;
     gap: 5%;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.Promoted_PopUpDiv img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.Position_Promote {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
 }
 
 .Promote_PopUpBtns {
@@ -601,7 +626,7 @@ Header_CategoryContent
 
 .Promote_Btn, .Interest_Btn {
     width: 30%;
-    height: 40px;
+    height: 50px;
     background: transparent;
     border: none;
     outline: none;
@@ -626,7 +651,7 @@ Header_CategoryContent
 
 .Interest_Btn {
     border:2px solid #FCA702;
-    /* color: white; */
+    color: white;
 }
 
 .Interest_Btn:hover {
@@ -635,5 +660,5 @@ Header_CategoryContent
     transform: scale(1.02);
     transition: all 450ms;
     font-weight: bold;
-    /* color: white; */
+    color: black;
 }

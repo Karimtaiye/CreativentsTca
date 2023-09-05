@@ -12,8 +12,12 @@ import Cat1 from "../../assets/Cat1.png"
 import Cat2 from "../../assets/Cat2.png"
 import Cat3 from "../../assets/Cat3.png"
 import Cat4 from "../../assets/Cat4.png"
+import { SpinnerCircularSplit } from 'spinners-react'
+import promote from "../../assets/promote.jpg"
+import promote2 from "../../assets/promote2.jpg"
+import promote3 from "../../assets/promote3.jpg"
 import Footer from '../LandingPage/Footer'
-import {BsFillSuitHeartFill} from 'react-icons/bs';
+import {FaStar} from 'react-icons/fa';
 import {CiMenuKebab} from 'react-icons/ci';
 import {CiCalendarDate} from 'react-icons/ci'
 import {BiMoney} from 'react-icons/bi'
@@ -29,12 +33,14 @@ function HomePage() {
         const Dispatch = useDispatch()
         const {themes, ChangeTheme} = useContext(themeContext)
         const [promotedEvents, setPromotedEvents] = useState([])
+        const [promoteError, setPromoteError] = useState(false)
         const [countpro, setCountpro] = useState(0)
         const [shouldExecute, setShouldExecute] = useState(true);
         const eventIsPromoted = useSelector(state=>state.events.promotion)
         const PromotedID = useSelector(state=>state.events.promotedID)
         const [uploadedEvent, setUploadEvent] = useState([])
         const [deactivate, setDeactivate] = useState(false)
+        const [promoteLoading, setpromoteLoading] = useState(false)
          const userOnLoggedIn = useSelector(state=>state.events.user)
         const url = "https://creativents-on-boarding.onrender.com/api/events" 
         const promoteUrl = "https://creativents-on-boarding.onrender.com/api/promoted" 
@@ -206,9 +212,9 @@ useEffect(()=>{
 console.log(searchResults)
 
 useEffect(()=>{
-  // setTimeout(() => {
-  //   Dispatch(promoteEvent(deactivate))
-  // }, 45000);
+  setTimeout(() => {
+    Dispatch(promoteEvent(deactivate))
+  }, 45000);
   executeCodeEvery4Seconds();
 
   return () => {
@@ -218,7 +224,7 @@ useEffect(()=>{
 },[])
 
 
-
+const maxLength = 15
 
   return (
     <div className='HomePage' style={{background:themes?"white":"rgb(8, 2, 47)"}}>
@@ -289,6 +295,7 @@ useEffect(()=>{
               <li onClick={changeUserProfilePicture}>Update Profile</li>
               <li onClick={ChangeTheme}>{themes?"Dark Mode":"Light Mode"}</li>
               <li onClick={checkUserEventProfile}>My Events</li>
+              <li>Followers & Following</li>
               {
                 admin?<li onClick={()=>nav('/adminDashboard')}>Admin DashBoard</li>:null
               }
@@ -303,8 +310,8 @@ useEffect(()=>{
       <img src={isPromoted[countpro % isPromoted.length]} alt="" />
     </div>
     <div style={{width:"90%",display:"flex", flexDirection:"column", justifyContent:"flex-start"}} className='Home_EventDesc'>
-      <h2>Sunday, September 31st 2023</h2>
-      <h1>{isPromotedDes[countpro % isPromotedDes.length]}</h1>
+      <h4>Sunday, September 31st 2023</h4>
+      <h3 style={{fontSize:"17px", marginBlock:"5px"}}>{isPromotedDes.length > maxLength?isPromotedDes.slice(0, maxLength) :isPromotedDes[countpro % isPromotedDes.length]}</h3>
     </div>
   </section>: null
    }
@@ -603,16 +610,13 @@ useEffect(()=>{
                         <h4>{e.eventVenue}</h4>
 
 <div class="rating">
-<input value="5" name="rating" id="star5" type="radio"/>
-<label for="star5"></label>
-<input value="4" name="rating" id="star4" type="radio"/>
-<label for="star4"></label>
-<input value="3" name="rating" id="star3" type="radio"/>
-<label for="star3"></label>
-<input value="2" name="rating" id="star2" type="radio"/>
-<label for="star2"></label>
-<input value="1" name="rating" id="star1" type="radio"/>
-<label for="star1"></label>
+{[1, 2, 3, 4, 5].map((star) => (
+                        <FaStar style={{fontSize:"18px", marginTop:"10px"}}
+                        key={star}
+                        className={star <= e.overallRating? 'star_selected' : 'starh'}
+                        onClick={() => handleStarClick(star)}
+                        />
+                    ))}
 </div>
                     </div>
                 <div className='dateandprice'>
@@ -655,28 +659,65 @@ useEffect(()=>{
 
    {
     eventIsPromoted?
-    <div className=' Promoted_PopUp'>
+    // setTimeout(() => {
+      <div className=' Promoted_PopUp'>
       <div className='Promoted_PopUpDiv'>
+        <img src={promote} alt="" />
+        <div className='Position_Promote'>
+        <h1 style={{fontFamily:"cursive", color:"#FCA702", fontSize:"40px"}}>Want more?</h1>
         <h2>Promote Your Event</h2>
+        <h2 style={{ fontSize:"30px"}}>@</h2>
+        <h1>&#8358;3,000</h1>
         <div className='Promote_PopUpBtns'>
-        <button className='Promote_Btn' onClick={()=>{
-          axios.post(`https://creativents-on-boarding.onrender.com/api/events/promote/${PromotedID}`,null, config)
-          .then(res=>{
-            console.log(res)
-            Dispatch(promoteEvent(deactivate))
-            Dispatch(promoteEventID({promotedID:""}))
-          })
-          .catch(err=>{
-            console.log(err)
-          })
-        }}>Promote</button>
+        <button style={{background:promoteLoading?"#0d034d":null}} disabled={promoteLoading} className='Promote_Btn' onClick={()=>{
+           const refVal = "Creativents"+ Math.random() * 1000;
+           window.Korapay.initialize({
+             key: "pk_test_1QYXY85UpKezdtEXEGbhpnTxRx5ef2aQ4hsA46g7",
+             reference: `${refVal}`,
+             amount: 3000, 
+             currency: "NGN",
+             customer: {
+               // name: user.name,
+               name: userOnLoggedIn.name,
+               email: userOnLoggedIn.email
+               // name: user.email,
+             },
+             notification_url: "https://example.com/webhook",
+             onClose: function () { 
+             },
+              onSuccess: function () { 
+                setpromoteLoading(true)
+                axios.post(`https://creativents-on-boarding.onrender.com/api/events/promote/${PromotedID}`,null, config)
+                .then(res=>{
+                  setpromoteLoading(false)
+                  console.log(res)
+                  setPromoteError(false)
+                  Dispatch(promoteEvent(deactivate))
+                  Dispatch(promoteEventID({promotedID:""}))
+                })
+                .catch(err=>{
+                  setpromoteLoading(false)
+                  setPromoteError(true)
+                  console.log(err)
+                })
+             }, 
+             onFailed: function () { 
+             },
+           });
+       
+          
+        }}>{promoteLoading?<SpinnerCircularSplit style={{animation:"slideInUp",animationDuration:"0.5s"}} size={30} thickness={150} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
+         "Promote"}</button>
         <button className='Interest_Btn' onClick={()=>{
           Dispatch(promoteEvent(deactivate))
           Dispatch(promoteEventID({promotedID:""}))
         }}>Not Interested</button>
         </div>
+        </div>
       </div>
-    </div>:null
+    </div>
+    // }, 3000)
+    :null
    }
 
   </div>

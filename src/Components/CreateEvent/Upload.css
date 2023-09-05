@@ -368,7 +368,7 @@
   flex-direction: column;
   gap: 5px;
   animation:slideInDown;
-  animation-duration:1s ;
+  animation-duration:0.5s ;
 }
 
 .directiontodifferentpage{

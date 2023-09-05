@@ -147,11 +147,11 @@ function Upload() {
         // setImageUpload(files)
 
         const formData = new FormData()
-        formData.append("eventName", eventName)
-        formData.append("eventDescription", eventDescription)
+        formData.append("eventName", eventName.trim())
+        formData.append("eventDescription", eventDescription.trim())
         formData.append("eventPrice", eventPrice)
-        formData.append("eventLocation", eventLocation)
-        formData.append("eventVenue", eventVenue)
+        formData.append("eventLocation", eventLocation.trim())
+        formData.append("eventVenue", eventVenue.trim())
         formData.append("availableTickets", availableTickets)
         formData.append("eventCategory", eventCategory)
         formData.append("eventDate", eventDate)
@@ -190,6 +190,9 @@ function Upload() {
               }, 3000)
             if(err.message === "Network Error"){
                 setMsg("Please check your Internet Connection")
+            }
+            if(err.response.data.message === "jwt expired"){
+                nav('/login')
             }
             else if(err.response.data.error === "Cannot read property 'secure_url' of null"){
                 setMsg("Please Select Image for Upload")
@@ -303,6 +306,7 @@ function Upload() {
                 <option value="Health Event">Health Event</option>
                 <option value="Education">Education</option>
                 <option value="Leisure">Leisure</option>
+                <option value="Art Theatre">Art Theatre</option>
                 <option value="Others">Others</option>
                 </select>
             </div>

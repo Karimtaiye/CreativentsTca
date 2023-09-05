@@ -4,6 +4,11 @@
         margin-bottom: 35px;
     }
 
+    .Promoted_PopUpDiv {
+        width: 90%;
+        height: 45%;
+    }
+
     .HomePage_Header {
         height: 20vh;
         position: relative;

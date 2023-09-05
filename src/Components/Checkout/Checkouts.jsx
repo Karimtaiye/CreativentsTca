@@ -327,7 +327,7 @@ useEffect(() => {
 
                     <button onClick={()=>nav(`/api/report/${data._id}`)} className='Report_Btn'>Report this event</button>
                    </div>
-                   <span style={{fontSize:"13px", color:"red"}}>{notification}</span>
+                   <span style={{color:"white", fontSize:"13px", color:"red"}}>{notification}</span>
 
                    
 
@@ -343,7 +343,7 @@ useEffect(() => {
                         <div className='Average_Review'>
                         <h1>Average Review</h1>
                         <div style={{width:"100%", display:"flex", flexDirection:"column", alignItems:"center"}}>
-                            <h1 style={{fontSize:"40px"}}>{data.overallRating.toFixed(2)}</h1>
+                            <h1 style={{fontSize:"40px"}}>{data.overallRating.toFixed(1)}</h1>
                             <div className='starBoy'>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <FaStar style={{fontSize:"30px"}}
@@ -369,7 +369,7 @@ useEffect(() => {
                             <h4 style={{color:"whitesmoke"}}>Host</h4>
                             <h5>{data.createdBy.firstname} {data.createdBy.lastname}</h5>
                             <h5>{data.createdBy.email}</h5>
-                            <h5>{data.createdBy.followers.length} Followers</h5>
+                            <h5>{data.createdBy.followers.length}{data.createdBy.followers.length > 1? "Followers": "Follower"}</h5>
                             {/* <h5>{data.createdBy.following.length}</h5> */}
                             </div>
                             <button className='ViewProf_Btn' onClick={()=>{
@@ -395,7 +395,7 @@ useEffect(() => {
                             <h4 style={{color:"whitesmoke"}}>Host</h4>
                             <h5>{data.createdBy.firstname} {data.createdBy.lastname}</h5>
                             <h5>{data.createdBy.email}</h5>
-                            <h5>{data.createdBy.followers.length} Followers</h5>
+                            <h5>{data.createdBy.followers.length} {data.createdBy.followers.length > 1? "Followers": "Follower"}</h5>
                             </div>
                             <button className='ViewProf_Btn' onClick={()=>{
                                 Dispatch(purchasedEventID(data._id))
@@ -412,7 +412,7 @@ useEffect(() => {
                         <div className='Average_Review'>
                         <h1>Average Review</h1>
                         <div style={{width:"100%", display:"flex", flexDirection:"column", alignItems:"center"}}>
-                            <h1 style={{fontSize:"30px", fontWeight:"normal"}}>{data.overallRating.toFixed(2)}</h1>
+                            <h1 style={{fontSize:"30px", fontWeight:"normal"}}>{data.overallRating.toFixed(1)}</h1>
                             <div className='starBoy'>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <FaStar style={{fontSize:"20px"}}

@@ -66,8 +66,8 @@ function App() {
               <Route path="/api/barcode/:id" element={<BarCode />} />
               <Route path="/adminDashboard/*" element={<Admin />} />
               <Route path="/reciept" element={<Reciept />} />
-              <Route path="/host/:id" element={<Host
-               />} />
+              <Route path="/host/:id" element={<Host/>} />
+              {/* <Route path="/shot" element={<Shot/>} /> */}
             
           </Routes>
       </HashRouter>

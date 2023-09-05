@@ -45,13 +45,16 @@
     padding: 10px;
     border-radius: 3px;
     list-style-type: none;
+    cursor: pointer;
+    user-select: none;
 }
 
 .HostEvent_Info ul li:hover{
-    /* background-color: #303482; */
+    transition: all 350ms;
+}
+
+.active_Host {
     background-color: lightgray;
-    /* color: white; */
-    cursor: pointer;
     transition: all 350ms;
 }
 
@@ -128,7 +131,7 @@
     gap: 4px;
 }
 
-.Follow_Btn {
+.Follow_Btn, .unFollow_Btn {
     width: 75px;
     height:30px;
     border-radius: 5px;
@@ -140,6 +143,11 @@
     border: 2px solid lightgrey;
     font-family: cursive;
     cursor: pointer;
+}
+
+.unFollow_Btn:hover {
+    border: 2px solid #303482;
+    transition: all 100ms;
 }
 
 .Follow_Btn:hover {

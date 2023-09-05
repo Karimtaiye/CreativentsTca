@@ -29,7 +29,7 @@ function UserDashBoard() {
     const { id } = useParams()
     const [myEvents, setMyEvents] = useState(true)
     const [network, setNetwork] = useState(false)
-    const [msg, setMsg] = useState("Fetching User Data........")
+    const [msg, setMsg] = useState("Loading")
     const Dispatch = useDispatch()
     const userInitEventData = useSelector(state=>state.events.eventInfo)
     const [myBookMarked, setMyBookMarked] = useState(false)
