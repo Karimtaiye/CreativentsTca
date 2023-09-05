@@ -90,6 +90,7 @@ function HomePage() {
   const [settingPopUp, setSettingPopUp] = useState(false)
   const [search, setSearch] = useState(false)
   
+  const promoteImages = [promote, promote2, promote3] 
 
   const nav = useNavigate()
   console.log(userOnLoggedIn);
@@ -159,6 +160,10 @@ function HomePage() {
     },
     {
       name:"Health Event",
+      image:Cat4
+    },
+    {
+      name:"Art Theatre",
       image:Cat4
     }
 ]
@@ -658,11 +663,11 @@ const maxLength = 15
     <Footer />
 
    {
-    eventIsPromoted?
+    !eventIsPromoted?
     // setTimeout(() => {
       <div className=' Promoted_PopUp'>
       <div className='Promoted_PopUpDiv'>
-        <img src={promote} alt="" />
+        <img src={promoteImages[countpro % promoteImages.length]} alt="" />
         <div className='Position_Promote'>
         <h1 style={{fontFamily:"cursive", color:"#FCA702", fontSize:"40px"}}>Want more?</h1>
         <h2>Promote Your Event</h2>
