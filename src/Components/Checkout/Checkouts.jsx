@@ -327,7 +327,7 @@ useEffect(() => {
 
                     <button onClick={()=>nav(`/api/report/${data._id}`)} className='Report_Btn'>Report this event</button>
                    </div>
-                   <span style={{color:"white", fontSize:"13px", color:"red"}}>{notification}</span>
+                   <span style={{ fontSize:"13px", color:"red"}}>{notification}</span>
 
                    
 
