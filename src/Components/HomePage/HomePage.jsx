@@ -18,7 +18,6 @@ import promote2 from "../../assets/promote2.jpg"
 import promote3 from "../../assets/promote3.jpg"
 import Footer from '../LandingPage/Footer'
 import {FaStar} from 'react-icons/fa';
-import {CiMenuKebab} from 'react-icons/ci';
 import {CiCalendarDate} from 'react-icons/ci'
 import {BiMoney} from 'react-icons/bi'
 import {AiFillHome} from 'react-icons/ai'
@@ -33,17 +32,22 @@ function HomePage() {
         const Dispatch = useDispatch()
         const {themes, ChangeTheme} = useContext(themeContext)
         const [promotedEvents, setPromotedEvents] = useState([])
+        const [followingsEvents, setFollowingsEvents] = useState([])
         const [promoteError, setPromoteError] = useState(false)
+        const [searchError, setSearchError] = useState(false)
+        const [searchErrormsg, setSearchErrormsg] = useState("")
         const [countpro, setCountpro] = useState(0)
         const [shouldExecute, setShouldExecute] = useState(true);
         const eventIsPromoted = useSelector(state=>state.events.promotion)
         const PromotedID = useSelector(state=>state.events.promotedID)
         const [uploadedEvent, setUploadEvent] = useState([])
         const [deactivate, setDeactivate] = useState(false)
+        const [seemoreBtn, setSeemoreBtn] = useState(false)
         const [promoteLoading, setpromoteLoading] = useState(false)
          const userOnLoggedIn = useSelector(state=>state.events.user)
         const url = "https://creativents-on-boarding.onrender.com/api/events" 
         const promoteUrl = "https://creativents-on-boarding.onrender.com/api/promoted" 
+        const followingUrl = "https://creativents-on-boarding.onrender.com/api/getEventsByFollowing" 
 
         console.log(eventIsPromoted);
         console.log(PromotedID);
@@ -77,14 +81,28 @@ function HomePage() {
         })
        }
 
+       const getFollowingEvents = () => {
+        axios.get(followingUrl, config)
+      .then(res=>{
+        console.log("Followers", res)
+        setFollowingsEvents(res.data.data)
+      })
+      .catch(err=>{
+        console.log("Followers", err)
+      })
+    }
+
        useEffect(()=>{
         eventUploaded()
         getPromotedEvents()
+        getFollowingEvents()
        },[])
 
        const isPromoted = promotedEvents.map((e)=>e.eventImages)
        const isPromotedName = promotedEvents.map((e)=>e.eventName)
-       const isPromotedDes = promotedEvents.map((e)=>e.eventDescription)
+       const isPromotedTime = promotedEvents.map((e)=>e.eventTime)
+       const isPromotedDate = promotedEvents.map((e)=>e.eventDate)
+       const isPromotedVen = promotedEvents.map((e)=>e.eventVenue)
        
   const [popUp, setPopUp] = useState(false)
   const [settingPopUp, setSettingPopUp] = useState(false)
@@ -186,16 +204,28 @@ const searchUrl = `https://creativents-on-boarding.onrender.com/api/event/search
   }
 
 const SearchBar = () => {
+  setSearchErrormsg("")
   axios.get(searchUrl, searchParameter)
   .then(res=>{
     console.log(res);
     setSearchResults(res.data.data); 
+    setSearchError(false)
   })
   .catch(err=>{
     console.log('Error searching events:', err);
+    if (err.message === "Network Error") {
+      setSearchError(true)
+      setSearchErrormsg("No Internet Connection")
+    }
+    else {
+      setSearchError(err.response.data.message)
+      setSearchError(true)
+    }
   }) 
   
 }
+
+const seemore = uploadedEvent.slice(0, 9)
 
 const executeCodeEvery4Seconds = () => {
   setCountpro(prev=> prev +=1)
@@ -229,7 +259,6 @@ useEffect(()=>{
 },[])
 
 
-const maxLength = 15
 
   return (
     <div className='HomePage' style={{background:themes?"white":"rgb(8, 2, 47)"}}>
@@ -314,8 +343,9 @@ const maxLength = 15
       <img src={isPromoted[countpro % isPromoted.length]} alt="" />
     </div>
     <div style={{width:"90%",display:"flex", flexDirection:"column", justifyContent:"flex-start"}} className='Home_EventDesc'>
-      <h4>Sunday, September 31st 2023</h4>
-      <h3 style={{fontSize:"17px", marginBlock:"5px"}}>{isPromotedDes.length > maxLength?isPromotedDes.slice(0, maxLength) :isPromotedDes[countpro % isPromotedDes.length]}</h3>
+      <h4 style={{fontSize:"19px", marginBlock:"2px"}}>{isPromotedName[countpro % isPromotedName.length]}</h4>
+      <h4 style={{fontSize:"18px", marginBlock:"2px"}}>{isPromotedDate[countpro % isPromotedDate.length]}  ---  {isPromotedTime[countpro % isPromotedTime.length]} {}</h4>
+      <h3 style={{fontSize:"18px", marginBlock:"2px"}}>{isPromotedVen[countpro % isPromotedVen.length]}</h3>
     </div>
   </section>: null
    }
@@ -349,7 +379,7 @@ const maxLength = 15
       <div className='Upcoming_EventsWrapper'>
       {
         searchResults.length === 0?
-        promotedEvents.length===0?
+        promotedEvents.length === 0?
         <>
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
         <div className='upper-Header'></div>
@@ -471,7 +501,8 @@ const maxLength = 15
               </div>
             </div>
             </div>
-        </>
+        </>:searchResults.length === 0?
+        <h1 style={{width:"100%", height:"70vh", display:"flex", justifyContent:"center", fontSize:"30px"}}>No Search Result</h1>
         :searchTerm?uploadedEvent.map((e)=>(
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s", cursor:"pointer"}}  key={e._id}>
           <div className='upper-Header'>{e.eventName}</div>
@@ -535,13 +566,13 @@ const maxLength = 15
                   nav(`/api/events/${e._id}`)
                 }}>Book now</button>
    
-                
-     
               </div>
             </div>
             </div>
           </div>
-        )):
+        )):searchResults.length === 0?
+        <h1 style={{width:"100%", height:"70vh", display:"flex", justifyContent:"center", fontSize:"30px"}}>No Search Result</h1>
+        :
         searchResults.map((e)=>(
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
           <div className='upper-Header'>{e.eventName}</div>
@@ -577,10 +608,45 @@ const maxLength = 15
         ))
 
       }
+       {/* {
+        searchTerm === ""?
+        followingsEvents.map((e)=>(
+           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
+          <div className='upper-Header'>{e.eventName}</div>
+        
+          <div className='innupper-header'>
+            <div className='Upcoming_EventImage'>
+              <img src={e.eventImages} alt="" />
+            </div>
+            <div className='Upcoming_EventDesc'>
+            
+              <div className='Upcoming_LocationDiv'>
+                <div className='upcomingevent-holder'> 
+              <MdLocationPin className='Upcoming_Location'/>
+              <span className='span'>{e.eventVenue}</span>
+              </div>
 
+              <h5 className='span3'>{e.eventDate}</h5>
+
+              </div>
+              <div className='buttoncontroler'>
+                <h6>{e.eventLocation}</h6>
+                <h6>{e.eventTime}</h6>
+                <h6>&#8358;{e.eventPrice}</h6>
+                
+                <button className='btn1' key={e._id} onClick={ () =>{
+                  nav(`/api/events/${e._id}`)
+                }}>Book now</button>
+     
+              </div>
+            </div>
+            </div>
+          </div>
+        )):null
+      } */}
       </div>
     </section>
-
+   
     <section className='Home_Tickets'>
         <div className='Ticket_Header'>
           <div className='Ticket_Line'></div>
@@ -589,8 +655,57 @@ const maxLength = 15
         </div>
 
         <div className='Event_Tickets'>
-        {
+        {   seemoreBtn?
             uploadedEvent.map((e)=>(
+              <div style={{animation:"slideInUp",animationDuration:"0.8s",  cursor:"pointer"}} className="main-category" key={e._id} onClick={()=>{
+                  nav(`/api/events/${e._id}`)
+              }}>
+              <div className="category-image" >
+              <img src={e.eventImages} alt="" />
+                  <div className='love'>
+                  {/* onClick={handleLiked} :liked ? */}
+                  {/* <BsFillSuitHeartFill style={{color:
+                   "lightgrey"}}/> */}
+                  </div>
+                  <div className='love2'>
+                  {/* <CiMenuKebab/> */}
+                  </div>
+                  
+              </div>
+              <div className="category-discription">
+                  <div className='locationandeventname'>
+                      {/* <h4>The curve Cohort 2 Graduation Day 2023.</h4> */}
+                      <h4>{e.eventName}</h4>
+                      {/* <h4>180 Freedom Way, Lekki Phase 1 Lagos State.</h4> */}
+                      <h4>{e.eventVenue}</h4>
+
+<div class="rating">
+{[1, 2, 3, 4, 5].map((star) => (
+                      <FaStar style={{fontSize:"18px", marginTop:"10px"}}
+                      key={star}
+                      className={star <= e.overallRating? 'star_selected' : 'starh'}
+                      onClick={() => handleStarClick(star)}
+                      />
+                  ))}
+</div>
+                  </div>
+              <div className='dateandprice'>
+                      <div  className='thedate'>
+                          <CiCalendarDate style={{color:"#FCA702"}}/>
+                          <h5 style={{color:"#FCA702"}}>{e.eventDate}</h5>
+                          {/* <h5>26 july 2023</h5> */}
+                      </div>
+                      <div className='theprice'>
+                          <BiMoney style={{color:"#FCA702"}}/>
+                          <h5 style={{color:"#FCA702"}} >&#8358;{e.eventPrice}</h5>
+                          {/* <h5>#2000</h5> */}
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          )):
+            seemore.map((e)=>(
                 <div style={{animation:"slideInUp",animationDuration:"0.8s",  cursor:"pointer"}} className="main-category" key={e._id} onClick={()=>{
                     nav(`/api/events/${e._id}`)
                 }}>
@@ -640,6 +755,14 @@ const maxLength = 15
 
             ))
            }
+           {
+            uploadedEvent.length !== 0 && seemore.length !== 0?
+            <div className='seeMore_Holder'>
+           <button className='seeMore_Btn' onClick={()=>{
+            setSeemoreBtn(!seemoreBtn)
+           }}>{seemore?"See More":"See Less"}</button>
+           </div>:null
+           }
 
         </div>
     </section>
@@ -662,7 +785,7 @@ const maxLength = 15
     <Footer />
 
    {
-    !eventIsPromoted?
+    eventIsPromoted?
     // setTimeout(() => {
       <div className=' Promoted_PopUp'>
       <div className='Promoted_PopUpDiv'>

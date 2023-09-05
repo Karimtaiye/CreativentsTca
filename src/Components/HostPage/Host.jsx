@@ -31,6 +31,7 @@ function Host() {
     console.log(followingStatus);
     console.log(purchasedID);
 
+    const userId = userOnLoggedIn.id
     const token = userOnLoggedIn.token
     const config = {
       headers: {
@@ -74,23 +75,6 @@ function Host() {
             const eventDate = new Date(e.eventDate);
             return eventDate > currentDate;
         })
-    //     return pastEvents
-    // }
-
-    // if (!hostProfile) {
-    //     console.log("hostProfile is undefined");
-    // } else if (!hostProfile.myEventsLink) {
-    //     console.log("myEventsLink is undefined in hostProfile");
-    // } else {
-    //     const pastEvents = hostProfile.myEventsLink.filter((e) => {
-    //         const eventDate = new Date(e.eventDate);
-    //         return eventDate < currentDate;
-    //     });
-    
-    //     console.log("pastEvents:", pastEvents);
-    
-    //     return pastEvents;
-    // }
     
     console.log(eventspast);
     console.log(pastEvents);
@@ -98,7 +82,7 @@ function Host() {
     useEffect(()=>{
         getHostProfile()
     },[])
-
+    console.log(userId);
   return (
     <>
        {
@@ -146,8 +130,9 @@ function Host() {
                             <img src={hostProfile.profilePicture} alt="" />
                         </div>
                         <div className='Host_Info'>
+                            {userId === hostProfile._id? (<h3 style={{color:"blue"}}>Me</h3>):null}
                             <div className='Follow_Details'>
-                            <h5>{hostProfile.firstname} {hostProfile.lastname}</h5>
+                            <h5>{hostProfile.firstname} {hostProfile.lastname}  </h5>
                             <h5 style={{fontWeight:"normal"}}>{hostProfile.email}</h5>
                             <h5>{hostProfile.followers.length} {hostProfile.followers.length > 1? "Followers": "Follower"}</h5>
                             <h5>{hostProfile.following.length} Following</h5>
@@ -207,7 +192,7 @@ function Host() {
                         </div>
                 </div>
                 <div className='HostAll_Events'>
-                    <h1 style={{width:"100%", marginBottom:"15px"}}>{all?`All Events (${hostProfile.myEventsLink.length})`:past?`Past Events (${pastEvents.length})`:upcoming?`Upcoming Events (${futureEvents.length})`:null}</h1>
+                    <h1 style={{width:"100%", marginBottom:"15px"}}>{all?userId === hostProfile._id?`My Events`:`All Events (${hostProfile.myEventsLink.length})`:past?`Past Events (${pastEvents.length})`:upcoming?`Upcoming Events (${futureEvents.length})`:null}</h1>
                     {
                         all?hostProfile.myEventsLink.map((e)=>(
             <div className='Upcoming_EventsDetails' key={e._id} style={{animation:"slideInUp",animationDuration:"0.8s"}}  >

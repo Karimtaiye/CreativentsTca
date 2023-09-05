@@ -340,10 +340,10 @@ useEffect(() => {
                             <h1 style={{fontSize:"40px"}}>{data.reviews.length}</h1>
                         </div>
                         <div className='Seperate_Line'></div>
-                        <div className='Average_Review'>
-                        <h1>Average Review</h1>
-                        <div style={{width:"100%", display:"flex", flexDirection:"column", alignItems:"center"}}>
-                            <h1 style={{fontSize:"40px"}}>{data.overallRating.toFixed(1)}</h1>
+                        <div className='Average_Review' style={{gap:"5px"}}>
+                        <h1>Average Rating</h1>
+                        <div style={{width:"100%", display:"flex", gap:"30px", flexDirection:"column", alignItems:"center"}}>
+                            {/* <h1 style={{fontSize:"40px"}}>{data.overallRating.toFixed(1)}</h1> */}
                             <div className='starBoy'>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <FaStar style={{fontSize:"30px"}}
@@ -409,10 +409,10 @@ useEffect(() => {
                             <h1 style={{fontSize:"30px", fontWeight:"normal"}}>{data.reviews.length}</h1>
                         </div>
                         <div className='Seperate_Line'></div>
-                        <div className='Average_Review'>
-                        <h1>Average Review</h1>
-                        <div style={{width:"100%", display:"flex", flexDirection:"column", alignItems:"center"}}>
-                            <h1 style={{fontSize:"30px", fontWeight:"normal"}}>{data.overallRating.toFixed(1)}</h1>
+                        <div className='Average_Review' style={{gap:"5px"}}>
+                        <h1>Average Rating</h1>
+                        <div style={{width:"100%", display:"flex",  gap:"20px", flexDirection:"column", alignItems:"center"}}>
+                            {/* <h1 style={{fontSize:"30px", fontWeight:"normal"}}>{data.overallRating.toFixed(1)}</h1> */}
                             <div className='starBoy'>
                     {[1, 2, 3, 4, 5].map((star) => (
                         <FaStar style={{fontSize:"20px"}}

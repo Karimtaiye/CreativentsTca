@@ -121,15 +121,7 @@ function Category (){
                 }}>
                 <div className="category-image" key={e._id}>
                 <img src={e.eventImages} alt="" />
-                    <div className='love'>
-                    {/* onClick={handleLiked} :liked ? */}
-                    {/* <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/> */}
-                    </div>
-                    <div className='love2'>
-                    {/* <CiMenuKebab/> */}
-                    </div>
-                    
+            
                 </div>
                 <div className="category-discription">
                     <div className='locationandeventname'>

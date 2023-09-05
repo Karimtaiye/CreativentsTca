@@ -14,12 +14,11 @@ const Footer =()=>{
                 <h1>reativent</h1>
                 </div>
 
-                <div className="social-image">
-                    <AiOutlineInstagram className='all-social-media'/>
-                    <AiOutlineTwitter className='all-social-media'/>
-                    <AiFillLinkedin className='all-social-media'/>
-                    <AiFillFacebook className='all-social-media'/>
-                </div>
+                {/* <div className="social-image">
+                    <a href="https://www.facebook.com/profile.php?id=61551203930714&mibextid=ZbWKwL"><AiOutlineInstagram className='all-social-media'/></a>
+                    <a href="https://www.linkedin.com/in/creativents-tca-33691528b"><AiFillLinkedin className='all-social-media'/></a>
+                    <a href="https://www.facebook.com/profile.php?id=61551203930714&mibextid=ZbWKwL"><AiFillFacebook className='all-social-media'/></a>
+                </div> */}
             </div>
 
             <div className="details">

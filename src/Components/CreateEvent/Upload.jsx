@@ -255,12 +255,12 @@ function Upload() {
 
             <div className="eventnameinput">
                 <h4>Event Name</h4>
-                <input type="text" value={eventName} onChange={(e)=>{setEventName(e.target.value)}}/>
+                <input style={{paddingInline:"5px"}} type="text" value={eventName} onChange={(e)=>{setEventName(e.target.value)}}/>
             </div>
 
             <div className="eventdiscription">
                 <h4>Event Description</h4>
-                <input type="text" value={eventDescription} onChange={(e)=>{setEventDescription(e.target.value)}}/>
+                <input style={{paddingInline:"5px"}} type="text" value={eventDescription} onChange={(e)=>{setEventDescription(e.target.value)}}/>
             </div> 
 
           </div>
@@ -291,7 +291,7 @@ function Upload() {
 
             <div className="holdersfour">
                 <h4>Venue</h4>
-                <input type="text" value={eventVenue} onChange={(e)=>{setEventVenue(e.target.value)}}/>
+                <input style={{paddingInline:"5px"}} type="text" value={eventVenue} onChange={(e)=>{setEventVenue(e.target.value)}}/>
             </div>
 
             <div className="holdersfive">

@@ -19,6 +19,8 @@ function SignUp() {
 
   const nav = useNavigate()
   const Dispatch = useDispatch()
+  const [passwordShow, setPasswordShow] = useState(false)
+  const [confirmpasswordShow, setconfirmPasswordShow] = useState(false)
   const userDatas = useSelector(state=>state.events.user)
   const [firstname, setFirstName] = useState("")
   const [lastname, setlastName] = useState("")
@@ -36,7 +38,7 @@ function SignUp() {
 
   const url = "https://creativents-on-boarding.onrender.com/api/signup"
 
-  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password:password.trim(), email:email.trim().toLowerCase(), confirmPassword:confirmPassword.trim()}
+  const userData = {firstname:firstname.trim(), lastname:lastname.trim(), password, email:email.trim().toLowerCase(), confirmPassword}
 
   const signUpUser = (e) => {
     e.preventDefault()
@@ -70,7 +72,7 @@ function SignUp() {
       setLoading(false)
 
     }
-    else if(ischecked){
+    else if(!ischecked){
       setLoading(false)
 
     }
@@ -141,12 +143,16 @@ function SignUp() {
               </article>
               </div>
 
-              <input type="password" className='signUpInputs' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
+              <input type={passwordShow?"text":"password"} className='signUpInputs' value={password} onChange={(e)=>setPassword(e.target.value)} placeholder='Password'/>
               {
                 error.type === "password" ?<h5 style={{width:"90%"}}>{error.msg}</h5>: null
               }
+               {
+               passwordShow? <BiHide  className='password_Visibility_SignUp' onClick={()=>setPasswordShow(!passwordShow)}/>
+               :<BiShow  className='password_Visibility_SignUp' onClick={()=>setPasswordShow(!passwordShow)}/>
+               }
   
-              <input type="password" value={confirmPassword} className='signUpInputs' onChange={(e)=>setConfirmPassword(e.target.value)} placeholder='Confirm your password'/>
+              <input type={confirmpasswordShow?"text":"password"} value={confirmPassword} className='signUpInputs' onChange={(e)=>setConfirmPassword(e.target.value)} placeholder='Confirm your password'/>
               {/* {
                 host?null:
                 <>
@@ -156,6 +162,11 @@ function SignUp() {
               {
                 error.type === "confirmpassword"?<h5>{error.msg}</h5>: null
               }
+
+{
+               confirmpasswordShow? <BiHide  className='Cpassword_Visibility_SignUp' onClick={()=>setconfirmPasswordShow(!confirmpasswordShow)}/>
+               :<BiShow  className='Cpassword_Visibility_SignUp' onClick={()=>setconfirmPasswordShow(!confirmpasswordShow)}/>
+               }
 
               {
                 <h5>{errorMsg}</h5>
