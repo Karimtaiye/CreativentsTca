@@ -300,7 +300,6 @@ const maxLength = 15
               <li onClick={changeUserProfilePicture}>Update Profile</li>
               <li onClick={ChangeTheme}>{themes?"Dark Mode":"Light Mode"}</li>
               <li onClick={checkUserEventProfile}>My Events</li>
-              <li>Followers & Following</li>
               {
                 admin?<li onClick={()=>nav('/adminDashboard')}>Admin DashBoard</li>:null
               }
