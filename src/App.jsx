@@ -30,7 +30,6 @@ import Admin from './Components/Admin/Admin'
 import Category from './Components/LandingPage/Category'
 import Reciept from './Components/Reciept/Reciept'
 import Host from './Components/HostPage/Host'
-import Shot from './Components/Admin/Shot/Shot'
 import Categoryt from './Components/LandingPage/Categoryt'
 import UserAuth from './Components/UserAuth/UserAuth'
 
@@ -74,7 +73,7 @@ function App() {
               <Route path="/api/report/:eventID" element={<Report />} />
               <Route path="/api/analytics" element={<Analytics />} />
 
-              <Route path="/shot" element={<Shot/>} />
+              {/* <Route path="/shot" element={<Shot/>} /> */}
             
           </Routes>
       </HashRouter>
