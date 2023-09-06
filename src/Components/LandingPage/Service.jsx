@@ -17,19 +17,19 @@ function Service (){
             <div className='holderwrap1'>
             <div className="service-containers1">
                 <div className="main-serice">
-                    <h1 style={{color:"white"}}> Creating events </h1>
+                    <h1> Creating events </h1>
                     <img src={Vector2} alt=""/>
                     <p>Welcome to our platform for creating inventions! It's a place where you can let your creativity flow and turn your ideas into real things.</p>
                 </div>
 
                 <div className="main-serice">
-                    <h1 style={{color:"white"}}>selling tickets</h1>
+                    <h1>selling tickets</h1>
                     <img src={vector1} alt=""/>
                     <p>Join us for an enchanting event, filled with unforgettable moments. Book your tickets today and create cherished memories that will last a lifetime. Hurry, before they're gone!</p>
                 </div>
                 
                 <div className="main-serice">
-                    <h1 style={{color:"white"}}> Events Analysis </h1>
+                    <h1> Events Analysis </h1>
                     <img src={vector3} alt=""/>
                     <p>Discover the best date, perfect venue, and essential event planning tips on our platform. Ensure success and create lasting memories for your attendees. Join us now and make your event a resounding success!</p>
                 </div>

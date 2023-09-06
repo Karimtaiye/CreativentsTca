@@ -9,7 +9,6 @@ import { getSearchResult } from '../Redux/State';
 import { searchWord } from '../Redux/State';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { purchasedEventID } from '../Redux/State'
 
 function Hero() {
     const nav = useNavigate()
@@ -43,7 +42,26 @@ const searchUrl = `https://creativents-on-boarding.onrender.com/api/event/search
     }
   }
 
+const SearchBar = () => {
+    setSearching(true)
+  axios.get(searchUrl, searchParameter)
+  .then(res=>{
+    console.log(res);
+    setSearchResults(res.data.data)
+    Dispatch(getSearchResult(res.data.data))
+    Dispatch(searchWord(searchTerm))
+    
+    nav('/categoryt')
+  })
+  .catch(err=>{
+    console.log('Error searching events:', err);
+  }) 
+  
+};
 
+useEffect(()=>{
+
+},[searchTerm])
 console.log(searchResults)
 
     return (
