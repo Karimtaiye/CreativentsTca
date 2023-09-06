@@ -12,6 +12,9 @@ import Cat1 from "../../assets/Cat1.png"
 import Cat2 from "../../assets/Cat2.png"
 import Cat3 from "../../assets/Cat3.png"
 import Cat4 from "../../assets/Cat4.png"
+import SportCategory from "../../assets/Sport Category.jpg"
+import TechCategory from "../../assets/Tech Category.jpg"
+import TheatreArt from "../../assets/Theatre Art.jpg"
 import { SpinnerCircularSplit } from 'spinners-react'
 import promote from "../../assets/promote.jpg"
 import promote2 from "../../assets/promote2.jpg"
@@ -174,15 +177,15 @@ function HomePage() {
     },
     {
       name:"Tech Exhibition",
-      image:Cat4
+      image:SportCategory
     },
     {
       name:"Health Event",
-      image:Cat4
+      image:TechCategory
     },
     {
       name:"Art Theatre",
-      image:Cat4
+      image:TheatreArt
     }
 ]
 
