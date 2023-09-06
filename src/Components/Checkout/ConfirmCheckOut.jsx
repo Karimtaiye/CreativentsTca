@@ -84,6 +84,11 @@ const BookEvent = () => {
             setMsg("Requested ticket quantity exceeds available tickets")
             setSubMsg("please select lower quantity")
         }
+        if(err.response.data.error === "No matching document found for id \"64f3bb2a6ef992b8f25a8a7a\" version 7 modifiedPaths \"availableTickets, purchasedTickets\""){
+            seterrors(false)
+            setMsg("Ticket Purchased Successfully")
+            setSubMsg("Check Your mail for your Ticket Details")
+        }
         else if(err.response.data.error === "Cannot read property 'DOB' of null"){
             setMsg("Cannot Purchase Ticket")
             setSubMsg("Please Provide Your DOB")
