@@ -15,16 +15,15 @@ const Footer =()=>{
                 </div>
 
                 <div className="social-image">
-                    <a href="https://www.facebook.com/profile.php?id=61551203930714&mibextid=ZbWKwL"><AiOutlineInstagram className='all-social-media'/></a>
-                    <a href="https://www.linkedin.com/in/creativents-tca-33691528b"><AiFillLinkedin className='all-social-media'/></a>
-                    <a href="https://www.facebook.com/profile.php?id=61551203930714&mibextid=ZbWKwL"><AiFillFacebook className='all-social-media'/></a>
+                    <a target="blank" href="https://www.facebook.com/profile.php?id=61551203930714&mibextid=ZbWKwL"><AiOutlineInstagram className='all-social-media'/></a>
+                    <a target="blank" href="https://www.linkedin.com/in/creativents-tca-33691528b"><AiFillLinkedin className='all-social-media'/></a>
+                    <a target="blank" href="https://www.facebook.com/profile.php?id=61551203930714&mibextid=ZbWKwL"><AiFillFacebook className='all-social-media'/></a>
                 </div>
             </div>
 
             <div className="details">
                 <ul>
-                    <li>Payment Method</li>
-                    <li>About Us</li>
+                    <li onClick={()=>{nav('/about')}}>About Us</li>
                     <li>Features</li>
                     <li>Contact Us</li>
                 </ul>

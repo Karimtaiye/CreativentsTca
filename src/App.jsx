@@ -51,15 +51,16 @@ function App() {
               <Route path="/api/getUserWithLinks/:id" element={<UserDashBoard />} />
               <Route path="/api/update/:eventID" element={<UserEventUpdates />} />
               <Route path="/api/Delete/:eventID" element={<ConfirmDelete />} />
-              <Route path="/api/events/:id" element={<Checkouts />} />
-              <Route path="/api/tickets/:id" element={<ConfirmCheckOut />} />
               <Route path="/api/changepasswordlogged/:id" element={<ChangePassword />} />
-              <Route path="/api/barcode/:id" element={<BarCode />} />
               <Route path="/adminDashboard/*" element={<Admin />} />
-              <Route path="/reciept" element={<Reciept />} />
               <Route path="/host/:id" element={<Host/>} />
+              
               </Route>
 
+              <Route path="/api/events/:id" element={<Checkouts />} />
+              <Route path="/api/tickets/:id" element={<ConfirmCheckOut />} />
+              <Route path="/reciept" element={<Reciept />} />
+              <Route path="/api/barcode/:id" element={<BarCode />} />
               <Route path ='/login' element = {<LogIn />} />
               <Route path ='/signup' element = {<SignUp />} />
               <Route path ="/" element = {<Explore />} />
@@ -67,12 +68,8 @@ function App() {
               <Route path ='/category' element = {<Category />} />
               <Route path ='/categoryt' element = {<Categoryt />} />
               <Route path ="/api/event/search" element = {<EventSearch  />} />
-
-              <Route path ='/about' element = {<About />} />
-
               <Route path="/api/verify" element={<EmailVerification />} />
               <Route path="/checkpassword" element={<CheckPassword />} />
-
               <Route path="/api/rate" element={<Rate />} />
               <Route path="/api/report/:eventID" element={<Report />} />
               <Route path="/api/analytics" element={<Analytics />} />

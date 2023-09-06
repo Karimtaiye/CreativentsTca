@@ -1,13 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import{ AiOutlineMenu } from 'react-icons/ai'
 import {TiDelete} from 'react-icons/ti'
 import {NavLink} from "react-router-dom"
 import devC from "../../image/devC.png"
+import axios from 'axios'
+import { AiOutlineSearch, AiOutlineArrowRight } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 function Header (){
     const nav = useNavigate()
   const userOnLoggedIn = useSelector(state=>state.events.user)
+const [searching, setSearching] = useState(false);
+  const [bookingRefPop, setBookingRefpop] = useState(false)
+  const [searchTerms, setSearchTerm] = useState("")
   const token = userOnLoggedIn.token
   const name = userOnLoggedIn.name
     const [popUp, setPopUp] =useState(false)
@@ -19,6 +24,34 @@ function Header (){
     const hidePop = ()=>{
         setPopUp(false)
     }
+
+    const searchUrl = `https://creativents-on-boarding.onrender.com/api/searchbooking/search?searchTerm=${searchTerms}`
+
+  const searchParameter = {
+    searchparams: {
+      bookingReference: searchTerms,       
+    }
+  }
+
+    const SearchBar = () => {
+        setSearching(true)
+      axios.get(searchUrl, searchParameter)
+      .then(res=>{
+        console.log(res);
+        setSearching(false)   
+        nav(`/api/barcode/${res.data.data[0].bookingReference}`) 
+        Dispatch(purchasedEventID(res.data.data._id))
+      })
+      .catch(err=>{
+        setSearching(false)
+        console.log('Error searching events:', err);
+      }) 
+      
+    };
+    
+    useEffect(()=>{
+    
+    },[])
 
     return(
     
@@ -47,6 +80,9 @@ function Header (){
                     <NavLink to={'/login'}>
                     <li>Create Event</li>
                     </NavLink>
+                    <li onClick={()=>{
+                        setBookingRefpop(!bookingRefPop)
+                    }}>Manage Booking</li>
                 </ul>
             </div>
             <div className="three">
@@ -76,21 +112,45 @@ function Header (){
                     <NavLink to={'/signup'}>
                     <h6>Sign up</h6>
                     </NavLink>
-                    {/* <NavLink to={'/category'}>
-                    <h6>Find Event</h6>
-                    </NavLink> */}
                     <NavLink to={'/about'}>
                     <h6>About us</h6>
                     </NavLink>
                     <NavLink to={'/login'}>
                     <h6>Create Event</h6>
                     </NavLink>
+                    <li className='Book' onClick={()=>{
+                        setBookingRefpop(!bookingRefPop)
+                    }}>Manage Booking</li>
                 </div>
                 <TiDelete className='delete' onClick={hidePop}/>
             </section>: null
             }     
         </div>
+        {
+            bookingRefPop?
+            <div className='BookingSharp'>
+            <h1 className='Cancel_booking' onClick={()=>{
+                setBookingRefpop(!bookingRefPop)
+            }}>X</h1>
 
+        <div className="search-ref">
+                        <div className="searchRef-bar">
+                            <input value={searchTerms} onChange={(e)=>setSearchTerm(e.target.value)} type="text" placeholder="Provide Your Booking Ref No" />
+                            {/* <AiOutlineSearch className="searchin" /> */}
+                        </div>
+
+                        <div className="seeRef-result2">
+                            <button style={{background:searching?"#193e7f8f":"#303482", width:"100%",
+                             height:"100%",
+                             border:"none", borderRadius:"0px 10px 10px 0px", color:"white",
+                             }} className="see-result" onClick={SearchBar}>
+                                {searching?"Loading":"Get"}
+                                <AiOutlineArrowRight className="arrow" style={{fontSize:"16px"}}/>
+                            </button>
+                        </div>
+                    </div>
+        </div>: null
+        }
       </div>
     )   
   }

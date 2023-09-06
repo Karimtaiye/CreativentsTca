@@ -201,7 +201,7 @@ function UserDashBoard() {
                                 <div className='Hosted_EventDesc'>
                                     <div className='Hosted_EventWhere'>
                                         <h3>{e.eventName}</h3>
-                                        <h4>{e.eventDescription}</h4>
+                                        <h4>{e.eventVenue}</h4>
                                         <h4>{e.eventDate}</h4>
                                     </div>
                                       <div className='Event_Reviews'>

@@ -4,6 +4,14 @@
         margin-bottom: 35px;
     }
 
+    .btn1{
+        margin-bottom: 15px; 
+     }
+
+     .seeMore_Btn {
+        width: 35%;
+     }
+
     .Promoted_PopUpDiv {
         width: 90%;
         height: 45%;
