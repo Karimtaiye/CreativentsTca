@@ -16,7 +16,7 @@ import ChangePassword from './Components/ChangePassword/ChangePassword'
 import Upload from './Components/CreateEvent/Upload'
 import UpdateProfile from './Components/UpdateProfile/UpdateProfile'
 import Explore from './Components/Explore/Explore'
-import Checkouts from './Components/Checkout/Checkouts'
+import Checkouts from './Components/Checkout/Checkout'
 import UserDashBoard from './Components/UserDashBoard/UserDashBoard'
 import UserEventUpdates from './Components/UserEventUpdate/UserEventUpdates'
 import ConfirmDelete from './Components/UserDashBoard/ConfirmDelete'
@@ -30,7 +30,9 @@ import Admin from './Components/Admin/Admin'
 import Category from './Components/LandingPage/Category'
 import Reciept from './Components/Reciept/Reciept'
 import Host from './Components/HostPage/Host'
+import Shot from './Components/Admin/Shot/Shot'
 import Categoryt from './Components/LandingPage/Categoryt'
+import UserAuth from './Components/UserAuth/UserAuth'
 
 function App() {
   
@@ -39,38 +41,43 @@ function App() {
       <HashRouter>
         {/* <Header /> */}
           <Routes>
-              
-              <Route path ='/login' element = {<LogIn />} />
-              <Route path ='/signup' element = {<SignUp />} />
+              <Route element={<UserAuth />}>
               <Route path ="/api/logout/:id" element = {<LogOut />} />
-              <Route path ="/" element = {<Explore />} />
-              <Route path ='/landingpage' element = {<MainPage />} />
-              <Route path ='/category' element = {<Category />} />
               <Route path ='/homepage' element = {<HomePage />} />
-              <Route path ="/api/event/search" element = {<EventSearch  />} />
-              <Route path ='/upload' element = {<Upload />} />
-              <Route path ='/api/add-profile-image/:id' element = {<UpdateProfile />} />
-              <Route path ='/about' element = {<About />} />
               <Route path ='/forgotpassword' element = {<ForgotPassword />} />
               <Route path ='/api/changepassword/:id/:token' element = {<NewPassword />} /> 
-              <Route path="/api/verify" element={<EmailVerification />} />
-              <Route path="/checkpassword" element={<CheckPassword />} />
+              <Route path ='/upload' element = {<Upload />} />
+              <Route path ='/api/add-profile-image/:id' element = {<UpdateProfile />} />
               <Route path="/api/getUserWithLinks/:id" element={<UserDashBoard />} />
               <Route path="/api/update/:eventID" element={<UserEventUpdates />} />
               <Route path="/api/Delete/:eventID" element={<ConfirmDelete />} />
               <Route path="/api/events/:id" element={<Checkouts />} />
               <Route path="/api/tickets/:id" element={<ConfirmCheckOut />} />
-              <Route path ='/categoryt' element = {<Categoryt />} />
-
               <Route path="/api/changepasswordlogged/:id" element={<ChangePassword />} />
-              <Route path="/api/rate" element={<Rate />} />
-              <Route path="/api/report/:eventID" element={<Report />} />
-              <Route path="/api/analytics" element={<Analytics />} />
               <Route path="/api/barcode/:id" element={<BarCode />} />
               <Route path="/adminDashboard/*" element={<Admin />} />
               <Route path="/reciept" element={<Reciept />} />
               <Route path="/host/:id" element={<Host/>} />
-              {/* <Route path="/shot" element={<Shot/>} /> */}
+              </Route>
+
+              <Route path ='/login' element = {<LogIn />} />
+              <Route path ='/signup' element = {<SignUp />} />
+              <Route path ="/" element = {<Explore />} />
+              <Route path ='/landingpage' element = {<MainPage />} />
+              <Route path ='/category' element = {<Category />} />
+              <Route path ='/categoryt' element = {<Categoryt />} />
+              <Route path ="/api/event/search" element = {<EventSearch  />} />
+
+              <Route path ='/about' element = {<About />} />
+
+              <Route path="/api/verify" element={<EmailVerification />} />
+              <Route path="/checkpassword" element={<CheckPassword />} />
+
+              <Route path="/api/rate" element={<Rate />} />
+              <Route path="/api/report/:eventID" element={<Report />} />
+              <Route path="/api/analytics" element={<Analytics />} />
+
+              <Route path="/shot" element={<Shot/>} />
             
           </Routes>
       </HashRouter>
