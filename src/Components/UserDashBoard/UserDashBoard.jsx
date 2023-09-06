@@ -18,7 +18,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate, useParams } from 'react-router-dom'
 import ConfirmDelete from './ConfirmDelete'
-import Tickets from './Tickets'
+import { FaStar } from 'react-icons/fa'
 import { SpinnerDotted } from 'spinners-react'
 import { MdNetworkCheck } from 'react-icons/md'
 import LogoC from "../../assets/LogoC.png"
@@ -234,14 +234,6 @@ function UserDashBoard() {
                                         }}>
                 <div className="category-image" >
                 <img src={e.link === null? "":e.link.eventImages} alt="" />
-                    <div className='love'>
-                    {/* onClick={handleLiked} :liked ? */}
-                    {/* <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/> */}
-                    </div>
-                    <div className='love2'>
-                    {/* <CiMenuKebab/> */}
-                    </div>
                     
                 </div>
                 <div className="category-discription">
@@ -288,15 +280,6 @@ function UserDashBoard() {
                 }}>
                 <div className="category-image" >
                 <img src={e.eventImages} alt="" />
-                    <div className='love'>
-                    {/* onClick={handleLiked} :liked ? */}
-                    <BsFillSuitHeartFill style={{color:
-                     "lightgrey"}}/>
-                    </div>
-                    <div className='love2'>
-                    <CiMenuKebab/>
-                    
-                    </div>
                     
                 </div>
                 <div className="category-discription">

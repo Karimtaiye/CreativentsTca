@@ -30,6 +30,7 @@ import Admin from './Components/Admin/Admin'
 import Category from './Components/LandingPage/Category'
 import Reciept from './Components/Reciept/Reciept'
 import Host from './Components/HostPage/Host'
+import Categoryt from './Components/LandingPage/Categoryt'
 
 function App() {
   
@@ -59,6 +60,8 @@ function App() {
               <Route path="/api/Delete/:eventID" element={<ConfirmDelete />} />
               <Route path="/api/events/:id" element={<Checkouts />} />
               <Route path="/api/tickets/:id" element={<ConfirmCheckOut />} />
+              <Route path ='/categoryt' element = {<Categoryt />} />
+
               <Route path="/api/changepasswordlogged/:id" element={<ChangePassword />} />
               <Route path="/api/rate" element={<Rate />} />
               <Route path="/api/report/:eventID" element={<Report />} />

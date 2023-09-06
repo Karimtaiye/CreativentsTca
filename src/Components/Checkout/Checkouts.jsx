@@ -290,6 +290,10 @@ useEffect(() => {
                               else if(err.response.data.message === "jwt expired"){
                                     nav('/login')
                               }
+                              else if(err.response.data.message === "jwt must be provided"){
+                                setNotification("Please login to perform this action")
+
+                              }
                               else{
                                 setNotification(err.response.data.message)
                               }
@@ -314,6 +318,10 @@ useEffect(() => {
                                       else if(err.response.data.message === "jwt expired"){
                                             nav('/login')
                                       }
+                                      else if(err.response.data.message === "jwt must be provided"){
+                                        setNotification("Please login to perform this action")
+        
+                                      }
                                       else if(err.message === "Network Error"){
                                         setNotification("Please check your Internet Connection")
                                       }
@@ -327,7 +335,7 @@ useEffect(() => {
 
                     <button onClick={()=>nav(`/api/report/${data._id}`)} className='Report_Btn'>Report this event</button>
                    </div>
-                   <span style={{ fontSize:"13px", color:"red"}}>{notification}</span>
+                   <span style={{color:"white", fontSize:"13px", color:"red"}}>{notification}</span>
 
                    
 

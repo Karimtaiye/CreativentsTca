@@ -51,7 +51,7 @@ const SearchBar = () => {
     Dispatch(getSearchResult(res.data.data))
     Dispatch(searchWord(searchTerm))
     
-    nav('/category')
+    nav('/categoryt')
   })
   .catch(err=>{
     console.log('Error searching events:', err);

@@ -421,7 +421,7 @@ useEffect(()=>{
               </div>
             </div>
             </div>
-          <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
+          <div className='Upcoming_EventsDetails' style={{animation:"slideInUp",animationDuration:"0.8s"}}  >
         <div className='upper-Header'></div>
       
         <div className='innupper-header'>
@@ -501,7 +501,7 @@ useEffect(()=>{
               </div>
             </div>
             </div>
-        </>:searchResults.length === 0?
+        </>:searchResults.length === 0 && searchTerm?
         <h1 style={{width:"100%", height:"70vh", display:"flex", justifyContent:"center", fontSize:"30px"}}>No Search Result</h1>
         :searchTerm?uploadedEvent.map((e)=>(
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s", cursor:"pointer"}}  key={e._id}>
@@ -570,8 +570,7 @@ useEffect(()=>{
             </div>
             </div>
           </div>
-        )):searchResults.length === 0?
-        <h1 style={{width:"100%", height:"70vh", display:"flex", justifyContent:"center", fontSize:"30px"}}>No Search Result</h1>
+        ))
         :
         searchResults.map((e)=>(
           <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
@@ -606,10 +605,11 @@ useEffect(()=>{
             </div>
           </div>
         ))
+        
 
       }
-       {/* {
-        searchTerm === ""?
+       {
+        !searchTerm?
         followingsEvents.map((e)=>(
            <div className='Upcoming_EventsDetails'  style={{animation:"slideInUp",animationDuration:"0.8s"}}  key={e._id}>
           <div className='upper-Header'>{e.eventName}</div>
@@ -643,7 +643,7 @@ useEffect(()=>{
             </div>
           </div>
         )):null
-      } */}
+      }
       </div>
     </section>
    
