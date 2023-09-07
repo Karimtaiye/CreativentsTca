@@ -459,7 +459,7 @@ useEffect(() => {
                     ))}
                     </div>
                     
-                    <button onClick={addReview} >Submit</button>
+                    <button style={{margin:"5px"}} onClick={addReview} >Submit</button>
                 </div>
                 
                     {

@@ -352,7 +352,7 @@ function Upload() {
           </div>
           
           <div className="createpart">
-          <button style={{background:empty?"#865d0b":null}} className="create" disabled={loading?true:empty?true:null} onClick={CreateEvent}>{
+          <button style={{background:empty?"grey":null}} className="create" disabled={loading?true:empty?true:null} onClick={CreateEvent}>{
             loading? <SpinnerInfinity style={{animation:"slideInUp",animationDuration:"0.8s"}} size={80} thickness={100} speed={100} color="#ffffff" secondaryColor="rgba(0, 0, 0, 0.44)" />:
             "Create"
           }</button>
